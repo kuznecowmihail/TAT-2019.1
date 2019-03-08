@@ -4,13 +4,18 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-/* DEV-1 Task-1: вводится строка(не меньше двух символов), выводится в консоль все подпоследовательности(не меньше двух символов)
- , в которых нет повторяющихся символов, поиск подстрок идет в отдельном классе Subsequence */
 
 namespace TAT2019.Kuzniatsou.Task1
 {
+    /// <summary>
+    /// The main class.
+    /// Contains a entry point method of program.
+    /// </summary>
     class Program
     {
+        /// <summary>
+        /// The entry point of the program
+        /// </summary>
         static void Main(string[] args)
         {
             if (args[0].Length < 2)

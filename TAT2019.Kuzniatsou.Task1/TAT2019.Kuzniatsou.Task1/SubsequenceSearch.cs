@@ -8,6 +8,9 @@ using System.Threading.Tasks;
 
 namespace TAT2019.Kuzniatsou.Task1
 {
+    /// <summary>
+    /// class that finds and prints subsequences of non-repeating symbols.
+    /// </summary>
     class Subsequence
     {
         public string inputLine;
@@ -17,75 +20,77 @@ namespace TAT2019.Kuzniatsou.Task1
                 inputLine = line;
         }
 
+
+        /// <summary>
+        /// a method that finds subsequences
+        /// </summary>
         public void SearchSubsequences()
         {
-            // Подпоследовательность между повторяющимися символами.
+            // Subsequence between repeating symbols.
             string outputLine = string.Empty;
-            // Список всех подпоследовательностей.
+            // List of all subsequences.
             List<string> subSequences = new List<string>();
-            // Индекс первого и последнего элемента в подпоследовательности.
+            // Index of first and last element.
             int indexFirst = 0;
-            int indexEnd = 0;
+            int indexLast = 0;
             do
             {
-                for(indexEnd = indexFirst; indexEnd < inputLine.Length; indexEnd++)
+                for(indexLast = indexFirst; indexLast < inputLine.Length; indexLast++)
                 {
-                    // Исключение для последнего элемента, чтобы не было выхода за границы.
-                    if (indexEnd == inputLine.Length - 1)
+                    // Exeption for last element.
+                    if (indexLast == inputLine.Length - 1)
                     {
-                        // Проверка на то, что был добавлен предыдущий символ
-                        // для добавления последнего символа перед повторяющимися символами.
-                        if ((indexEnd - indexFirst) > 0) 
+                        // Check on adding the previous element
+                        // to add the next element.
+                        if ((indexLast - indexFirst) > 0) 
                         {
-                            outputLine += inputLine[indexEnd];
+                            outputLine += inputLine[indexLast];
                         }
                         break;
                     }
-                    // Сравнение символов.
-                    if (inputLine[indexEnd] != inputLine[indexEnd + 1])
+                    // Comrarison of elements.
+                    if (inputLine[indexLast] != inputLine[indexLast + 1])
                     {
-                        // Добавляем символ в подпоследовательность.
-                        outputLine += inputLine[indexEnd];
+                        // Add element to subsequence.
+                        outputLine += inputLine[indexLast];
                     }
                     else
                     {
-                        if ((indexEnd - indexFirst) > 0) 
+                        if ((indexLast - indexFirst) > 0) 
                         {
-                            outputLine += inputLine[indexEnd];
+                            outputLine += inputLine[indexLast];
                         }
                         break;
                     }
                 }
-                // Для исключения: первые два символа повторяются.
-                // Чтобы не записывало пустую строку в список.
                 if (outputLine != String.Empty)
                 {
-                    // Добавляем в список данную подпоследовательность.
+                    // Add subsequence to list.
                     subSequences.Add(outputLine);
-                    // Ищем все комбинации подпоследовательностей в данной подпоследовательности.
+                    // Find and add all combinationss of this subsequence.
                     for (int i = 0; i < outputLine.Length; i++)
                         for (int j = outputLine.Length - 1; j > i; j--)
                         {
-                            // Выделение подпоследовательности в подпоследовательности.
+                            // Select subsequence in this subsequence.
                             string subLine = outputLine.Substring(i, j - i + 1);
+                            // Check for availability.
                             if (!subSequences.Contains(subLine) && subLine.Length >= 2)
                             {
-                                // Добавление в список.
+                                // Add subsequence in list.
                                 subSequences.Add(subLine);
                             }
                         }
                 }
-                // Перемещаем начальный индекс на новое место.
-                indexFirst = indexEnd + 1;
-                // Очищаем строку для нахождения новой подпоследовательности.
+                indexFirst = indexLast + 1;
                 outputLine = string.Empty;
             }
-            // Ходим в цикле пока начальный индекс не уйдет за пределы строки.
             while (indexFirst < inputLine.Length - 1);
             OutputOnDisplay(subSequences);
         }
 
-        // Вывод на экран.
+        /// <summary>
+        /// a method that prints subsequences
+        /// </summary>
         public void OutputOnDisplay(List<string> line) 
         {
             foreach (string i in line)
