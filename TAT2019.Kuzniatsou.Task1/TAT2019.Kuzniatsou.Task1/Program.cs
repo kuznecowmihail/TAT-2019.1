@@ -20,7 +20,7 @@ namespace TAT2019.Kuzniatsou.Task1
         {
             if (args[0].Length < 2)
             {
-                Console.WriteLine("String contains less than 2 characters");
+                Console.WriteLine("String contains less than 2 elements");
             }
             else
             {

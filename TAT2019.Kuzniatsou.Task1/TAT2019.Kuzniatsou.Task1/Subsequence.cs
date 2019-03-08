@@ -20,17 +20,18 @@ namespace TAT2019.Kuzniatsou.Task1
                 inputLine = line;
         }
 
-
         /// <summary>
         /// a method that finds subsequences
         /// </summary>
         public void SearchSubsequences()
         {
             // Subsequence between repeating symbols.
-            string outputLine = string.Empty;
+            string sequence = string.Empty;
+            // Subsequence in sequence.
+            string subsequence = string.Empty;
             // List of all subsequences.
             List<string> subSequences = new List<string>();
-            // Index of first and last element.
+            // Index of first and last sequnce element.
             int indexFirst = 0;
             int indexLast = 0;
             do
@@ -44,7 +45,7 @@ namespace TAT2019.Kuzniatsou.Task1
                         // to add the next element.
                         if ((indexLast - indexFirst) > 0) 
                         {
-                            outputLine += inputLine[indexLast];
+                            sequence += inputLine[indexLast];
                         }
                         break;
                     }
@@ -52,46 +53,46 @@ namespace TAT2019.Kuzniatsou.Task1
                     if (inputLine[indexLast] != inputLine[indexLast + 1])
                     {
                         // Add element to subsequence.
-                        outputLine += inputLine[indexLast];
+                        sequence += inputLine[indexLast];
                     }
                     else
                     {
                         if ((indexLast - indexFirst) > 0) 
                         {
-                            outputLine += inputLine[indexLast];
+                            sequence += inputLine[indexLast];
                         }
                         break;
                     }
                 }
-                if (outputLine != String.Empty)
+                if (sequence != String.Empty)
                 {
                     // Add subsequence to list.
-                    subSequences.Add(outputLine);
+                    subSequences.Add(sequence);
                     // Find and add all combinationss of this subsequence.
-                    for (int i = 0; i < outputLine.Length; i++)
-                        for (int j = outputLine.Length - 1; j > i; j--)
+                    for (int i = 0; i < sequence.Length; i++)
+                        for (int j = sequence.Length - 1; j > i; j--)
                         {
                             // Select subsequence in this subsequence.
-                            string subLine = outputLine.Substring(i, j - i + 1);
+                            subsequence = sequence.Substring(i, j - i + 1);
                             // Check for availability.
-                            if (!subSequences.Contains(subLine) && subLine.Length >= 2)
+                            if (!subSequences.Contains(subsequence) && subsequence.Length >= 2)
                             {
                                 // Add subsequence in list.
-                                subSequences.Add(subLine);
+                                subSequences.Add(subsequence);
                             }
                         }
                 }
                 indexFirst = indexLast + 1;
-                outputLine = string.Empty;
+                sequence = string.Empty;
             }
             while (indexFirst < inputLine.Length - 1);
-            OutputOnDisplay(subSequences);
+            PrintSubsequences(subSequences);
         }
 
         /// <summary>
         /// a method that prints subsequences
         /// </summary>
-        public void OutputOnDisplay(List<string> line) 
+        public void PrintSubsequences(List<string> line) 
         {
             foreach (string i in line)
                 Console.WriteLine(i);
