@@ -15,16 +15,27 @@ namespace TAT2019.Kuzniatsou.Task1
         /// <summary>
         /// The entry point of the program
         /// </summary>
-        static void Main(string[] args)
+        static int Main(string[] args)
         {
-            if (args[0].Length < 2)
+            try
             {
-                Console.WriteLine("String contains less than 2 elements");
-            }
-            else
-            {
+                if (args[0].Length < 2 && args.Length < 2)
+                {
+                    throw new FormatException();
+                }
                 Subsequence arg = new Subsequence(args[0]);
                 arg.SearchSubsequences();
+                return 0;
+            }
+            catch(FormatException)
+            {
+                Console.WriteLine("String contains less than 2 elements");
+                return 1;
+            }
+            catch (Exception)
+            {
+                Console.WriteLine("Something error!");
+                return 2;
             }
         }
     }
