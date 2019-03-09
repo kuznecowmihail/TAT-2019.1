@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{DE8E5759-59D5-4B61-85BB-DFD3CBDAB44D}</ProjectGuid>
+    <ProjectGuid>{795A370E-D974-4606-B19C-F3AD68F9DADE}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <RootNamespace>TAT2019.Kuzniatsou.Task1</RootNamespace>
     <AssemblyName>TAT2019.Kuzniatsou.Task1</AssemblyName>

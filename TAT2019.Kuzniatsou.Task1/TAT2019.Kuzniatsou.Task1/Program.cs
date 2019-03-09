@@ -4,7 +4,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-
 namespace TAT2019.Kuzniatsou.Task1
 {
     /// <summary>
