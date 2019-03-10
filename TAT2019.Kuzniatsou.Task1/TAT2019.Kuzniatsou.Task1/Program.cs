@@ -24,7 +24,9 @@ namespace TAT2019.Kuzniatsou.Task1
                     throw new FormatException();
                 }
                 Subsequence arg = new Subsequence(args[0]);
-                arg.SearchSubsequences();
+                List<string> listOfSubsequences = new List<string>();
+                listOfSubsequences = arg.SearchSubsequences();
+                arg.PrintSubsequences(listOfSubsequences);
                 return 0;
             }
             catch(FormatException)
