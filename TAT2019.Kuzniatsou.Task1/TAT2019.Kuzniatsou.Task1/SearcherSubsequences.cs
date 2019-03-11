@@ -24,12 +24,12 @@ namespace TAT2019.Kuzniatsou.Task1
         public List<string> SearchSubsequences()
         {
             // Subsequence between repeating symbols.
-            string subsequence = string.Empty;
+            var subsequence = string.Empty;
             // List of all subsequences.
-            List<string> listAllSubsequences = new List<string>();
+            var listAllSubsequences = new List<string>();
             // Index of first and last subsequnce element.
-            int indexFirst = 0;
-            int indexLast = 0;
+            var indexFirst = 0;
+            var indexLast = 0;
             do
             {
                 GetSubsequenceBetweenRepeatingSymbols(ref indexFirst, ref indexLast, ref subsequence);
@@ -83,18 +83,17 @@ namespace TAT2019.Kuzniatsou.Task1
         /// <summary>
         /// A method that adds subsequences in list.
         /// </summary>
-        /// <param name="listAllSubsequences">List of all subsequences</param>
         /// <param name="subsequence">Subsequence between repeating symbols</param>
-        /// <param name="subsequenceOfSubsequence">Subsequences in subsequence</param>
+        /// <param name="listAllSubsequences">List of all subsequences</param>
         public void AddSubsequencesFromSubsequenceInList(string subsequence, ref List<string> listAllSubsequences)
         {
             // Subsequences in subsequence.
-            string subsequenceOfSubsequence = string.Empty;
+            var subsequenceOfSubsequence = string.Empty;
             // Add subsequence to list.
             listAllSubsequences.Add(subsequence);
             // Find and add all combinationss of this subsequence.
-            for (int i = 0; i < subsequence.Length; i++)
-                for (int j = subsequence.Length - 1; j > i; j--)
+            for (var i = 0; i < subsequence.Length; i++)
+                for (var j = subsequence.Length - 1; j > i; j--)
                 {
                     // Select subsequence in this subsequence.
                     subsequenceOfSubsequence = subsequence.Substring(i, j - i + 1);
@@ -112,7 +111,7 @@ namespace TAT2019.Kuzniatsou.Task1
         /// <param name="line">Line to print</param>
         public void PrintSubsequences(List<string> line)
         {
-            foreach (string i in line)
+            foreach (var i in line)
                 Console.WriteLine(i);
         }
     }

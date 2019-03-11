@@ -8,7 +8,7 @@ namespace TAT2019.Kuzniatsou.Task1
     class EntryPoint
     {
         /// <summary>
-        /// The entry point of the program
+        /// The entry point of the program.
         /// </summary>
         /// <param name="args">Arguments from command line</param>
         /// <returns 0>Normal program start</returns>
@@ -22,7 +22,7 @@ namespace TAT2019.Kuzniatsou.Task1
                 {
                     throw new FormatException();
                 }
-                SearcherSubsequences subsequences = new SearcherSubsequences(args[0]);
+                var subsequences = new SearcherSubsequences(args[0]);
                 subsequences.PrintSubsequences(subsequences.SearchSubsequences());
                 return 0;
             }
