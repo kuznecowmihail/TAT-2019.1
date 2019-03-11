@@ -1,20 +1,19 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace TAT2019.Kuzniatsou.Task1
 {
     /// <summary>
     /// The main class.
-    /// Contains a entry point method of program.
     /// </summary>
-    class Program
+    class EntryPoint
     {
         /// <summary>
         /// The entry point of the program
         /// </summary>
+        /// <param name="args">Arguments from command line</param>
+        /// <returns 0>Normal program start</returns>
+        /// <returns 1>String contains less than 2 elements</returns>
+        /// <returns 2>Something errors</returns>
         static int Main(string[] args)
         {
             try
@@ -23,10 +22,8 @@ namespace TAT2019.Kuzniatsou.Task1
                 {
                     throw new FormatException();
                 }
-                Subsequence arg = new Subsequence(args[0]);
-                List<string> listOfSubsequences = new List<string>();
-                listOfSubsequences = arg.SearchSubsequences();
-                arg.PrintSubsequences(listOfSubsequences);
+                SearcherSubsequences subsequences = new SearcherSubsequences(args[0]);
+                subsequences.PrintSubsequences(subsequences.SearchSubsequences());
                 return 0;
             }
             catch(FormatException)
@@ -34,9 +31,9 @@ namespace TAT2019.Kuzniatsou.Task1
                 Console.WriteLine("String contains less than 2 elements");
                 return 1;
             }
-            catch (Exception)
+            catch(Exception)
             {
-                Console.WriteLine("Something error!");
+                Console.WriteLine("Something error");
                 return 2;
             }
         }
