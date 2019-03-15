@@ -42,9 +42,9 @@ namespace Task_DEV_2_
         /// Constructor.
         /// </summary>
         /// <param name="line"></param>
-        public ConverterWordToPhonemes(string line)
+        public ConverterWordToPhonemes(string word)
         {
-            word = line;
+            this.word = word;
         }
         /// <summary>
         /// A method that finds and return phonemes of words.
@@ -52,70 +52,65 @@ namespace Task_DEV_2_
         /// <returns>phonemes</returns>
         public StringBuilder ConvertWordToPhonemes()
         {
-            // Search stress and remove symbol '+' from word.
-            if (word.Contains('+'))
-            {
-                stress = word.IndexOf('+') - 1;
-                word = word.Remove(word.IndexOf('+'), 1);
-            }
+            SearchStress(ref word, ref stress);
             // Go through each symbol.
-            for (int i = 0; i < word.Length; i++)
+            for(int index = 0; index < word.Length; index++)
             {
-                switch (DefineType(word[i], vowels, consonants))
+                switch (DefineTypeOfSymbol(word[index], vowels, consonants))
                 {
                     case "vowel":
                         // Check that "Vawel before consonat" dictionary contains symbol in key. 
                         // Check go when the vowel isn't first or after the consonat.
-                        if (i != 0 && DefineType(word[i - 1], vowels, consonants) =="consonant" && keyIsVowelBeforeConsonant.ContainsKey(word[i]))
+                        if (index != 0 && DefineTypeOfSymbol(word[index - 1], vowels, consonants) =="consonant" && keyIsVowelBeforeConsonant.ContainsKey(word[index]))
                         {
                             // Add value to phonemes.
-                            phonemes.Append("'" + keyIsVowelBeforeConsonant[word[i]]);
+                            phonemes.Append("'" + keyIsVowelBeforeConsonant[word[index]]);
                             continue;
                         }
                         // Check that "Vawel before vawel" dictionary contains symbol in key. 
                         // Check go when the vowel is first or after the vowel.
-                        else if (keyIsVowelBeforeVowel.ContainsKey(word[i]))
+                        else if (keyIsVowelBeforeVowel.ContainsKey(word[index]))
                         {
-                            phonemes.Append(keyIsVowelBeforeVowel[word[i]]);
+                            phonemes.Append(keyIsVowelBeforeVowel[word[index]]);
                             continue;
                         }
                         // Go if dictionaries don't contain this vowel.
-                        AddUnstressesLetter(i, word[i], stress, ref phonemes);
+                        AddOtherLetter(index, word[index], stress, ref phonemes);
                         continue;
                     case "consonant":
                         // Check on last element and contains symbol in keys. Check on deaf
-                        if (i == word.Length - 1 && keyIsRingingAndValueIsDeaf.ContainsKey(word[i]))
+                        if (index == word.Length - 1 && keyIsRingingAndValueIsDeaf.ContainsKey(word[index]))
                         {
                             // Add value to phonemes.
-                            phonemes.Append(keyIsRingingAndValueIsDeaf[word[i]]);
+                            phonemes.Append(keyIsRingingAndValueIsDeaf[word[index]]);
                             break;
                         }
-                        else if (i == word.Length - 1)
+                        else if (index == word.Length - 1)
                         {
-                            phonemes.Append(word[i]);
+                            phonemes.Append(word[index]);
                             break;
                         }
                         // Check on deaf. If first symbol is ringing, next symbol is consonant, 
                         // change the ringing to the deaf.
-                        if (DefineType(word[i + 1], vowels, consonants) == "consonant" && keyIsRingingAndValueIsDeaf.ContainsKey(word[i]))
+                        if (DefineTypeOfSymbol(word[index + 1], vowels, consonants) == "consonant" && keyIsRingingAndValueIsDeaf.ContainsKey(word[index]))
                         {
                             // Add deaf to phenemes. Get the value from the key.
-                            phonemes.Append(keyIsRingingAndValueIsDeaf[word[i]]);
+                            phonemes.Append(keyIsRingingAndValueIsDeaf[word[index]]);
                             continue;
                         }
                         // Check on ringing. If second symbol is ringing, next symbol is consonant, 
                         // change the deaf to the ringing.
-                        else if (DefineType(word[i + 1], vowels, consonants) == "consonant" && keyIsRingingAndValueIsDeaf.ContainsKey(word[i + 1]) && word[i + 1] != 'в')
+                        else if (DefineTypeOfSymbol(word[index + 1], vowels, consonants) == "consonant" && keyIsRingingAndValueIsDeaf.ContainsKey(word[index + 1]) && word[index + 1] != 'в')
                         {
                             // Add ringing to phenemes. Get the key from the value;
-                            phonemes.Append(keyIsRingingAndValueIsDeaf.FirstOrDefault(x => x.Value == word[i]).Key);
+                            phonemes.Append(keyIsRingingAndValueIsDeaf.FirstOrDefault(x => x.Value == word[index]).Key);
                             continue;
                         }
-                        phonemes.Append(word[i]);
+                        phonemes.Append(word[index]);
                         continue;
                     case "others":
                         // If  'ъ', continue.
-                        if (word[i] == 'ь')
+                        if (word[index] == 'ь')
                         {
                             phonemes.Append("'");
                         }
@@ -123,6 +118,20 @@ namespace Task_DEV_2_
                 }
             }
             return phonemes;
+        }
+        /// <summary>
+        /// A method searches stress and remove symbol of stress from word.
+        /// </summary>
+        /// <param name="word"></param>
+        /// <param name="stress"></param>
+        public void SearchStress(ref string word,  ref int stress)
+        {
+            // Search stress and remove symbol '+' from word.
+            if (word.Contains('+'))
+            {
+                stress = word.IndexOf('+') - 1;
+                word = word.Remove(word.IndexOf('+'), 1);
+            }
         }
         /// <summary>
         /// A method that define type of symbol: consonant, vawel or other.
@@ -133,7 +142,7 @@ namespace Task_DEV_2_
         /// <returns vowel></returns>
         /// <returns consonant></returns>
         /// <returns others></returns>
-        public string DefineType(char word, string vowels, string consonants)
+        public string DefineTypeOfSymbol(char word, string vowels, string consonants)
         {
             if (vowels.Contains(word))
             {
@@ -152,7 +161,7 @@ namespace Task_DEV_2_
         /// <param name="word">Symbol</param>
         /// <param name="stress">Index of stress</param>
         /// <param name="phonemes">Line of phonemes</param>
-        public void AddUnstressesLetter(int index, char word, int stress, ref StringBuilder phonemes)
+        public void AddOtherLetter(int index, char word, int stress, ref StringBuilder phonemes)
         {
             if (word == 'о' && index != stress)
             {
