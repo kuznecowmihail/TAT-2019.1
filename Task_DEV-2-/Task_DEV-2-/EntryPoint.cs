@@ -11,7 +11,7 @@ namespace Task_DEV_2_
         /// The entry point of the program.
         /// </summary>
         /// <param name="args">Arguments from command line</param>
-        /// <returns 0>Normal program start</returns>
+        /// <returns 0>Normal start of program</returns>
         /// <returns 1>Something errors</returns>
         static int Main(string[] args)
         {
