@@ -2,9 +2,18 @@
 
 namespace Task_DEV_2_
 {
+    /// <summary>
+    /// The main class.
+    /// </summary>
     class EntryPoint
     {
-        static void Main(string[] args)
+        /// <summary>
+        /// The entry point of the program.
+        /// </summary>
+        /// <param name="args">Arguments from command line</param>
+        /// <returns 0>Normal program start</returns>
+        /// <returns 1>Something errors</returns>
+        static int Main(string[] args)
         {
             try
             {
@@ -14,10 +23,12 @@ namespace Task_DEV_2_
                     converterWordToPhonemes[i] = new ConverterWordToPhonemes(args[i]);
                     converterWordToPhonemes[i].PrintPhonemes(converterWordToPhonemes[i].ConvertWord());
                 }
+                return 0;
             }
             catch(Exception)
             {
                 Console.WriteLine("Something error");
+                return 1;
             }
         }
     }
