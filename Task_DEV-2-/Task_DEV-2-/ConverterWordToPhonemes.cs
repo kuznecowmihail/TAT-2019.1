@@ -41,7 +41,7 @@ namespace Task_DEV_2_
         /// <summary>
         /// Constructor.
         /// </summary>
-        /// <param name="line"></param>
+        /// <param name="word"></param>
         public ConverterWordToPhonemes(string word)
         {
             this.word = word;
@@ -78,7 +78,7 @@ namespace Task_DEV_2_
                         AddOtherLetter(index, word[index], stress, ref phonemes);
                         continue;
                     case "consonant":
-                        // Check on last element and contains symbol in keys. Check on deaf
+                        // Check last on deaf.
                         if (index == word.Length - 1 && keyIsRingingAndValueIsDeaf.ContainsKey(word[index]))
                         {
                             // Add value to phonemes.
@@ -108,7 +108,7 @@ namespace Task_DEV_2_
                         }
                         phonemes.Append(word[index]);
                         continue;
-                    case "others":
+                    case "other":
                         // If  'ъ', continue.
                         if (word[index] == 'ь')
                         {
@@ -141,7 +141,7 @@ namespace Task_DEV_2_
         /// <param name="consonants">Line of consonant with wich compare the symbol</param>
         /// <returns vowel></returns>
         /// <returns consonant></returns>
-        /// <returns others></returns>
+        /// <returns other></returns>
         public string DefineTypeOfSymbol(char word, string vowels, string consonants)
         {
             if (vowels.Contains(word))
@@ -152,7 +152,7 @@ namespace Task_DEV_2_
             {
                 return "consonant";
             }
-            return "others";
+            return "other";
         }
         /// <summary>
         /// A method that defines the stress or not the vowel and adds vawel in phonemes.

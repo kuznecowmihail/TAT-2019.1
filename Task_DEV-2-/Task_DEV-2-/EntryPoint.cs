@@ -12,11 +12,14 @@ namespace Task_DEV_2_
         /// </summary>
         /// <param name="args">Arguments from command line</param>
         /// <returns 0>Normal start of program</returns>
-        /// <returns 1>Something errors</returns>
+        /// <returns 1>Don't have words</returns> 
+        /// <returns 2>Something errors</returns>
         static int Main(string[] args)
         {
             try
             {
+                if (args.Length == 0)
+                    throw new FormatException();
                 ConverterWordToPhonemes[] converterWordToPhonemes = new ConverterWordToPhonemes[args.Length];
                 for (int i = 0; i < converterWordToPhonemes.Length; i++)
                 {
@@ -25,10 +28,15 @@ namespace Task_DEV_2_
                 }
                 return 0;
             }
+            catch(FormatException)
+            {
+                Console.WriteLine("Don't have words.");
+                return 1;
+            }
             catch(Exception)
             {
-                Console.WriteLine("Something error");
-                return 1;
+                Console.WriteLine("Something error.");
+                return 2;
             }
         }
     }
