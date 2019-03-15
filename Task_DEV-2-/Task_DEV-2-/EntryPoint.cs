@@ -21,7 +21,7 @@ namespace Task_DEV_2_
                 for (int i = 0; i < converterWordToPhonemes.Length; i++)
                 {
                     converterWordToPhonemes[i] = new ConverterWordToPhonemes(args[i]);
-                    converterWordToPhonemes[i].PrintPhonemes(converterWordToPhonemes[i].ConvertWord());
+                    converterWordToPhonemes[i].PrintPhonemes(converterWordToPhonemes[i].ConvertWordToPhonemes());
                 }
                 return 0;
             }
