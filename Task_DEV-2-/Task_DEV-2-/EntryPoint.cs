@@ -18,13 +18,13 @@ namespace Task_DEV_2_
         {
             try
             {
-                if (args.Length == 0)
+                if (args.Length == 0 || args[0].Length < 2)
                     throw new FormatException();
                 ConverterWordToPhonemes[] converterWordToPhonemes = new ConverterWordToPhonemes[args.Length];
-                for (int i = 0; i < converterWordToPhonemes.Length; i++)
+                for (int i = 0; i < args.Length; i++)
                 {
                     converterWordToPhonemes[i] = new ConverterWordToPhonemes(args[i]);
-                    converterWordToPhonemes[i].PrintPhonemes(converterWordToPhonemes[i].ConvertWordToPhonemes());
+                    Console.WriteLine(args[i] + " -> " + converterWordToPhonemes[i].ConvertWordToPhonemes());
                 }
                 return 0;
             }
@@ -33,9 +33,9 @@ namespace Task_DEV_2_
                 Console.WriteLine("Don't have words.");
                 return 1;
             }
-            catch(Exception)
+            catch(Exception ex)
             {
-                Console.WriteLine("Something error.");
+                Console.WriteLine("Something error: " + ex);
                 return 2;
             }
         }
