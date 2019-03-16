@@ -41,7 +41,7 @@ namespace Task_DEV_2_
         public StringBuilder ConvertWordToPhonemes()
         {
             SearchStress(ref word, ref stress);
-            DevideWordToLetters();
+            DevideWordIntoLetters();
             foreach (var letter in listOfLetters)
             {
                 switch (letter.DefineTypeOfSymbol(letter.current))
@@ -78,7 +78,7 @@ namespace Task_DEV_2_
         /// <summary>
         /// This method adds objects to listOfLetters.
         /// </summary>
-        public void DevideWordToLetters()
+        public void DevideWordIntoLetters()
         {
             for(var index = 0; index < word.Length; index++)
             {
@@ -104,12 +104,14 @@ namespace Task_DEV_2_
         /// <param name="letter"></param>
         public void AddVowelToPhonemes(Letter letter)
         {
-            // If compound vowel contains in key this vowel - true.
+            // If the key is in compound vowel - true.
             switch (keysIsCompoundVowel.ContainsKey(letter.current))
             {
                 case true:
+                    // If previous letter is consonant - true.
                     if(letter.DefineTypeOfSymbol(letter.previous) == "consonant")
                     {
+                        // Add letter to phonemes.
                         phonemes.Append("'" + keysIsCompoundVowel[letter.current]);
                     }
                     else
