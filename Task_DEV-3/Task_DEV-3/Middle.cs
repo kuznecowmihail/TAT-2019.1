@@ -5,9 +5,11 @@
     /// </summary>
     class Middle : Employee
     {
-        public Middle() : base(700, 200)
+        public Middle(int salary, int perfomance) : base(salary, perfomance)
         {
             name = "Middle";
         }
+
+        public Middle() : this(700, 200) { }
     }
 }

@@ -5,9 +5,11 @@
     /// </summary>
     class Junior : Employee
     {
-        public Junior() : base(500, 100)
+        public Junior(int salary, int perfomance) : base(salary, perfomance)
         {
             name = "Junior";
         }
+
+        public Junior() : this(500, 100) { }
     }
 }

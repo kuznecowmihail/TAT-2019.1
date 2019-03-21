@@ -5,9 +5,11 @@
     /// </summary>
     class Lead : Employee
     {
-        public Lead() : base(1000, 350)
+        public Lead(int salary, int perfomance) : base(salary, perfomance)
         {
             name = "Lead";
         }
+
+        public Lead() : this(1000, 350) { }
     }
 }

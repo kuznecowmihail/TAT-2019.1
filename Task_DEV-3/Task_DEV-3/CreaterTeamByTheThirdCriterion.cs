@@ -27,10 +27,10 @@ namespace Task_DEV_3
         public override void DisplayTheTeam()
         {
             Console.WriteLine("Create team by the second criterion:");
-            // Start cycle from the Middle, because criterion without Junior.
-            for (int i = 1; i < sizeOfQualification; i++)
+            // Start cycle from the Middle(employees[i+1], because criterion without Junior.
+            for (int i = 0; i < sizeOfQualification - 1; i++)
             {
-                Console.WriteLine(i + ") " + employees[i].GetName() + " : " + countEmployee[i]);
+                Console.WriteLine(i  + ") " + employees[i+1].GetName() + " : " + countEmployee[i+1]);
             }
             // Reset values for the next operation.
             for (int i = 1; i < countEmployee.Length; i++)
