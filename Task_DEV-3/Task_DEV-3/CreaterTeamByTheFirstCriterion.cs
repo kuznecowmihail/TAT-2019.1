@@ -15,33 +15,54 @@ namespace Task_DEV_3
         /// <param name="costTeam"></param>
         public override void ChooseEmployees(double costTeam)
         {
-            double coefficient = costTeam;
-            double[] commonSalary = { employees[0].GetSalary(), employees[1].GetSalary(), employees[2].GetSalary(), employees[3].GetSalary() };
-            double[] salary = { employees[0].GetSalary(), employees[1].GetSalary(), employees[2].GetSalary(), employees[3].GetSalary() };
-            double[] productivity = { -employees[0].GetPerfomance(), -employees[1].GetPerfomance(), -employees[2].GetPerfomance(), -employees[3].GetPerfomance() };
             int basis;
+            double coefficient = costTeam;
+            double[] salary = { employees[0].GetSalary(), employees[1].GetSalary(), employees[2].GetSalary(), employees[3].GetSalary() };
+            double[] perfomance = { -employees[0].GetPerfomance(), -employees[1].GetPerfomance(), -employees[2].GetPerfomance(), -employees[3].GetPerfomance() };
+            SimplexMethodMaximum(out basis, ref coefficient, costTeam, salary, perfomance);
+            HandleExceptionSymplexMethodMaximum(basis, coefficient, costTeam, salary);
+        }
+        /// <summary>
+        /// A method finds optimal maximum perfomance solution.
+        /// </summary>
+        /// <param name="perfomanceTeam"></param>
+        /// <param name="perfomance"></param>
+        /// <param name="commonPerfomance"></param>
+        /// <param name="perfomance"></param>
+        public void SimplexMethodMaximum(out int basis, ref double coefficient, double costTeam, double[] salary, double[] perfomance)
+        {
             double min;
             do
             {
-                basis = Array.IndexOf(productivity, productivity.Min());
+                basis = Array.IndexOf(perfomance, perfomance.Min());
                 min = salary[basis];
                 coefficient /= Math.Abs(salary[basis]);
                 for (int i = 0; i < salary.Length; i++)
                 {
                     salary[i] /= min;
-                    productivity[i] = productivity[i] - salary[i] * productivity[basis];
+                    perfomance[i] = perfomance[i] - salary[i] * perfomance[basis];
                 }
-            } while (productivity.Min() < 0);
+            } while (perfomance.Min() < 0);
             countEmployee[basis] = (int)coefficient;
+        }
+        /// <summary>
+        /// A method handles exception of simplex method.
+        /// </summary>
+        /// <param name="basis"></param>
+        /// <param name="coefficient"></param>
+        /// <param name="costTeam"></param>
+        /// <param name="salary"></param>
+        public void HandleExceptionSymplexMethodMaximum(int basis, double coefficient, double costTeam, double[] salary)
+        {
             // Exception of simplex method.
-            if(basis > 0)
+            if (basis > 0)
             {
                 coefficient -= (int)coefficient;
-                costTeam -= commonSalary[basis] * countEmployee[basis];
+                costTeam -= salary[basis] * countEmployee[basis];
                 basis--;
                 while (coefficient < 1 && basis > 0)
                 {
-                    if (commonSalary[basis] <= costTeam)
+                    if (salary[basis] <= costTeam)
                     {
                         countEmployee[basis]++;
                         break; ;

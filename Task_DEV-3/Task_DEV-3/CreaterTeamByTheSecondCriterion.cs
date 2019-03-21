@@ -15,11 +15,22 @@ namespace Task_DEV_3
         /// <param name="costTeam"></param>
         public override void ChooseEmployees(double perfomanceTeam)
         {
-            double[] commonPerfomance = new double[] { employees[0].GetPerfomance(), employees[1].GetPerfomance(), employees[2].GetPerfomance(), employees[3].GetPerfomance() };
+            int basis;
             double coefficient = perfomanceTeam;
             double[] salary = new double[] { employees[0].GetSalary(), employees[1].GetSalary(), employees[2].GetSalary(), employees[3].GetSalary() };
             double[] perfomance = new double[] { employees[0].GetPerfomance(), employees[1].GetPerfomance(), employees[2].GetPerfomance(), employees[3].GetPerfomance() };
-            int basis;
+            SimplexMethodMinimum(out basis, ref coefficient, perfomanceTeam, salary, perfomance);
+            HandleExceptionSymplexMethodMinimum(basis, coefficient, perfomanceTeam, perfomance);
+        }
+        /// <summary>
+        /// A method finds optimal minimum costTeam solution.
+        /// </summary>
+        /// <param name="perfomanceTeam"></param>
+        /// <param name="perfomance"></param>
+        /// <param name="commonPerfomance"></param>
+        /// <param name="salary"></param>
+        public void SimplexMethodMinimum(out int basis, ref double coefficient, double perfomanceTeam, double[] salary, double[] perfomance)
+        {
             double k;
             double min;
             basis = Array.IndexOf(perfomance, perfomance.Max());
@@ -44,15 +55,24 @@ namespace Task_DEV_3
                 }
             }
             countEmployee[basis] = (int)coefficient;
-            // Exception of simplex method.
+        }
+        /// <summary>
+        /// A method handles exception of simplex method.
+        /// </summary>
+        /// <param name="basis"></param>
+        /// <param name="coefficient"></param>
+        /// <param name="perfomanceTeam"></param>
+        /// <param name="perfomance"></param>
+        public void HandleExceptionSymplexMethodMinimum(int basis, double coefficient, double perfomanceTeam, double[] perfomance)
+        {
             if (basis > 0)
             {
                 coefficient -= (int)coefficient;
-                perfomanceTeam -= commonPerfomance[basis] * countEmployee[basis];
+                perfomanceTeam -= perfomance[basis] * countEmployee[basis];
                 while (coefficient < 1 && basis > 0)
                 {
                     basis--;
-                    if (commonPerfomance[basis] <= perfomanceTeam)
+                    if (perfomance[basis] <= perfomanceTeam)
                     {
                         countEmployee[basis]++;
                         break; ;

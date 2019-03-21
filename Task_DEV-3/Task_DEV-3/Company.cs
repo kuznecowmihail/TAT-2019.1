@@ -1,19 +1,18 @@
 ﻿namespace Task_DEV_3
 {
+    /// <summary>
+    /// The class makes order to choose the team.
+    /// </summary>
     class Company
     {
-        /// <summary>
-        /// The class makes the team order to choose the team.
-        /// </summary>
         public Company() { }
         /// <summary>
         /// A method gives the command to choose team.
         /// </summary>
-        /// <param name="createrTeam"></param>
-        /// <param name="value">Criterion of choose</param>
-        public void GetEmployees(CreaterTeam createrTeam, double value)
+        /// <param name="criterion">Criterion of choose</param>
+        public void GetEmployees(CreaterTeam createrTeam, double criterion)
         {
-            createrTeam.ChooseEmployees(value);
+            createrTeam.ChooseEmployees(criterion);
             createrTeam.DisplayTheTeam();
         }
     }

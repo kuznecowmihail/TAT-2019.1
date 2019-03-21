@@ -5,7 +5,7 @@
     /// </summary>
     class Senior : Employee
     {
-        public Senior() : base(800, 300)
+        public Senior() : base(950, 300)
         {
             name = "Senior";
         }
