@@ -15,6 +15,7 @@ namespace Task_DEV_3
         /// <param name="costTeam"></param>
         public override void ChooseEmployees(double perfomanceTeam)
         {
+            // Optimal qualification.
             int basis;
             double coefficient = perfomanceTeam;
             double[] salary = new double[] { employees[0].GetSalary(), employees[1].GetSalary(), employees[2].GetSalary(), employees[3].GetSalary() };
@@ -25,13 +26,16 @@ namespace Task_DEV_3
         /// <summary>
         /// A method finds optimal minimum costTeam solution.
         /// </summary>
-        /// <param name="perfomanceTeam"></param>
+        /// <param name="basis">Optimal qualification</param>
+        /// <param name="coefficient">Number of optimal qualification</param>
+        /// <param name="perfomanceTeam">Perfomance of company</param>
         /// <param name="perfomance"></param>
-        /// <param name="commonPerfomance"></param>
         /// <param name="salary"></param>
         public void SimplexMethodMinimum(out int basis, ref double coefficient, double perfomanceTeam, double[] salary, double[] perfomance)
         {
+            // Coefficient the raio of the salary to perfomance.
             double k;
+            // Minimal value of prfomance.
             double min;
             basis = Array.IndexOf(perfomance, perfomance.Max());
             min = perfomance[basis];

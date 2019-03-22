@@ -15,6 +15,7 @@ namespace Task_DEV_3
         /// <param name="costTeam"></param>
         public override void ChooseEmployees(double costTeam)
         {
+            // Optimal qualification.
             int basis;
             double coefficient = costTeam;
             double[] salary = { employees[0].GetSalary(), employees[1].GetSalary(), employees[2].GetSalary(), employees[3].GetSalary() };
@@ -25,12 +26,14 @@ namespace Task_DEV_3
         /// <summary>
         /// A method finds optimal maximum perfomance solution.
         /// </summary>
-        /// <param name="perfomanceTeam"></param>
+        /// <param name="basis">Optimal qualification</param>
+        /// <param name="coefficient">Number of optimal qualification</param>
+        /// <param name="costTeam">Money of company</param>
         /// <param name="perfomance"></param>
-        /// <param name="commonPerfomance"></param>
-        /// <param name="perfomance"></param>
+        /// <param name="salary"></param>
         public void SimplexMethodMaximum(out int basis, ref double coefficient, double costTeam, double[] salary, double[] perfomance)
         {
+            // Minumal value of salary.
             double min;
             do
             {

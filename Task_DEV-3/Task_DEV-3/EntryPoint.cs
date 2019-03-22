@@ -10,7 +10,7 @@ namespace Task_DEV_3
         /// <summary>
         /// The entry point of program.
         /// </summary>
-        /// <param name="args">args are criterions of choose team</param>
+        /// <param name="args">Args are criterions of choose team</param>
         static void Main(string[] args)
         {
             try
