@@ -4,7 +4,7 @@ using System.Collections.Generic;
 namespace Task_DEV_4
 {
     /// <summary>
-    /// Class is one of the discipline materials compares discipline and clone discipline.
+    /// Class is one of the discipline materials, clone discipline.
     /// </summary>
     class Lecture : Identificator, ICloneable
     {
@@ -58,31 +58,6 @@ namespace Task_DEV_4
             {
                 ListOfLaboratoryLessons.Add((LaboratoryLesson)i.Clone());
             }
-        }
-
-        /// <summary>
-        /// Object's ovveride method returns description.
-        /// </summary>
-        /// <returns></returns>
-        public override string ToString()
-        {
-            return $"Description: {Description}";
-        }
-
-        /// <summary>
-        /// Object's ovveride method compares two object by GUID.
-        /// </summary>
-        /// <param name="obj"></param>
-        /// <returns></returns>
-        public override bool Equals(Object obj)
-        {
-            if (obj is Identificator)
-            {
-                var lection = (Identificator)obj;
-                return (MyGuid == lection.MyGuid) ? true : false;
-
-            }
-            return false;
         }
 
         /// <summary>

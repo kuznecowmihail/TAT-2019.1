@@ -3,7 +3,7 @@
 namespace Task_DEV_4
 {
     /// <summary>
-    /// Class is one of the discipline materials compares discipline and clone discipline.
+    /// Class is one of the discipline materials, clone discipline.
     /// </summary>
     class LaboratoryLesson : Identificator
     {
@@ -21,30 +21,6 @@ namespace Task_DEV_4
         {
             MyGuid = originalMyGuid;
             Description = originalDescription;
-        }
-
-        /// <summary>
-        /// Object's ovveride method returns description.
-        /// </summary>
-        /// <returns></returns>
-        public override string ToString()
-        {
-            return $"Description: {Description}";
-        }
-
-        /// <summary>
-        /// Object's ovveride method compares two object by GUID.
-        /// </summary>
-        /// <param name="obj"></param>
-        /// <returns></returns>
-        public override bool Equals(Object obj)
-        {
-            if (obj is Identificator)
-            {
-                var laboratory = (Identificator)obj;
-                return (MyGuid == laboratory.MyGuid) ? true : false;
-            }
-            return false;
         }
 
         /// <summary>

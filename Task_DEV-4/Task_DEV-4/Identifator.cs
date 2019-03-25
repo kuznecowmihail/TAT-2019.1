@@ -9,7 +9,7 @@ namespace Task_DEV_4
     /// </summary>
     public abstract class Identificator
     {
-        public string MyGuid { get;   set; }
+        public string MyGuid { get; set; }
         public string Description { get; protected set; }
         protected Random random;
 
@@ -18,7 +18,6 @@ namespace Task_DEV_4
         /// </summary>
         public Identificator()
         {
-            string s = string.Empty;
             random = new Random(DateTime.Now.Millisecond);
             MyGuid = MyGuid.GuidToString();
             Description = GetText(256);
@@ -57,5 +56,30 @@ namespace Task_DEV_4
             }
             return text.Substring(numberFirstElement, numberLastElement - numberFirstElement);
         }
+
+        /// <summary>
+        /// Object's ovveride method returns description.
+        /// </summary>
+        /// <returns></returns>
+        public override string ToString()
+        {
+            return $"Description: {Description}";
+        }
+
+        /// <summary>
+        /// Object's ovveride method compares two object by GUID.
+        /// </summary>
+        /// <param name="obj"></param>
+        /// <returns></returns>
+        public override bool Equals(Object obj)
+        {
+            if (obj is Identificator)
+            {
+                var discipline = (Identificator)obj;
+                return (MyGuid == discipline.MyGuid) ? true : false;
+            }
+            return false;
+        }
+
     }
 }

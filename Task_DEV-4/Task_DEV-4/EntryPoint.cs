@@ -30,7 +30,6 @@ namespace Task_DEV_4
                 // Output certain lection to display.
                 Console.WriteLine(matan[0]);
                 Console.WriteLine(matan[2]);
-
             }
             catch(Exception e)
             {
