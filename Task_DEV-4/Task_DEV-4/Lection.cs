@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Text;
 using System.Collections.Generic;
 
 namespace Task_DEV_4
@@ -11,8 +12,8 @@ namespace Task_DEV_4
         string material;
         Presentation presentation;
         // Composition: seminars and laboratory lessons cannot exist without lection.
-        public List<Seminar> ListOfSeminars { get; }
-        public List<LaboratoryLesson> ListOfLaboratoryLessons { get; }
+        public List<Seminar> ListOfSeminars;
+        public List<LaboratoryLesson> ListOfLaboratoryLessons;
 
         /// <summary>
         /// Constructor for Lecture.
@@ -68,6 +69,32 @@ namespace Task_DEV_4
         {
             Lecture lectionClone = new Lecture(ListOfSeminars, ListOfLaboratoryLessons, MyGuid, Description);
             return lectionClone;
+        }
+
+        /// <summary>
+        /// Method add information to StringBuilder.
+        /// </summary>
+        /// <param name="allInformation"></param>
+        public void AddAllInformationOfLectureToStringBuilder(StringBuilder allInformation)
+        {
+            int indexOfSeminar = 1;
+            int indexOfLaboratory = 1;
+            allInformation.Append($"*GUID: {this.MyGuid}.\n");
+            allInformation.Append($"*{this.ToString()}.\n");
+            allInformation.Append($"*Material: {this.material}.\n");
+            allInformation.Append($"*Presentation: {this.presentation.Uri} in {this.presentation.format}.\n");
+            foreach(var i in ListOfSeminars)
+            {
+                allInformation.Append($"---Seminar {indexOfSeminar}th:\n");
+                i.AddAllInformationOfSeminarToStringBuilder(allInformation);
+                indexOfSeminar++;
+            }
+            foreach(var i in ListOfLaboratoryLessons)
+            {
+                allInformation.Append($"---Laboratory {indexOfLaboratory}th:\n");
+                i.AddAllInformationOfLaboratoryToStringBuilder(allInformation);
+                indexOfLaboratory++;
+            }
         }
     }
 }

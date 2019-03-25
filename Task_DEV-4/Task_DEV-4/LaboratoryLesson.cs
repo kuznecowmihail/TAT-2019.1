@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Text;
 
 namespace Task_DEV_4
 {
@@ -31,6 +32,16 @@ namespace Task_DEV_4
         {
             LaboratoryLesson laboratoryClone = new LaboratoryLesson(MyGuid, Description);
             return laboratoryClone;
+        }
+
+        /// <summary>
+        /// Method add information to StringBuilder.
+        /// </summary>
+        /// <param name="allInformation"></param>
+        public void AddAllInformationOfLaboratoryToStringBuilder(StringBuilder allInformation)
+        {
+            allInformation.Append($"*GUID: {this.MyGuid}.\n");
+            allInformation.Append($"*{this.ToString()}.\n");
         }
     }
 }

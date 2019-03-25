@@ -9,7 +9,7 @@ namespace Task_DEV_4
     /// </summary>
     public abstract class Identificator
     {
-        public string MyGuid { get; set; }
+        public string MyGuid { get; protected set; }
         public string Description { get; protected set; }
         protected Random random;
 
@@ -54,6 +54,7 @@ namespace Task_DEV_4
             {
                 numberLastElement = text.Length - 1;
             }
+            // Choose part of text for other material.
             return text.Substring(numberFirstElement, numberLastElement - numberFirstElement);
         }
 

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Text;
 using System.Collections.Generic;
 
 namespace Task_DEV_4
@@ -9,18 +10,18 @@ namespace Task_DEV_4
     class Discipline : Identificator, ICloneable
     {
         // Composition: lectures cannot exist without discipline.
-        List<Lecture> lectures;
+        public List<Lecture> listOfLectures;
 
         /// <summary>
         /// Constructor of discipline.
         /// </summary>
         public Discipline() : base()
         {
-            lectures = new List<Lecture>();
+            listOfLectures = new List<Lecture>();
             // Add random number of lectures to list.
             for(int i = 0; i < random.Next(5, 10); i++)
             {
-                lectures.Add(new Lecture());
+                listOfLectures.Add(new Lecture());
             }
         }
 
@@ -34,10 +35,10 @@ namespace Task_DEV_4
         {
             MyGuid = originalMyGuid;
             Description = originalDescription;
-            lectures = new List<Lecture>();
+            listOfLectures = new List<Lecture>();
             foreach (var i in orginalLections)
             {
-                lectures.Add((Lecture)i.Clone());
+                listOfLectures.Add((Lecture)i.Clone());
             }
         }
         
@@ -47,7 +48,7 @@ namespace Task_DEV_4
         /// <returns disciplineClone></returns>
         public object Clone()
         {
-            Discipline disciplineClone = new Discipline(lectures, MyGuid, Description);
+            Discipline disciplineClone = new Discipline(listOfLectures, MyGuid, Description);
             return disciplineClone;
         }
 
@@ -56,12 +57,30 @@ namespace Task_DEV_4
         /// </summary>
         /// <param name="index"></param>
         /// <returns></returns>
-        public string this[int index]
+        public StringBuilder this[int index]
         {
             get
             {
-                return $"{index + 1}th lection: \n*seminars - {lectures[index].ListOfSeminars.Count}, \n*laboratories - {lectures[index].ListOfLaboratoryLessons.Count}.\n";
+                return AddAllInformationToStringBuilder(listOfLectures[index], index); ;
             }
+        }
+
+        /// <summary>
+        /// Method add information to StringBuilder.
+        /// </summary>
+        /// <param name="listOfLectures">Lecture of discipline</param>
+        /// <param name="index">Number of lecture</param>
+        /// <returns allInformation></returns>
+        public StringBuilder AddAllInformationToStringBuilder(Lecture listOfLectures, int index)
+        {
+            StringBuilder allInformation = new StringBuilder();
+            allInformation.Append("_________________________________________Lecture Content___________________________________________________________\n");
+            allInformation.Append($"{index + 1}th lection: seminars - {listOfLectures.ListOfSeminars.Count}, laboratories - {listOfLectures.ListOfLaboratoryLessons.Count}.\n");
+            allInformation.Append("|||||||||||||||||||||||||||||||||||||||Detailed Description||||||||||||||||||||||||||||||||||||||||||||||||||||||||\n");
+            allInformation.Append($"---Lection {index + 1}th:");
+            listOfLectures.AddAllInformationOfLectureToStringBuilder(allInformation);
+            allInformation.Append("_____________________________________________End___________________________________________________________________\n");
+            return allInformation;
         }
     }
 }

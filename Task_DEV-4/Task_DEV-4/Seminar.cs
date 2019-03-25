@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Text;
 using System.Collections.Generic;
 
 namespace Task_DEV_4
@@ -70,6 +71,37 @@ namespace Task_DEV_4
         {
             Seminar seminarClone = new Seminar(tasks, questions, answerTheQuestions, MyGuid, Description);
             return seminarClone;
+        }
+
+        /// <summary>
+        /// Method add information to StringBuilder.
+        /// </summary>
+        /// <param name="allInformation"></param>
+        public void AddAllInformationOfSeminarToStringBuilder(StringBuilder allInformation)
+        {
+            int indexOfTask = 1;
+            int indexOfQuestion = 1;
+            int indexOfAnswer = 1;
+            allInformation.Append($"*GUID: {this.MyGuid}.\n");
+            allInformation.Append($"*{this.ToString()}.\n");
+            allInformation.Append("*Tasks:\n");
+            foreach (var i in tasks)
+            {
+                allInformation.Append($"{indexOfTask}th: {i}\n");
+                indexOfTask++;
+            }
+            allInformation.Append("*Questions:\n");
+            foreach (var i in questions)
+            {
+                allInformation.Append($"{indexOfQuestion}th: {i}\n");
+                indexOfQuestion++;
+            }
+            allInformation.Append("*Answer the questions:\n");
+            foreach (var i in answerTheQuestions)
+            {
+                allInformation.Append($"{indexOfAnswer}th: {i}\n");
+                indexOfAnswer++;
+            }
         }
     }
 }

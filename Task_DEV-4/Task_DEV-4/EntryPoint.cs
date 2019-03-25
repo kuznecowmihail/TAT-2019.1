@@ -15,21 +15,21 @@ namespace Task_DEV_4
         {
             try
             {
-                // Create matan discipline.
-                Discipline matan = new Discipline();
-                // Ouput description of matan to console.
-                Console.WriteLine(matan.ToString());
+                // Create matn discipline.
+                Discipline matn = new Discipline();
                 // Create physics discipline.
                 Discipline physics = new Discipline();
                 // Check equality GUID of matan and physics - false.
-                Console.WriteLine(matan.Equals(physics));
+                Console.WriteLine(matn.Equals(physics));
                 // Deeply clone physics to phizra.
                 Discipline phizra = (Discipline)physics.Clone();
                 // Check equality GUID of matan and physics - true.
                 Console.WriteLine(phizra.Equals(physics));
-                // Output certain lection to display.
-                Console.WriteLine(matan[0]);
-                Console.WriteLine(matan[2]);
+
+                // Output certain lection to display.   
+                Console.WriteLine(matn[0]);
+                Console.WriteLine(physics[1]);
+                Console.WriteLine(phizra[1]);
             }
             catch(Exception e)
             {
