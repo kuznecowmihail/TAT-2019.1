@@ -14,7 +14,7 @@ namespace Task_DEV_4
         /// <summary>
         /// Constructor of discipline.
         /// </summary>
-        public Discipline()
+        public Discipline() : base()
         {
             lectures = new List<Lecture>();
             // Add random number of lectures to list.
@@ -84,7 +84,7 @@ namespace Task_DEV_4
         {
             get
             {
-                return $"{index + 1}th lection : seminars - {lectures[index].ListOfSeminars.Count}, laboratories - {lectures[index].ListOfLaboratoryLessons.Count}";
+                return $"{index + 1}th lection: \n*seminars - {lectures[index].ListOfSeminars.Count}, \n*laboratories - {lectures[index].ListOfLaboratoryLessons.Count}.\n";
             }
         }
     }

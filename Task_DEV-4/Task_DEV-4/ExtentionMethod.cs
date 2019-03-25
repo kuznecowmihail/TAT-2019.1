@@ -12,10 +12,11 @@ namespace Task_DEV_4
         /// </summary>
         /// <param name="str"></param>
         /// <param name="identifator"></param>
-        public static void GuidToString(this string str, Identificator identifator)
+        public static string GuidToString(this string str)
         {
             Guid guid = Guid.NewGuid();
-            identifator.MyGuid = guid.ToString();
+            //identificator.MyGuid = guid.ToString();
+            return guid.ToString();
         }
     }
 }

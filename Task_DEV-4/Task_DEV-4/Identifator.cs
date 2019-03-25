@@ -9,7 +9,7 @@ namespace Task_DEV_4
     /// </summary>
     public abstract class Identificator
     {
-        public string MyGuid { get;  set; }
+        public string MyGuid { get;   set; }
         public string Description { get; protected set; }
         protected Random random;
 
@@ -18,8 +18,9 @@ namespace Task_DEV_4
         /// </summary>
         public Identificator()
         {
+            string s = string.Empty;
             random = new Random(DateTime.Now.Millisecond);
-            MyGuid.GuidToString(this);
+            MyGuid = MyGuid.GuidToString();
             Description = GetText(256);
         }
 
@@ -33,7 +34,7 @@ namespace Task_DEV_4
             int numberFirstElement;
             int numberLastElement;
             StringBuilder line = new StringBuilder();
-            StreamReader reader = new StreamReader("text.txt");
+            StreamReader reader = new StreamReader("../../text.txt");
             string partLine = string.Empty;
             // Read from file text.txt and add to line.
             while (partLine != null)
