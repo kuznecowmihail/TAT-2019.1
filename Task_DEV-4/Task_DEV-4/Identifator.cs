@@ -21,7 +21,6 @@ namespace Task_DEV_4
             random = new Random(DateTime.Now.Millisecond);
             MyGuid.GuidToString(this);
             Description = GetText(256);
-           
         }
 
         /// <summary>
