@@ -19,7 +19,9 @@ namespace Task_DEV_2_
             try
             {
                 if (args.Length == 0 || args[0].Length < 2)
+                {
                     throw new FormatException();
+                }
                 ConverterWordToPhonemes[] converterWordToPhonemes = new ConverterWordToPhonemes[args.Length];
                 for (int i = 0; i < args.Length; i++)
                 {

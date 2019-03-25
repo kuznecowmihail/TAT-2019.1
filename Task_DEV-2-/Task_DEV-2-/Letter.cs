@@ -1,8 +1,10 @@
 ﻿using System.Linq;
 
-
 namespace Task_DEV_2_
 {
+    /// <summary>
+    /// Class describes the letter and its neighbors.
+    /// </summary>
     class Letter
     {
         public char previous;
@@ -11,8 +13,6 @@ namespace Task_DEV_2_
         public int index;
         private readonly string vowels = "аоиеёэыуюя";
         private readonly string consonants = "бвгджзйклмнпрстфхцчшщ";
-
-        public Letter() { }
 
         /// <summary>
         /// A method defines type of letter and return.

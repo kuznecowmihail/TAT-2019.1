@@ -30,10 +30,15 @@ namespace Task_DEV_2_
             ['з'] = 'с'
         };
         
+        /// <summary>
+        /// Constructor for ConverWordToPhonemes.
+        /// </summary>
+        /// <param name="word"></param>
         public ConverterWordToPhonemes(string word)
         {
             this.word = word;
         }
+
         /// <summary>
         /// A method converts word to phonemes and return.
         /// </summary>
@@ -62,6 +67,7 @@ namespace Task_DEV_2_
             }
             return phonemes;
         }
+
         /// <summary>
         /// A method searches stress and remove symbol of stress from word.
         /// </summary>
@@ -75,6 +81,7 @@ namespace Task_DEV_2_
                 word = word.Remove(word.IndexOf('+'), 1);
             }
         }
+
         /// <summary>
         /// This method adds objects to listOfLetters.
         /// </summary>
@@ -98,6 +105,7 @@ namespace Task_DEV_2_
                 listOfLetters.Add(letter);
             }
         }
+
         /// <summary>
         /// A method adds vowel to phonemes.
         /// </summary>
@@ -124,6 +132,7 @@ namespace Task_DEV_2_
                     return;     
             }
         }
+
         /// <summary>
         /// A method adds consonant to phonemes.
         /// </summary>
@@ -148,6 +157,7 @@ namespace Task_DEV_2_
             }
             phonemes.Append(letter.current);
         }
+
         /// <summary>
         /// A method defines the stress vawel or not and adds vawel in phonemes.
         /// </summary>
