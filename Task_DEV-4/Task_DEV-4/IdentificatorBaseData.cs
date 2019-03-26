@@ -7,16 +7,16 @@ namespace Task_DEV_4
     /// <summary>
     /// Base abstract class.
     /// </summary>
-    public abstract class Identificator
+    public abstract class IdentificatorBaseData
     {
         public string MyGuid { get; protected set; }
         public string Description { get; protected set; }
         protected Random random;
 
         /// <summary>
-        /// Constructor of Identificator.
+        /// Constructor of IdentificatorBaseData.
         /// </summary>
-        public Identificator()
+        public IdentificatorBaseData()
         {
             random = new Random(DateTime.Now.Millisecond);
             MyGuid = MyGuid.GuidToString();
@@ -30,9 +30,9 @@ namespace Task_DEV_4
         /// <returns></returns>
         public string GetText(int restriction = 10)
         {
+            StringBuilder line = new StringBuilder();
             int numberFirstElement;
             int numberLastElement;
-            StringBuilder line = new StringBuilder();
             StreamReader reader = new StreamReader("../../text.txt");
             string partLine = string.Empty;
             // Read from file text.txt and add to line.
@@ -47,6 +47,7 @@ namespace Task_DEV_4
             reader.Close();
             // Convert StringBuilde to string.
             string text = line.ToString();
+            // Set the edges of the text.
             numberFirstElement = random.Next(0, text.Length);
             numberLastElement = random.Next(numberFirstElement + 1, numberFirstElement + restriction);
             // if numberLastChar is out of line, numberLastChar - index of last element of line;
@@ -74,9 +75,9 @@ namespace Task_DEV_4
         /// <returns></returns>
         public override bool Equals(Object obj)
         {
-            if (obj is Identificator)
+            if (obj is IdentificatorBaseData)
             {
-                var discipline = (Identificator)obj;
+                var discipline = (IdentificatorBaseData)obj;
                 return (MyGuid == discipline.MyGuid) ? true : false;
             }
             return false;

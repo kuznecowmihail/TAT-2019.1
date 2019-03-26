@@ -7,7 +7,7 @@ namespace Task_DEV_4
     /// <summary>
     /// Class creates lectures for the discipline, clone discipline.
     /// </summary>
-    class Discipline : Identificator, ICloneable
+    class Discipline : IdentificatorBaseData, ICloneable
     {
         // Composition: lectures cannot exist without discipline.
         public List<Lecture> listOfLectures;
@@ -26,7 +26,7 @@ namespace Task_DEV_4
         }
 
         /// <summary>
-        /// Copy contructor of discipline.
+        /// Copy contructor of discipline for clone.
         /// </summary>
         /// <param name="orginalLections">List of discipline lectures for copy</param>
         /// <param name="originalMyGuid">GUID for copy</param>
@@ -53,9 +53,9 @@ namespace Task_DEV_4
         }
 
         /// <summary>
-        /// Indexer return to displa certain lecture and her seminars and laboratory lessons.
+        /// Indexer return to display certain lecture and her seminars and laboratory lessons.
         /// </summary>
-        /// <param name="index"></param>
+        /// <param name="index">Number of lection</param>
         /// <returns></returns>
         public StringBuilder this[int index]
         {

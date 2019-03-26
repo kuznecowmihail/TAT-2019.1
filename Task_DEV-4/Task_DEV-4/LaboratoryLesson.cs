@@ -1,12 +1,11 @@
-﻿using System;
-using System.Text;
+﻿using System.Text;
 
 namespace Task_DEV_4
 {
     /// <summary>
-    /// Class is one of the discipline materials, clone discipline.
+    /// Child class is one of the discipline materials.
     /// </summary>
-    class LaboratoryLesson : Identificator
+    class LaboratoryLesson : IdentificatorBaseData
     {
         /// <summary>
         /// Constructor of class.
@@ -14,7 +13,7 @@ namespace Task_DEV_4
         public LaboratoryLesson() : base() { }
 
         /// <summary>
-        /// Copy contructor of laboratoryLesson.
+        /// Copy contructor of laboratoryLesson for clone.
         /// </summary>
         /// <param name="originalMyGuid">GUID for copy</param>
         /// <param name="originalDescription">Description for copy</param>

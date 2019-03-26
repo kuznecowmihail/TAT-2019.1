@@ -1,13 +1,12 @@
-﻿using System;
-using System.Text;
+﻿using System.Text;
 using System.Collections.Generic;
 
 namespace Task_DEV_4
 {
     /// <summary>
-    /// Class is one of the discipline materials, clone discipline.
+    /// Child class is one of the discipline materials.
     /// </summary>
-    class Seminar : Identificator
+    class Seminar : IdentificatorBaseData
     {
         List<string> tasks;
         List<string> questions;
@@ -35,7 +34,7 @@ namespace Task_DEV_4
         }
 
         /// <summary>
-        /// Copy contructor of seminars.
+        /// Copy contructor of seminars for clone.
         /// </summary>
         /// <param name="originalTasks">List of tasks for copy</param>
         /// <param name="originalQuestions">List of questions for copy</param>
@@ -87,19 +86,19 @@ namespace Task_DEV_4
             allInformation.Append("*Tasks:\n");
             foreach (var i in tasks)
             {
-                allInformation.Append($"{indexOfTask}th: {i}\n");
+                allInformation.Append($"{indexOfTask}th: {i}?\n");
                 indexOfTask++;
             }
             allInformation.Append("*Questions:\n");
             foreach (var i in questions)
             {
-                allInformation.Append($"{indexOfQuestion}th: {i}\n");
+                allInformation.Append($"{indexOfQuestion}th: {i}?\n");
                 indexOfQuestion++;
             }
             allInformation.Append("*Answer the questions:\n");
             foreach (var i in answerTheQuestions)
             {
-                allInformation.Append($"{indexOfAnswer}th: {i}\n");
+                allInformation.Append($"{indexOfAnswer}th: {i}.\n");
                 indexOfAnswer++;
             }
         }

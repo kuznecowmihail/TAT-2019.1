@@ -45,8 +45,8 @@
   <ItemGroup>
     <Compile Include="Discipline.cs" />
     <Compile Include="Format.cs" />
-    <Compile Include="ExtentionMethod.cs" />
-    <Compile Include="Identifator.cs" />
+    <Compile Include="ExtentionClass.cs" />
+    <Compile Include="IdentificatorBaseData.cs" />
     <Compile Include="LaboratoryLesson.cs" />
     <Compile Include="Lection.cs" />
     <Compile Include="EntryPoint.cs" />

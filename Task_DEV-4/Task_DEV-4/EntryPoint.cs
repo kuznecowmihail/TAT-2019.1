@@ -25,11 +25,16 @@ namespace Task_DEV_4
                 Discipline phizra = (Discipline)physics.Clone();
                 // Check equality GUID of matan and physics - true.
                 Console.WriteLine(phizra.Equals(physics));
-
-                // Output certain lection to display.   
-                Console.WriteLine(matn[0]);
-                Console.WriteLine(physics[1]);
-                Console.WriteLine(phizra[1]);
+                for(int i = 0; i < matn.listOfLectures.Count; i++)
+                {
+                    // Output certain lection to display. 
+                    Console.WriteLine(physics[i]);
+                }
+                for (int i = 0; i < matn.listOfLectures.Count; i++)
+                {
+                    // Output certain lection to display. 
+                    Console.WriteLine(phizra[i]);
+                }
             }
             catch(Exception e)
             {

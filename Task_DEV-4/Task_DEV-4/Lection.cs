@@ -5,9 +5,9 @@ using System.Collections.Generic;
 namespace Task_DEV_4
 {
     /// <summary>
-    /// Class is one of the discipline materials, clone discipline.
+    /// Child class is one of the discipline materials.
     /// </summary>
-    class Lecture : Identificator, ICloneable
+    class Lecture : IdentificatorBaseData, ICloneable
     {
         string material;
         Presentation presentation;
@@ -39,7 +39,7 @@ namespace Task_DEV_4
         }
 
         /// <summary>
-        /// Copy contructor of Lecture.
+        /// Copy contructor of Lecture for clone.
         /// </summary>
         /// <param name="originalSeminars">List of discipline seminars for copy</param>
         /// <param name="originalLaboratories">List of discipline laboratory lessons for copy</param>
