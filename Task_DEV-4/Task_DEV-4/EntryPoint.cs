@@ -39,7 +39,6 @@ namespace Task_DEV_4
             catch(Exception e)
             {
                 Console.WriteLine($"Error: {e.Message}");
-                Console.WriteLine($"Stack trace: {e.StackTrace}");
             }
         }
     }

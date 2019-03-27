@@ -1,6 +1,7 @@
 ﻿using System;
 using System.IO;
 using System.Text;
+using System.Threading;
 
 namespace Task_DEV_4
 {
@@ -11,6 +12,7 @@ namespace Task_DEV_4
     {
         public string MyGuid { get; protected set; }
         public string Description { get; protected set; }
+        protected static string Text { get; private set; }
         protected Random random;
 
         /// <summary>
@@ -24,17 +26,18 @@ namespace Task_DEV_4
         }
 
         /// <summary>
-        /// Method read file and write to string and select part of text for description and other material.
+        /// Method returns text from file.
         /// </summary>
-        /// <param name="restriction">material size limit</param>
-        /// <returns></returns>
-        public string GetText(int restriction = 10)
+        /// <returns line.ToString()></returns>
+        public string AddTextFromFile()
         {
             StringBuilder line = new StringBuilder();
-            int numberFirstElement;
-            int numberLastElement;
             StreamReader reader = new StreamReader("../../text.txt");
             string partLine = string.Empty;
+            if (reader.ReadLine() == null)
+            {
+                throw new Exception("File is empty.");
+            }
             // Read from file text.txt and add to line.
             while (partLine != null)
             {
@@ -46,17 +49,34 @@ namespace Task_DEV_4
             }
             reader.Close();
             // Convert StringBuilde to string.
-            string text = line.ToString();
+            return line.ToString();
+        }
+
+        /// <summary>
+        /// Method select part of text for description and other material.
+        /// </summary>
+        /// <param name="restriction">material size limit</param>
+        /// <returns></returns>
+        public string GetText(int restriction = 10)
+        {
+            int numberFirstElement;
+            int numberLastElement;
+            if (Text == null)
+            {
+                Text = AddTextFromFile();
+            }
             // Set the edges of the text.
-            numberFirstElement = random.Next(0, text.Length);
+            numberFirstElement = random.Next(0, Text.Length);
+            // Sleep for random value;
+            Thread.Sleep(1);
             numberLastElement = random.Next(numberFirstElement + 1, numberFirstElement + restriction);
             // if numberLastChar is out of line, numberLastChar - index of last element of line;
-            if(numberLastElement > text.Length)
+            if (numberLastElement > Text.Length)
             {
-                numberLastElement = text.Length - 1;
+                numberLastElement = Text.Length - 1;
             }
             // Choose part of text for other material.
-            return text.Substring(numberFirstElement, numberLastElement - numberFirstElement);
+            return Text.Substring(numberFirstElement, numberLastElement - numberFirstElement);
         }
 
         /// <summary>
@@ -82,6 +102,6 @@ namespace Task_DEV_4
             }
             return false;
         }
-
     }
 }
+
