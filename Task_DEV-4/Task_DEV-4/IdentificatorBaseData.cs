@@ -5,7 +5,7 @@ using System.Text;
 namespace Task_DEV_4
 {
     /// <summary>
-    /// Base abstract class.
+    /// Base abstract class of Discipline, Lecture, Seminar and LaboratoryLesson.
     /// </summary>
     public abstract class IdentificatorBaseData
     {
@@ -78,7 +78,7 @@ namespace Task_DEV_4
             if (obj is IdentificatorBaseData)
             {
                 var discipline = (IdentificatorBaseData)obj;
-                return (MyGuid == discipline.MyGuid) ? true : false;
+                return (MyGuid == discipline.MyGuid);
             }
             return false;
         }

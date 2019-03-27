@@ -31,7 +31,7 @@ namespace Task_DEV_4
         /// <param name="orginalLections">List of discipline lectures for copy</param>
         /// <param name="originalMyGuid">GUID for copy</param>
         /// <param name="originalDescription">Description for copy</param>
-        public Discipline(List<Lecture> orginalLections, string originalMyGuid, string originalDescription)
+        public Discipline(string originalMyGuid, string originalDescription, List<Lecture> orginalLections)
         {
             MyGuid = originalMyGuid;
             Description = originalDescription;
@@ -48,7 +48,7 @@ namespace Task_DEV_4
         /// <returns disciplineClone></returns>
         public object Clone()
         {
-            Discipline disciplineClone = new Discipline(listOfLectures, MyGuid, Description);
+            Discipline disciplineClone = new Discipline(MyGuid, Description, listOfLectures);
             return disciplineClone;
         }
 
@@ -75,9 +75,9 @@ namespace Task_DEV_4
         {
             StringBuilder allInformation = new StringBuilder();
             allInformation.Append("_________________________________________Lecture Content___________________________________________________________\n");
-            allInformation.Append($"{index + 1}th lection: seminars - {listOfLectures.ListOfSeminars.Count}, laboratories - {listOfLectures.ListOfLaboratoryLessons.Count}.\n");
+            allInformation.Append($"{index + 1}th lection: seminars - {listOfLectures.listOfSeminars.Count}, laboratories - {listOfLectures.listOfLaboratoryLessons.Count}.\n");
             allInformation.Append("|||||||||||||||||||||||||||||||||||||||Detailed Description||||||||||||||||||||||||||||||||||||||||||||||||||||||||\n");
-            allInformation.Append($"---Lection {index + 1}th:");
+            allInformation.Append($"---Lection {index + 1}th:\n");
             listOfLectures.AddAllInformationOfLectureToStringBuilder(allInformation);
             allInformation.Append("_____________________________________________End___________________________________________________________________\n");
             return allInformation;

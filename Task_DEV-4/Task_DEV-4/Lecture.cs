@@ -12,8 +12,8 @@ namespace Task_DEV_4
         string material;
         Presentation presentation;
         // Composition: seminars and laboratory lessons cannot exist without lection.
-        public List<Seminar> ListOfSeminars;
-        public List<LaboratoryLesson> ListOfLaboratoryLessons;
+        public List<Seminar> listOfSeminars;
+        public List<LaboratoryLesson> listOfLaboratoryLessons;
 
         /// <summary>
         /// Constructor for Lecture.
@@ -25,16 +25,16 @@ namespace Task_DEV_4
             presentation.Uri = $"{GetText()}.com";
             presentation.format = new Format();
             presentation.format = (Format)random.Next(0, 2);
-            ListOfSeminars = new List<Seminar>();
-            ListOfLaboratoryLessons = new List<LaboratoryLesson>();
+            listOfSeminars = new List<Seminar>();
+            listOfLaboratoryLessons = new List<LaboratoryLesson>();
             // Add seminars and laboratory lessons to list.
             for (int i =0; i < random.Next(1, 5); i++)
             {
-                ListOfSeminars.Add(new Seminar());
+                listOfSeminars.Add(new Seminar());
             }
             for (int i = 0; i < random.Next(1, 5); i++)
             {
-                ListOfLaboratoryLessons.Add(new LaboratoryLesson());
+                listOfLaboratoryLessons.Add(new LaboratoryLesson());
             }
         }
 
@@ -45,19 +45,21 @@ namespace Task_DEV_4
         /// <param name="originalLaboratories">List of discipline laboratory lessons for copy</param>
         /// <param name="originalMyGuid">GUID for copy</param>
         /// <param name="originalDescription">Description for copy</param>
-        public Lecture(List<Seminar> originalSeminars, List<LaboratoryLesson> originalLaboratories, string originalMyGuid, string originalDescription)
+        public Lecture(string originalMyGuid, string originalDescription, string originalMaterial, Presentation originalPresentation, List<Seminar> originalSeminars, List<LaboratoryLesson> originalLaboratories)
         {
             MyGuid = originalMyGuid;
             Description = originalDescription;
-            ListOfSeminars = new List<Seminar>();
-            ListOfLaboratoryLessons = new List<LaboratoryLesson>();
+            material = originalMaterial;
+            presentation = originalPresentation;
+            listOfSeminars = new List<Seminar>();
+            listOfLaboratoryLessons = new List<LaboratoryLesson>();
             foreach (var i in originalSeminars)
             {
-                ListOfSeminars.Add((Seminar)i.Clone());
+                listOfSeminars.Add((Seminar)i.Clone());
             }
             foreach (var i in originalLaboratories)
             {
-                ListOfLaboratoryLessons.Add((LaboratoryLesson)i.Clone());
+                listOfLaboratoryLessons.Add((LaboratoryLesson)i.Clone());
             }
         }
 
@@ -67,7 +69,7 @@ namespace Task_DEV_4
         /// <returns disciplineClone></returns>
         public object Clone()
         {
-            Lecture lectionClone = new Lecture(ListOfSeminars, ListOfLaboratoryLessons, MyGuid, Description);
+            Lecture lectionClone = new Lecture(MyGuid, Description, material, presentation, listOfSeminars, listOfLaboratoryLessons);
             return lectionClone;
         }
 
@@ -82,14 +84,14 @@ namespace Task_DEV_4
             allInformation.Append($"*GUID: {this.MyGuid}.\n");
             allInformation.Append($"*{this.ToString()}.\n");
             allInformation.Append($"*Material: {this.material}.\n");
-            allInformation.Append($"*Presentation: {this.presentation.Uri} in {this.presentation.format}.\n");
-            foreach(var i in ListOfSeminars)
+            allInformation.Append($"*Presentation: '{this.presentation.Uri}' in {this.presentation.format}.\n");
+            foreach(var i in listOfSeminars)
             {
                 allInformation.Append($"---Seminar {indexOfSeminar}th:\n");
                 i.AddAllInformationOfSeminarToStringBuilder(allInformation);
                 indexOfSeminar++;
             }
-            foreach(var i in ListOfLaboratoryLessons)
+            foreach(var i in listOfLaboratoryLessons)
             {
                 allInformation.Append($"---Laboratory {indexOfLaboratory}th:\n");
                 i.AddAllInformationOfLaboratoryToStringBuilder(allInformation);

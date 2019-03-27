@@ -1,4 +1,5 @@
-﻿using System.Text;
+﻿using System;
+using System.Text;
 using System.Collections.Generic;
 
 namespace Task_DEV_4
@@ -6,7 +7,7 @@ namespace Task_DEV_4
     /// <summary>
     /// Child class is one of the discipline materials.
     /// </summary>
-    class Seminar : IdentificatorBaseData
+    class Seminar : IdentificatorBaseData, ICloneable
     {
         List<string> tasks;
         List<string> questions;
@@ -41,7 +42,7 @@ namespace Task_DEV_4
         /// <param name="originalAnswerTheQuestions">List of answer the questions for copy</param>
         /// <param name="originalMyGuid">GUID for copy</param>
         /// <param name="originalDescription">Description for copy</param>
-        public Seminar(List<string> originalTasks, List<string> originalQuestions, List<string> originalAnswerTheQuestions, string originalMyGuid, string originalDescription)
+        public Seminar(string originalMyGuid, string originalDescription, List<string> originalTasks, List<string> originalQuestions, List<string> originalAnswerTheQuestions)
         {
             MyGuid = originalMyGuid;
             Description = originalDescription;
@@ -68,7 +69,7 @@ namespace Task_DEV_4
         /// <returns disciplineClone></returns>
         public object Clone()
         {
-            Seminar seminarClone = new Seminar(tasks, questions, answerTheQuestions, MyGuid, Description);
+            Seminar seminarClone = new Seminar(MyGuid, Description, tasks, questions, answerTheQuestions);
             return seminarClone;
         }
 

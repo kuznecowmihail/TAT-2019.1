@@ -1,11 +1,12 @@
-﻿using System.Text;
+﻿using System;
+using System.Text;
 
 namespace Task_DEV_4
 {
     /// <summary>
     /// Child class is one of the discipline materials.
     /// </summary>
-    class LaboratoryLesson : IdentificatorBaseData
+    class LaboratoryLesson : IdentificatorBaseData, ICloneable
     {
         /// <summary>
         /// Constructor of class.
