@@ -5,7 +5,11 @@
     /// </summary>
     class Company
     {
+        /// <summary>
+        /// Constructor of Company.
+        /// </summary>
         public Company() { }
+
         /// <summary>
         /// A method gives the command to choose team.
         /// </summary>

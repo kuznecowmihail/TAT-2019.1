@@ -11,6 +11,9 @@ namespace Task_DEV_3
         protected int sizeOfQualification = 4;
         protected int[] countEmployee;
         
+        /// <summary>
+        /// Constructor of CreaterTeam.
+        /// </summary>
         public CreaterTeam()
         {
             sizeOfQualification = 4;
@@ -21,11 +24,13 @@ namespace Task_DEV_3
             employees[2] = new Senior();
             employees[3] = new Lead();
         }
+
         /// <summary>
         /// Virtual method chooses employees.
         /// </summary>
         /// <param name="value">Criterion of choose</param>
         virtual public void ChooseEmployees(double value) { }
+
         /// <summary>
         /// Virtual method prints choosed team.
         /// </summary>

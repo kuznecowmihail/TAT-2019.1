@@ -7,7 +7,11 @@ namespace Task_DEV_3
     /// </summary>
     class CreaterTeamByTheThirdCriterion : CreaterTeamByTheSecondCriterion
     {
+        /// <summary>
+        /// Constructor of CreaterTeamByTheThirdCriterion.
+        /// </summary>
         public CreaterTeamByTheThirdCriterion() : base() { }
+
         /// <summary>
         /// Override method chooses employees
         /// </summary>
@@ -21,6 +25,7 @@ namespace Task_DEV_3
             SimplexMethodMinimum(out basis, ref coefficient, perfomanceTeam, salary, perfomance);
             HandleExceptionSymplexMethodMinimum(basis, coefficient, perfomanceTeam, perfomance);
         }
+
         /// <summary>
         /// Override method prints choosed team.
         /// </summary>

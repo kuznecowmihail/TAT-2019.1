@@ -8,7 +8,11 @@ namespace Task_DEV_3
     /// </summary>
     class CreaterTeamByTheSecondCriterion : CreaterTeam
     {
+        /// <summary>
+        /// Constructor of CreaterTeamByTheSecondCriterion.
+        /// </summary>
         public CreaterTeamByTheSecondCriterion() : base() { }
+
         /// <summary>
         /// Override method chooses employees on simplex method.
         /// </summary>
@@ -23,6 +27,7 @@ namespace Task_DEV_3
             SimplexMethodMinimum(out basis, ref coefficient, perfomanceTeam, salary, perfomance);
             HandleExceptionSymplexMethodMinimum(basis, coefficient, perfomanceTeam, perfomance);
         }
+
         /// <summary>
         /// A method finds optimal minimum costTeam solution.
         /// </summary>
@@ -60,6 +65,7 @@ namespace Task_DEV_3
             }
             countEmployee[basis] = (int)coefficient;
         }
+
         /// <summary>
         /// A method handles exception of simplex method.
         /// </summary>
@@ -79,11 +85,12 @@ namespace Task_DEV_3
                     if (perfomance[basis] <= perfomanceTeam)
                     {
                         countEmployee[basis]++;
-                        break; ;
+                        break;
                     }
                 }
             }
         }
+
         /// <summary>
         /// Override method prints choosed team.
         /// </summary>

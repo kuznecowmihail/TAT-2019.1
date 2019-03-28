@@ -3,7 +3,7 @@
 namespace Task_DEV_3
 {
     /// <summary>
-    /// The main class of program.
+    /// The main class of program creates company and select optimal team.
     /// </summary>
     class EntryPoint
     {
@@ -15,7 +15,7 @@ namespace Task_DEV_3
         {
             try
             {
-                if(args.Length < 3)
+                if(args.Length == 0)
                 {
                     throw new FormatException("there is not enough elements.");
                 }

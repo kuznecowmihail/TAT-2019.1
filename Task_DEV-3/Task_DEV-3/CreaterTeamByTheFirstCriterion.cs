@@ -8,7 +8,11 @@ namespace Task_DEV_3
     /// </summary>
     class CreaterTeamByTheFirstCriterion : CreaterTeam
     {
+        /// <summary>
+        /// Constructor of CreaterTeamByTheFirstCriterion.
+        /// </summary>
         public CreaterTeamByTheFirstCriterion() : base() { }
+
         /// <summary>
         /// Override method chooses employees on simplex method.
         /// </summary>
@@ -23,6 +27,7 @@ namespace Task_DEV_3
             SimplexMethodMaximum(out basis, ref coefficient, costTeam, salary, perfomance);
             HandleExceptionSymplexMethodMaximum(basis, coefficient, costTeam, salary);
         }
+
         /// <summary>
         /// A method finds optimal maximum perfomance solution.
         /// </summary>
@@ -48,6 +53,7 @@ namespace Task_DEV_3
             } while (perfomance.Min() < 0);
             countEmployee[basis] = (int)coefficient;
         }
+
         /// <summary>
         /// A method handles exception of simplex method.
         /// </summary>
@@ -74,6 +80,7 @@ namespace Task_DEV_3
                 }
             }
         }
+
         /// <summary>
         /// Override method prints choosed team.
         /// </summary>

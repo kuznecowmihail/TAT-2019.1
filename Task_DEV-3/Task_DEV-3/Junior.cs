@@ -5,6 +5,11 @@
     /// </summary>
     class Junior : Employee
     {
+        /// <summary>
+        /// Constructor of Junior.
+        /// </summary>
+        /// <param name="salary"></param>
+        /// <param name="perfomance"></param>
         public Junior(int salary, int perfomance) : base(salary, perfomance)
         {
             name = "Junior";
