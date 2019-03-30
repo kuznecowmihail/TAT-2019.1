@@ -14,13 +14,14 @@
         /// </summary>
         public Plane(double acceleration = 10, double distanceOfChargeSpeed = 10, double speed = 200) : base()
         {
+            // Every 10 km speed +10 km/h.
             Acceleration = acceleration;
             DistanceOfChangeSpeed = distanceOfChargeSpeed;
             Speed = speed;
         }
 
         /// <summary>
-        /// Method of flight to newPoint.
+        /// Implemented interface method.
         /// </summary>
         /// <param name="newPoint"></param>
         public void FlyTo(Point newPoint)
@@ -31,7 +32,7 @@
         }
 
         /// <summary>
-        /// Method returns a reference of this object.
+        /// Implemented interface method.
         /// </summary>
         /// <returns this></returns>
         public IFlyable WhoAmI()
@@ -40,7 +41,7 @@
         }
 
         /// <summary>
-        /// Method calculates time of flight.
+        /// Implemented interface method.
         /// </summary>
         /// <returns>Time of flight</returns>
         public double GetFlyTime()

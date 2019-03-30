@@ -16,7 +16,7 @@
         }
 
         /// <summary>
-        /// Method of flight to newPoint.
+        /// Implemented interface method.
         /// </summary>
         /// <param name="newPoint"></param>
         public void FlyTo(Point newPoint)
@@ -27,7 +27,7 @@
         }
 
         /// <summary>
-        /// Method returns a reference of this object.
+        /// Implemented interface method.
         /// </summary>
         /// <returns this></returns>
         public IFlyable WhoAmI()
@@ -36,7 +36,7 @@
         }
 
         /// <summary>
-        /// Method calculates time of flight.
+        /// Implemented interface method.
         /// </summary>
         /// <returns>Time of flight</returns>
         public double GetFlyTime()
