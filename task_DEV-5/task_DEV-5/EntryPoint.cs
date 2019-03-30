@@ -41,9 +41,6 @@ namespace task_DEV_5
         {
             switch (obj.GetType().Name)
             {
-                case "Bird":
-                    Console.WriteLine($"{obj.GetType().Name} flew {e.Distance} km in {e.Time} hours at a speed of {e.Speed} km/h from {e.StartPoint.X}:{e.StartPoint.Y}:{e.StartPoint.Z} to {e.FinishPoint.X}:{e.FinishPoint.Y}:{e.FinishPoint.Z}.");
-                    return;
                 case "Plane":
                     Console.WriteLine($"{obj.GetType().Name} flew {e.Distance} km in {e.Time} hours at a final speed of {e.Speed} km/h from {e.StartPoint.X}:{e.StartPoint.Y}:{e.StartPoint.Z} to {e.FinishPoint.X}:{e.FinishPoint.Y}:{e.FinishPoint.Z}.");
                     return;
@@ -51,7 +48,7 @@ namespace task_DEV_5
                     Console.WriteLine($"{obj.GetType().Name} flew {e.Distance} km in {e.Time * 3600} seconds at a speed of {e.Speed} km/h from {e.StartPoint.X}:{e.StartPoint.Y}:{e.StartPoint.Z} to {e.FinishPoint.X}:{e.FinishPoint.Y}:{e.FinishPoint.Z}.");
                     return;
                 default:
-                    Console.WriteLine("Unknown flight.");
+                    Console.WriteLine($"{obj.GetType().Name} flew {e.Distance} km in {e.Time} hours at a speed of {e.Speed} km/h from {e.StartPoint.X}:{e.StartPoint.Y}:{e.StartPoint.Z} to {e.FinishPoint.X}:{e.FinishPoint.Y}:{e.FinishPoint.Z}.");
                     return;
             }
         }

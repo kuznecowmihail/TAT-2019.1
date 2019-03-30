@@ -12,12 +12,12 @@
         /// <summary>
         /// Constructor of Plane.
         /// </summary>
-        public Plane(double speed = 200, double acceleration = 10, double distanceOfChargeSpeed = 10) : base(speed)
+        public Plane(double speed = 200, double acceleration = 10, double distanceOfChangeSpeed = 10) : base(speed)
         {
             StartSpeed = speed;
             // Every 10 km speed +10 km/h.
             Acceleration = acceleration;
-            DistanceOfChangeSpeed = distanceOfChargeSpeed;
+            DistanceOfChangeSpeed = distanceOfChangeSpeed;
         }
 
         public override void FlyTo(Point newPoint)

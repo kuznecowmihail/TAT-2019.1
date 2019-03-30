@@ -19,6 +19,7 @@
             StartPoint = new Point();
             FinishPoint = new Point();
         }
+
         /// <summary>
         /// Implemented interface method.
         /// </summary>
