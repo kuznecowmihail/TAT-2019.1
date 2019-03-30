@@ -16,8 +16,6 @@
         public FlyingObject(double speed)
         {
             Speed = speed;
-            StartPoint = new Point();
-            FinishPoint = new Point();
         }
 
         /// <summary>

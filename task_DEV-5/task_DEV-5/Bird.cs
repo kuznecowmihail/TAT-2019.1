@@ -7,14 +7,9 @@ namespace task_DEV_5
     /// </summary>
     public class Bird : FlyingObject
     {
-        static Random random = new Random(DateTime.Now.Millisecond);
-
         /// <summary>
         /// Constuctor of Bird, initializes random speed 1-20 km/h.
         /// </summary>
-        public Bird(double speed = 0) : base(speed)
-        {
-            Speed = 1 + random.NextDouble() * 20.0;
-        }
+        public Bird() : base(1.0 + (new Random(DateTime.Now.Millisecond)).NextDouble() * 19.0) { }
     }
 }

@@ -5,20 +5,15 @@
     /// </summary>
     public class Plane : FlyingObject
     {
-        double StartSpeed { get; }
-        double Acceleration { get; }
-        double DistanceOfChangeSpeed { get; }
+        static double StartSpeed { get; } = 200;
+        // Every 10 km speed +10 km/h.
+        static double Acceleration { get; } = 10;
+        static double DistanceOfChangeSpeed { get; } = 10;
 
         /// <summary>
         /// Constructor of Plane.
         /// </summary>
-        public Plane(double speed = 200, double acceleration = 10, double distanceOfChangeSpeed = 10) : base(speed)
-        {
-            StartSpeed = speed;
-            // Every 10 km speed +10 km/h.
-            Acceleration = acceleration;
-            DistanceOfChangeSpeed = distanceOfChangeSpeed;
-        }
+        public Plane() : base(StartSpeed) { }
 
         public override void FlyTo(Point newPoint)
         {

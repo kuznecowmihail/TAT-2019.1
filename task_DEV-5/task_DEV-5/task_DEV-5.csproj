@@ -43,7 +43,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ObjectEventArgs.cs" />
+    <Compile Include="FlyingObjectEventArgs.cs" />
     <Compile Include="Bird.cs" />
     <Compile Include="FlyingObject.cs" />
     <Compile Include="IFlyable.cs" />

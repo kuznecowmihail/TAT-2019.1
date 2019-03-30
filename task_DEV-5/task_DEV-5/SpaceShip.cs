@@ -8,6 +8,6 @@
         /// <summary>
         /// Constructor of SpaceShip.
         /// </summary>
-        public SpaceShip(double speed = 28.8E+6) : base(speed) { }
+        public SpaceShip() : base(28.8E+6) { }
     }
 }

@@ -20,9 +20,11 @@ namespace task_DEV_5
                 IFlyable[] flyingObjects = new IFlyable[] { new Bird(), new Plane(), new SpaceShip() };
                 foreach (var i in flyingObjects)
                 {
-                    i.ObjectFliesToPoint += Show_Message;
+                    // Add subscribes.
+                    i.ObjectFliesToPoint += DisplayInformationAbotFlight;
                     i.FlyTo(new Point(100, 200, 800));
                 }
+                flyingObjects[1].FlyTo(new Point(50, 1500, 300));
                 return 0;
             }
             catch (Exception e)
@@ -37,18 +39,18 @@ namespace task_DEV_5
         /// </summary>
         /// <param name="obj">Flying object</param>
         /// <param name="e">Object contains information of flight</param>
-        public static void Show_Message(IFlyable obj, FlyingObjectEventArgs e)
+        public static void DisplayInformationAbotFlight(IFlyable obj, FlyingObjectEventArgs e)
         {
             switch (obj.GetType().Name)
             {
                 case "Plane":
-                    Console.WriteLine($"{obj.GetType().Name} flew {e.Distance} km in {e.Time} hours at a final speed of {e.Speed} km/h from {e.StartPoint.X}:{e.StartPoint.Y}:{e.StartPoint.Z} to {e.FinishPoint.X}:{e.FinishPoint.Y}:{e.FinishPoint.Z}.");
+                    Console.WriteLine($"{obj.GetType().Name}№{obj.GetHashCode()}:\nFlew {e.Distance}km in {e.Time}hours (final speed is {e.Speed}km/h).\n({e.StartPoint.X}:{e.StartPoint.Y}:{e.StartPoint.Z}) -> ({e.FinishPoint.X}:{e.FinishPoint.Y}:{e.FinishPoint.Z})\n");
                     return;
                 case "SpaceShip":
-                    Console.WriteLine($"{obj.GetType().Name} flew {e.Distance} km in {e.Time * 3600} seconds at a speed of {e.Speed} km/h from {e.StartPoint.X}:{e.StartPoint.Y}:{e.StartPoint.Z} to {e.FinishPoint.X}:{e.FinishPoint.Y}:{e.FinishPoint.Z}.");
+                    Console.WriteLine($"{obj.GetType().Name}№{obj.GetHashCode()}:\nFlew {e.Distance}km in {e.Time * 3600}seconds (speed is {e.Speed}km/h).\n({e.StartPoint.X}:{e.StartPoint.Y}:{e.StartPoint.Z}) -> ({e.FinishPoint.X}:{e.FinishPoint.Y}:{e.FinishPoint.Z})\n");
                     return;
                 default:
-                    Console.WriteLine($"{obj.GetType().Name} flew {e.Distance} km in {e.Time} hours at a speed of {e.Speed} km/h from {e.StartPoint.X}:{e.StartPoint.Y}:{e.StartPoint.Z} to {e.FinishPoint.X}:{e.FinishPoint.Y}:{e.FinishPoint.Z}.");
+                    Console.WriteLine($"{obj.GetType().Name}№{obj.GetHashCode()}:\nFlew {e.Distance}km in {e.Time}hours (speed is {e.Speed}km/h).\n({e.StartPoint.X}:{e.StartPoint.Y}:{e.StartPoint.Z}) -> ({e.FinishPoint.X}:{e.FinishPoint.Y}:{e.FinishPoint.Z})\n");
                     return;
             }
         }
