@@ -3,19 +3,49 @@
     /// <summary>
     /// Base abstract class of flying objects.
     /// </summary>
-    public abstract class FlyingObject
+    public abstract class FlyingObject : IFlyable
     {
+        public event AccountStateHandler ObjectFliesToPoint;
+        protected double Speed { get; set; }
         protected Point StartPoint { get; set; }
         protected Point FinishPoint { get; set; }
-        protected double Speed { get; set; }
 
         /// <summary>
         /// Constuctor of FlyingObject.
         /// </summary>
-        public FlyingObject()
+        public FlyingObject(double speed)
         {
+            Speed = speed;
             StartPoint = new Point();
             FinishPoint = new Point();
-        } 
+        }
+        /// <summary>
+        /// Implemented interface method.
+        /// </summary>
+        /// <param name="newPoint"></param>
+        virtual public void FlyTo(Point newPoint)
+        {
+            FinishPoint = newPoint;
+            ObjectFliesToPoint?.Invoke(WhoAmI(), new FlyingObjectEventArgs(StartPoint, FinishPoint, StartPoint.GetDistance(FinishPoint), GetFlyTime(), Speed));
+            StartPoint = newPoint;
+        }
+
+        /// <summary>
+        /// Implemented interface method.
+        /// </summary>
+        /// <returns this></returns>
+        public IFlyable WhoAmI()
+        {
+            return this;
+        }
+
+        /// <summary>
+        /// Implemented interface method.
+        /// </summary>
+        /// <returns>Time of flight</returns>
+        virtual public double GetFlyTime()
+        {
+            return StartPoint.GetDistance(FinishPoint) / Speed;
+        }
     }
 }

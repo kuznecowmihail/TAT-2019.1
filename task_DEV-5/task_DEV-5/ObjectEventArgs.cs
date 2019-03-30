@@ -5,11 +5,11 @@
     /// </summary>
     public class FlyingObjectEventArgs
     {
+        public Point StartPoint { get; }
+        public Point FinishPoint { get; }
         public double Distance { get; }
         public double Time { get; }
         public double Speed { get; }
-        public Point StartPoint { get; }
-        public Point FinishPoint { get; }
 
         /// <summary>
         /// Constructor of FlyingObjectEventArgs.
@@ -19,13 +19,13 @@
         /// <param name="speed">speed of flight</param>
         /// <param name="startPoint"></param>
         /// <param name="finishPoint"></param>
-        public FlyingObjectEventArgs(double distance, double time, double speed, Point startPoint, Point finishPoint)
+        public FlyingObjectEventArgs(Point startPoint, Point finishPoint, double distance, double time, double speed)
         {
+            StartPoint = startPoint;
+            FinishPoint = finishPoint;
             Distance = distance;
             Time = time;
             Speed = speed;
-            StartPoint = startPoint;
-            FinishPoint = finishPoint;
         }
     }
 }

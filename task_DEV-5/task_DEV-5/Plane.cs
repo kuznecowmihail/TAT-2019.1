@@ -3,48 +3,34 @@
     /// <summary>
     /// Child class is Plane.
     /// </summary>
-    public class Plane : FlyingObject, IFlyable
+    public class Plane : FlyingObject
     {
+        double StartSpeed { get; }
         double Acceleration { get; }
         double DistanceOfChangeSpeed { get; }
-        public event AccountStateHandler ObjectFliesToPoint;
 
         /// <summary>
         /// Constructor of Plane.
         /// </summary>
-        public Plane(double acceleration = 10, double distanceOfChargeSpeed = 10, double speed = 200) : base()
+        public Plane(double speed = 200, double acceleration = 10, double distanceOfChargeSpeed = 10) : base(speed)
         {
+            StartSpeed = speed;
             // Every 10 km speed +10 km/h.
             Acceleration = acceleration;
             DistanceOfChangeSpeed = distanceOfChargeSpeed;
-            Speed = speed;
         }
 
-        /// <summary>
-        /// Implemented interface method.
-        /// </summary>
-        /// <param name="newPoint"></param>
-        public void FlyTo(Point newPoint)
+        public override void FlyTo(Point newPoint)
         {
-            FinishPoint = newPoint;
-            ObjectFliesToPoint?.Invoke(WhoAmI(), new FlyingObjectEventArgs(StartPoint.GetDistance(FinishPoint), GetFlyTime(), Speed, StartPoint, newPoint));
-            StartPoint = newPoint;
+            base.FlyTo(newPoint);
+            Speed = StartSpeed;
         }
 
         /// <summary>
-        /// Implemented interface method.
-        /// </summary>
-        /// <returns this></returns>
-        public IFlyable WhoAmI()
-        {
-            return this;
-        }
-
-        /// <summary>
-        /// Implemented interface method.
+        /// Override method of base class.
         /// </summary>
         /// <returns>Time of flight</returns>
-        public double GetFlyTime()
+        public override double GetFlyTime()
         {
             double distance = StartPoint.GetDistance(FinishPoint);
             double time = 0;

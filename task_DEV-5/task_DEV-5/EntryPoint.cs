@@ -3,7 +3,7 @@
 namespace task_DEV_5
 {
     /// <summary>
-    /// The main class create something flying object to flyfor flight to a point. 
+    /// The main class create something flying object for flight to a point. 
     /// </summary>
     class EntryPoint
     {
@@ -11,7 +11,9 @@ namespace task_DEV_5
         /// Entry point of the program.
         /// </summary>
         /// <param name="args"></param>
-        static void Main(string[] args)
+        /// <returns 0>Normal start of program</returns>
+        /// <returns 1>Program have errors</returns>
+        static int Main(string[] args)
         {
             try
             {
@@ -21,10 +23,12 @@ namespace task_DEV_5
                     i.ObjectFliesToPoint += Show_Message;
                     i.FlyTo(new Point(100, 200, 800));
                 }
+                return 0;
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 Console.WriteLine($"Error : {e.Message}");
+                return 1;
             }
         }
 
@@ -35,7 +39,7 @@ namespace task_DEV_5
         /// <param name="e">Object contains information of flight</param>
         public static void Show_Message(IFlyable obj, FlyingObjectEventArgs e)
         {
-            switch(obj.GetType().Name)
+            switch (obj.GetType().Name)
             {
                 case "Bird":
                     Console.WriteLine($"{obj.GetType().Name} flew {e.Distance} km in {e.Time} hours at a speed of {e.Speed} km/h from {e.StartPoint.X}:{e.StartPoint.Y}:{e.StartPoint.Z} to {e.FinishPoint.X}:{e.FinishPoint.Y}:{e.FinishPoint.Z}.");
