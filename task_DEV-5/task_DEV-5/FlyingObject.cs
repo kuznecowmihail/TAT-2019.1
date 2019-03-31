@@ -26,7 +26,7 @@
         {
             FinishPoint = newPoint;
             ObjectFliesToPoint?.Invoke(WhoAmI(), new FlyingObjectEventArgs(StartPoint, FinishPoint, StartPoint.GetDistance(FinishPoint), GetFlyTime(), Speed));
-            StartPoint = newPoint;
+            StartPoint = FinishPoint;
         }
 
         /// <summary>

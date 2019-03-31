@@ -17,12 +17,13 @@ namespace task_DEV_5
         {
             try
             {
-                IFlyable[] flyingObjects = new IFlyable[] { new Bird(), new Plane(), new SpaceShip() };
+                Point targetPoint = new Point(100, 200, 800);
+                IFlyable[] flyingObjects = new FlyingObject[] { new Bird(), new Plane(), new SpaceShip() };
                 foreach (var i in flyingObjects)
                 {
                     // Add subscribes.
                     i.ObjectFliesToPoint += DisplayInformationAbotFlight;
-                    i.FlyTo(new Point(100, 200, 800));
+                    i.FlyTo(targetPoint);
                 }
                 flyingObjects[1].FlyTo(new Point(50, 1500, 300));
                 return 0;
@@ -41,18 +42,11 @@ namespace task_DEV_5
         /// <param name="e">Object contains information of flight</param>
         public static void DisplayInformationAbotFlight(IFlyable obj, FlyingObjectEventArgs e)
         {
-            switch (obj.GetType().Name)
-            {
-                case "Plane":
-                    Console.WriteLine($"{obj.GetType().Name}№{obj.GetHashCode()}:\nFlew {e.Distance}km in {e.Time}hours (final speed is {e.Speed}km/h).\n({e.StartPoint.X}:{e.StartPoint.Y}:{e.StartPoint.Z}) -> ({e.FinishPoint.X}:{e.FinishPoint.Y}:{e.FinishPoint.Z})\n");
-                    return;
-                case "SpaceShip":
-                    Console.WriteLine($"{obj.GetType().Name}№{obj.GetHashCode()}:\nFlew {e.Distance}km in {e.Time * 3600}seconds (speed is {e.Speed}km/h).\n({e.StartPoint.X}:{e.StartPoint.Y}:{e.StartPoint.Z}) -> ({e.FinishPoint.X}:{e.FinishPoint.Y}:{e.FinishPoint.Z})\n");
-                    return;
-                default:
-                    Console.WriteLine($"{obj.GetType().Name}№{obj.GetHashCode()}:\nFlew {e.Distance}km in {e.Time}hours (speed is {e.Speed}km/h).\n({e.StartPoint.X}:{e.StartPoint.Y}:{e.StartPoint.Z}) -> ({e.FinishPoint.X}:{e.FinishPoint.Y}:{e.FinishPoint.Z})\n");
-                    return;
-            }
+            // Use hashcode for number is flying object. For clarity.
+            Console.WriteLine($"{obj.GetType().Name}№{obj.GetHashCode()}:");
+            Console.WriteLine(obj is SpaceShip ? $"Flew {e.Distance}km in {e.Time * 3600}seconds." : $"Flew {e.Distance}km in {e.Time}hours.");
+            Console.WriteLine(obj is Plane ? $"Final speed is {e.Speed}km/h (Average speed is {e.Distance / e.Time})." : $"Speed is {e.Speed}km/h.");
+            Console.WriteLine($"({e.StartPoint.X}:{e.StartPoint.Y}:{e.StartPoint.Z}) -> ({e.FinishPoint.X}:{e.FinishPoint.Y}:{e.FinishPoint.Z})\n");
         }
     }
 }

@@ -29,7 +29,7 @@
         {
             double distance = StartPoint.GetDistance(FinishPoint);
             double time = 0;
-            for (int i = 0; i <= distance / Acceleration; i++)
+            while(distance > 0)
             {
                 if (distance < DistanceOfChangeSpeed)
                 {
