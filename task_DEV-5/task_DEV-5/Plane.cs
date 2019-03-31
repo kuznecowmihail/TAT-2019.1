@@ -5,20 +5,20 @@
     /// </summary>
     public class Plane : FlyingObject
     {
-        static double StartSpeed { get; } = 200;
+        const double startSpeed = 200;
         // Every 10 km speed +10 km/h.
-        static double Acceleration { get; } = 10;
-        static double DistanceOfChangeSpeed { get; } = 10;
+        const double acceleration = 10;
+        const double distanceOfChangeSpeed = 10;
 
         /// <summary>
         /// Constructor of Plane.
         /// </summary>
-        public Plane() : base(StartSpeed) { }
+        public Plane() : base(startSpeed) { }
 
         public override void FlyTo(Point newPoint)
         {
             base.FlyTo(newPoint);
-            Speed = StartSpeed;
+            Speed = startSpeed;
         }
 
         /// <summary>
@@ -31,14 +31,14 @@
             double time = 0;
             while(distance > 0)
             {
-                if (distance < DistanceOfChangeSpeed)
+                if (distance < distanceOfChangeSpeed)
                 {
                     time += distance / Speed;
                     break;
                 }
-                time += DistanceOfChangeSpeed / Speed;
-                Speed += Acceleration;
-                distance -= DistanceOfChangeSpeed;
+                time += distanceOfChangeSpeed / Speed;
+                Speed += acceleration;
+                distance -= distanceOfChangeSpeed;
             }
             return time;
         }

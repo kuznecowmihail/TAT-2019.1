@@ -1,12 +1,7 @@
-﻿namespace task_DEV_5
-{
-    /// <summary>
-    /// Delegate for calling methods.
-    /// </summary>
-    /// <param name="obj">Flying object</param>
-    /// <param name="e">Object contains information of flight</param>
-    public delegate void AccountStateHandler(IFlyable obj, FlyingObjectEventArgs e);
+﻿using System;
 
+namespace task_DEV_5
+{
     /// <summary>
     /// Interface for flying object.
     /// </summary>
@@ -15,8 +10,8 @@
         /// <summary>
         /// Event notifies subscribers that an object flies to point.
         /// </summary>
-        event AccountStateHandler ObjectFliesToPoint;
-
+        event EventHandler<FlyingObjectEventArgs> ObjectFliesToPoint;
+        
         /// <summary>
         /// Method of flight to newPoint.
         /// </summary>

@@ -40,7 +40,7 @@ namespace task_DEV_5
         /// </summary>
         /// <param name="obj">Flying object</param>
         /// <param name="e">Object contains information of flight</param>
-        public static void DisplayInformationAbotFlight(IFlyable obj, FlyingObjectEventArgs e)
+        public static void DisplayInformationAbotFlight(Object obj, FlyingObjectEventArgs e)
         {
             // Use hashcode for number is flying object. For clarity.
             Console.WriteLine($"{obj.GetType().Name}№{obj.GetHashCode()}:");

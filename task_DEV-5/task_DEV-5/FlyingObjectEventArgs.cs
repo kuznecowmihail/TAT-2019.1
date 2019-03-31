@@ -1,9 +1,11 @@
-﻿namespace task_DEV_5
+﻿using System;
+
+namespace task_DEV_5
 {
     /// <summary>
     /// Class for an event that has some information.
     /// </summary>
-    public class FlyingObjectEventArgs
+    public class FlyingObjectEventArgs : EventArgs
     {
         public Point StartPoint { get; }
         public Point FinishPoint { get; }
