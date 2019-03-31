@@ -12,22 +12,9 @@ namespace task_DEV_5
         public double Distance { get; }
         public double Time { get; }
         public double Speed { get; }
-        public string Message { get; }
-        readonly IFlyable obj;
 
         /// <summary>
-        /// Constructor of FlyingObjectEventArgs.
-        /// </summary>
-        /// <param name="obj">Reference of flying object</param>
-        /// <param name="startPoint"></param>
-        public FlyingObjectEventArgs(IFlyable obj, Point startPoint)
-        {
-            this.obj = obj;
-            StartPoint = startPoint;
-        }
-
-        /// <summary>
-        /// Constructor of FlyingObjectEventArgs.
+        /// Constructor of FlyingObjectEventArgs for ObjectFlyingToPoint event.
         /// </summary>
         /// <param name="distance">Distance of flight</param>
         /// <param name="time">Time of flight</param>
@@ -41,7 +28,16 @@ namespace task_DEV_5
             Distance = distance;
             Time = time;
             Speed = speed;
-            Message = string.Empty;
+        }
+
+        /// <summary>
+        /// Constructor of FlyingObjectEventArgs for ObjectIsNotFlying event.
+        /// </summary>
+        /// <param name="obj">Reference of flying object</param>
+        /// <param name="startPoint"></param>
+        public FlyingObjectEventArgs(Point startPoint)
+        {
+            StartPoint = startPoint;
         }
     }
 }

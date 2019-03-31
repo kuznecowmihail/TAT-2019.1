@@ -8,7 +8,7 @@ namespace task_DEV_5
     public abstract class FlyingObject : IFlyable
     {
         public event EventHandler<FlyingObjectEventArgs> ObjectIsFlyingToPoint;
-        public event EventHandler<FlyingObjectEventArgs> ObjectIsNotFlies;
+        public event EventHandler<FlyingObjectEventArgs> ObjectIsNotFlying;
         protected double Speed { get; set; }
         protected Point StartPoint { get; set; }
         protected Point FinishPoint { get; set; }
@@ -33,7 +33,7 @@ namespace task_DEV_5
             }
             else
             {
-                ObjectIsNotFlies?.Invoke(WhoAmI(), new FlyingObjectEventArgs(WhoAmI(), StartPoint));
+                ObjectIsNotFlying?.Invoke(WhoAmI(), new FlyingObjectEventArgs(StartPoint));
             }
         }
 

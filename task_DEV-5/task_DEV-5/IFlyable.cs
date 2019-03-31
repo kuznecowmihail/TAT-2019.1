@@ -11,7 +11,7 @@ namespace task_DEV_5
         /// Event notifies subscribers that an object flies to point.
         /// </summary>
         event EventHandler<FlyingObjectEventArgs> ObjectIsFlyingToPoint;
-        event EventHandler<FlyingObjectEventArgs> ObjectIsNotFlies;
+        event EventHandler<FlyingObjectEventArgs> ObjectIsNotFlying;
         
         /// <summary>
         /// Method of flight to newPoint.
