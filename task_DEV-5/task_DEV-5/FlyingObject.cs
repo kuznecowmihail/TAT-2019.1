@@ -7,7 +7,8 @@ namespace task_DEV_5
     /// </summary>
     public abstract class FlyingObject : IFlyable
     {
-        public event EventHandler<FlyingObjectEventArgs> ObjectFliesToPoint;
+        public event EventHandler<FlyingObjectEventArgs> ObjectIsFlyingToPoint;
+        public event EventHandler<FlyingObjectEventArgs> ObjectIsNotFlies;
         protected double Speed { get; set; }
         protected Point StartPoint { get; set; }
         protected Point FinishPoint { get; set; }
@@ -24,8 +25,16 @@ namespace task_DEV_5
         virtual public void FlyTo(Point newPoint)
         {   
             FinishPoint = newPoint;
-            ObjectFliesToPoint?.Invoke(WhoAmI(), new FlyingObjectEventArgs(StartPoint, FinishPoint, StartPoint.GetDistance(FinishPoint), GetFlyTime(), Speed));
-            StartPoint = FinishPoint;
+            // If two point is different, object start flight.
+            if(StartPoint != FinishPoint)
+            {
+                ObjectIsFlyingToPoint?.Invoke(WhoAmI(), new FlyingObjectEventArgs(StartPoint, FinishPoint, StartPoint.GetDistance(FinishPoint), GetFlyTime(), Speed));
+                StartPoint = FinishPoint;
+            }
+            else
+            {
+                ObjectIsNotFlies?.Invoke(WhoAmI(), new FlyingObjectEventArgs(WhoAmI(), StartPoint));
+            }
         }
 
         /// <summary>
