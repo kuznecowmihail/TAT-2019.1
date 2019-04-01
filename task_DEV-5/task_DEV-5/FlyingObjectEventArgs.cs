@@ -7,11 +7,9 @@ namespace task_DEV_5
     /// </summary>
     public class FlyingObjectEventArgs : EventArgs
     {
-        public Point StartPoint { get; }
-        public Point FinishPoint { get; }
         public double Distance { get; }
         public double Time { get; }
-        public double Speed { get; }
+        public string Message { get; }
 
         /// <summary>
         /// Constructor of FlyingObjectEventArgs for ObjectFlyingToPoint event.
@@ -21,13 +19,10 @@ namespace task_DEV_5
         /// <param name="speed">speed of flight</param>
         /// <param name="startPoint"></param>
         /// <param name="finishPoint"></param>
-        public FlyingObjectEventArgs(Point startPoint, Point finishPoint, double distance, double time, double speed)
+        public FlyingObjectEventArgs(double distance, double time)
         {
-            StartPoint = startPoint;
-            FinishPoint = finishPoint;
             Distance = distance;
             Time = time;
-            Speed = speed;
         }
 
         /// <summary>
@@ -35,9 +30,9 @@ namespace task_DEV_5
         /// </summary>
         /// <param name="obj">Reference of flying object</param>
         /// <param name="startPoint"></param>
-        public FlyingObjectEventArgs(Point startPoint)
+        public FlyingObjectEventArgs(string message)
         {
-            StartPoint = startPoint;
+            Message = message;
         }
     }
 }

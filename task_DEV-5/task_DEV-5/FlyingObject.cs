@@ -9,9 +9,9 @@ namespace task_DEV_5
     {
         public event EventHandler<FlyingObjectEventArgs> ObjectIsFlyingToPoint;
         public event EventHandler<FlyingObjectEventArgs> ObjectIsNotFlying;
-        protected double Speed { get; set; }
-        protected Point StartPoint { get; set; }
-        protected Point FinishPoint { get; set; }
+        public double Speed { get; protected set; }
+        public Point StartPoint { get; protected set; }
+        public Point FinishPoint { get; protected set; }
 
         /// <summary>
         /// Constuctor of FlyingObject.
@@ -28,12 +28,12 @@ namespace task_DEV_5
             // If two point is different, object start flight.
             if(StartPoint != FinishPoint)
             {
-                ObjectIsFlyingToPoint?.Invoke(WhoAmI(), new FlyingObjectEventArgs(StartPoint, FinishPoint, StartPoint.GetDistance(FinishPoint), GetFlyTime(), Speed));
+                ObjectIsFlyingToPoint?.Invoke(WhoAmI(), new FlyingObjectEventArgs(StartPoint.GetDistance(FinishPoint), GetFlyTime()));
                 StartPoint = FinishPoint;
             }
             else
             {
-                ObjectIsNotFlying?.Invoke(WhoAmI(), new FlyingObjectEventArgs(StartPoint));
+                ObjectIsNotFlying?.Invoke(WhoAmI(), new FlyingObjectEventArgs($"{WhoAmI().GetType().Name}№{WhoAmI().GetHashCode()} is already at the finish point ({StartPoint.X}:{StartPoint.Y}:{StartPoint.Z}).\n"));
             }
         }
 

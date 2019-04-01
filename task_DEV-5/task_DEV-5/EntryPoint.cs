@@ -17,13 +17,14 @@ namespace task_DEV_5
         {
             try
             {
+                Logger log = new Logger();
                 Point targetPoint = new Point(100, 200, 800);
                 IFlyable[] flyingObjects = new FlyingObject[] { new Bird(), new Plane(), new SpaceShip() };
                 foreach (var i in flyingObjects)
                 {
                     // Add subscribes.
-                    i.ObjectIsFlyingToPoint += DisplayInformationAbotFlight;
-                    i.ObjectIsNotFlying += DisplayInformationAboutFailedFlight;
+                    i.ObjectIsFlyingToPoint += log.DisplayInformationAbotFlight;
+                    i.ObjectIsNotFlying += log.DisplayInformationAboutFailedFlight;
                     i.FlyTo(targetPoint);
                 }
                 flyingObjects[0].FlyTo(targetPoint);
@@ -36,29 +37,6 @@ namespace task_DEV_5
                 Console.WriteLine($"Error : {e.Message}");
                 return 1;
             }
-        }
-
-        /// <summary>
-        /// Method displays information of flight.
-        /// </summary>
-        /// <param name="obj">Flying object</param>
-        /// <param name="e">Object contains information of flight</param>
-        public static void DisplayInformationAbotFlight(Object obj, FlyingObjectEventArgs e)
-        {
-            // Use hashcode for number is flying object. For clarity.
-            Console.WriteLine($"{obj.GetType().Name}№{obj.GetHashCode()}:");
-            Console.WriteLine(obj is Plane ? $"Final speed is {e.Speed}km/h (Average speed is {e.Distance / e.Time})." : $"Speed is {e.Speed}km/h.");
-            Console.WriteLine($"({e.StartPoint.X}:{e.StartPoint.Y}:{e.StartPoint.Z}) -> ({e.FinishPoint.X}:{e.FinishPoint.Y}:{e.FinishPoint.Z})\n");
-        }
-
-        /// <summary>
-        /// Method displays information about flight, if two point is same.
-        /// </summary>
-        /// <param name="obj"></param>
-        /// <param name="e"></param>
-        public static void DisplayInformationAboutFailedFlight(Object obj, FlyingObjectEventArgs e)
-        {
-            Console.WriteLine($"{obj.GetType().Name}№{obj.GetHashCode()} is already at the finish point ({e.StartPoint.X}:{e.StartPoint.Y}:{e.StartPoint.Z}).\n");
         }
     }
 }
