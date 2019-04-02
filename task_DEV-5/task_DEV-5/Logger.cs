@@ -14,9 +14,8 @@ namespace task_DEV_5
         /// <param name="e">Object contains information of flight</param>
         public void DisplayInformationAbotFlight(Object obj, FlyingObjectEventArgs e)
         {
-            if (obj is FlyingObject)
+            if (obj is FlyingObject flyingObject)
             {
-                FlyingObject flyingObject = (FlyingObject)obj;
                 // Use hashcode for number is flying object. For clarity.
                 Console.WriteLine($"{flyingObject.GetType().Name}№{flyingObject.GetHashCode()}:");
                 Console.WriteLine(obj is Plane ? $"Final speed is {flyingObject.Speed}km/h (Average speed is {e.Distance / e.Time})." : $"Speed is {flyingObject.Speed}km/h.");
@@ -31,10 +30,9 @@ namespace task_DEV_5
         /// <param name="e"></param>
         public void DisplayInformationAboutFailedFlight(Object obj, FlyingObjectEventArgs e)
         {
-            if (obj is FlyingObject)
+            if (obj is FlyingObject flyingObject)
             {
-                FlyingObject flyingObject = (FlyingObject)obj;
-                Console.WriteLine(e.Message);
+                Console.WriteLine($"{flyingObject.GetType().Name}№{flyingObject.GetHashCode()} {e.Message} ({flyingObject.StartPoint.X}:{flyingObject.StartPoint.Y}:{flyingObject.StartPoint.Z}).\n");
             }
         }
     }

@@ -33,7 +33,7 @@ namespace task_DEV_5
             }
             else
             {
-                ObjectIsNotFlying?.Invoke(WhoAmI(), new FlyingObjectEventArgs($"{WhoAmI().GetType().Name}№{WhoAmI().GetHashCode()} is already at the finish point ({StartPoint.X}:{StartPoint.Y}:{StartPoint.Z}).\n"));
+                ObjectIsNotFlying?.Invoke(WhoAmI(), new FlyingObjectEventArgs("is already at the finish point"));
             }
         }
 
