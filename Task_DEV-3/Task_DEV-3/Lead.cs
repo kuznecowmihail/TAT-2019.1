@@ -10,11 +10,6 @@
         /// </summary>
         /// <param name="salary"></param>
         /// <param name="perfomance"></param>
-        public Lead(int salary, int perfomance) : base(salary, perfomance)
-        {
-            name = "Lead";
-        }
-
-        public Lead() : this(1000, 350) { }
+        public Lead() : base(1000, 350) { }
     }
 }

@@ -69,6 +69,7 @@ namespace Task_DEV_3
                 coefficient -= (int)coefficient;
                 costTeam -= salary[basis] * countEmployee[basis];
                 basis--;
+
                 while (coefficient < 1 && basis > 0)
                 {
                     if (salary[basis] <= costTeam)

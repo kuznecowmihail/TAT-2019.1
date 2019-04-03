@@ -46,17 +46,20 @@ namespace Task_DEV_3
             min = perfomance[basis];
             coefficient /= perfomance[basis];
             k = salary[basis] / perfomance[basis];
+
             for (int i = 0; i < salary.Length; i++)
             {
                 salary[i] = salary[i] - perfomance[i] * k;
                 perfomance[i] /= min;
             }
+
             while (salary.Min() < 0)
             {
                 basis = Array.IndexOf(salary, salary.Min());
                 coefficient /= perfomance[basis];
                 k = Math.Abs(salary[basis]) / perfomance[basis];
                 min = perfomance[basis];
+
                 for (int i = 0; i < salary.Length; i++)
                 {
                     salary[i] = perfomance[i] * k + salary[i];
@@ -79,9 +82,11 @@ namespace Task_DEV_3
             {
                 coefficient -= (int)coefficient;
                 perfomanceTeam -= perfomance[basis] * countEmployee[basis];
+
                 while (coefficient < 1 && basis > 0)
                 {
                     basis--;
+
                     if (perfomance[basis] <= perfomanceTeam)
                     {
                         countEmployee[basis]++;

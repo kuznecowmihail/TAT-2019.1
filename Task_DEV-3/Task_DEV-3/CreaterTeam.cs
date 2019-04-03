@@ -38,8 +38,9 @@ namespace Task_DEV_3
         {
             for(int i = 0; i < sizeOfQualification; i++)
             {
-                Console.WriteLine(i +") " + employees[i].GetName() + " : " + countEmployee[i]);
+                Console.WriteLine(i +") " + employees[i].GetType().Name + " : " + countEmployee[i]);
             }
+
             // Reset values for the next operation.
             for(int i = 0; i < countEmployee.Length; i++)
             {

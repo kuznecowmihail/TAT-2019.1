@@ -7,7 +7,6 @@
     {
         protected readonly int salary;
         protected readonly int perfomance;
-        protected string name;
 
         /// <summary>
         /// Constructor of Employee.
@@ -24,27 +23,12 @@
         /// A method returns salary.
         /// </summary>
         /// <returns salary></returns>
-        public int GetSalary()
-        {
-            return salary;
-        }
+        public int GetSalary() => salary;
 
         /// <summary>
         /// A method returns perfomance.
         /// </summary>
         /// <returns perfomance></returns>
-        public int GetPerfomance()
-        {
-            return perfomance;
-        }
-
-        /// <summary>
-        /// A method returns ame.
-        /// </summary>
-        /// <returns name></returns>
-        public string GetName()
-        {
-            return name;
-        }
+        public int GetPerfomance() => perfomance;
     }
 }

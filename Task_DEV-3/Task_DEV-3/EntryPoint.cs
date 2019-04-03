@@ -20,6 +20,7 @@ namespace Task_DEV_3
                     throw new FormatException("there is not enough elements.");
                 }
                 Company epam = new Company();
+
                 switch(Convert.ToInt32(args[0]))
                 {
                     case 1:

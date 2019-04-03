@@ -35,8 +35,9 @@ namespace Task_DEV_3
             // Start cycle from the Middle(employees[i+1], because criterion without Junior.
             for (int i = 0; i < sizeOfQualification - 1; i++)
             {
-                Console.WriteLine(i  + ") " + employees[i+1].GetName() + " : " + countEmployee[i+1]);
+                Console.WriteLine(i  + ") " + employees[i+1].GetType().Name + " : " + countEmployee[i+1]);
             }
+
             // Reset values for the next operation.
             for (int i = 1; i < countEmployee.Length; i++)
             {
