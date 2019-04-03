@@ -72,12 +72,7 @@ namespace Task_DEV_4
         /// Implemented interface method deeply copies object.
         /// </summary>
         /// <returns disciplineClone></returns>
-        public object Clone()
-        {
-            Lecture lectionClone = new Lecture(MyGuid, Description, material, presentation, listOfSeminars, listOfLaboratoryLessons);
-
-            return lectionClone;
-        }
+        public object Clone() => new Lecture(MyGuid, Description, material, presentation, listOfSeminars, listOfLaboratoryLessons);
 
         /// <summary>
         /// Method add information to StringBuilder.

@@ -48,12 +48,7 @@ namespace Task_DEV_4
         /// Implemented interface method deeply copies object.
         /// </summary>
         /// <returns disciplineClone></returns>
-        public object Clone()
-        {
-            Discipline disciplineClone = new Discipline(MyGuid, Description, listOfLectures);
-
-            return disciplineClone;
-        }
+        public object Clone() => new Discipline(MyGuid, Description, listOfLectures);
 
         /// <summary>
         /// Indexer return to display certain lecture and her seminars and laboratory lessons.
@@ -62,10 +57,7 @@ namespace Task_DEV_4
         /// <returns></returns>
         public StringBuilder this[int index]
         {
-            get
-            {
-                return AddAllInformation(listOfLectures[index], index); ;
-            }
+            get => AddAllInformation(listOfLectures[index], index);
         }
 
         /// <summary>

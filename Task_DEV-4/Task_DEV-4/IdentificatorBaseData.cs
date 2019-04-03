@@ -92,10 +92,7 @@ namespace Task_DEV_4
         /// Object's ovveride method returns description.
         /// </summary>
         /// <returns></returns>
-        public override string ToString()
-        {
-            return $"Description: {Description}";
-        }
+        public override string ToString() => $"Description: {Description}";
 
         /// <summary>
         /// Object's ovveride method compares two object by GUID.

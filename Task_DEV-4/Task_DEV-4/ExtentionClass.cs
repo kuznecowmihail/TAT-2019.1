@@ -11,11 +11,6 @@ namespace Task_DEV_4
         /// Extension method for string assigning GUID to object.
         /// </summary>
         /// <param name="line"></param>
-        public static string GuidToString(this string line)
-        {
-            Guid guid = Guid.NewGuid();
-
-            return guid.ToString();
-        }
+        public static string GuidToString(this string line) => Guid.NewGuid().ToString();
     }
 }
