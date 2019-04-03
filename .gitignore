@@ -15,4 +15,4 @@ target/
 .settings
  
 *.DS_Store
-[Tt]humbs.d
+[Tt]humbs.db

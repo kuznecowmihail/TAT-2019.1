@@ -14,6 +14,7 @@ namespace Task_DEV_4
         public static string GuidToString(this string line)
         {
             Guid guid = Guid.NewGuid();
+
             return guid.ToString();
         }
     }

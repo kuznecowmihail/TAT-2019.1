@@ -31,6 +31,7 @@ namespace Task_DEV_4
         public object Clone()
         {
             LaboratoryLesson laboratoryClone = new LaboratoryLesson(MyGuid, Description);
+
             return laboratoryClone;
         }
 
@@ -38,7 +39,7 @@ namespace Task_DEV_4
         /// Method add information to StringBuilder.
         /// </summary>
         /// <param name="allInformation"></param>
-        public void AddAllInformationOfLaboratoryToStringBuilder(StringBuilder allInformation)
+        public void AddAllInformationOfLaboratory(StringBuilder allInformation)
         {
             allInformation.Append($"*GUID: {this.MyGuid}.\n");
             allInformation.Append($"*{this.ToString()}.\n");

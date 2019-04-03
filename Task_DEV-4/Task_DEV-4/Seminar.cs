@@ -21,13 +21,15 @@ namespace Task_DEV_4
             tasks = new List<string>();
             questions = new List<string>();
             answerTheQuestions = new List<string>();
+
             // Add tasks, questions and answer the questions to list.
-            for(int i = 0; i < random.Next(1,10); i++)
+            for(int i = 0; i < random.Next(minValue, maxValue); i++)
             {
                 tasks.Add(GetText());
             }
+
             // Number of questions and answer the questions equals.
-            for (int i = 0; i < random.Next(1, 10); i++)
+            for (int i = 0; i < random.Next(minValue, maxValue); i++)
             {
                 questions.Add(GetText());
                 answerTheQuestions.Add(GetText());
@@ -49,14 +51,17 @@ namespace Task_DEV_4
             tasks = new List<string>();
             questions = new List<string>();
             answerTheQuestions = new List<string>();
+
             foreach (var i in originalTasks)
             {
                 tasks.Add(i);
             }
+
             foreach(var i in originalQuestions)
             {
                 questions.Add(i);
             }
+
             foreach(var i in originalAnswerTheQuestions)
             {
                 answerTheQuestions.Add(i);
@@ -70,6 +75,7 @@ namespace Task_DEV_4
         public object Clone()
         {
             Seminar seminarClone = new Seminar(MyGuid, Description, tasks, questions, answerTheQuestions);
+
             return seminarClone;
         }
 
@@ -77,7 +83,7 @@ namespace Task_DEV_4
         /// Method add information to StringBuilder.
         /// </summary>
         /// <param name="allInformation"></param>
-        public void AddAllInformationOfSeminarToStringBuilder(StringBuilder allInformation)
+        public void AddAllInformationOfSeminar(StringBuilder allInformation)
         {
             int indexOfTask = 1;
             int indexOfQuestion = 1;
@@ -85,18 +91,21 @@ namespace Task_DEV_4
             allInformation.Append($"*GUID: {this.MyGuid}.\n");
             allInformation.Append($"*{this.ToString()}.\n");
             allInformation.Append("*Tasks:\n");
+
             foreach (var i in tasks)
             {
                 allInformation.Append($"{indexOfTask}th: {i}?\n");
                 indexOfTask++;
             }
             allInformation.Append("*Questions:\n");
+
             foreach (var i in questions)
             {
                 allInformation.Append($"{indexOfQuestion}th: {i}?\n");
                 indexOfQuestion++;
             }
             allInformation.Append("*Answer the questions:\n");
+
             foreach (var i in answerTheQuestions)
             {
                 allInformation.Append($"{indexOfAnswer}th: {i}.\n");

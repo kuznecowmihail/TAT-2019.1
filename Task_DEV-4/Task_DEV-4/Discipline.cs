@@ -18,8 +18,9 @@ namespace Task_DEV_4
         public Discipline() : base()
         {
             listOfLectures = new List<Lecture>();
+
             // Add random number of lectures to list.
-            for(int i = 0; i < random.Next(5, 10); i++)
+            for(int i = 0; i < random.Next(minValue, maxValue); i++)
             {
                 listOfLectures.Add(new Lecture());
             }
@@ -36,6 +37,7 @@ namespace Task_DEV_4
             MyGuid = originalMyGuid;
             Description = originalDescription;
             listOfLectures = new List<Lecture>();
+
             foreach (var i in orginalLections)
             {
                 listOfLectures.Add((Lecture)i.Clone());
@@ -49,6 +51,7 @@ namespace Task_DEV_4
         public object Clone()
         {
             Discipline disciplineClone = new Discipline(MyGuid, Description, listOfLectures);
+
             return disciplineClone;
         }
 
@@ -61,7 +64,7 @@ namespace Task_DEV_4
         {
             get
             {
-                return AddAllInformationToStringBuilder(listOfLectures[index], index); ;
+                return AddAllInformation(listOfLectures[index], index); ;
             }
         }
 
@@ -71,15 +74,16 @@ namespace Task_DEV_4
         /// <param name="listOfLectures">Lecture of discipline</param>
         /// <param name="index">Number of lecture</param>
         /// <returns allInformation></returns>
-        public StringBuilder AddAllInformationToStringBuilder(Lecture listOfLectures, int index)
+        public StringBuilder AddAllInformation(Lecture listOfLectures, int index)
         {
             StringBuilder allInformation = new StringBuilder();
             allInformation.Append("_________________________________________Lecture Content___________________________________________________________\n");
             allInformation.Append($"{index + 1}th lection: seminars - {listOfLectures.listOfSeminars.Count}, laboratories - {listOfLectures.listOfLaboratoryLessons.Count}.\n");
             allInformation.Append("|||||||||||||||||||||||||||||||||||||||Detailed Description||||||||||||||||||||||||||||||||||||||||||||||||||||||||\n");
             allInformation.Append($"---Lection {index + 1}th:\n");
-            listOfLectures.AddAllInformationOfLectureToStringBuilder(allInformation);
+            listOfLectures.AddAllInformationOfLecture(allInformation);
             allInformation.Append("_____________________________________________End___________________________________________________________________\n");
+
             return allInformation;
         }
     }

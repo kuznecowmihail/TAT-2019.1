@@ -14,6 +14,9 @@ namespace Task_DEV_4
         public string Description { get; protected set; }
         protected static string Text { get; private set; }
         protected Random random;
+        private const int restriction = 256;
+        protected const int minValue = 1;
+        protected const int maxValue = 5;
 
         /// <summary>
         /// Constructor of IdentificatorBaseData.
@@ -22,7 +25,7 @@ namespace Task_DEV_4
         {
             random = new Random(DateTime.Now.Millisecond);
             MyGuid = MyGuid.GuidToString();
-            Description = GetText(256);
+            Description = GetText(restriction);
         }
 
         /// <summary>
@@ -34,10 +37,12 @@ namespace Task_DEV_4
             StringBuilder line = new StringBuilder();
             StreamReader reader = new StreamReader("../../text.txt");
             string partLine = string.Empty;
+
             if (reader.ReadLine() == null)
             {
                 throw new Exception("File is empty.");
             }
+
             // Read from file text.txt and add to line.
             while (partLine != null)
             {
@@ -48,6 +53,7 @@ namespace Task_DEV_4
                 }
             }
             reader.Close();
+
             // Convert StringBuilde to string.
             return line.ToString();
         }
@@ -61,6 +67,7 @@ namespace Task_DEV_4
         {
             int numberFirstElement;
             int numberLastElement;
+
             if (Text == null)
             {
                 Text = AddTextFromFile();
@@ -70,11 +77,13 @@ namespace Task_DEV_4
             // Sleep for random value;
             Thread.Sleep(1);
             numberLastElement = random.Next(numberFirstElement + 1, numberFirstElement + restriction);
+
             // if numberLastChar is out of line, numberLastChar - index of last element of line;
             if (numberLastElement > Text.Length)
             {
                 numberLastElement = Text.Length - 1;
             }
+
             // Choose part of text for other material.
             return Text.Substring(numberFirstElement, numberLastElement - numberFirstElement);
         }
@@ -98,8 +107,10 @@ namespace Task_DEV_4
             if (obj is IdentificatorBaseData)
             {
                 var discipline = (IdentificatorBaseData)obj;
+
                 return (MyGuid == discipline.MyGuid);
             }
+
             return false;
         }
     }
