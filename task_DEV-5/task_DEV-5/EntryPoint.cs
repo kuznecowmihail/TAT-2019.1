@@ -20,6 +20,7 @@ namespace task_DEV_5
                 Logger log = new Logger();
                 Point targetPoint = new Point(100, 200, 800);
                 IFlyable[] flyingObjects = new FlyingObject[] { new Bird(), new Plane(), new SpaceShip() };
+
                 foreach (var i in flyingObjects)
                 {
                     // Add subscribes.
@@ -30,11 +31,13 @@ namespace task_DEV_5
                 flyingObjects[0].FlyTo(targetPoint);
                 flyingObjects[1].FlyTo(new Point(50, 1500, 300));
                 flyingObjects[2].FlyTo(new Point(6000, 150000, 80000));
+
                 return 0;
             }
             catch (Exception e)
             {
                 Console.WriteLine($"Error : {e.Message}");
+
                 return 1;
             }
         }

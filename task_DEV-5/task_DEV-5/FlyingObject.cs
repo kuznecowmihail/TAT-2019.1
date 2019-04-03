@@ -25,6 +25,7 @@ namespace task_DEV_5
         virtual public void FlyTo(Point newPoint)
         {   
             FinishPoint = newPoint;
+
             // If two point is different, object start flight.
             if(StartPoint != FinishPoint)
             {

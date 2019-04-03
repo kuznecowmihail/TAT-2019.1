@@ -30,9 +30,6 @@ namespace task_DEV_5
         /// </summary>
         /// <param name="obj">Reference of flying object</param>
         /// <param name="startPoint"></param>
-        public FlyingObjectEventArgs(string message)
-        {
-            Message = message;
-        }
+        public FlyingObjectEventArgs(string message) => Message = message;
     }
 }

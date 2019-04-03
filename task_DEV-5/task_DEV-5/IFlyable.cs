@@ -8,7 +8,7 @@ namespace task_DEV_5
     public interface IFlyable
     {
         /// <summary>
-        /// Event notifies subscribers that an object flies to point.
+        /// Event notifies subscribers that an object flies or not to point.
         /// </summary>
         event EventHandler<FlyingObjectEventArgs> ObjectIsFlyingToPoint;
         event EventHandler<FlyingObjectEventArgs> ObjectIsNotFlying;
