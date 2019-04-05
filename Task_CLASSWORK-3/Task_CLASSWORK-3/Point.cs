@@ -7,15 +7,15 @@ namespace Task_CLASSWORK_3
     /// </summary>
     public struct Point
     {
-        public int X { get; }
-        public int Y { get; }
+        public double X { get; }
+        public double Y { get; }
 
         /// <summary>
         /// Constructor of Point.
         /// </summary>
         /// <param name="x"></param>
         /// <param name="y"></param>
-        public Point(int x, int y)
+        public Point(double x, double y)
         {
             X = x;
             Y = y;

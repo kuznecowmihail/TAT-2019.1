@@ -3,7 +3,7 @@
 namespace Task_CLASSWORK_3
 {
     /// <summary>
-    /// The main class of programm creates triangle with three points.
+    /// The main class of programm creates triangles by three points.
     /// </summary>
     class EntryPoint
     {
@@ -17,18 +17,26 @@ namespace Task_CLASSWORK_3
         {
             try
             {
-                Triangle triangle = 
-                    new EquilateralTriangleBuilder(new RightTriangleBuilder(new RegularTriangleBuilder(null))).Build(new Point(5, 5), new Point(5, 10), new Point(10, 5));
-
-                if (triangle == null)
+                Triangle[] triangles = new Triangle[]
                 {
-                    throw new Exception("The points build other figure.");
-                }
-                else
-                {
-                    Console.WriteLine($"{triangle.GetType().Name} square is {triangle.GetSquare()}");
-                }
+                    new EquilateralTriangleBuilder(new RightTriangleBuilder(new RegularTriangleBuilder(null))).Build(new Point(0, 0), new Point(5, 0), new Point(2.5, 5 * Math.Sqrt(3) / 2)),
+                    new EquilateralTriangleBuilder(new RightTriangleBuilder(new RegularTriangleBuilder(null))).Build(new Point(5, 5), new Point(5, 10), new Point(10, 5)),
+                    new EquilateralTriangleBuilder(new RightTriangleBuilder(new RegularTriangleBuilder(null))).Build(new Point(11, 5), new Point(7, 10), new Point(7, 15)),
+                    new EquilateralTriangleBuilder(new RightTriangleBuilder(new RegularTriangleBuilder(null))).Build(new Point(5, 5), new Point(5, 10), new Point(5, 15))
+                };
 
+                foreach(var i in triangles)
+                {
+                    if (i == null)
+                    {
+                        throw new Exception("The points build other figure.");
+                    }
+                    else
+                    {
+                        Console.WriteLine($"{i.GetType().Name} square is {i.GetSquare()}");
+                    }
+                }
+                
                 return 0;
             }
             catch(Exception e)
