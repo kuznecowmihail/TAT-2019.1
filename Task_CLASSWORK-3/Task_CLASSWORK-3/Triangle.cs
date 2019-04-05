@@ -38,8 +38,11 @@ namespace Task_CLASSWORK_3
         virtual public double GetSquare()
         {
             // Theorem of cosinus.
-            double sinus = Math.Sqrt(1 - (Math.Pow(ThreeLine, 2) - Math.Pow(OneLine, 2) - Math.Pow(TwoLine, 2))/(2 * OneLine * TwoLine));
+            // c^2 = a^2 + b^2 - 2ab*cos(a^b).
+            // sin(a^b) = (1 - cos(a^b))^0.5.
+            double sinus = Math.Sqrt(1 - Math.Pow((Math.Pow(ThreeLine, 2) - Math.Pow(OneLine, 2) - Math.Pow(TwoLine, 2))/(2 * OneLine * TwoLine), 2));
 
+            // Square = 0.5 * a * b * sin(a^b).
             return (0.5 * OneLine * TwoLine * sinus);
         }
     }

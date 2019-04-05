@@ -26,6 +26,7 @@ namespace Task_CLASSWORK_3
             Array.Sort(lines);
             double square = 0.5;
 
+            // Square = 0.5 * roll1 * roll2.
             for(int i = 0; i < lines.Length - 1; i++)
             {
                 square *= lines[i];
