@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace Task_CLASSWORK_3
 {
@@ -17,7 +18,7 @@ namespace Task_CLASSWORK_3
         {
             try
             {
-                Triangle[] triangles = new Triangle[]
+                List<Triangle> triangles = new List<Triangle>
                 {
                     new EquilateralTriangleBuilder(new RightTriangleBuilder(new RegularTriangleBuilder(null))).Build(new Point(0, 0), new Point(5, 0), new Point(2.5, 5 * Math.Sqrt(3) / 2)),
                     new EquilateralTriangleBuilder(new RightTriangleBuilder(new RegularTriangleBuilder(null))).Build(new Point(5, 5), new Point(5, 10), new Point(10, 5)),
@@ -27,13 +28,13 @@ namespace Task_CLASSWORK_3
 
                 foreach(var i in triangles)
                 {
-                    if (i == null)
+                    if (i != null)
                     {
-                        throw new Exception("The points build other figure.");
+                        Console.WriteLine($"{i?.GetType().Name} square is {i?.GetSquare()}");
                     }
                     else
                     {
-                        Console.WriteLine($"{i.GetType().Name} square is {i.GetSquare()}");
+                        Console.WriteLine("The points build other figure.");
                     }
                 }
                 
