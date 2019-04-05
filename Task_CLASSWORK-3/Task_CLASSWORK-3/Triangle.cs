@@ -13,7 +13,7 @@ namespace Task_CLASSWORK_3
         protected double OneLine { get; }
         protected double TwoLine { get; }
         protected double ThreeLine { get; }
-        protected const double e = 0.01;
+        protected const double exp = 0.01;
 
         /// <summary>
         /// Constructor of Triangle

@@ -9,7 +9,7 @@
         protected double TwoLine { get; set; }
         protected double ThreeLine { get; set; }
         public TriangleBuilder Successor { get; }
-        protected const double e = 0.01;
+        protected const double exp = 0.01;
 
         /// <summary>
         /// Constructor of TriangleBuilder.

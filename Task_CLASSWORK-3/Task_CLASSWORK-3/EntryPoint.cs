@@ -17,10 +17,8 @@ namespace Task_CLASSWORK_3
         {
             try
             {
-                Point one = new Point(5, 5);
-                Point two = new Point(5, 10);
-                Point three = new Point(10, 5);
-                Triangle triangle = new EquilateralTriangleBuilder(new RightTriangleBuilder(new RegularTriangleBuilder(null))).Build(one, two, three);
+                Triangle triangle = 
+                    new EquilateralTriangleBuilder(new RightTriangleBuilder(new RegularTriangleBuilder(null))).Build(new Point(5, 5), new Point(5, 10), new Point(10, 5));
 
                 if (triangle == null)
                 {

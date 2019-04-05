@@ -39,6 +39,6 @@ namespace Task_CLASSWORK_3
         /// Method defines that figure is equilateral triangle.
         /// </summary>
         /// <returns></returns>
-        public bool IsEquilateralTriangle() => (Math.Abs(OneLine - TwoLine) < e && Math.Abs(TwoLine - ThreeLine) < e);
+        public bool IsEquilateralTriangle() => (Math.Abs(OneLine - TwoLine) < exp && Math.Abs(TwoLine - ThreeLine) < exp);
     }
 }

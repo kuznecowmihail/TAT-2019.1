@@ -39,6 +39,6 @@ namespace Task_CLASSWORK_3
         /// Method defines that figure is right triangle.
         /// </summary>
         /// <returns></returns>
-        public bool IsRightTriangle() => ((Math.Abs(Math.Pow(OneLine, 2) + Math.Pow(TwoLine, 2) - Math.Pow(ThreeLine, 2)) < e || Math.Abs(Math.Pow(OneLine, 2) + Math.Pow(ThreeLine, 2) - Math.Pow(TwoLine, 2)) < e || Math.Abs(Math.Pow(TwoLine, 2) + Math.Pow(ThreeLine, 2) - Math.Pow(OneLine, 2)) < e));
+        public bool IsRightTriangle() => ((Math.Abs(Math.Pow(OneLine, 2) + Math.Pow(TwoLine, 2) - Math.Pow(ThreeLine, 2)) < exp || Math.Abs(Math.Pow(OneLine, 2) + Math.Pow(ThreeLine, 2) - Math.Pow(TwoLine, 2)) < exp || Math.Abs(Math.Pow(TwoLine, 2) + Math.Pow(ThreeLine, 2) - Math.Pow(OneLine, 2)) < exp));
     }
 }
