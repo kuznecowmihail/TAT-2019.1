@@ -46,16 +46,11 @@ namespace Task_DEV_6
                             Console.WriteLine(command[3].Calculate(request.Substring(fourthCommand.Length + 1, request.Length - fourthCommand.Length - 1)));
                             continue;
                         }
-                        PrintAvailableCommand();
+                        Console.WriteLine("Try again. Available command:");
+                        Console.WriteLine($"1){firstCommand} 2){secondCommand} 3){thirdCommand} 4){fourthCommand} <type>.");
                         continue;
                 }
             }
-        }
-        
-        public void PrintAvailableCommand()
-        {
-            Console.WriteLine("Try again. Available command:");
-            Console.WriteLine($"1){firstCommand} 2){secondCommand} 3){thirdCommand} 4){fourthCommand} <type>.");
         }
     }
 }
