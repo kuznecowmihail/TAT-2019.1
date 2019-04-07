@@ -24,9 +24,10 @@ namespace Task_DEV_6
         /// <summary>
         /// Method counts number of types.
         /// </summary>
-        /// <returns></returns>
+        /// <returns>Number of brend</returns>
         public int CountTypes()
         {
+            // Add list to save different brend.
             List<string> model = new List<string>();
             XmlElement xmlElement = XmlDocument?.DocumentElement;
 
