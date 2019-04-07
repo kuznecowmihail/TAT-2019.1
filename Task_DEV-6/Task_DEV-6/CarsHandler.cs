@@ -14,10 +14,11 @@ namespace Task_DEV_6
         /// <summary>
         /// Constructor of CarsHandler.
         /// </summary>
-        /// <param name="xmlDocument"></param>
-        public CarsHandler(XmlDocument xmlDocument)
+        /// <param name=name of XML></param>
+        public CarsHandler(string name)
         {
-            XmlDocument = xmlDocument;
+            XmlDocument = new XmlDocument();
+            XmlDocument.Load(name);
         }
 
         /// <summary>

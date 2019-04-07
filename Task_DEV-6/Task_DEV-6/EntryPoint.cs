@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Xml;
 
 namespace Task_DEV_6
 {
@@ -22,9 +21,7 @@ namespace Task_DEV_6
                 {
                     throw new Exception("There isn't name of XML.");
                 }
-                XmlDocument xmlDocument = new XmlDocument();
-                xmlDocument.Load(args[0]);
-                RequestHandler requestHandler = new RequestHandler(new CarsHandler(xmlDocument));
+                RequestHandler requestHandler = new RequestHandler(new CarsHandler(args[0]));
                 requestHandler.HandleRequest();
 
                 return 0;

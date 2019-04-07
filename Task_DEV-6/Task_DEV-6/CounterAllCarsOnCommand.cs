@@ -1,7 +1,7 @@
 ﻿namespace Task_DEV_6
 {
     /// <summary>
-    /// Child class for pattern command calls method to count all cars.
+    /// Child class for pattern command calls method to count number of all cars.
     /// </summary>
     public class CounterAllCarsOnCommand : ICommand
     {
