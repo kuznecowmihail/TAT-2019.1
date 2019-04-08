@@ -27,15 +27,14 @@ namespace Task_DEV_6
         {
             bool existence = false;
             string request = String.Empty;
-            Console.WriteLine($"Enter command! Available commands:");
-            foreach(var i in DictionaryOfCommands.Keys)
-            {
-                Console.WriteLine($"-{i}");
-            }
+            DisplayAllCommands("Enter command!");
+
             // Infinity cicle.
-            while((request = Console.ReadLine().ToLower()) != exitCommand)
+            while(true)
             {
+                request = Console.ReadLine().ToLower();
                 existence = false;
+
                 foreach (var i in DictionaryOfCommands)
                 {
                     if (i.Key == request)
@@ -56,20 +55,25 @@ namespace Task_DEV_6
                     }
                     else if (request == exitCommand)
                     {
-                        Console.WriteLine("Program complete.");
+                        Console.WriteLine("Program completed.");
                         Environment.Exit(0);
                     }
                 }
-
+                
                 // if the request isn't command - false.
                 if (existence == false)
                 {
-                    Console.WriteLine($"Try again. Available command:");
-                    foreach (var i in DictionaryOfCommands.Keys)
-                    {
-                        Console.WriteLine($"-{i}");
-                    }
+                    DisplayAllCommands("Try again!");
                 }
+            }
+        }
+
+        public void DisplayAllCommands(string line)
+        {
+            Console.WriteLine($"{line} Available command:");
+            foreach (var i in DictionaryOfCommands.Keys)
+            {
+                Console.WriteLine($"-{i}");
             }
         }
     }
