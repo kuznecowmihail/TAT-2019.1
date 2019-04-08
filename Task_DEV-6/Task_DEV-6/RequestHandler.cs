@@ -68,6 +68,10 @@ namespace Task_DEV_6
             }
         }
 
+        /// <summary>
+        /// Method display information about commands.
+        /// </summary>
+        /// <param name="line"></param>
         public void DisplayAllCommands(string line)
         {
             Console.WriteLine($"{line} Available command:");
