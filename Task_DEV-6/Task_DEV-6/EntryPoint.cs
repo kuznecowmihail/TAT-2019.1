@@ -22,13 +22,12 @@ namespace Task_DEV_6
                 {
                     throw new Exception("There isn't name of XML.");
                 }
-                CarsHandler carsHandler = new CarsHandler(args[0]);
                 Dictionary<string, ICommand> DictionaryOfCarCommands = new Dictionary<string, ICommand>
                 {
-                    ["count types"] = new CounterTypesOnCommand(carsHandler),
-                    ["count all"] = new CounterAllCarsOnCommand(carsHandler),
-                    ["average price"] = new CalculaterAveragePriceOnCommand(carsHandler),
-                    ["average price "] = new CalculaterAveragePricaTypeOnCommand(carsHandler),
+                    ["count types"] = new CounterTypesCommand(new CounterTypes(new CarsGetter(args[0]).GetCars())),
+                    ["count all"] = new CounterAllCarsCommand(new CounterAllCars(new CarsGetter(args[0]).GetCars())),
+                    ["average price"] = new CalculaterAveragePriceCommand(new CalculaterAveragePrice(new CarsGetter(args[0]).GetCars())),
+                    ["average price "] = new CalculaterAveragePriceTypeCommand(new CalculaterAveragePriceType(new CarsGetter(args[0]).GetCars())),
                 };
                 RequestHandler requestHandler = new RequestHandler();
                 requestHandler.SetCommand(DictionaryOfCarCommands);

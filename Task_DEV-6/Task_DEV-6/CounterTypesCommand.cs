@@ -3,21 +3,21 @@
     /// <summary>
     /// Child class for pattern command calls method to count number of all car types.
     /// </summary>
-    public class CounterTypesOnCommand : ICommand
+    public class CounterTypesCommand : ICommand
     {
-        CarsHandler carsHead;
+        CounterTypes counterTypes;
 
         /// <summary>
         /// Constructor of CounterTypesOnCommand.
         /// </summary>
         /// <param name="cars"></param>
-        public CounterTypesOnCommand(CarsHandler cars) => carsHead = cars;
+        public CounterTypesCommand(CounterTypes counter) => counterTypes = counter;
 
         /// <summary>
         /// Implemented method. 
         /// </summary>
         /// <param name="type"></param>
         /// <returns></returns>
-        public int Calculate(string type) => carsHead.CountTypes();
+        public int Calculate(string type) => counterTypes.CountTypes();
     }
 }

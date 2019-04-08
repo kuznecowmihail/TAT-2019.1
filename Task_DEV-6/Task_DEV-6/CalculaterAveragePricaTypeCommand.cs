@@ -3,21 +3,21 @@
     /// <summary>
     /// Child class for pattern command calls method to calculate average price of type cars.
     /// </summary>
-    public class CalculaterAveragePricaTypeOnCommand : ICommand
+    public class CalculaterAveragePriceTypeCommand : ICommand
     {
-        CarsHandler carsHead;
+        CalculaterAveragePriceType calculaterAveragePricaType;
 
         /// <summary>
         /// Constructor of CalculaterAveragePricaTypeOnCommand.
         /// </summary>
         /// <param name="cars"></param>
-        public CalculaterAveragePricaTypeOnCommand(CarsHandler cars) => carsHead = cars;
+        public CalculaterAveragePriceTypeCommand(CalculaterAveragePriceType calculater) => calculaterAveragePricaType = calculater;
 
         /// <summary>
         /// Implemented method. 
         /// </summary>
         /// <param name="type"></param>
         /// <returns></returns>
-        public int Calculate(string type) => carsHead.CalculateAveragePricaType(type);
+        public int Calculate(string type) => calculaterAveragePricaType.CalculateAveragePriceType(type);
     }
 }
