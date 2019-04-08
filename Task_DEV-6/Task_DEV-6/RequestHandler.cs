@@ -26,7 +26,7 @@ namespace Task_DEV_6
                 ["count types"] = new CounterTypesOnCommand(carsHead),
                 ["count all"] = new CounterAllCarsOnCommand(carsHead),
                 ["average price"] = new CalculaterAveragePriceOnCommand(carsHead),
-                ["average price "] = new CalculaterAveragePricaTypeOnCommand(carsHead)
+                ["average price "] = new CalculaterAveragePricaTypeOnCommand(carsHead),
             };
         }
 
@@ -37,7 +37,7 @@ namespace Task_DEV_6
         {
             bool existence = false;
             string request = String.Empty;
-            Console.WriteLine($"Enter command! Available commands: 1){firstCommand} 2){secondCommand} 3){thirdCommand} 4){fourthCommand}<type>.");
+            Console.WriteLine($"Enter command! Available commands: 1){firstCommand} 2){secondCommand} 3){thirdCommand} 4){fourthCommand}<type>, 5){exitCommand}.");
 
             // Infinity cicle.
             while((request = Console.ReadLine().ToLower()) != exitCommand)
@@ -63,9 +63,11 @@ namespace Task_DEV_6
                 // if the request isn't command - false.
                 if (existence == false)
                 {
-                    Console.WriteLine($"Try again. Available command: 1){firstCommand} 2){secondCommand} 3){thirdCommand} 4){fourthCommand}<type>.");
+                    Console.WriteLine($"Try again. Available command: 1){firstCommand} 2){secondCommand} 3){thirdCommand} 4){fourthCommand}<type>, 5){exitCommand}.");
                 }
             }
+            Console.WriteLine("Program complete.");
+            Environment.Exit(0);
         }
     }
 }

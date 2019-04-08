@@ -18,7 +18,7 @@ namespace Task_DEV_6
         public CarsHandler(string name)
         {
             XmlDocument = new XmlDocument();
-            XmlDocument.Load(name);
+            XmlDocument.Load($"../../{name}");
         }
 
         /// <summary>
