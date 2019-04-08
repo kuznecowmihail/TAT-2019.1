@@ -9,8 +9,6 @@ namespace Task_DEV_6
     class RequestHandler
     {
         Dictionary<string, ICommand> DictionaryOfCommands { get; set; }
-        // Difficult command.
-        const string difficultCommand = "average price";
         const string exitCommand = "exit";
 
         /// <summary>
@@ -40,21 +38,23 @@ namespace Task_DEV_6
                 existence = false;
                 foreach (var i in DictionaryOfCommands)
                 {
-                    if(i.Key == request)
+                    if (i.Key == request)
                     {
                         Console.WriteLine(i.Value.Calculate());
                         existence = true;
                         break;
                     }
-                    // For difficult command
-                    // If request conatains part of command, request contains fourth command and it isn't third command - go to fourth command.
-                    else if(request.Contains(i.Key) && request.Contains(difficultCommand) && i.Key != difficultCommand)
+                    // For difficult command.
+                    // If command have last ' ' symbol -> this is difficult command
+                    // For this example: "average price " is difficult command, because after it comes our parameter.
+                    // For example: "average price ford". Parameter is "ford".
+                    else if (i.Key[i.Key.Length - 1] == ' ' && request.Contains(i.Key))
                     {
                         Console.WriteLine(i.Value.Calculate(request.Substring(i.Key.Length, request.Length - i.Key.Length)));
                         existence = true;
                         break;
                     }
-                    else if(request == exitCommand)
+                    else if (request == exitCommand)
                     {
                         Console.WriteLine("Program complete.");
                         Environment.Exit(0);
