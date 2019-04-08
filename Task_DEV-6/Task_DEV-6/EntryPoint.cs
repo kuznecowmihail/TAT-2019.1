@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace Task_DEV_6
 {
@@ -21,7 +22,16 @@ namespace Task_DEV_6
                 {
                     throw new Exception("There isn't name of XML.");
                 }
-                RequestHandler requestHandler = new RequestHandler(new CarsHandler(args[0]));
+                CarsHandler carsHandler = new CarsHandler(args[0]);
+                Dictionary<string, ICommand> DictionaryOfCarCommands = new Dictionary<string, ICommand>
+                {
+                    ["count types"] = new CounterTypesOnCommand(carsHandler),
+                    ["count all"] = new CounterAllCarsOnCommand(carsHandler),
+                    ["average price"] = new CalculaterAveragePriceOnCommand(carsHandler),
+                    ["average price "] = new CalculaterAveragePricaTypeOnCommand(carsHandler),
+                };
+                RequestHandler requestHandler = new RequestHandler();
+                requestHandler.SetCommand(DictionaryOfCarCommands);
                 requestHandler.HandleRequest();
 
                 return 0;
