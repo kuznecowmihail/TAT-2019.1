@@ -31,6 +31,7 @@ namespace Task_DEV_6
         /// Method displays information if average pris is 0.
         /// </summary>
         /// <param name="price"></param>
+        /// <param name="brand"></param>
         public void DisplayInformation(int price, string brand)
         {
             if(price == 0)

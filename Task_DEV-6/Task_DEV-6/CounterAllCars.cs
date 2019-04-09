@@ -20,6 +20,6 @@ namespace Task_DEV_6
         /// Method counts number of all cars.
         /// </summary>
         /// <returns>Count of all cars</returns>
-        public int CountAllCars() => Cars.Select(t => t.Number).Sum();
+        public int CountAllCars() => Cars.Sum(t => t.Number);
     }
 }

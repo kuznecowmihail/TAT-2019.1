@@ -21,8 +21,8 @@ namespace Task_DEV_6
         /// </summary>
         /// <returns>Average price of all cars = countbrand*price*number/allnumber</returns>
         public int CalculateAveragePrice() 
-            => Cars.Select(t => t.Number).Sum() > 0 
-            ? Cars.Select(t => t.Price * t.Number).Sum() / Cars.Select(t => t.Number).Sum() 
+            => Cars.Sum(t => t.Number) > 0 
+            ? Cars.Sum(t => t.Price * t.Number) / Cars.Sum(t => t.Number) 
             : 0;
     }
 }
