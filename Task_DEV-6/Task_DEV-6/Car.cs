@@ -22,9 +22,9 @@ namespace Task_DEV_6
         public Car(string brand, string model, int number, int price)
         {
             Brand = brand != string.Empty ? brand.ToLower() : throw new Exception("Brand is empty");
-            Model = model != string.Empty ? model.ToLower() : throw new Exception("Model is empty");
-            Number = number >= 0 ? number : throw new Exception("Number is 0");
-            Price = price >= 0 ? price : throw new Exception("Price is 0");
+            Model = model;
+            Number = number;
+            Price = price;
         }
     }
 }

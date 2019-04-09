@@ -12,15 +12,15 @@ namespace Task_DEV_6
         /// <summary>
         /// Constructor of CalculaterAveragePriceType.
         /// </summary>
-        /// <param name=name of XML></param>
+        /// <param name="cars"></param>
         public CalculaterAveragePriceType(List<Car> cars) => Cars = cars;
 
         /// <summary>
         /// Method calculates average price of one of car type.
         /// </summary>
-        /// <param name="type">Model of car</param>
-        /// <returns></returns>
-        public int CalculateAveragePriceType(string type)
+        /// <param name="brand">Model of car</param>
+        /// <returns>Average price</returns>
+        public int CalculateAveragePriceType(string brand)
         {
             int allPrice = 0;
             int allNumber = 0;
@@ -28,7 +28,7 @@ namespace Task_DEV_6
 
             foreach(var i in Cars)
             {
-                if(i.Brand == type)
+                if(i.Brand == brand)
                 {
                     allPrice += i.Price * i.Number;
                     allNumber += i.Number;

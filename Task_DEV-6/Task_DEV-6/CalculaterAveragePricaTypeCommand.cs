@@ -5,19 +5,19 @@
     /// </summary>
     public class CalculaterAveragePriceTypeCommand : ICommand
     {
-        CalculaterAveragePriceType calculaterAveragePricaType;
+        CalculaterAveragePriceType CalculaterAveragePricaType { get; }
 
         /// <summary>
         /// Constructor of CalculaterAveragePricaTypeOnCommand.
         /// </summary>
         /// <param name="cars"></param>
-        public CalculaterAveragePriceTypeCommand(CalculaterAveragePriceType calculater) => calculaterAveragePricaType = calculater;
+        public CalculaterAveragePriceTypeCommand(CalculaterAveragePriceType calculater) => CalculaterAveragePricaType = calculater;
 
         /// <summary>
         /// Implemented method. 
         /// </summary>
         /// <param name="type"></param>
         /// <returns></returns>
-        public int Calculate(string type) => calculaterAveragePricaType.CalculateAveragePriceType(type);
+        public int Calculate(string type) => CalculaterAveragePricaType.CalculateAveragePriceType(type);
     }
 }

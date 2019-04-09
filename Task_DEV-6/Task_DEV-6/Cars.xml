@@ -14,7 +14,7 @@
   </car>
   <car>
     <brand>ford</brand>
-    <model>focus</model>
+    <model></model>
     <number>5</number>
     <price>5000</price>
   </car>

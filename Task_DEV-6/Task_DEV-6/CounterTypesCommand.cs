@@ -5,19 +5,19 @@
     /// </summary>
     public class CounterTypesCommand : ICommand
     {
-        CounterTypes counterTypes;
+        CounterTypes CounterTypes { get; }
 
         /// <summary>
         /// Constructor of CounterTypesOnCommand.
         /// </summary>
         /// <param name="cars"></param>
-        public CounterTypesCommand(CounterTypes counter) => counterTypes = counter;
+        public CounterTypesCommand(CounterTypes counter) => CounterTypes = counter;
 
         /// <summary>
         /// Implemented method. 
         /// </summary>
         /// <param name="type"></param>
         /// <returns></returns>
-        public int Calculate(string type) => counterTypes.CountTypes();
+        public int Calculate(string type) => CounterTypes.CountTypes();
     }
 }
