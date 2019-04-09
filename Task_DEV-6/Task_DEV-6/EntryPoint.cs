@@ -32,6 +32,7 @@ namespace Task_DEV_6
                 };
                 RequestHandler requestHandler = new RequestHandler();
                 // Add the commands to handler.
+                // In programm can set different string and different command to requesthandler.
                 requestHandler.SetCommand(DictionaryOfCarCommands);
                 requestHandler.HandleRequest();
 
@@ -39,7 +40,7 @@ namespace Task_DEV_6
             }
             catch(Exception e)
             {
-                Console.WriteLine($"Error: {e.Message}");
+                Console.WriteLine($"Error: {e.Message}.");
 
                 return 1;
             }

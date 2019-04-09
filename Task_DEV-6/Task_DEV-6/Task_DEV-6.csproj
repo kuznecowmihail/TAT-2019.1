@@ -44,7 +44,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CalculaterAveragePriceType.cs" />
-    <Compile Include="CalculaterAveragePricaTypeCommand.cs" />
+    <Compile Include="CalculaterAveragePriceTypeCommand.cs" />
     <Compile Include="CalculaterAveragePrice.cs" />
     <Compile Include="CalculaterAveragePriceCommand.cs" />
     <Compile Include="Car.cs" />

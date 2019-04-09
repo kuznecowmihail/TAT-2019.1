@@ -1,6 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Xml;
+using System.Collections.Generic;
 
 namespace Task_DEV_6
 {
@@ -28,47 +28,35 @@ namespace Task_DEV_6
         public List<Car> GetCars()
         {
             List<Car> cars = new List<Car>();
-            XmlElement xmlElement = XmlDocument?.DocumentElement;
-            string brand = string.Empty;
-            string model = string.Empty;
-            int number = 0;
-            int price = 0;
+            XmlElement xmlElement = XmlDocument.DocumentElement;
+            int count = 0;
 
             foreach(XmlNode xmlNode in xmlElement)
             {
-                foreach(XmlNode xmlChild in xmlNode.ChildNodes)
+                // Create object of car and write values to properties.
+                Car car = new Car();
+
+                foreach (XmlNode xmlChild in xmlNode.ChildNodes)
                 {
-                    if(xmlChild.Name == "brand")
+                    switch(xmlChild.Name)
                     {
-                        brand = xmlChild.InnerText;
-                        continue;
-                    }
-                    
-                    if(xmlChild.Name == "model")
-                    {
-                        model = xmlChild.InnerText;
-                        continue;
-                    }
-
-                    if(xmlChild.Name == "number")
-                    {
-                        if (!Int32.TryParse(xmlChild.InnerText, out number))
-                        {
-                            throw new Exception("Incorrect number value of the car.");
-                        }
-                        continue;
-                    }
-
-                    if(xmlChild.Name == "price")
-                    {
-                        if (!Int32.TryParse(xmlChild.InnerText, out price))
-                        {
-                            throw new Exception("Incorrect price value of the car.");
-                        }
-                        continue;
+                        case "brand":
+                            car.Brand = xmlChild.InnerText != string.Empty ? xmlChild.InnerText.ToLower() : throw new Exception("Brand of car is empty");
+                            continue;
+                        case "model":
+                            car.Model = xmlChild.InnerText != string.Empty ? xmlChild.InnerText.ToLower() : throw new Exception("Model of car is empty");
+                            continue;
+                        case "number":
+                            car.Number = Int32.TryParse(xmlChild.InnerText, out count) == true ? count : throw new Exception("Incorrect number value of the car.");
+                            continue;
+                        case "price":
+                            car.Price = Int32.TryParse(xmlChild.InnerText, out count) == true ? count : throw new Exception("Incorrect price value of the car.");
+                            continue;
+                        default:
+                            continue;
                     }
                 }
-                cars.Add(new Car(brand, model, number, price));
+                cars.Add(car);
             }
 
             return cars;
