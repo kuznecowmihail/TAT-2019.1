@@ -22,16 +22,20 @@ namespace Task_DEV_6
         /// <returns>Average price of all type cars</returns>
         public int Calculate(string type)
         {
-            DisplayInformation(CalculaterAveragePricaType.CalculateAveragePriceType(type));
+            DisplayInformation(CalculaterAveragePricaType.CalculateAveragePriceType(type), type);
 
             return CalculaterAveragePricaType.CalculateAveragePriceType(type);
         }
 
-        public void DisplayInformation(int price)
+        /// <summary>
+        /// Method displays information if average pris is 0.
+        /// </summary>
+        /// <param name="price"></param>
+        public void DisplayInformation(int price, string brand)
         {
             if(price == 0)
             {
-                Console.Write("The car don't have - ");
+                Console.Write($"XML file hasn't {brand} cars - ");
             }
         }
     }

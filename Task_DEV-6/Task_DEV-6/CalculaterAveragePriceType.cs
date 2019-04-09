@@ -22,8 +22,8 @@ namespace Task_DEV_6
         /// <param name="brand">Model of car</param>
         /// <returns>Average type price = countbrand*price*number/allnumber</returns>
         public int CalculateAveragePriceType(string brand)
-            => Cars.Where(t => t.Brand.Equals(brand)).Count() > 0 
-            ? Cars.Where(t => t.Brand.Equals(brand)).Sum(t => t.Price * t.Number)  / Cars.Where(t => t.Brand.Equals(brand)).Sum(t => t.Number)
+            => Cars.Where(t => t.Brand.Equals(brand)).Sum(t => t.Number) > 0 
+            ? Cars.Where(t => t.Brand.Equals(brand)).Sum(t => t.Price * t.Number) / Cars.Where(t => t.Brand.Equals(brand)).Sum(t => t.Number)
             : 0;
     }
 }
