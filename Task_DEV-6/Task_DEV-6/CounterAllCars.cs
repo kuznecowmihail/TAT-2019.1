@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System.Linq;
+using System.Collections.Generic;
 
 namespace Task_DEV_6
 {
@@ -19,16 +20,6 @@ namespace Task_DEV_6
         /// Method counts number of all cars.
         /// </summary>
         /// <returns>Count of all cars</returns>
-        public int CountAllCars()
-        {
-            int number = 0;
-
-            foreach(var i in Cars)
-            {
-                number += i.Number;
-            }
-
-            return number;
-        }
+        public int CountAllCars() => Cars.Select(t => t.Number).Sum();
     }
 }

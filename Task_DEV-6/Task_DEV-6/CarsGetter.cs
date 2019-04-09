@@ -27,9 +27,9 @@ namespace Task_DEV_6
         /// <returns cars></returns>
         public List<Car> GetCars()
         {
+            int count = 0;
             List<Car> cars = new List<Car>();
             XmlElement xmlElement = XmlDocument.DocumentElement;
-            int count = 0;
 
             foreach(XmlNode xmlNode in xmlElement)
             {
@@ -38,7 +38,7 @@ namespace Task_DEV_6
 
                 foreach (XmlNode xmlChild in xmlNode.ChildNodes)
                 {
-                    switch(xmlChild.Name)
+                    switch (xmlChild.Name)
                     {
                         case "brand":
                             car.Brand = xmlChild.InnerText != string.Empty ? xmlChild.InnerText.ToLower() : throw new Exception("Brand of car is empty");

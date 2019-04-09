@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System.Linq;
+using System.Collections.Generic;
 
 namespace Task_DEV_6
 {
@@ -19,20 +20,6 @@ namespace Task_DEV_6
         /// Method counts number of types.
         /// </summary>
         /// <returns>Number of brend</returns>
-        public int CountTypes()
-        {
-            // Add list to save different brend.
-            List<string> model = new List<string>();
-
-            foreach(var i in Cars)
-            {
-                if(!model.Contains(i.Brand))
-                {
-                    model.Add(i.Brand);
-                }
-            }
-
-            return model.Count;
-        }
+        public int CountTypes() => Cars.GroupBy(t => t.Brand).Count();
     }
 }

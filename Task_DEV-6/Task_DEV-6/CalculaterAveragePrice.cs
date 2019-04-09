@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System.Linq;
+using System.Collections.Generic;
 
 namespace Task_DEV_6
 {
@@ -18,19 +19,7 @@ namespace Task_DEV_6
         /// <summary>
         /// Method calculate average price of all cars.
         /// </summary>
-        /// <returns>Average price of all cars</returns>
-        public int CalculateAveragePrice()
-        {
-            int allPrice = 0;
-            int allNumber = 0;
-
-            foreach(var i in Cars)
-            {
-                allPrice += i.Price * i.Number;
-                allNumber += i.Number;
-            }
-
-            return allPrice / allNumber;
-        }
+        /// <returns>Average price of all cars = countbrand*price*number/allnumber</returns>
+        public int CalculateAveragePrice() => Cars.Select(t => t.Price * t.Number).Sum() / Cars.Select(t => t.Number).Sum();
     }
 }

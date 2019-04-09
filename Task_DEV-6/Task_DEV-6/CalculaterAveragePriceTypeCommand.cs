@@ -19,7 +19,7 @@ namespace Task_DEV_6
         /// Implemented method. 
         /// </summary>
         /// <param name="type"></param>
-        /// <returns>Average price of all cars</returns>
+        /// <returns>Average price of all type cars</returns>
         public int Calculate(string type)
         {
             DisplayInformation(CalculaterAveragePricaType.CalculateAveragePriceType(type));
