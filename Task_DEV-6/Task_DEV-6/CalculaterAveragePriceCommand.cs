@@ -10,14 +10,14 @@
         /// <summary>
         /// Constructor of CalculaterAveragePricaOnCommand.
         /// </summary>
-        /// <param name="cars"></param>
+        /// <param name="calculater"></param>
         public CalculaterAveragePriceCommand(CalculaterAveragePrice calcualater) => CalculaterAveragePrice = calcualater;
 
         /// <summary>
         /// Implemented method. 
         /// </summary>
         /// <param name="type"></param>
-        /// <returns></returns>
+        /// <returns>Average price</returns>
         public int Calculate(string type) => CalculaterAveragePrice.CalculateAveragePrice();
     }
 }

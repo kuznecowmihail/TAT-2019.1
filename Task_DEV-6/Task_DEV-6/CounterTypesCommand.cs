@@ -10,14 +10,14 @@
         /// <summary>
         /// Constructor of CounterTypesOnCommand.
         /// </summary>
-        /// <param name="cars"></param>
+        /// <param name="counter"></param>
         public CounterTypesCommand(CounterTypes counter) => CounterTypes = counter;
 
         /// <summary>
         /// Implemented method. 
         /// </summary>
         /// <param name="type"></param>
-        /// <returns></returns>
+        /// <returns>Number of brend</returns>
         public int Calculate(string type) => CounterTypes.CountTypes();
     }
 }

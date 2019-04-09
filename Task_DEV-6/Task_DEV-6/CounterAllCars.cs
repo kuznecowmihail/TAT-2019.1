@@ -12,13 +12,13 @@ namespace Task_DEV_6
         /// <summary>
         /// Constructor of CounterAllCars.
         /// </summary>
-        /// <param name=name of XML></param>
+        /// <param name="cars"></param>
         public CounterAllCars(List<Car> cars) => Cars = cars;
 
         /// <summary>
         /// Method counts number of all cars.
         /// </summary>
-        /// <returns></returns>
+        /// <returns>Count of all cars</returns>
         public int CountAllCars()
         {
             int number = 0;

@@ -21,8 +21,8 @@ namespace Task_DEV_6
         /// <param name="price"></param>
         public Car(string brand, string model, int number, int price)
         {
-            Brand = brand != string.Empty ? brand.ToLower() : throw new Exception("Brand is empty");
-            Model = model;
+            Brand = brand != string.Empty ? brand.ToLower() : throw new Exception("Brand of car is empty");
+            Model = model != string.Empty ? model.ToLower() : throw new Exception("Model of car is empty");
             Number = number;
             Price = price;
         }

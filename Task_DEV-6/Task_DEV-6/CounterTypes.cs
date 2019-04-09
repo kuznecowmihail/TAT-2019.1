@@ -12,7 +12,7 @@ namespace Task_DEV_6
         /// <summary>
         /// Constructor of CounterTypes.
         /// </summary>
-        /// <param name=name of XML></param>
+        /// <param name="cars"></param>
         public CounterTypes(List<Car> cars) => Cars = cars;
 
         /// <summary>

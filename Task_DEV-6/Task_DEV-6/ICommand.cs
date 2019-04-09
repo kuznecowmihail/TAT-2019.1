@@ -6,7 +6,7 @@
     interface ICommand
     {
         /// <summary>
-        /// Calls the method.
+        /// Calls the method for calculate.
         /// </summary>
         /// <param name="type"></param>
         /// <returns></returns>

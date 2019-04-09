@@ -14,7 +14,7 @@ namespace Task_DEV_6
         /// <summary>
         /// Constructor of CarsGetter.
         /// </summary>
-        /// <param name="name"></param>
+        /// <param name="name">Name of XML</param>
         public CarsGetter(string name)
         {
             XmlDocument = new XmlDocument();
@@ -54,7 +54,7 @@ namespace Task_DEV_6
                     {
                         if (!Int32.TryParse(xmlChild.InnerText, out number))
                         {
-                            throw new Exception("Incorrect count value");
+                            throw new Exception("Incorrect number value of the car.");
                         }
                         continue;
                     }
@@ -63,7 +63,7 @@ namespace Task_DEV_6
                     {
                         if (!Int32.TryParse(xmlChild.InnerText, out price))
                         {
-                            throw new Exception("Incorrect count value");
+                            throw new Exception("Incorrect price value of the car.");
                         }
                         continue;
                     }

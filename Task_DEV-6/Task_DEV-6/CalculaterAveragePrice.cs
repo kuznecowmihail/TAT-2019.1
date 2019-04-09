@@ -12,13 +12,13 @@ namespace Task_DEV_6
         /// <summary>
         /// Constructor of CalculaterAveragePrice.
         /// </summary>
-        /// <param name=name of XML></param>
+        /// <param name="cars"></param>
         public CalculaterAveragePrice(List<Car> cars) => Cars = cars;
 
         /// <summary>
         /// Method calculate average price of all cars.
         /// </summary>
-        /// <returns></returns>
+        /// <returns>Average price of all cars</returns>
         public int CalculateAveragePrice()
         {
             int allPrice = 0;

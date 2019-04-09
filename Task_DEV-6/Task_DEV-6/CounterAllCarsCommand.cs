@@ -10,14 +10,14 @@
         /// <summary>
         /// Constructor of CounterAllCarsonCommand.
         /// </summary>
-        /// <param name="cars"></param>
+        /// <param name="counter"></param>
         public CounterAllCarsCommand(CounterAllCars counter) => CounterAllCars = counter;
 
         /// <summary>
         /// Implemented method. 
         /// </summary>
         /// <param name="type"></param>
-        /// <returns></returns>
+        /// <returns>Count of all cars</returns>
         public int Calculate(string type) => CounterAllCars.CountAllCars();
     }
 }

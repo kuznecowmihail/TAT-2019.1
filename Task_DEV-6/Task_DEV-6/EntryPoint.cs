@@ -22,6 +22,7 @@ namespace Task_DEV_6
                 {
                     throw new Exception("There isn't name of XML.");
                 }
+                // Commands for our example.
                 Dictionary<string, ICommand> DictionaryOfCarCommands = new Dictionary<string, ICommand>
                 {
                     ["count types"] = new CounterTypesCommand(new CounterTypes(new CarsGetter(args[0]).GetCars())),
@@ -30,6 +31,7 @@ namespace Task_DEV_6
                     ["average price "] = new CalculaterAveragePriceTypeCommand(new CalculaterAveragePriceType(new CarsGetter(args[0]).GetCars())),
                 };
                 RequestHandler requestHandler = new RequestHandler();
+                // Add the commands to handler.
                 requestHandler.SetCommand(DictionaryOfCarCommands);
                 requestHandler.HandleRequest();
 
