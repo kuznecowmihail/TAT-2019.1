@@ -1,39 +1,39 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<trucks>
-  <truck>
+<autos>
+  <auto>
     <brand>Fura</brand>
     <model>B</model>
     <number>9</number>
     <price>13000</price>
-  </truck>
-  <truck>
+  </auto>
+  <auto>
     <brand>Mercedec</brand>
     <model>K</model>
     <number>2</number>
     <price>20000</price>
-  </truck>
-  <truck>
+  </auto>
+  <auto>
     <brand>Ford</brand>
     <model>R</model>
     <number>5</number>
     <price>16000</price>
-  </truck>
-  <truck>
+  </auto>
+  <auto>
     <brand>Mercedec</brand>
     <model>RX</model>
     <number>9</number>
     <price>25000</price>
-  </truck>
-  <truck>
+  </auto>
+  <auto>
     <brand>Volvo</brand>
     <model>X</model>
     <number>1</number>
     <price>15000</price>
-  </truck>
-  <truck>
+  </auto>
+  <auto>
     <brand>Toyota</brand>
     <model>L</model>
     <number>8</number>
     <price>19000</price>
-  </truck>
-</trucks>
+  </auto>
+</autos>

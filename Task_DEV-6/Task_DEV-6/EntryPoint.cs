@@ -22,21 +22,17 @@ namespace Task_DEV_6
                 {
                     throw new Exception("Program hasn't names of XML files.");
                 }
-                AutoGetter carsGetter = new AutoGetter(args[0]);
-                AutoGetter trucksGetter = new AutoGetter(args[1]);
-                List<Auto> cars = carsGetter.GetAuto();
-                List<Auto> trucks = trucksGetter.GetAuto();
                 // Commands for our task.
                 Dictionary<string, ICommand> DictionaryOfAutoCommands = new Dictionary<string, ICommand>
                 {
-                    ["count types car"] = new NumberAutoTypesCommand(new NumberAutoTypes(cars, carsGetter.AutoTypeGet())),
-                    ["count all car"] = new NumberAllAutosCommand(new NumberAllAutos(cars, carsGetter.AutoTypeGet())),
-                    ["average price car"] = new AverageAutoPriceCommand(new AverageAutoPrice(cars, carsGetter.AutoTypeGet())),
-                    ["average price car "] = new AverageTypePriceCommand(new AverageTypePrice(cars, carsGetter.AutoTypeGet())),
-                    ["count types truck"] = new NumberAutoTypesCommand(new NumberAutoTypes(trucks, trucksGetter.AutoTypeGet())),
-                    ["count all truck"] = new NumberAllAutosCommand(new NumberAllAutos(trucks, trucksGetter.AutoTypeGet())),
-                    ["average price truck"] = new AverageAutoPriceCommand(new AverageAutoPrice(trucks, trucksGetter.AutoTypeGet())),
-                    ["average price truck "] = new AverageTypePriceCommand(new AverageTypePrice(trucks, trucksGetter.AutoTypeGet())),
+                    ["count types car"] = new NumberAutoTypesCommand(new NumberAutoTypes(new AutoGetter(args[0]).GetAuto())),
+                    ["count all car"] = new NumberAllAutosCommand(new NumberAllAutos(new AutoGetter(args[0]).GetAuto())),
+                    ["average price car"] = new AverageAutoPriceCommand(new AverageAutoPrice(new AutoGetter(args[0]).GetAuto())),
+                    ["average price car "] = new AverageTypePriceCommand(new AverageTypePrice(new AutoGetter(args[0]).GetAuto())),
+                    ["count types truck"] = new NumberAutoTypesCommand(new NumberAutoTypes(new AutoGetter(args[1]).GetAuto())),
+                    ["count all truck"] = new NumberAllAutosCommand(new NumberAllAutos(new AutoGetter(args[1]).GetAuto())),
+                    ["average price truck"] = new AverageAutoPriceCommand(new AverageAutoPrice(new AutoGetter(args[1]).GetAuto())),
+                    ["average price truck "] = new AverageTypePriceCommand(new AverageTypePrice(new AutoGetter(args[1]).GetAuto()))
                 };
                 RequestHandler requestHandler = new RequestHandler();
                 // Add the commands to handler.

@@ -9,5 +9,20 @@
         public string Model { get; set; }
         public int Number { get; set; }
         public int Price { get; set; }
+
+        /// <summary>
+        /// Constructor of Auto.
+        /// </summary>
+        /// <param name="brand"></param>
+        /// <param name="model"></param>
+        /// <param name="number"></param>
+        /// <param name="price"></param>
+        public Auto(string brand, string model, int number, int price)
+        {
+            Brand = brand;
+            Model = model;
+            Number = number;
+            Price = price;
+        }
     }
 }

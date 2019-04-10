@@ -1,5 +1,6 @@
 ﻿using System;
-using System.Xml;
+using System.Linq;
+using System.Xml.Linq;
 using System.Collections.Generic;
 
 namespace Task_DEV_6
@@ -9,7 +10,7 @@ namespace Task_DEV_6
     /// </summary>
     class AutoGetter
     {
-        XmlDocument XmlDocument { get; }
+        XDocument XDoc { get; }
 
         /// <summary>
         /// Constructor of AutoGetter.
@@ -17,51 +18,19 @@ namespace Task_DEV_6
         /// <param name="name">Name of XML</param>
         public AutoGetter(string name)
         {
-            XmlDocument = new XmlDocument();
-            XmlDocument.Load($"../../{name}");
+            XDoc = new XDocument();
+            XDoc = XDocument.Load($"../../{name}.xml");
         }
 
         /// <summary>
         /// Method returns list of auto.
         /// </summary>
         /// <returns autos></returns>
-        public List<Auto> GetAuto()
-        {
-            int count = 0;
-            List<Auto> autos = new List<Auto>();
-            XmlElement xmlElement = XmlDocument.DocumentElement;
-
-            foreach(XmlNode xmlNode in xmlElement)
-            {
-                // Create object of auto and write values to properties.
-                Auto auto = new Auto();
-
-                foreach (XmlNode xmlChild in xmlNode.ChildNodes)
-                {
-                    switch (xmlChild.Name)
-                    {
-                        case "brand":
-                            auto.Brand = xmlChild.InnerText != string.Empty ? xmlChild.InnerText.ToLower() : throw new Exception("Brand of auto is empty");
-                            continue;
-                        case "model":
-                            auto.Model = xmlChild.InnerText != string.Empty ? xmlChild.InnerText.ToLower() : throw new Exception("Model of auto is empty");
-                            continue;
-                        case "number":
-                            auto.Number = Int32.TryParse(xmlChild.InnerText, out count) == true ? count : throw new Exception("Incorrect number value of the auto.");
-                            continue;
-                        case "price":
-                            auto.Price = Int32.TryParse(xmlChild.InnerText, out count) == true ? count : throw new Exception("Incorrect price value of the auto.");
-                            continue;
-                        default:
-                            continue;
-                    }
-                }
-                autos.Add(auto);
-            }
-
-            return autos;
-        }
-
-        public string AutoTypeGet() => XmlDocument.DocumentElement.Name;
+        public IEnumerable<Auto> GetAuto() => XDoc.Element("autos").Elements("auto").Select(t => new Auto(
+                t.Element("brand").Value != string.Empty ? t.Element("brand").Value.ToLower() : throw new Exception("Brand is Empty."),
+                t.Element("model").Value != string.Empty ? t.Element("model").Value.ToLower() : throw new Exception("Model is Empty."),
+                Int32.TryParse(t.Element("number").Value, out int number) ? number : throw new Exception("Incorrect number value of the auto."),
+                Int32.TryParse(t.Element("price").Value, out int price) ? price : throw new Exception("Incorrect price value of the auto.")
+                ));
     }
 }

@@ -3,7 +3,7 @@
     /// <summary>
     /// Interface for pattern command.
     /// </summary>
-    interface ICommand
+    public interface ICommand
     {
         /// <summary>
         /// Calls the method for display information.

@@ -9,18 +9,16 @@ namespace Task_DEV_6
     /// </summary>
     public class NumberAutoTypes
     {
-        List<Auto> Autos { get; }
-        String Type { get; }
+        IEnumerable<Auto> Autos { get; }
 
         /// <summary>
         /// Constructor of NumberAutoTypes.
         /// </summary>
         /// <param name="autos"></param>
         /// <param name="type">Type of auto</param>
-        public NumberAutoTypes(List<Auto> autos, string type)
+        public NumberAutoTypes(IEnumerable<Auto> autos)
         {
             Autos = autos;
-            Type = type;
         }
 
         /// <summary>
@@ -35,6 +33,6 @@ namespace Task_DEV_6
         public void DisplayNumberCarTypes() => Console.WriteLine(
             GetNumberAutoTypes() == 0 
             ? "The XML file hasn't autos." 
-            : $"Number of {Type} types is {GetNumberAutoTypes()}");
+            : $"Number of auto types is {GetNumberAutoTypes()}");
     }
 }

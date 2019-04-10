@@ -6,7 +6,7 @@ namespace Task_DEV_6
     /// <summary>
     /// Class handle request of users.
     /// </summary>
-    class RequestHandler
+    public class RequestHandler
     {
         Dictionary<string, ICommand> DictionaryOfCommands { get; set; }
         Dictionary<ICommand, string> CommandsForExecute { get; set; }
