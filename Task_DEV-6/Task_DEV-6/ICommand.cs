@@ -6,10 +6,10 @@
     interface ICommand
     {
         /// <summary>
-        /// Calls the method for calculate.
+        /// Calls the method for display information.
         /// </summary>
         /// <param name="type"></param>
         /// <returns></returns>
-        int Calculate(string type = "");
+        void DisplayInformation(string type = "");
     }
 }

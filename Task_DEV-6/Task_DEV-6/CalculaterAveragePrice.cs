@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using System.Collections.Generic;
 
 namespace Task_DEV_6
@@ -17,12 +18,21 @@ namespace Task_DEV_6
         public CalculaterAveragePrice(List<Car> cars) => Cars = cars;
 
         /// <summary>
-        /// Method calculate average price of all cars.
+        /// Method displays information about average price.
         /// </summary>
-        /// <returns>Average price of all cars = countbrand*price*number/allnumber</returns>
-        public int CalculateAveragePrice() 
-            => Cars.Sum(t => t.Number) > 0 
-            ? Cars.Sum(t => t.Price * t.Number) / Cars.Sum(t => t.Number) 
+        public void DisplayAveragePrice()
+        {
+            int averagePrice = Cars.Sum(t => t.Number) > 0
+            ? Cars.Sum(t => t.Price * t.Number) / Cars.Sum(t => t.Number)
             : 0;
+            if (averagePrice == 0)
+            {
+                Console.WriteLine("The XML file hasn't cars.");
+            }
+            else
+            {
+                Console.WriteLine($"The average price of all cars is {averagePrice}");
+            }
+        }
     }
 }

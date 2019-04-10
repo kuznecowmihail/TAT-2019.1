@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using System.Collections.Generic;
 
 namespace Task_DEV_6
@@ -17,9 +18,19 @@ namespace Task_DEV_6
         public CounterTypes(List<Car> cars) => Cars = cars;
 
         /// <summary>
-        /// Method counts number of types.
+        /// Method displays information about type count.
         /// </summary>
-        /// <returns>Number of brend</returns>
-        public int CountTypes() => Cars.GroupBy(t => t.Brand).Count();
+        public void DisplayCountTypes()
+        {
+            int countTypes = Cars.GroupBy(t => t.Brand).Count();
+            if (countTypes == 0)
+            {
+                Console.WriteLine("The XML file hasn't cars.");
+            }
+            else
+            {
+                Console.WriteLine($"Number of car types is {countTypes}");
+            }
+        }
     }
 }

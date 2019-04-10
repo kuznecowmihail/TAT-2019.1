@@ -20,7 +20,7 @@ namespace Task_DEV_6
             {
                 if(args.Length == 0)
                 {
-                    throw new Exception("There isn't name of XML.");
+                    throw new Exception("Program hasn't name of XML.");
                 }
                 // Commands for our example.
                 Dictionary<string, ICommand> DictionaryOfCarCommands = new Dictionary<string, ICommand>

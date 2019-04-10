@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using System.Collections.Generic;
 
 namespace Task_DEV_6
@@ -17,13 +18,22 @@ namespace Task_DEV_6
         public CalculaterAveragePriceType(List<Car> cars) => Cars = cars;
 
         /// <summary>
-        /// Method calculates average price of one of car type.
+        /// Method displays information about average car price.
         /// </summary>
-        /// <param name="brand">Model of car</param>
-        /// <returns>Average type price = countbrand*price*number/allnumber</returns>
-        public int CalculateAveragePriceType(string brand)
-            => Cars.Where(t => t.Brand.Equals(brand)).Sum(t => t.Number) > 0 
+        /// <param name="brand"></param>
+        public void DisplayAveragePriceType(string brand)
+        {
+            int averagePriceType = Cars.Where(t => t.Brand.Equals(brand)).Sum(t => t.Number) > 0
             ? Cars.Where(t => t.Brand.Equals(brand)).Sum(t => t.Price * t.Number) / Cars.Where(t => t.Brand.Equals(brand)).Sum(t => t.Number)
             : 0;
+            if (averagePriceType == 0)
+            {
+                Console.WriteLine("The XML file hasn't cars of this brand.");
+            }
+            else
+            {
+                Console.WriteLine($"The average price of {brand} is {averagePriceType}");
+            }
+        }
     }
 }

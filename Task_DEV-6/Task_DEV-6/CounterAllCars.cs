@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using System.Collections.Generic;
 
 namespace Task_DEV_6
@@ -17,9 +18,19 @@ namespace Task_DEV_6
         public CounterAllCars(List<Car> cars) => Cars = cars;
 
         /// <summary>
-        /// Method counts number of all cars.
+        /// Method displays information about count all cars.
         /// </summary>
-        /// <returns>Count of all cars</returns>
-        public int CountAllCars() => Cars.Sum(t => t.Number);
+        public void DisplayCountAllCars()
+        {
+            int countAllCars = Cars.Sum(t => t.Number);
+            if (countAllCars == 0)
+            {
+                Console.WriteLine("The XML file hasn't cars.");
+            }
+            else
+            {
+                Console.WriteLine($"Number of all cars is {countAllCars}");
+            }
+        }
     }
 }

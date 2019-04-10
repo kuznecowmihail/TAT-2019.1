@@ -18,6 +18,9 @@
         /// </summary>
         /// <param name="type"></param>
         /// <returns>Number of brend</returns>
-        public int Calculate(string type) => CounterTypes.CountTypes();
+        public void DisplayInformation(string type)
+        {
+            CounterTypes.DisplayCountTypes();
+        }
     }
 }

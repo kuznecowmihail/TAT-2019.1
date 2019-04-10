@@ -15,10 +15,7 @@ namespace Task_DEV_6
         /// Set command.
         /// </summary>
         /// <param name="dictionaryOfCommand"></param>
-        public void SetCommand(Dictionary<string, ICommand> dictionaryOfCommand)
-        {
-            DictionaryOfCommands = dictionaryOfCommand;
-        }
+        public void SetCommand(Dictionary<string, ICommand> dictionaryOfCommand) => DictionaryOfCommands = dictionaryOfCommand;
 
         /// <summary>
         /// Method handle request.
@@ -39,7 +36,7 @@ namespace Task_DEV_6
                 {
                     if (i.Key == request)
                     {
-                        Console.WriteLine(i.Value.Calculate());
+                        i.Value.DisplayInformation();
                         existence = true;
                         break;
                     }
@@ -49,7 +46,7 @@ namespace Task_DEV_6
                     // For example: "average price ford". Parameter is "ford".
                     else if (i.Key[i.Key.Length - 1] == ' ' && request.Contains(i.Key))
                     {
-                        Console.WriteLine(i.Value.Calculate(request.Substring(i.Key.Length, request.Length - i.Key.Length)));
+                        i.Value.DisplayInformation(request.Substring(i.Key.Length, request.Length - i.Key.Length));
                         existence = true;
                         break;
                     }

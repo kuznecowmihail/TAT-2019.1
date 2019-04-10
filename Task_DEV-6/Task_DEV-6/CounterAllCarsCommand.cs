@@ -18,6 +18,9 @@
         /// </summary>
         /// <param name="type"></param>
         /// <returns>Count of all cars</returns>
-        public int Calculate(string type) => CounterAllCars.CountAllCars();
+        public void DisplayInformation(string type)
+        {
+            CounterAllCars.DisplayCountAllCars();
+        }
     }
 }
