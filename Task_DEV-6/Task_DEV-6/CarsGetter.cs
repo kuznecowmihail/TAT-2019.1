@@ -25,7 +25,7 @@ namespace Task_DEV_6
         /// Method returns list of auto.
         /// </summary>
         /// <returns auto></returns>
-        public List<Auto> GetCars()
+        public List<Auto> GetAuto()
         {
             int count = 0;
             List<Auto> auto = new List<Auto>();

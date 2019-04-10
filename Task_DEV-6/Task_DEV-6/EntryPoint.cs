@@ -18,21 +18,23 @@ namespace Task_DEV_6
         {
             try
             {
-                if(args.Length == 0)
+                if(args.Length < 2)
                 {
-                    throw new Exception("Program hasn't name of XML.");
+                    throw new Exception("Program hasn't names of XML files.");
                 }
+                List<Auto> cars = new AutoGetter(args[0]).GetAuto();
+                List<Auto> trucks = new AutoGetter(args[1]).GetAuto();
                 // Commands for our task.
                 Dictionary<string, ICommand> DictionaryOfCarCommands = new Dictionary<string, ICommand>
                 {
-                    ["count types car"] = new NumberCarTypesCommand(new NumberCarTypes(new AutoGetter(args[0]).GetCars())),
-                    ["count all car"] = new NumberAllCarsCommand(new NumberAllCars(new AutoGetter(args[0]).GetCars())),
-                    ["average price car"] = new AverageCarPriceCommand(new AverageCarPrice(new AutoGetter(args[0]).GetCars())),
-                    ["average price car "] = new AverageTypePriceCommand(new AverageTypePrice(new AutoGetter(args[0]).GetCars())),
-                    ["count types truck"] = new NumberCarTypesCommand(new NumberCarTypes(new AutoGetter(args[1]).GetCars())),
-                    ["count all truck"] = new NumberAllCarsCommand(new NumberAllCars(new AutoGetter(args[1]).GetCars())),
-                    ["average price truck"] = new AverageCarPriceCommand(new AverageCarPrice(new AutoGetter(args[1]).GetCars())),
-                    ["average price truck "] = new AverageTypePriceCommand(new AverageTypePrice(new AutoGetter(args[1]).GetCars())),
+                    ["count types car"] = new NumberCarTypesCommand(new NumberCarTypes(cars)),
+                    ["count all car"] = new NumberAllCarsCommand(new NumberAllCars(cars)),
+                    ["average price car"] = new AverageCarPriceCommand(new AverageCarPrice(cars)),
+                    ["average price car "] = new AverageTypePriceCommand(new AverageTypePrice(cars)),
+                    ["count types truck"] = new NumberCarTypesCommand(new NumberCarTypes(trucks)),
+                    ["count all truck"] = new NumberAllCarsCommand(new NumberAllCars(trucks)),
+                    ["average price truck"] = new AverageCarPriceCommand(new AverageCarPrice(trucks)),
+                    ["average price truck "] = new AverageTypePriceCommand(new AverageTypePrice(trucks)),
                 };
                 RequestHandler requestHandler = new RequestHandler();
                 // Add the commands to handler.

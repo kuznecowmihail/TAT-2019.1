@@ -30,7 +30,7 @@ namespace Task_DEV_6
         /// </summary>
         public void DisplayAveragePrice() => Console.WriteLine(
             GetAveragePrice() == 0 
-            ? "The XML file hasn't cars." 
+            ? "The XML file hasn't autos." 
             : $"The average price of all cars is {GetAveragePrice()}");
     }
 }
