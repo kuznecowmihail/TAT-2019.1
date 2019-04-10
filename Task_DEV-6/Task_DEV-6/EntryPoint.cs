@@ -25,10 +25,10 @@ namespace Task_DEV_6
                 // Commands for our example.
                 Dictionary<string, ICommand> DictionaryOfCarCommands = new Dictionary<string, ICommand>
                 {
-                    ["count types"] = new CounterTypesCommand(new CounterTypes(new CarsGetter(args[0]).GetCars())),
-                    ["count all"] = new CounterAllCarsCommand(new CounterAllCars(new CarsGetter(args[0]).GetCars())),
-                    ["average price"] = new CalculaterAveragePriceCommand(new CalculaterAveragePrice(new CarsGetter(args[0]).GetCars())),
-                    ["average price "] = new CalculaterAveragePriceTypeCommand(new CalculaterAveragePriceType(new CarsGetter(args[0]).GetCars())),
+                    ["count types"] = new NumberCarTypesCommand(new NumberCarTypes(new CarsGetter(args[0]).GetCars())),
+                    ["count all"] = new NumberAllCarsCommand(new NumberAllCars(new CarsGetter(args[0]).GetCars())),
+                    ["average price"] = new AverageCarPriceCommand(new AverageCarPrice(new CarsGetter(args[0]).GetCars())),
+                    ["average price "] = new AveragePriceTypeCommand(new AveragePriceType(new CarsGetter(args[0]).GetCars())),
                 };
                 RequestHandler requestHandler = new RequestHandler();
                 // Add the commands to handler.

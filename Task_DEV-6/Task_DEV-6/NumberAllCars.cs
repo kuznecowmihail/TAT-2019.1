@@ -1,0 +1,34 @@
+﻿using System;
+using System.Linq;
+using System.Collections.Generic;
+
+namespace Task_DEV_6
+{
+    /// <summary>
+    /// Class calculate count of all car.
+    /// </summary>
+    public class NumberAllCars
+    {
+        List<Car> Cars { get; }
+
+        /// <summary>
+        /// Constructor of NumberAllCars.
+        /// </summary>
+        /// <param name="cars"></param>
+        public NumberAllCars(List<Car> cars) => Cars = cars;
+
+        /// <summary>
+        /// Method returns number of all cars.
+        /// </summary>
+        /// <returns>number of all cars</returns>
+        public int GetNumberAllCars() => Cars.Sum(t => t.Number);
+
+        /// <summary>
+        /// Method displays information about count all cars.
+        /// </summary>
+        public void DisplayNumberAllCars() => Console.WriteLine(
+            GetNumberAllCars() == 0 
+            ? "The XML file hasn't cars." 
+            : $"Number of all cars is {GetNumberAllCars()}");
+    }
+}

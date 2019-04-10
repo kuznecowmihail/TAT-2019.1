@@ -1,0 +1,34 @@
+﻿using System;
+using System.Linq;
+using System.Collections.Generic;
+
+namespace Task_DEV_6
+{
+    /// <summary>
+    /// Class calculate count of type.
+    /// </summary>
+    public class NumberCarTypes
+    {
+        List<Car> Cars { get; }
+
+        /// <summary>
+        /// Constructor of NumberCarTypes.
+        /// </summary>
+        /// <param name="cars"></param>
+        public NumberCarTypes(List<Car> cars) => Cars = cars;
+
+        /// <summary>
+        /// Method returns number of car types.
+        /// </summary>
+        /// <returns>number of car types</returns>
+        public int GetNumberCarTypes() => Cars.GroupBy(t => t.Brand).Count();
+
+        /// <summary>
+        /// Method displays information about type count.
+        /// </summary>
+        public void DisplayNumberCarTypes() => Console.WriteLine(
+            GetNumberCarTypes() == 0 
+            ? "The XML file hasn't cars." 
+            : $"Number of car types is {GetNumberCarTypes()}");
+    }
+}

@@ -43,15 +43,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CalculaterAveragePriceType.cs" />
-    <Compile Include="CalculaterAveragePriceTypeCommand.cs" />
-    <Compile Include="CalculaterAveragePrice.cs" />
-    <Compile Include="CalculaterAveragePriceCommand.cs" />
+    <Compile Include="AveragePriceType.cs" />
+    <Compile Include="AveragePriceTypeCommand.cs" />
+    <Compile Include="AverageCarsPrice.cs" />
+    <Compile Include="AverageCarsPriceCommand.cs" />
     <Compile Include="Car.cs" />
-    <Compile Include="CounterAllCars.cs" />
-    <Compile Include="CounterAllCarsCommand.cs" />
-    <Compile Include="CounterTypes.cs" />
-    <Compile Include="CounterTypesCommand.cs" />
+    <Compile Include="NumberAllCars.cs" />
+    <Compile Include="NumberAllCarsCommand.cs" />
+    <Compile Include="NumberCarTypes.cs" />
+    <Compile Include="NumberCarTypesCommand.cs" />
     <Compile Include="CarsGetter.cs" />
     <Compile Include="ICommand.cs" />
     <Compile Include="RequestHandler.cs" />
