@@ -5,9 +5,11 @@
     /// </summary>
     public class SpaceShip : FlyingObject
     {
+        const double StartPoint = 28.8E+6;
+
         /// <summary>
         /// Constructor of SpaceShip.
         /// </summary>
-        public SpaceShip() : base(28.8E+6) { }
+        public SpaceShip() : base(StartPoint) { }
     }
 }

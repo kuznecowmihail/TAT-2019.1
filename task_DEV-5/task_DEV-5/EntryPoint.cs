@@ -28,6 +28,7 @@ namespace task_DEV_5
                     i.ObjectIsNotFlying += log.DisplayInformationAboutFailedFlight;
                     i.FlyTo(targetPoint);
                 }
+                // For check.
                 flyingObjects[0].FlyTo(targetPoint);
                 flyingObjects[1].FlyTo(new Point(50, 1500, 300));
                 flyingObjects[2].FlyTo(new Point(6000, 150000, 80000));
