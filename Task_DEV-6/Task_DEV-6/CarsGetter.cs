@@ -7,34 +7,34 @@ namespace Task_DEV_6
     /// <summary>
     /// Class reed xml and return list.
     /// </summary>
-    class CarsGetter
+    class AutoGetter
     {
         XmlDocument XmlDocument { get; }
 
         /// <summary>
-        /// Constructor of CarsGetter.
+        /// Constructor of AutoGetter.
         /// </summary>
         /// <param name="name">Name of XML</param>
-        public CarsGetter(string name)
+        public AutoGetter(string name)
         {
             XmlDocument = new XmlDocument();
             XmlDocument.Load($"../../{name}");
         }
 
         /// <summary>
-        /// Method returns list of cars.
+        /// Method returns list of auto.
         /// </summary>
-        /// <returns cars></returns>
-        public List<Car> GetCars()
+        /// <returns auto></returns>
+        public List<Auto> GetCars()
         {
             int count = 0;
-            List<Car> cars = new List<Car>();
+            List<Auto> auto = new List<Auto>();
             XmlElement xmlElement = XmlDocument.DocumentElement;
 
             foreach(XmlNode xmlNode in xmlElement)
             {
                 // Create object of car and write values to properties.
-                Car car = new Car();
+                Auto car = new Auto();
 
                 foreach (XmlNode xmlChild in xmlNode.ChildNodes)
                 {
@@ -56,10 +56,10 @@ namespace Task_DEV_6
                             continue;
                     }
                 }
-                cars.Add(car);
+                auto.Add(car);
             }
 
-            return cars;
+            return auto;
         }
     }
 }

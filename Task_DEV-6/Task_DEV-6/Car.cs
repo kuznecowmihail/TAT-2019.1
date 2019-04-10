@@ -3,7 +3,7 @@
     /// <summary>
     /// Class have properties of car.
     /// </summary>
-    public class Car
+    public class Auto
     {
         public string Brand { get; set; }
         public string Model { get; set; }

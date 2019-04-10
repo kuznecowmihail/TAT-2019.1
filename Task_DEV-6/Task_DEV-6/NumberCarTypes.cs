@@ -9,13 +9,13 @@ namespace Task_DEV_6
     /// </summary>
     public class NumberCarTypes
     {
-        List<Car> Cars { get; }
+        List<Auto> Cars { get; }
 
         /// <summary>
         /// Constructor of NumberCarTypes.
         /// </summary>
         /// <param name="cars"></param>
-        public NumberCarTypes(List<Car> cars) => Cars = cars;
+        public NumberCarTypes(List<Auto> cars) => Cars = cars;
 
         /// <summary>
         /// Method returns number of car types.

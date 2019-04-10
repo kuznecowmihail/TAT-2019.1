@@ -9,13 +9,13 @@ namespace Task_DEV_6
     /// </summary>
     public class AverageCarPrice
     {
-        List<Car> Cars { get; }
+        List<Auto> Cars { get; }
 
         /// <summary>
         /// Constructor of AverageCarPrice.
         /// </summary>
         /// <param name="cars"></param>
-        public AverageCarPrice(List<Car> cars) => Cars = cars;
+        public AverageCarPrice(List<Auto> cars) => Cars = cars;
 
         /// <summary>
         /// Method returns average price.

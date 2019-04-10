@@ -25,10 +25,14 @@ namespace Task_DEV_6
                 // Commands for our task.
                 Dictionary<string, ICommand> DictionaryOfCarCommands = new Dictionary<string, ICommand>
                 {
-                    ["count types"] = new NumberCarTypesCommand(new NumberCarTypes(new CarsGetter(args[0]).GetCars())),
-                    ["count all"] = new NumberAllCarsCommand(new NumberAllCars(new CarsGetter(args[0]).GetCars())),
-                    ["average price"] = new AverageCarPriceCommand(new AverageCarPrice(new CarsGetter(args[0]).GetCars())),
-                    ["average price "] = new AverageTypePriceCommand(new AverageTypePrice(new CarsGetter(args[0]).GetCars())),
+                    ["count types car"] = new NumberCarTypesCommand(new NumberCarTypes(new AutoGetter(args[0]).GetCars())),
+                    ["count all car"] = new NumberAllCarsCommand(new NumberAllCars(new AutoGetter(args[0]).GetCars())),
+                    ["average price car"] = new AverageCarPriceCommand(new AverageCarPrice(new AutoGetter(args[0]).GetCars())),
+                    ["average price car "] = new AverageTypePriceCommand(new AverageTypePrice(new AutoGetter(args[0]).GetCars())),
+                    ["count types truck"] = new NumberCarTypesCommand(new NumberCarTypes(new AutoGetter(args[1]).GetCars())),
+                    ["count all truck"] = new NumberAllCarsCommand(new NumberAllCars(new AutoGetter(args[1]).GetCars())),
+                    ["average price truck"] = new AverageCarPriceCommand(new AverageCarPrice(new AutoGetter(args[1]).GetCars())),
+                    ["average price truck "] = new AverageTypePriceCommand(new AverageTypePrice(new AutoGetter(args[1]).GetCars())),
                 };
                 RequestHandler requestHandler = new RequestHandler();
                 // Add the commands to handler.

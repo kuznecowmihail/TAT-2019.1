@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<trucks>
+  <truck>
+    <brand>Fura</brand>
+    <model>B</model>
+    <number>9</number>
+    <price>13000</price>
+  </truck>
+  <truck>
+    <brand>Mercedec</brand>
+    <model>K</model>
+    <number>2</number>
+    <price>20000</price>
+  </truck>
+  <truck>
+    <brand>Ford</brand>
+    <model>R</model>
+    <number>5</number>
+    <price>16000</price>
+  </truck>
+  <truck>
+    <brand>Mercedec</brand>
+    <model>RX</model>
+    <number>9</number>
+    <price>25000</price>
+  </truck>
+</trucks>
