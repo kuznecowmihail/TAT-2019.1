@@ -62,10 +62,11 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Cars.xml">
-      <SubType>Designer</SubType>
-    </Content>
+    <Content Include="Cars.xml" />
     <Content Include="Trucks.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

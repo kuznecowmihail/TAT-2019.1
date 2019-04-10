@@ -10,12 +10,18 @@ namespace Task_DEV_6
     public class AverageAutoPrice
     {
         List<Auto> Autos { get; }
+        string Type { get; }
 
         /// <summary>
         /// Constructor of AverageAutoPrice.
         /// </summary>
         /// <param name="autos"></param>
-        public AverageAutoPrice(List<Auto> autos) => Autos = autos;
+        /// <param name="type">Type of auto</param>
+        public AverageAutoPrice(List<Auto> autos, string type)
+        {
+            Autos = autos;
+            Type = type;
+        }
 
         /// <summary>
         /// Method returns average price.
@@ -31,6 +37,6 @@ namespace Task_DEV_6
         public void DisplayAveragePrice() => Console.WriteLine(
             GetAveragePrice() == 0 
             ? "The XML file hasn't autos." 
-            : $"The average price of all {Autos[0].Type} is {GetAveragePrice()}");
+            : $"The average price of all {Type} is {GetAveragePrice()}");
     }
 }

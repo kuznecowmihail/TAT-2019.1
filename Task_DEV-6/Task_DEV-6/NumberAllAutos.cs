@@ -10,12 +10,18 @@ namespace Task_DEV_6
     public class NumberAllAutos
     {
         List<Auto> Autos { get; }
+        String Type { get; }
 
         /// <summary>
         /// Constructor of NumberAllAutos.
         /// </summary>
         /// <param name="autos"></param>
-        public NumberAllAutos(List<Auto> autos) => Autos = autos;
+        /// <param name="type">Type of auto</param>
+        public NumberAllAutos(List<Auto> autos, string type)
+        {
+            Autos = autos;
+            Type = type;
+        }
 
         /// <summary>
         /// Method returns number of all autos.
@@ -29,6 +35,6 @@ namespace Task_DEV_6
         public void DisplayNumberAllCars() => Console.WriteLine(
             GetNumberAllAutos() == 0 
             ? "The XML file hasn't autos." 
-            : $"Number of all {Autos[0].Type} is {GetNumberAllAutos()}");
+            : $"Number of all {Type} is {GetNumberAllAutos()}");
     }
 }
