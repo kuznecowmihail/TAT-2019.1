@@ -31,6 +31,6 @@ namespace Task_DEV_6
         public void DisplayAveragePrice() => Console.WriteLine(
             GetAveragePrice() == 0 
             ? "The XML file hasn't autos." 
-            : $"The average price of all autos is {GetAveragePrice()}");
+            : $"The average price of all {Autos[0].Type} is {GetAveragePrice()}");
     }
 }

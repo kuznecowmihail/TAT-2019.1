@@ -9,8 +9,11 @@ namespace Task_DEV_6
     class RequestHandler
     {
         Dictionary<string, ICommand> DictionaryOfCommands { get; set; }
+        Dictionary<ICommand, string> CommandsForExecute { get; set; }
+        const string executeCommand = "execute";
         const string exitCommand = "exit";
 
+        public RequestHandler() => CommandsForExecute = new Dictionary<ICommand, string>();
         /// <summary>
         /// Set command.
         /// </summary>
@@ -36,7 +39,7 @@ namespace Task_DEV_6
                 {
                     if (i.Key == request)
                     {
-                        i.Value.DisplayInformation();
+                        CommandsForExecute.Add(i.Value, String.Empty);
                         existence = true;
                         break;
                     }
@@ -46,8 +49,18 @@ namespace Task_DEV_6
                     // For example: "average price ford". Parameter is "ford".
                     else if (i.Key[i.Key.Length - 1] == ' ' && request.Contains(i.Key))
                     {
-                        i.Value.DisplayInformation(request.Substring(i.Key.Length, request.Length - i.Key.Length));
+                        CommandsForExecute.Add(i.Value, request.Substring(i.Key.Length, request.Length - i.Key.Length));
                         existence = true;
+                        break;
+                    }
+                    else if(request == executeCommand)
+                    {
+                        foreach(var k in CommandsForExecute)
+                        {
+                            k.Key.DisplayInformation(k.Value);
+                        }
+                        existence = true;
+                        CommandsForExecute = new Dictionary<ICommand, string>();
                         break;
                     }
                     else if (request == exitCommand)

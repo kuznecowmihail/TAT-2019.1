@@ -8,8 +8,7 @@
         /// <summary>
         /// Calls the method for display information.
         /// </summary>
-        /// <param name="type"></param>
-        /// <returns></returns>
-        void DisplayInformation(string type = "");
+        /// <param name="type">ppart of request for parameter if this need</param>
+        void DisplayInformation(string type);
     }
 }

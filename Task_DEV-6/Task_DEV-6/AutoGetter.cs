@@ -35,6 +35,7 @@ namespace Task_DEV_6
             {
                 // Create object of auto and write values to properties.
                 Auto auto = new Auto();
+                auto.Type = xmlElement.Name;
 
                 foreach (XmlNode xmlChild in xmlNode.ChildNodes)
                 {

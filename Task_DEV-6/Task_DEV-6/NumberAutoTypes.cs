@@ -29,6 +29,6 @@ namespace Task_DEV_6
         public void DisplayNumberCarTypes() => Console.WriteLine(
             GetNumberAutoTypes() == 0 
             ? "The XML file hasn't autos." 
-            : $"Number of auto types is {GetNumberAutoTypes()}");
+            : $"Number of {Autos[0].Type} types is {GetNumberAutoTypes()}");
     }
 }

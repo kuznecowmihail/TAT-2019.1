@@ -33,6 +33,6 @@ namespace Task_DEV_6
         public void DisplayAveragePriceType(string brand) => Console.WriteLine(
             GetAveragePriceType(brand) == 0 
             ? "The XML file hasn't autos of this brand." 
-            : $"The average price of {brand} is {GetAveragePriceType(brand)}");
+            : $"The average price of {brand} {Autos[0].Type} is {GetAveragePriceType(brand)}");
     }
 }
