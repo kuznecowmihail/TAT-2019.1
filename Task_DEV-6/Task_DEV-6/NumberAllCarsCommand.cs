@@ -10,7 +10,7 @@
         /// <summary>
         /// Constructor of NumberAllCars.
         /// </summary>
-        /// <param name="counter"></param>
+        /// <param name="numberAllCars"></param>
         public NumberAllCarsCommand(NumberAllCars numberAllCars) => NumberAllCars = numberAllCars;
 
         /// <summary>

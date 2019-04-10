@@ -5,17 +5,17 @@ using System.Collections.Generic;
 namespace Task_DEV_6
 {
     /// <summary>
-    /// Class calculate average price of type.
+    /// Class calculates and displays average type price .
     /// </summary>
-    public class AveragePriceType
+    public class AverageTypePrice
     {
         List<Car> Cars { get; }
 
         /// <summary>
-        /// Constructor of AveragePriceType.
+        /// Constructor of AverageTypePrice.
         /// </summary>
         /// <param name="cars"></param>
-        public AveragePriceType(List<Car> cars) => Cars = cars;
+        public AverageTypePrice(List<Car> cars) => Cars = cars;
 
         /// <summary>
         /// Method returns average price type.

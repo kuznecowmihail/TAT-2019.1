@@ -22,13 +22,13 @@ namespace Task_DEV_6
                 {
                     throw new Exception("Program hasn't name of XML.");
                 }
-                // Commands for our example.
+                // Commands for our task.
                 Dictionary<string, ICommand> DictionaryOfCarCommands = new Dictionary<string, ICommand>
                 {
                     ["count types"] = new NumberCarTypesCommand(new NumberCarTypes(new CarsGetter(args[0]).GetCars())),
                     ["count all"] = new NumberAllCarsCommand(new NumberAllCars(new CarsGetter(args[0]).GetCars())),
                     ["average price"] = new AverageCarPriceCommand(new AverageCarPrice(new CarsGetter(args[0]).GetCars())),
-                    ["average price "] = new AveragePriceTypeCommand(new AveragePriceType(new CarsGetter(args[0]).GetCars())),
+                    ["average price "] = new AverageTypePriceCommand(new AverageTypePrice(new CarsGetter(args[0]).GetCars())),
                 };
                 RequestHandler requestHandler = new RequestHandler();
                 // Add the commands to handler.

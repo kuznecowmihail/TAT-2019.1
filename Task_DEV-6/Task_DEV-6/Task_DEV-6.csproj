@@ -43,10 +43,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AveragePriceType.cs" />
-    <Compile Include="AveragePriceTypeCommand.cs" />
-    <Compile Include="AverageCarsPrice.cs" />
-    <Compile Include="AverageCarsPriceCommand.cs" />
+    <Compile Include="AverageTypePrice.cs" />
+    <Compile Include="AverageTypePriceCommand.cs" />
+    <Compile Include="AverageCarPrice.cs" />
+    <Compile Include="AverageCarPriceCommand.cs" />
     <Compile Include="Car.cs" />
     <Compile Include="NumberAllCars.cs" />
     <Compile Include="NumberAllCarsCommand.cs" />

@@ -5,7 +5,7 @@ using System.Collections.Generic;
 namespace Task_DEV_6
 {
     /// <summary>
-    /// Class calculate count of all car.
+    /// Class calculates and displays count of all car.
     /// </summary>
     public class NumberAllCars
     {
@@ -24,7 +24,7 @@ namespace Task_DEV_6
         public int GetNumberAllCars() => Cars.Sum(t => t.Number);
 
         /// <summary>
-        /// Method displays information about count all cars.
+        /// Method displays information about number of all cars.
         /// </summary>
         public void DisplayNumberAllCars() => Console.WriteLine(
             GetNumberAllCars() == 0 

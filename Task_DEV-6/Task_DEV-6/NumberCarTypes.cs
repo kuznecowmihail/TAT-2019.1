@@ -5,7 +5,7 @@ using System.Collections.Generic;
 namespace Task_DEV_6
 {
     /// <summary>
-    /// Class calculate count of type.
+    /// Class calculates and displays count of type.
     /// </summary>
     public class NumberCarTypes
     {
@@ -24,7 +24,7 @@ namespace Task_DEV_6
         public int GetNumberCarTypes() => Cars.GroupBy(t => t.Brand).Count();
 
         /// <summary>
-        /// Method displays information about type count.
+        /// Method displays information about number of car types.
         /// </summary>
         public void DisplayNumberCarTypes() => Console.WriteLine(
             GetNumberCarTypes() == 0 

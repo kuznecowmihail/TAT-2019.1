@@ -5,14 +5,14 @@ using System.Collections.Generic;
 namespace Task_DEV_6
 {
     /// <summary>
-    /// Class calculate average price.
+    /// Class calculates and displays average price.
     /// </summary>
     public class AverageCarPrice
     {
         List<Car> Cars { get; }
 
         /// <summary>
-        /// Constructor of AverageCarsPrice.
+        /// Constructor of AverageCarPrice.
         /// </summary>
         /// <param name="cars"></param>
         public AverageCarPrice(List<Car> cars) => Cars = cars;
