@@ -1,7 +1,7 @@
 ﻿namespace Task_DEV_6
 {
     /// <summary>
-    /// Class have properties of car.
+    /// Class have properties of auto.
     /// </summary>
     public class Auto
     {

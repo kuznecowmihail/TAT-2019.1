@@ -24,4 +24,16 @@
     <number>9</number>
     <price>25000</price>
   </truck>
+  <truck>
+    <brand>Volvo</brand>
+    <model>X</model>
+    <number>1</number>
+    <price>15000</price>
+  </truck>
+  <truck>
+    <brand>Toyota</brand>
+    <model>L</model>
+    <number>8</number>
+    <price>19000</price>
+  </truck>
 </trucks>

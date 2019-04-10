@@ -45,14 +45,14 @@
   <ItemGroup>
     <Compile Include="AverageTypePrice.cs" />
     <Compile Include="AverageTypePriceCommand.cs" />
-    <Compile Include="AverageCarPrice.cs" />
-    <Compile Include="AverageCarPriceCommand.cs" />
-    <Compile Include="Car.cs" />
-    <Compile Include="NumberAllCars.cs" />
-    <Compile Include="NumberAllCarsCommand.cs" />
-    <Compile Include="NumberCarTypes.cs" />
-    <Compile Include="NumberCarTypesCommand.cs" />
-    <Compile Include="CarsGetter.cs" />
+    <Compile Include="AverageAutoPrice.cs" />
+    <Compile Include="AverageAutoPriceCommand.cs" />
+    <Compile Include="Auto.cs" />
+    <Compile Include="NumberAllAutos.cs" />
+    <Compile Include="NumberAllAutosCommand.cs" />
+    <Compile Include="NumberAutoTypes.cs" />
+    <Compile Include="NumberAutoTypesCommand.cs" />
+    <Compile Include="AutoGetter.cs" />
     <Compile Include="ICommand.cs" />
     <Compile Include="RequestHandler.cs" />
     <Compile Include="EntryPoint.cs" />

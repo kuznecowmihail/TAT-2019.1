@@ -27,13 +27,13 @@ namespace Task_DEV_6
                 // Commands for our task.
                 Dictionary<string, ICommand> DictionaryOfCarCommands = new Dictionary<string, ICommand>
                 {
-                    ["count types car"] = new NumberCarTypesCommand(new NumberCarTypes(cars)),
-                    ["count all car"] = new NumberAllCarsCommand(new NumberAllCars(cars)),
-                    ["average price car"] = new AverageCarPriceCommand(new AverageCarPrice(cars)),
+                    ["count types car"] = new NumberAutoTypesCommand(new NumberAutoTypes(cars)),
+                    ["count all car"] = new NumberAllAutosCommand(new NumberAllAutos(cars)),
+                    ["average price car"] = new AverageAutoPriceCommand(new AverageAutoPrice(cars)),
                     ["average price car "] = new AverageTypePriceCommand(new AverageTypePrice(cars)),
-                    ["count types truck"] = new NumberCarTypesCommand(new NumberCarTypes(trucks)),
-                    ["count all truck"] = new NumberAllCarsCommand(new NumberAllCars(trucks)),
-                    ["average price truck"] = new AverageCarPriceCommand(new AverageCarPrice(trucks)),
+                    ["count types truck"] = new NumberAutoTypesCommand(new NumberAutoTypes(trucks)),
+                    ["count all truck"] = new NumberAllAutosCommand(new NumberAllAutos(trucks)),
+                    ["average price truck"] = new AverageAutoPriceCommand(new AverageAutoPrice(trucks)),
                     ["average price truck "] = new AverageTypePriceCommand(new AverageTypePrice(trucks)),
                 };
                 RequestHandler requestHandler = new RequestHandler();
