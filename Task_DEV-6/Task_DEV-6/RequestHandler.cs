@@ -111,6 +111,7 @@ namespace Task_DEV_6
             {
                 Console.WriteLine($"-{i}");
             }
+            Console.WriteLine($"-{executeCommand}\n-{exitCommand}");
         }
     }
 }
