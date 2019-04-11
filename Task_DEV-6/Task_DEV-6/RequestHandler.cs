@@ -32,6 +32,12 @@ namespace Task_DEV_6
                 request = Console.ReadLine().ToLower();
                 existence = false;
 
+                if (request == exitCommand)
+                {
+                    Console.WriteLine("Program completed.");
+                    Environment.Exit(0);
+                }
+
                 foreach (var i in DictionaryOfCommands)
                 {
                     if (i.Key == request)
@@ -49,11 +55,6 @@ namespace Task_DEV_6
                         i.Value.DisplayInformation(request.Substring(i.Key.Length, request.Length - i.Key.Length));
                         existence = true;
                         break;
-                    }
-                    else if (request == exitCommand)
-                    {
-                        Console.WriteLine("Program completed.");
-                        Environment.Exit(0);
                     }
                 }
                 
