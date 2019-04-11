@@ -73,10 +73,12 @@ namespace Task_DEV_6
         public void DisplayAllCommands(string line)
         {
             Console.WriteLine($"{line} Available command:");
+
             foreach (var i in DictionaryOfCommands.Keys)
             {
                 Console.WriteLine($"-{i}");
             }
+            Console.WriteLine("-exit");
         }
     }
 }

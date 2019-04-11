@@ -62,7 +62,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Cars.xml">
+    <Content Include="Car.xml">
       <SubType>Designer</SubType>
     </Content>
   </ItemGroup>
