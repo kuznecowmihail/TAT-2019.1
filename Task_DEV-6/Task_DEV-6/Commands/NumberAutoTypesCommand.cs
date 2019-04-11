@@ -21,5 +21,11 @@
         /// </summary>
         /// <param name="type"></param>
         public void DisplayInformation(string type) => NumberAutoTypes.DisplayNumberCarTypes();
+
+        /// <summary>
+        /// Implemented method. 
+        /// </summary>
+        /// <param name="type"></param>
+        public bool IsContains(string type) => NumberAutoTypes.IsContains(type);
     }
 }

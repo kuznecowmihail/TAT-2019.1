@@ -43,17 +43,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AverageTypePrice.cs" />
-    <Compile Include="AverageTypePriceCommand.cs" />
-    <Compile Include="AverageAutoPrice.cs" />
-    <Compile Include="AverageAutoPriceCommand.cs" />
-    <Compile Include="Auto.cs" />
-    <Compile Include="NumberAllAutos.cs" />
-    <Compile Include="NumberAllAutosCommand.cs" />
-    <Compile Include="NumberAutoTypes.cs" />
-    <Compile Include="NumberAutoTypesCommand.cs" />
-    <Compile Include="AutoGetter.cs" />
-    <Compile Include="ICommand.cs" />
+    <Compile Include="AutoHandlers\AverageTypePrice.cs" />
+    <Compile Include="Auto\CarGetter.cs" />
+    <Compile Include="Commands\AverageTypePriceCommand.cs" />
+    <Compile Include="AutoHandlers\AverageAutoPrice.cs" />
+    <Compile Include="Commands\AverageAutoPriceCommand.cs" />
+    <Compile Include="Auto\Auto.cs" />
+    <Compile Include="AutoHandlers\NumberAllAutos.cs" />
+    <Compile Include="Commands\NumberAllAutosCommand.cs" />
+    <Compile Include="AutoHandlers\NumberAutoTypes.cs" />
+    <Compile Include="Commands\NumberAutoTypesCommand.cs" />
+    <Compile Include="Auto\TruckGetter.cs" />
+    <Compile Include="Commands\ICommand.cs" />
     <Compile Include="RequestHandler.cs" />
     <Compile Include="EntryPoint.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -62,8 +63,8 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Cars.xml" />
-    <Content Include="Trucks.xml" />
+    <Content Include="Car.xml" />
+    <Content Include="Truck.xml" />
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Connected Services\" />

@@ -10,5 +10,12 @@
         /// </summary>
         /// <param name="type">ppart of request for parameter if this need</param>
         void DisplayInformation(string type);
+
+        /// <summary>
+        /// Method returns true if the type of auto existences. 
+        /// </summary>
+        /// <param name="type">Auto type</param>
+        /// <returns></returns>
+        bool IsContains(string type);
     }
 }

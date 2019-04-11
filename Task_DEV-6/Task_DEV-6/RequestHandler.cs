@@ -8,7 +8,9 @@ namespace Task_DEV_6
     /// </summary>
     public class RequestHandler
     {
+        // String - name of command.
         Dictionary<string, ICommand> DictionaryOfCommands { get; set; }
+        // String - param for object function.
         Dictionary<ICommand, string> CommandsForExecute { get; set; }
         const string executeCommand = "execute";
         const string exitCommand = "exit";
@@ -32,13 +34,15 @@ namespace Task_DEV_6
         /// </summary>
         public void HandleRequest()
         {
+            // The existence of such a request.
             bool existence = false;
-            string request = String.Empty;
-            DisplayAllCommands("Enter command!");
+            string request = string.Empty;
+            string requestType = string.Empty;
 
             // Infinity cicle.
-            while(true)
+            while (true)
             {
+                DisplayAllCommands("Enter command!");
                 request = Console.ReadLine().ToLower();
                 existence = false;
 
@@ -62,6 +66,9 @@ namespace Task_DEV_6
                 {
                     if (i.Key == request)
                     {
+                        Console.WriteLine("Enter the type of auto.");
+                        requestType = Console.ReadLine();
+
                         // Exception on existence the command to commands to perform.
                         if (CommandsForExecute.ContainsKey(i.Value))
                         {
@@ -69,7 +76,14 @@ namespace Task_DEV_6
                             existence = true;
                             break;
                         }
-                        CommandsForExecute.Add(i.Value, String.Empty);
+
+                        // Check on existence the auto type.
+                        while (i.Value.IsContains(requestType) == false)
+                        {
+                            Console.WriteLine("Try again type of auto!");
+                            requestType = Console.ReadLine();
+                        }
+                        CommandsForExecute.Add(i.Value, string.Empty);
                         existence = true;
                         break;
                     }
@@ -79,19 +93,27 @@ namespace Task_DEV_6
                     // For example: "average price ford". Parameter is "ford".
                     else if (i.Key[i.Key.Length - 1] == ' ' && request.Contains(i.Key))
                     {
-                        // Exception on existence the command to commands to perform.
+                        Console.WriteLine("Enter the type of auto.");
+                        requestType = Console.ReadLine();
+                        
                         if (CommandsForExecute.ContainsKey(i.Value))
                         {
                             Console.WriteLine("This command using now. Can use 'execute' command.");
                             existence = true;
                             break;
                         }
+
+                        while (i.Value.IsContains(requestType) == false)
+                        {
+                            Console.WriteLine("Try again type of auto!");
+                            requestType = Console.ReadLine();
+                        }
                         CommandsForExecute.Add(i.Value, request.Substring(i.Key.Length, request.Length - i.Key.Length));
                         existence = true;
                         break;
                     }
                 }
-                
+
                 // if the request isn't command - false.
                 if (existence == false)
                 {

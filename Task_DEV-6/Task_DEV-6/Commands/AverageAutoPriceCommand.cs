@@ -21,5 +21,11 @@
         /// </summary>
         /// <param name="type"></param>
         public void DisplayInformation(string type) => AverageAutoPrice.DisplayAveragePrice();
+
+        /// <summary>
+        /// Implemented method. 
+        /// </summary>
+        /// <param name="type"></param>
+        public bool IsContains(string type) => AverageAutoPrice.IsContains(type);
     }
 }
