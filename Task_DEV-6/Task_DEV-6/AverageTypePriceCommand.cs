@@ -11,7 +11,10 @@
         /// Constructor of AverageTypePriceCommand.
         /// </summary>
         /// <param name="averageTypePrice"></param>
-        public AverageTypePriceCommand(AverageTypePrice averageTypePrice) => AverageTypePrice = averageTypePrice;
+        public AverageTypePriceCommand(AverageTypePrice averageTypePrice)
+        {
+            this.AverageTypePrice = averageTypePrice;
+        }
 
         /// <summary>
         /// Implemented method. 

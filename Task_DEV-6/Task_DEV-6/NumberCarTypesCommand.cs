@@ -11,7 +11,10 @@
         /// Constructor of NumberCarTypesCommand.
         /// </summary>
         /// <param name="numberCarTypes"></param>
-        public NumberCarTypesCommand(NumberCarTypes numberCarTypes) => NumberCarTypes = numberCarTypes;
+        public NumberCarTypesCommand(NumberCarTypes numberCarTypes)
+        {
+            this.NumberCarTypes = numberCarTypes;
+        }
 
         /// <summary>
         /// Implemented method. 

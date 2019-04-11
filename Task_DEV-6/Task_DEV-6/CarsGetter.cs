@@ -17,8 +17,8 @@ namespace Task_DEV_6
         /// <param name="name">Name of XML</param>
         public CarsGetter(string name)
         {
-            XmlDocument = new XmlDocument();
-            XmlDocument.Load($"../../{name}");
+            this.XmlDocument = new XmlDocument();
+            XmlDocument.Load($"../../{name}.xml");
         }
 
         /// <summary>

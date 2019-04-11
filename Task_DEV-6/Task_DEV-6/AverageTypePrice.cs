@@ -15,7 +15,10 @@ namespace Task_DEV_6
         /// Constructor of AverageTypePrice.
         /// </summary>
         /// <param name="cars"></param>
-        public AverageTypePrice(List<Car> cars) => Cars = cars;
+        public AverageTypePrice(List<Car> cars)
+        {
+            this.Cars = cars;
+        }
 
         /// <summary>
         /// Method returns average price type.

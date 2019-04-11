@@ -15,7 +15,10 @@ namespace Task_DEV_6
         /// Constructor of NumberCarTypes.
         /// </summary>
         /// <param name="cars"></param>
-        public NumberCarTypes(List<Car> cars) => Cars = cars;
+        public NumberCarTypes(List<Car> cars)
+        {
+            this.Cars = cars;
+        }
 
         /// <summary>
         /// Method returns number of car types.

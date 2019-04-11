@@ -11,7 +11,10 @@
         /// Constructor of AverageCarPriceCommand.
         /// </summary>
         /// <param name="averageCarPrice"></param>
-        public AverageCarPriceCommand(AverageCarPrice averageCarPrice) => AverageCarsPrice = averageCarPrice;
+        public AverageCarPriceCommand(AverageCarPrice averageCarPrice)
+        {
+            this.AverageCarsPrice = averageCarPrice;
+        }
 
         /// <summary>
         /// Implemented method. 
