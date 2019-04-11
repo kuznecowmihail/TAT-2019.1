@@ -21,8 +21,8 @@ namespace task_DEV_5
         /// <param name="finishPoint"></param>
         public FlyingObjectEventArgs(double distance, double time)
         {
-            Distance = distance;
-            Time = time;
+            this.Distance = distance;
+            this.Time = time;
         }
 
         /// <summary>

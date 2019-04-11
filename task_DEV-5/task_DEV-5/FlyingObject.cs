@@ -16,7 +16,10 @@ namespace task_DEV_5
         /// <summary>
         /// Constuctor of FlyingObject.
         /// </summary>
-        public FlyingObject(double speed) => Speed = speed;
+        public FlyingObject(double speed)
+        {
+            this.Speed = speed;
+        }
 
         /// <summary>
         /// Implemented interface method.
