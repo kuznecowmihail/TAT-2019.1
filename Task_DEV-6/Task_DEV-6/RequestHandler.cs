@@ -62,6 +62,13 @@ namespace Task_DEV_6
                 {
                     if (i.Key == request)
                     {
+                        // Exception on existence the command to commands to perform.
+                        if (CommandsForExecute.ContainsKey(i.Value))
+                        {
+                            Console.WriteLine("This command using now. Can use 'execute' command.");
+                            existence = true;
+                            break;
+                        }
                         CommandsForExecute.Add(i.Value, String.Empty);
                         existence = true;
                         break;
@@ -72,6 +79,13 @@ namespace Task_DEV_6
                     // For example: "average price ford". Parameter is "ford".
                     else if (i.Key[i.Key.Length - 1] == ' ' && request.Contains(i.Key))
                     {
+                        // Exception on existence the command to commands to perform.
+                        if (CommandsForExecute.ContainsKey(i.Value))
+                        {
+                            Console.WriteLine("This command using now. Can use 'execute' command.");
+                            existence = true;
+                            break;
+                        }
                         CommandsForExecute.Add(i.Value, request.Substring(i.Key.Length, request.Length - i.Key.Length));
                         existence = true;
                         break;
