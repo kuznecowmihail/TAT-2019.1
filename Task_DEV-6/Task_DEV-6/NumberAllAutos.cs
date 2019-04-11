@@ -15,7 +15,6 @@ namespace Task_DEV_6
         /// Constructor of NumberAllAutos.
         /// </summary>
         /// <param name="autos"></param>
-        /// <param name="type">Type of auto</param>
         public NumberAllAutos(IEnumerable<Auto> autos)
         {
             this.Autos = autos;

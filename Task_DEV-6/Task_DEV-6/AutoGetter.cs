@@ -12,8 +12,15 @@ namespace Task_DEV_6
     {
         static AutoGetter autoGetter;
 
+        /// <summary>
+        /// Private constructor of AutoGetter.
+        /// </summary>
         private AutoGetter() { }
 
+        /// <summary>
+        /// Returns object of class.
+        /// </summary>
+        /// <returns>object of AutoGetter</returns>
         public static AutoGetter GetAutoGetter()
         {
             if(autoGetter == null)
@@ -27,7 +34,7 @@ namespace Task_DEV_6
         /// <summary>
         /// Method returns list of auto.
         /// </summary>
-        /// <returns autos></returns>
+        /// <returns autos>List of autos</returns>
         public IEnumerable<Auto> GetAuto(string name)
         {
             XDocument xDoc = new XDocument();

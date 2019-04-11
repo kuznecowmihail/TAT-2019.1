@@ -15,7 +15,6 @@ namespace Task_DEV_6
         /// Constructor of AverageTypePrice.
         /// </summary>
         /// <param name="autos"></param>
-        /// <param name="type">Type of auto</param>
         public AverageTypePrice(IEnumerable<Auto> autos)
         {
             this.Autos = autos;

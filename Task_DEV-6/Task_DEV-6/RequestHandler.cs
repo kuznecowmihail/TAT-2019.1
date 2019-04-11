@@ -42,6 +42,22 @@ namespace Task_DEV_6
                 request = Console.ReadLine().ToLower();
                 existence = false;
 
+                if (request == executeCommand)
+                {
+                    foreach (var k in CommandsForExecute)
+                    {
+                        k.Key.DisplayInformation(k.Value);
+                    }
+                    existence = true;
+                    CommandsForExecute = new Dictionary<ICommand, string>();
+                    continue;
+                }
+                else if (request == exitCommand)
+                {
+                    Console.WriteLine("Program completed.");
+                    Environment.Exit(0);
+                }
+
                 foreach (var i in DictionaryOfCommands)
                 {
                     if (i.Key == request)
@@ -59,21 +75,6 @@ namespace Task_DEV_6
                         CommandsForExecute.Add(i.Value, request.Substring(i.Key.Length, request.Length - i.Key.Length));
                         existence = true;
                         break;
-                    }
-                    else if(request == executeCommand)
-                    {
-                        foreach(var k in CommandsForExecute)
-                        {
-                            k.Key.DisplayInformation(k.Value);
-                        }
-                        existence = true;
-                        CommandsForExecute = new Dictionary<ICommand, string>();
-                        break;
-                    }
-                    else if (request == exitCommand)
-                    {
-                        Console.WriteLine("Program completed.");
-                        Environment.Exit(0);
                     }
                 }
                 
