@@ -6,7 +6,7 @@ using System.Collections.Generic;
 namespace Task_DEV_6
 {
     /// <summary>
-    /// Class reed xml and return list.
+    /// Class singleton write cars to list from xml.
     /// </summary>
     public class TruckGetter
     {

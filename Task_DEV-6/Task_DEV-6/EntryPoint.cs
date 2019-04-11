@@ -8,6 +8,11 @@ namespace Task_DEV_6
     /// </summary>
     class EntryPoint
     {
+        /// <summary>
+        /// The entry point of program calls request handler.
+        /// </summary>
+        /// <param name="args"></param>
+        /// <returns></returns>
         static int Main(string[] args)
         {
             try

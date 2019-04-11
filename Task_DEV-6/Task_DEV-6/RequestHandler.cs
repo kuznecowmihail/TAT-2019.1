@@ -125,10 +125,10 @@ namespace Task_DEV_6
         /// <summary>
         /// Method display information about commands.
         /// </summary>
-        /// <param name="line"></param>
-        public void DisplayAllCommands(string line)
+        /// <param name="Message">Message</param>
+        public void DisplayAllCommands(string Message)
         {
-            Console.WriteLine($"{line} Available command:");
+            Console.WriteLine($"{Message} Available command:");
             foreach (var i in DictionaryOfCommands.Keys)
             {
                 Console.WriteLine($"-{i}");

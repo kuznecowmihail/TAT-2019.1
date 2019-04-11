@@ -5,6 +5,9 @@ using System.Collections.Generic;
 
 namespace Task_DEV_6
 {
+    /// <summary>
+    /// Class singleton write cars to list from xml.
+    /// </summary>
     class CarGetter
     {
         string NameXML { get; }
