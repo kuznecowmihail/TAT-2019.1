@@ -19,10 +19,10 @@
         /// <param name="price"></param>
         public Auto(string brand, string model, int number, int price)
         {
-            Brand = brand;
-            Model = model;
-            Number = number;
-            Price = price;
+            this.Brand = brand;
+            this.Model = model;
+            this.Number = number;
+            this.Price = price;
         }
     }
 }

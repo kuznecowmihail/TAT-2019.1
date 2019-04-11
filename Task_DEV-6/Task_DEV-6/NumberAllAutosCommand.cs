@@ -11,7 +11,10 @@
         /// Constructor of NumberAllAutos.
         /// </summary>
         /// <param name="numberAllAutos"></param>
-        public NumberAllAutosCommand(NumberAllAutos numberAllAutos) => NumberAllAutos = numberAllAutos;
+        public NumberAllAutosCommand(NumberAllAutos numberAllAutos)
+        {
+            this.NumberAllAutos = numberAllAutos;
+        }
 
         /// <summary>
         /// Implemented method. 

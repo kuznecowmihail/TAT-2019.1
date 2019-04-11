@@ -18,7 +18,7 @@ namespace Task_DEV_6
         /// <param name="type">Type of auto</param>
         public NumberAutoTypes(IEnumerable<Auto> autos)
         {
-            Autos = autos;
+            this.Autos = autos;
         }
 
         /// <summary>

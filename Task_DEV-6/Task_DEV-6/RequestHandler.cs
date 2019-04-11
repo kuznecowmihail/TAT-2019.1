@@ -13,7 +13,14 @@ namespace Task_DEV_6
         const string executeCommand = "execute";
         const string exitCommand = "exit";
 
-        public RequestHandler() => CommandsForExecute = new Dictionary<ICommand, string>();
+        /// <summary>
+        /// Constructor of Requesthandler.
+        /// </summary>
+        public RequestHandler()
+        {
+            this.CommandsForExecute = new Dictionary<ICommand, string>();
+        }
+
         /// <summary>
         /// Set command.
         /// </summary>

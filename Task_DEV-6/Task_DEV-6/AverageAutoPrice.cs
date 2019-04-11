@@ -17,7 +17,7 @@ namespace Task_DEV_6
         /// <param name="autos"></param>
         public AverageAutoPrice(IEnumerable<Auto> autos)
         {
-            Autos = autos;
+            this.Autos = autos;
         }
 
         /// <summary>
