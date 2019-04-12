@@ -52,7 +52,7 @@ namespace Task_DEV_6
                     {
                         k.Key.DisplayInformation(k.Value);
                     }
-                    CommandsForExecute = new Dictionary<ICommand, string>();
+                    CommandsForExecute.Clear();
                     continue;
                 }
 
