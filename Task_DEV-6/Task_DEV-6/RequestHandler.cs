@@ -72,7 +72,7 @@ namespace Task_DEV_6
                 {
                     if (command.Key == request)
                     {
-                        AddToExecuteCommands(request, ref existence, command.Value, string.Empty);
+                        AddToExecuteCommands(request, command.Value, string.Empty);
                         existence = true;
                         break;
                     }
@@ -82,7 +82,7 @@ namespace Task_DEV_6
                     // For example: "average price ford". Parameter is "ford".
                     else if (command.Key[command.Key.Length - 1] == ' ' && request.Contains(command.Key))
                     {
-                        AddToExecuteCommands(request, ref existence, command.Value, request.Substring(command.Key.Length, request.Length - command.Key.Length));
+                        AddToExecuteCommands(request, command.Value, request.Substring(command.Key.Length, request.Length - command.Key.Length));
                         existence = true;
                         break;
                     }
@@ -111,10 +111,9 @@ namespace Task_DEV_6
         /// Method check on contains the command in execute command and add to execute command.
         /// </summary>
         /// <param name="request"></param>
-        /// <param name="existence"></param>
         /// <param name="command"></param>
         /// <param name="param"></param>
-        public void AddToExecuteCommands(string request, ref bool existence, ICommand command, string param)
+        public void AddToExecuteCommands(string request, ICommand command, string param)
         {
             if (CommandsForExecute.ContainsKey(command))
             {
