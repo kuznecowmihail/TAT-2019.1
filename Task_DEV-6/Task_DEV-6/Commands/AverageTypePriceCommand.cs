@@ -1,7 +1,7 @@
 ﻿namespace Task_DEV_6
 {
     /// <summary>
-    /// Child class for pattern command calls method to calculate average price of type autos.
+    /// Child class for pattern command calls method to calculate average price of auto type.
     /// </summary>
     public class AverageTypePriceCommand : ICommand
     {

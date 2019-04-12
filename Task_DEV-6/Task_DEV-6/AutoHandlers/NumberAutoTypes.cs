@@ -5,7 +5,7 @@ using System.Collections.Generic;
 namespace Task_DEV_6
 {
     /// <summary>
-    /// Class calculates and displays number of type.
+    /// Class calculates and displays number of auto type.
     /// </summary>
     public class NumberAutoTypes
     {
@@ -27,11 +27,11 @@ namespace Task_DEV_6
         /// <returns>number of car types</returns>
         public int GetNumberAutoTypes()
         {
-            foreach (var i in Autos)
+            foreach (var auto in Autos)
             {
-                if (i.Key == AutoType)
+                if (auto.Key == AutoType)
                 {
-                    return i.Value.GroupBy(t => t.Brand).Count();
+                    return auto.Value.GroupBy(t => t.Brand).Count();
                 }
             }
 
@@ -51,14 +51,14 @@ namespace Task_DEV_6
         /// </summary>
         public void DisplayAutoTypes()
         {
-            foreach(var i in Autos)
+            foreach(var auto in Autos)
             {
-                Console.WriteLine($"-{i.Key}");
+                Console.WriteLine($"-{auto.Key}");
             }
         }
 
         /// <summary>
-        /// Method returns true if the type of auto existences
+        /// Method returns true if the type of auto exists
         /// </summary>
         /// <param name="type"></param>
         /// <returns></returns>

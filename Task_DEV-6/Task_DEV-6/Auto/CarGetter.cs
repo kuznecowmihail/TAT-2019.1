@@ -6,7 +6,7 @@ using System.Collections.Generic;
 namespace Task_DEV_6
 {
     /// <summary>
-    /// Class singleton write cars to list from xml.
+    /// Class singleton write cars into list from xml.
     /// </summary>
     class CarGetter
     {
@@ -17,10 +17,10 @@ namespace Task_DEV_6
         /// <summary>
         /// Private constructor of AutoGetter.
         /// </summary>
-        /// <param name="name">Name XML</param>
-        private CarGetter(string name)
+        /// <param name="nameXML">Name XML</param>
+        private CarGetter(string nameXML)
         {
-            NameXML = name;
+            NameXML = nameXML;
             Cars = GetAuto();
         }
 

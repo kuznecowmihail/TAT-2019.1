@@ -30,14 +30,14 @@ namespace Task_DEV_6
         public void SetCommand(Dictionary<string, ICommand> dictionaryOfCommand) => DictionaryOfCommands = dictionaryOfCommand;
 
         /// <summary>
-        /// Method handle request.
+        /// Method handles request.
         /// </summary>
         public void HandleRequest()
         {
             // The existence of such a request.
             bool existence = false;
+            // Request of users.
             string request = string.Empty;
-            string requestType = string.Empty;
 
             // Infinity cicle.
             while (true)
@@ -48,9 +48,9 @@ namespace Task_DEV_6
 
                 if (request == executeCommand)
                 {
-                    foreach (var k in CommandsForExecute)
+                    foreach (var executeCommand in CommandsForExecute)
                     {
-                        k.Key.DisplayInformation(k.Value);
+                        executeCommand.Key.DisplayInformation(executeCommand.Value);
                     }
                     CommandsForExecute.Clear();
                     continue;
@@ -62,20 +62,20 @@ namespace Task_DEV_6
                     Environment.Exit(0);
                 }
 
-                foreach (var i in DictionaryOfCommands)
+                foreach (var command in DictionaryOfCommands)
                 {
-                    if (i.Key == request)
+                    if (command.Key == request)
                     {
-                        AddToExecuteCommands(request, ref existence, i.Value, string.Empty);
+                        AddToExecuteCommands(request, ref existence, command.Value, string.Empty);
                         break;
                     }
                     // For difficult command.
                     // If command have last ' ' symbol -> this is difficult command
                     // For this example: "average price " is difficult command, because after it comes our parameter.
                     // For example: "average price ford". Parameter is "ford".
-                    else if (i.Key[i.Key.Length - 1] == ' ' && request.Contains(i.Key))
+                    else if (command.Key[command.Key.Length - 1] == ' ' && request.Contains(command.Key))
                     {
-                        AddToExecuteCommands(request, ref existence, i.Value, request.Substring(i.Key.Length, request.Length - i.Key.Length));
+                        AddToExecuteCommands(request, ref existence, command.Value, request.Substring(command.Key.Length, request.Length - command.Key.Length));
                         break;
                     }
                 }
@@ -95,11 +95,11 @@ namespace Task_DEV_6
         public void DisplayAvailableCommands(string line)
         {
             Console.WriteLine($"{line} Available command:");
-            foreach (var i in DictionaryOfCommands)
+            foreach (var command in DictionaryOfCommands)
             {
-                if (!CommandsForExecute.ContainsKey(i.Value))
+                if (!CommandsForExecute.ContainsKey(command.Value))
                 {
-                    Console.WriteLine($"-{i.Key}");
+                    Console.WriteLine($"-{command.Key}");
                 }
             }
             Console.WriteLine($"-{executeCommand}\n-{exitCommand}");

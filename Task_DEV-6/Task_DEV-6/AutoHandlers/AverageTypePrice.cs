@@ -5,7 +5,7 @@ using System.Collections.Generic;
 namespace Task_DEV_6
 {
     /// <summary>
-    /// Class calculates and displays average type price .
+    /// Class calculates and displays average type price of auto.
     /// </summary>
     public class AverageTypePrice
     {
@@ -28,12 +28,12 @@ namespace Task_DEV_6
         /// <returns>Average price type</returns>
         public int GetAveragePriceType(string brand)
         {
-            foreach (var i in Autos)
+            foreach (var auto in Autos)
             {
-                if (i.Key == AutoType)
+                if (auto.Key == AutoType)
                 {
-                    return i.Value.Where(t => t.Brand.Equals(brand)).Sum(t => t.Number) > 0
-                        ? i.Value.Where(t => t.Brand.Equals(brand)).Sum(t => t.Price * t.Number) / i.Value.Where(t => t.Brand.Equals(brand)).Sum(t => t.Number)
+                    return auto.Value.Where(t => t.Brand.Equals(brand)).Sum(t => t.Number) > 0
+                        ? auto.Value.Where(t => t.Brand.Equals(brand)).Sum(t => t.Price * t.Number) / auto.Value.Where(t => t.Brand.Equals(brand)).Sum(t => t.Number)
                         : 0;
                 }
             }
@@ -55,14 +55,14 @@ namespace Task_DEV_6
         /// </summary>
         public void DisplayAutoTypes()
         {
-            foreach (var i in Autos)
+            foreach (var auto in Autos)
             {
-                Console.WriteLine($"-{i.Key}");
+                Console.WriteLine($"-{auto.Key}");
             }
         }
 
         /// <summary>
-        /// Method returns true if the type of auto existences.
+        /// Method returns true if the type of auto exists.
         /// </summary>
         /// <param name="type"></param>
         /// <returns></returns>

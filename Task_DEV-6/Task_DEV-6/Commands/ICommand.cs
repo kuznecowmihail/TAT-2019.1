@@ -17,7 +17,7 @@
         void DisplayAutoTypes();
 
         /// <summary>
-        /// Method returns true if the type of auto existences. 
+        /// Method returns true if the type of auto exists. 
         /// </summary>
         /// <param name="type">Auto type</param>
         /// <returns></returns>

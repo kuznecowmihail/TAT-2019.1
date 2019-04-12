@@ -5,7 +5,7 @@ using System.Collections.Generic;
 namespace Task_DEV_6
 {
     /// <summary>
-    /// Class calculates and displays average price.
+    /// Class calculates and displays average price of auto.
     /// </summary>
     public class AverageAutoPrice
     {
@@ -27,12 +27,12 @@ namespace Task_DEV_6
         /// <returns>Average price</returns>
         public int GetAveragePrice()
         {
-            foreach (var i in Autos)
+            foreach (var auto in Autos)
             {
-                if (i.Key == AutoType)
+                if (auto.Key == AutoType)
                 {
-                    return i.Value.Sum(t => t.Number) > 0
-                        ? i.Value.Sum(t => t.Price * t.Number) / i.Value.Sum(t => t.Number)
+                    return auto.Value.Sum(t => t.Number) > 0
+                        ? auto.Value.Sum(t => t.Price * t.Number) / auto.Value.Sum(t => t.Number)
                         : 0;
                 }
             }
@@ -53,14 +53,14 @@ namespace Task_DEV_6
         /// </summary>
         public void DisplayAutoTypes()
         {
-            foreach (var i in Autos)
+            foreach (var auto in Autos)
             {
-                Console.WriteLine($"-{i.Key}");
+                Console.WriteLine($"-{auto.Key}");
             }
         }
 
         /// <summary>
-        /// Method returns true if the type of auto existences
+        /// Method returns true if the type of auto exists
         /// </summary>
         /// <param name="type"></param>
         /// <returns></returns>
