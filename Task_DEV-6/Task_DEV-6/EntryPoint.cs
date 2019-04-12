@@ -11,8 +11,9 @@ namespace Task_DEV_6
         /// <summary>
         /// The entry point of program calls request handler.
         /// </summary>
-        /// <param name="args"></param>
-        /// <returns></returns>
+        /// <param name="args">Names XML</param>
+        /// <returns>0 - norm start</returns>
+        /// <returns>1 -Error</returns>
         static int Main(string[] args)
         {
             try
