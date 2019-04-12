@@ -34,15 +34,20 @@ namespace Task_DEV_6
         /// </summary>
         public void HandleRequest()
         {
+            if(DictionaryOfCommands == null)
+            {
+                throw new Exception("Don't set a dictionary of command.");
+            }
             // The existence of such a request.
-            bool existence = false;
+            bool existence = true;
             // Request of users.
             string request = string.Empty;
 
             // Infinity cicle.
             while (true)
             {
-                DisplayAvailableCommands("Enter command!");
+                // if the request isn't command - false.
+                DisplayAvailableCommands(existence == true ? "Enter command!" : "Try again!");
                 request = Console.ReadLine().ToLower();
                 existence = false;
 
@@ -53,6 +58,7 @@ namespace Task_DEV_6
                         executeCommand.Key.DisplayInformation(executeCommand.Value);
                     }
                     CommandsForExecute.Clear();
+                    existence = true;
                     continue;
                 }
 
@@ -67,6 +73,7 @@ namespace Task_DEV_6
                     if (command.Key == request)
                     {
                         AddToExecuteCommands(request, ref existence, command.Value, string.Empty);
+                        existence = true;
                         break;
                     }
                     // For difficult command.
@@ -76,14 +83,9 @@ namespace Task_DEV_6
                     else if (command.Key[command.Key.Length - 1] == ' ' && request.Contains(command.Key))
                     {
                         AddToExecuteCommands(request, ref existence, command.Value, request.Substring(command.Key.Length, request.Length - command.Key.Length));
+                        existence = true;
                         break;
                     }
-                }
-
-                // if the request isn't command - false.
-                if (existence == false)
-                {
-                    DisplayAvailableCommands("Try again!");
                 }
             }
         }
@@ -117,7 +119,6 @@ namespace Task_DEV_6
             if (CommandsForExecute.ContainsKey(command))
             {
                 Console.WriteLine("This command using now. Can use 'execute' command.");
-                existence = true;
                 return;
             }
             Console.WriteLine("Enter auto type. Available type:");
@@ -130,7 +131,6 @@ namespace Task_DEV_6
                 requestType = Console.ReadLine();
             }
             CommandsForExecute.Add(command, param);
-            existence = true;
         }
     }
 }

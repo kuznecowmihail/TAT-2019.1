@@ -21,11 +21,13 @@ namespace Task_DEV_6
                 {
                     throw new Exception("Program hasn't names of XML files.");
                 }
+                // Dictionary string name of types -> list of type autos.
                 Dictionary<string, IEnumerable<Auto>> dictionaryOfAutoTypes = new Dictionary<string, IEnumerable<Auto>>
                 {
                     [args[0].ToLower()] = CarGetter.GetCarGetter(args[0]).Cars,
                     [args[1].ToLower()] = TruckGetter.GetTruckGetter(args[1]).Trucks
                 };
+                // Dictionary string name of commands -> commands.
                 Dictionary<string, ICommand> dictionaryOfAutoCommands = new Dictionary<string, ICommand>
                 {
                     ["count types"] = new NumberAutoTypesCommand(new NumberAutoTypes(dictionaryOfAutoTypes)),
