@@ -38,11 +38,11 @@ namespace Task_DEV_6
                     Environment.Exit(0);
                 }
 
-                foreach (var i in DictionaryOfCommands)
+                foreach (var command in DictionaryOfCommands)
                 {
-                    if (i.Key == request)
+                    if (command.Key == request)
                     {
-                        i.Value.DisplayInformation();
+                        command.Value.DisplayInformation();
                         existence = true;
                         break;
                     }
@@ -50,9 +50,9 @@ namespace Task_DEV_6
                     // If command have last ' ' symbol -> this is difficult command
                     // For this example: "average price " is difficult command, because after it comes our parameter.
                     // For example: "average price ford". Parameter is "ford".
-                    else if (i.Key[i.Key.Length - 1] == ' ' && request.Contains(i.Key))
+                    else if (command.Key[command.Key.Length - 1] == ' ' && request.Contains(command.Key))
                     {
-                        i.Value.DisplayInformation(request.Substring(i.Key.Length, request.Length - i.Key.Length));
+                        command.Value.DisplayInformation(request.Substring(command.Key.Length, request.Length - command.Key.Length));
                         existence = true;
                         break;
                     }
@@ -74,9 +74,9 @@ namespace Task_DEV_6
         {
             Console.WriteLine($"{line} Available command:");
 
-            foreach (var i in DictionaryOfCommands.Keys)
+            foreach (var command in DictionaryOfCommands.Keys)
             {
-                Console.WriteLine($"-{i}");
+                Console.WriteLine($"-{command}");
             }
             Console.WriteLine("-exit");
         }

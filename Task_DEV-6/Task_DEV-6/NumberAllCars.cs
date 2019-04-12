@@ -31,7 +31,7 @@ namespace Task_DEV_6
         /// </summary>
         public void DisplayNumberAllCars() => Console.WriteLine(
             GetNumberAllCars() == 0 
-            ? "The XML file hasn't cars." 
-            : $"Number of all cars is {GetNumberAllCars()}");
+            ? "->The XML file hasn't cars." 
+            : $"->Number of all cars is {GetNumberAllCars()}");
     }
 }

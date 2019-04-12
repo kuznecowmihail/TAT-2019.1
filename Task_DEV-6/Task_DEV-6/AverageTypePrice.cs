@@ -35,7 +35,7 @@ namespace Task_DEV_6
         /// <param name="brand"></param>
         public void DisplayAveragePriceType(string brand) => Console.WriteLine(
             GetAveragePriceType(brand) == 0 
-            ? "The XML file hasn't cars of this brand." 
-            : $"The average price of {brand} is {GetAveragePriceType(brand)}");
+            ? "->The XML file hasn't cars of this brand." 
+            : $"->The average price of {brand} is {GetAveragePriceType(brand)}");
     }
 }
