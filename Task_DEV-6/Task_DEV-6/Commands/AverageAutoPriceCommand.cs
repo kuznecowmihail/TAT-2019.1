@@ -31,6 +31,6 @@
         /// Implemented method. 
         /// </summary>
         /// <param name="type"></param>
-        public bool IsContains(string type) => AverageAutoPrice.IsContains(type);
+        public bool DoesTypeContain(string type) => AverageAutoPrice.DoesTypeContain(type);
     }
 }

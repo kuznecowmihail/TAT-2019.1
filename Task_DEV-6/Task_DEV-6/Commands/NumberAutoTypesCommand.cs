@@ -31,6 +31,6 @@
         /// Implemented method. 
         /// </summary>
         /// <param name="type"></param>
-        public bool IsContains(string type) => NumberAutoTypes.IsContains(type);
+        public bool DoesTypeContain(string type) => NumberAutoTypes.DoesTypeContain(type);
     }
 }

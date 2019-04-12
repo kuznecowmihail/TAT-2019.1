@@ -21,6 +21,6 @@
         /// </summary>
         /// <param name="type">Auto type</param>
         /// <returns></returns>
-        bool IsContains(string type);
+        bool DoesTypeContain(string type);
     }
 }

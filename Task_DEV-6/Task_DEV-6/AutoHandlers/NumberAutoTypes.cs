@@ -62,7 +62,7 @@ namespace Task_DEV_6
         /// </summary>
         /// <param name="type"></param>
         /// <returns></returns>
-        public bool IsContains(string type)
+        public bool DoesTypeContain(string type)
         {
             AutoType = Autos.Keys.Where(t => t == (type)).Count() > 0 ? type : string.Empty;
             return Autos.Keys.Where(t => t == (type)).Count() > 0;

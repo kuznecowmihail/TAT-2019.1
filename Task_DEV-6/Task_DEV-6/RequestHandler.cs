@@ -124,7 +124,7 @@ namespace Task_DEV_6
             command.DisplayAutoTypes();
             string requestType = Console.ReadLine();
 
-            while (command.IsContains(requestType) == false)
+            while (command.DoesTypeContain(requestType) == false)
             {
                 Console.WriteLine("Try again enter auto type!");
                 requestType = Console.ReadLine();
