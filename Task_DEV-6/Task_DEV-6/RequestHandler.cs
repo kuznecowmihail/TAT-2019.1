@@ -24,11 +24,12 @@ namespace Task_DEV_6
         {
             bool existence = false;
             string request = String.Empty;
-            DisplayAllCommands("Enter command!");
-
+            
             // Infinity cicle.
             while(true)
             {
+                // if the request isn't command - false.
+                DisplayAllCommands(existence == true ? "Enter command!" : "Try again!");
                 request = Console.ReadLine().ToLower();
                 existence = false;
 
@@ -46,22 +47,17 @@ namespace Task_DEV_6
                         existence = true;
                         break;
                     }
+
                     // For difficult command.
                     // If command have last ' ' symbol -> this is difficult command
                     // For this example: "average price " is difficult command, because after it comes our parameter.
                     // For example: "average price ford". Parameter is "ford".
-                    else if (command.Key[command.Key.Length - 1] == ' ' && request.Contains(command.Key))
+                    if (command.Key[command.Key.Length - 1] == ' ' && request.Contains(command.Key))
                     {
                         command.Value.DisplayInformation(request.Substring(command.Key.Length, request.Length - command.Key.Length));
                         existence = true;
                         break;
                     }
-                }
-                
-                // if the request isn't command - false.
-                if (existence == false)
-                {
-                    DisplayAllCommands("Try again!");
                 }
             }
         }
