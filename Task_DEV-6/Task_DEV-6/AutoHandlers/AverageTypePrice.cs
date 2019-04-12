@@ -37,6 +37,7 @@ namespace Task_DEV_6
                         : 0;
                 }
             }
+
             return 0;
         }
 
@@ -46,8 +47,19 @@ namespace Task_DEV_6
         /// <param name="brand"></param>
         public void DisplayAveragePriceType(string brand) => Console.WriteLine(
             GetAveragePriceType(brand) == 0
-            ? "The XML file hasn't autos of this brand."
-            : $"The average price of {brand} {AutoType} is {GetAveragePriceType(brand)}");
+            ? $"->The XML file hasn't {AutoType} of '{brand}' brand."
+            : $"->The average price of '{brand}' {AutoType} is {GetAveragePriceType(brand)}");
+
+        /// <summary>
+        /// Metod displays auto types.
+        /// </summary>
+        public void DisplayAutoTypes()
+        {
+            foreach (var i in Autos)
+            {
+                Console.WriteLine($"-{i.Key}");
+            }
+        }
 
         /// <summary>
         /// Method returns true if the type of auto existences.

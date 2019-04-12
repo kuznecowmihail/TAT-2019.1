@@ -34,6 +34,7 @@ namespace Task_DEV_6
                     return i.Value.GroupBy(t => t.Brand).Count();
                 }
             }
+
             return 0;
         }
 
@@ -42,8 +43,19 @@ namespace Task_DEV_6
         /// </summary>
         public void DisplayNumberCarTypes() => Console.WriteLine(
             GetNumberAutoTypes() == 0
-            ? "The XML file hasn't autos."
-            : $"Number of {AutoType} types is {GetNumberAutoTypes()}");
+            ? $"->The XML file hasn't {AutoType}."
+            : $"->Number of {AutoType} types is {GetNumberAutoTypes()}");
+
+        /// <summary>
+        /// Metod displays auto types.
+        /// </summary>
+        public void DisplayAutoTypes()
+        {
+            foreach(var i in Autos)
+            {
+                Console.WriteLine($"-{i.Key}");
+            }
+        }
 
         /// <summary>
         /// Method returns true if the type of auto existences

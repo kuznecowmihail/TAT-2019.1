@@ -42,7 +42,7 @@ namespace Task_DEV_6
             // Infinity cicle.
             while (true)
             {
-                DisplayAllCommands("Enter command!");
+                DisplayAvailableCommands("Enter command!");
                 request = Console.ReadLine().ToLower();
                 existence = false;
 
@@ -52,11 +52,11 @@ namespace Task_DEV_6
                     {
                         k.Key.DisplayInformation(k.Value);
                     }
-                    existence = true;
                     CommandsForExecute = new Dictionary<ICommand, string>();
                     continue;
                 }
-                else if (request == exitCommand)
+
+                if (request == exitCommand)
                 {
                     Console.WriteLine("Program completed.");
                     Environment.Exit(0);
@@ -66,25 +66,7 @@ namespace Task_DEV_6
                 {
                     if (i.Key == request)
                     {
-                        Console.WriteLine("Enter the type of auto.");
-                        requestType = Console.ReadLine();
-
-                        // Exception on existence the command to commands to perform.
-                        if (CommandsForExecute.ContainsKey(i.Value))
-                        {
-                            Console.WriteLine("This command using now. Can use 'execute' command.");
-                            existence = true;
-                            break;
-                        }
-
-                        // Check on existence the auto type.
-                        while (i.Value.IsContains(requestType) == false)
-                        {
-                            Console.WriteLine("Try again type of auto!");
-                            requestType = Console.ReadLine();
-                        }
-                        CommandsForExecute.Add(i.Value, string.Empty);
-                        existence = true;
+                        AddToExecuteCommands(request, ref existence, i.Value, string.Empty);
                         break;
                     }
                     // For difficult command.
@@ -93,23 +75,7 @@ namespace Task_DEV_6
                     // For example: "average price ford". Parameter is "ford".
                     else if (i.Key[i.Key.Length - 1] == ' ' && request.Contains(i.Key))
                     {
-                        Console.WriteLine("Enter the type of auto.");
-                        requestType = Console.ReadLine();
-                        
-                        if (CommandsForExecute.ContainsKey(i.Value))
-                        {
-                            Console.WriteLine("This command using now. Can use 'execute' command.");
-                            existence = true;
-                            break;
-                        }
-
-                        while (i.Value.IsContains(requestType) == false)
-                        {
-                            Console.WriteLine("Try again type of auto!");
-                            requestType = Console.ReadLine();
-                        }
-                        CommandsForExecute.Add(i.Value, request.Substring(i.Key.Length, request.Length - i.Key.Length));
-                        existence = true;
+                        AddToExecuteCommands(request, ref existence, i.Value, request.Substring(i.Key.Length, request.Length - i.Key.Length));
                         break;
                     }
                 }
@@ -117,23 +83,54 @@ namespace Task_DEV_6
                 // if the request isn't command - false.
                 if (existence == false)
                 {
-                    DisplayAllCommands("Try again!");
+                    DisplayAvailableCommands("Try again!");
                 }
             }
         }
 
         /// <summary>
-        /// Method display information about commands.
+        /// Method display information about available commands.
         /// </summary>
-        /// <param name="Message">Message</param>
-        public void DisplayAllCommands(string Message)
+        /// <param name="line"></param>
+        public void DisplayAvailableCommands(string line)
         {
-            Console.WriteLine($"{Message} Available command:");
-            foreach (var i in DictionaryOfCommands.Keys)
+            Console.WriteLine($"{line} Available command:");
+            foreach (var i in DictionaryOfCommands)
             {
-                Console.WriteLine($"-{i}");
+                if (!CommandsForExecute.ContainsKey(i.Value))
+                {
+                    Console.WriteLine($"-{i.Key}");
+                }
             }
             Console.WriteLine($"-{executeCommand}\n-{exitCommand}");
+        }
+
+        /// <summary>
+        /// Method check on contains the command in execute command and add to execute command.
+        /// </summary>
+        /// <param name="request"></param>
+        /// <param name="existence"></param>
+        /// <param name="command"></param>
+        /// <param name="param"></param>
+        public void AddToExecuteCommands(string request, ref bool existence, ICommand command, string param)
+        {
+            if (CommandsForExecute.ContainsKey(command))
+            {
+                Console.WriteLine("This command using now. Can use 'execute' command.");
+                existence = true;
+                return;
+            }
+            Console.WriteLine("Enter auto type. Available type:");
+            command.DisplayAutoTypes();
+            string requestType = Console.ReadLine();
+
+            while (command.IsContains(requestType) == false)
+            {
+                Console.WriteLine("Try again enter auto type!");
+                requestType = Console.ReadLine();
+            }
+            CommandsForExecute.Add(command, param);
+            existence = true;
         }
     }
 }

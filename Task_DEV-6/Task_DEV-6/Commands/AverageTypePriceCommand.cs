@@ -25,6 +25,11 @@
         /// <summary>
         /// Implemented method. 
         /// </summary>
+        public void DisplayAutoTypes() => AverageTypePrice.DisplayAutoTypes();
+
+        /// <summary>
+        /// Implemented method. 
+        /// </summary>
         /// <param name="type"></param>
         public bool IsContains(string type) => AverageTypePrice.IsContains(type);
     }

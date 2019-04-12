@@ -12,6 +12,11 @@
         void DisplayInformation(string type);
 
         /// <summary>
+        /// Calls the method for display auto type.
+        /// </summary>
+        void DisplayAutoTypes();
+
+        /// <summary>
         /// Method returns true if the type of auto existences. 
         /// </summary>
         /// <param name="type">Auto type</param>

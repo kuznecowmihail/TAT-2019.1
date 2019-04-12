@@ -36,6 +36,7 @@ namespace Task_DEV_6
                         : 0;
                 }
             }
+
             return 0;
         }
 
@@ -44,8 +45,19 @@ namespace Task_DEV_6
         /// </summary>
         public void DisplayAveragePrice() => Console.WriteLine(
             GetAveragePrice() == 0
-            ? "The XML file hasn't autos."
-            : $"The average price of all {AutoType} is {GetAveragePrice()}");
+            ? $"->The XML file hasn't {AutoType}."
+            : $"->The average price of all {AutoType} is {GetAveragePrice()}");
+
+        /// <summary>
+        /// Metod displays auto types.
+        /// </summary>
+        public void DisplayAutoTypes()
+        {
+            foreach (var i in Autos)
+            {
+                Console.WriteLine($"-{i.Key}");
+            }
+        }
 
         /// <summary>
         /// Method returns true if the type of auto existences

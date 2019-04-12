@@ -34,6 +34,7 @@ namespace Task_DEV_6
                     return i.Value.Sum(t => t.Number);
                 }
             }
+
             return 0;
         }
 
@@ -42,8 +43,19 @@ namespace Task_DEV_6
         /// </summary>
         public void DisplayNumberAllCars() => Console.WriteLine(
             GetNumberAllAutos() == 0
-            ? "The XML file hasn't autos."
-            : $"Number of all {AutoType} is {GetNumberAllAutos()}");
+            ? $"->The XML file hasn't {AutoType}."
+            : $"->Number of all {AutoType} is {GetNumberAllAutos()}");
+
+        /// <summary>
+        /// Metod displays auto types.
+        /// </summary>
+        public void DisplayAutoTypes()
+        {
+            foreach (var i in Autos)
+            {
+                Console.WriteLine($"-{i.Key}");
+            }
+        }
 
         /// <summary>
         /// Method returns true if the type of auto existences
