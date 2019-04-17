@@ -13,8 +13,10 @@ namespace Task_DEV_2Test
         [TestCase("ё", 1)]
         public void CountLettersToWord_Test(string word, int count)
         {
-            ConverterWordToPhonemes convererWordToPhonemes = new ConverterWordToPhonemes();
-            convererWordToPhonemes.Word = word;
+            ConverterWordToPhonemes convererWordToPhonemes = new ConverterWordToPhonemes
+            {
+                Word = word
+            };
             convererWordToPhonemes.SearchStress();
             convererWordToPhonemes.DevideWordIntoLetters();
             Assert.AreEqual(count, convererWordToPhonemes.ListOfLetters.Count);

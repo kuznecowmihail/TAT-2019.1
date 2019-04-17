@@ -36,5 +36,19 @@ namespace Task_DEV_2Test
                 () => converterWordToPhonemes.AddConsonantToPhonemes(letter)
             );
         }
+
+        [TestCase('f')]
+        [TestCase('5')]
+        [TestCase('+')]
+        public void AddNotRussianLetter_Test(char letter)
+        {
+            Letter myLetter = new Letter();
+            myLetter.current = letter;
+            ConverterWordToPhonemes converterWordToPhonemes = new ConverterWordToPhonemes();
+            Assert.Throws<IndexOutOfRangeException>
+            (
+                () => converterWordToPhonemes.AddOtherLetterToPhonemes(myLetter)
+            );
+        }
     }
 }

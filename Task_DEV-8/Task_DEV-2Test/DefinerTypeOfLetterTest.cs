@@ -21,6 +21,8 @@ namespace Task_DEV_2Test
         }
 
         [TestCase('f')]
+        [TestCase('5')]
+        [TestCase('+')]
         public void DifineIncorrectedLetter_Test(char letter)
         {
             Letter letterObject = new Letter();

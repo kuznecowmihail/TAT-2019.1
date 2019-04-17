@@ -158,7 +158,7 @@ namespace Task_DEV_2_
 
                     return;
                 case false:
-                    AddOtherVowelToPhonemes(letter.index, letter.current);
+                    AddOtherLetterToPhonemes(letter);
 
                     return;     
             }
@@ -192,7 +192,7 @@ namespace Task_DEV_2_
 
                 return;
             }
-            Phonemes.Append(letter.current);
+            AddOtherLetterToPhonemes(letter);
         }
 
         /// <summary>
@@ -202,15 +202,24 @@ namespace Task_DEV_2_
         /// <param name="letter">Symbol</param>
         /// <param name="stress">Index of stress</param>
         /// <param name="phonemes">Line of phonemes</param>
-        public void AddOtherVowelToPhonemes(int index, char letter)
+        public void AddOtherLetterToPhonemes(Letter letter)
         {
-            if (letter == 'о' && index != Stress)
+            if ((letter.current >= 1072 && letter.current <= 1103) || letter.current == 'ё')
             {
-                Phonemes.Append("а");
-
+                if (letter.current == 'о' && letter.index != Stress)
+                {
+                    Phonemes.Append("а");
+                }
+                else
+                {
+                    Phonemes.Append(letter.current);
+                }
                 return;
             }
-            Phonemes.Append(letter);
+            else
+            {
+                throw new IndexOutOfRangeException("The letter is not russian letter.");
+            }
         }
     }
 }
