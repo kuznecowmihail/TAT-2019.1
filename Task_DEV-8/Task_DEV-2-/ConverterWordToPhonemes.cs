@@ -10,7 +10,7 @@ namespace Task_DEV_2_
     /// </summary>
     public class ConverterWordToPhonemes
     {
-        public string Word { get; set; }
+        public string Word { get; private set; }
         public int Stress { get; private set; }
         public List<Letter> ListOfLetters { get; private set; }
         public StringBuilder Phonemes { get; private set; }
@@ -47,23 +47,9 @@ namespace Task_DEV_2_
         /// <returns>phonemes</returns>
         public StringBuilder ConvertWordToPhonemes(string word)
         {
-            word = word != string.Empty ? word.ToLower() : throw new ArgumentOutOfRangeException();
-
-            foreach (char i in word)
-            {
-                if ((i >= 1072 && i <= 1103) || i == 'ё' || i == '+')
-                {
-                    continue;
-                }
-                else
-                {
-                    throw new ArgumentOutOfRangeException("letter", "Incorrected letter.");
-                }
-            }
-            this.Word = word;
+            SetWord(word);
             ListOfLetters.Clear();
             Phonemes.Clear();
-            SearchStress();
             DevideWordIntoLetters();
 
             foreach (var letter in ListOfLetters)
@@ -89,20 +75,28 @@ namespace Task_DEV_2_
         }
 
         /// <summary>
-        /// A method searches stress and remove symbol of stress from word.
+        /// Method sets parameter to this word and sets stress.
         /// </summary>
         /// <param name="word"></param>
-        /// <param name="stress"></param>
-        public void SearchStress()
+        public void SetWord(string word)
         {
-            if (Word.Contains('+'))
-            {
-                Stress = Word.IndexOf('+') - 1;
-                Word = Word.Remove(Word.IndexOf('+'), 1);
+            word = word != null ? word.ToLower() : throw new NullReferenceException();
+            int indexStress = 0;
 
-                return;
+            foreach (var i in word)
+            {
+                if (((i >= 1072 && i <= 1103) || i == 'ё' || i == '+') && indexStress <= 1)
+                {
+                    indexStress += i == '+' ? 1 : 0;
+                    continue;
+                }
+                else
+                {
+                    throw new ArgumentOutOfRangeException("letter", "Incorrected letter.");
+                }
             }
-            Stress = -1;
+            this.Stress = indexStress == 1 ? word.IndexOf('+') - 1 : -1;
+            this.Word = indexStress == 1 ? word.Remove(word.IndexOf('+'), 1) : word;
         }
 
         /// <summary>
@@ -141,6 +135,7 @@ namespace Task_DEV_2_
             {
                 throw new NullReferenceException("letter is null.");
             }
+
             // If the key is in compound vowel - true.
             switch (keysIsCompoundVowel.ContainsKey(letter.current))
             {
@@ -198,23 +193,19 @@ namespace Task_DEV_2_
         /// <summary>
         /// A method defines the stress vawel or not and adds vawel in phonemes.
         /// </summary>
-        /// <param name="index">Index of symbol</param>
-        /// <param name="letter">Symbol</param>
-        /// <param name="stress">Index of stress</param>
-        /// <param name="phonemes">Line of phonemes</param>
+        /// <param name="letter">Symbol object</param>
         public void AddOtherLetterToPhonemes(Letter letter)
         {
-            if ((letter.current >= 1072 && letter.current <= 1103) || letter.current == 'ё')
+            if(letter == null)
             {
-                if (letter.current == 'о' && letter.index != Stress)
-                {
-                    Phonemes.Append("а");
-                }
-                else
-                {
-                    Phonemes.Append(letter.current);
-                }
-                return;
+                throw new NullReferenceException("Letter is null");
+            }
+
+            if (((letter.current >= 1072 && letter.current <= 1103) || letter.current == 'ё'))
+            {
+                Phonemes.Append(((letter.current == 'о' && letter.index != Stress))
+                    ? 'а' 
+                    : letter.current);
             }
             else
             {

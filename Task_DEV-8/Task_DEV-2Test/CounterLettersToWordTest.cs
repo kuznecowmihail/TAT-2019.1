@@ -11,15 +11,12 @@ namespace Task_DEV_2Test
     {
         [TestCase("молоко+", 6)]
         [TestCase("ё", 1)]
-        public void CountLettersToWord_Test(string word, int count)
+        public void CountLettersToWord_Test(string word, int resultCount)
         {
-            ConverterWordToPhonemes convererWordToPhonemes = new ConverterWordToPhonemes
-            {
-                Word = word
-            };
-            convererWordToPhonemes.SearchStress();
+            ConverterWordToPhonemes convererWordToPhonemes = new ConverterWordToPhonemes();
+            convererWordToPhonemes.SetWord(word);
             convererWordToPhonemes.DevideWordIntoLetters();
-            Assert.AreEqual(count, convererWordToPhonemes.ListOfLetters.Count);
+            Assert.AreEqual(resultCount, convererWordToPhonemes.ListOfLetters.Count);
         }
     }
 }

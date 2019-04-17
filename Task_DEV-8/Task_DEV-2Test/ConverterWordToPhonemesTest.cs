@@ -50,5 +50,15 @@ namespace Task_DEV_2Test
                 () => converterWordToPhonemes.AddOtherLetterToPhonemes(myLetter)
             );
         }
+
+        [TestCase(null)]
+        public void AddNullLetter_Test(Letter letter)
+        {
+            ConverterWordToPhonemes converterWordToPhonemes = new ConverterWordToPhonemes();
+            Assert.Throws<NullReferenceException>
+            (
+                () => converterWordToPhonemes.AddOtherLetterToPhonemes(letter)
+            );
+        }
     }
 }

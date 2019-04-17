@@ -54,7 +54,6 @@
     <Compile Include="ConverterWordToPhonemesTest.cs" />
     <Compile Include="DefinerTypeOfLetterTest.cs" />
     <Compile Include="SetterWordTest.cs" />
-    <Compile Include="SeacherStressTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
