@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Text;
 using System.Linq;
 
@@ -7,12 +8,12 @@ namespace Task_DEV_2_
     /// <summary>
     /// Class that finds and return phonemes of words.
     /// </summary>
-    class ConverterWordToPhonemes
+    public class ConverterWordToPhonemes
     {
-        private string word;
-        private List<Letter> listOfLetters = new List<Letter>();
-        private StringBuilder phonemes = new StringBuilder();
-        private int stress = -1;
+        public string Word { get; private set; }
+        public int Stress { get; private set; }
+        public List<Letter> ListOfLetters { get; private set; }
+        public StringBuilder Phonemes { get; private set; }
         private readonly Dictionary<char, char> keysIsCompoundVowel = new Dictionary<char, char>
         {
             ['ю'] = 'у',
@@ -34,22 +35,26 @@ namespace Task_DEV_2_
         /// Constructor for ConverWordToPhonemes.
         /// </summary>
         /// <param name="word"></param>
-        public ConverterWordToPhonemes(string word)
+        public ConverterWordToPhonemes()
         {
-            this.word = word;
+            ListOfLetters = new List<Letter>();
+            Phonemes = new StringBuilder();
         }
 
         /// <summary>
         /// A method converts word to phonemes and return.
         /// </summary>
         /// <returns>phonemes</returns>
-        public StringBuilder ConvertWordToPhonemes()
+        public StringBuilder ConvertWordToPhonemes(string word)
         {
-            SearchStress(ref word, ref stress);
+            SetWord(word);
+            ListOfLetters.Clear();
+            Phonemes.Clear();
             DevideWordIntoLetters();
-            foreach (var letter in listOfLetters)
+
+            foreach (var letter in ListOfLetters)
             {
-                switch (letter.DefineTypeOfSymbol(letter.current))
+                switch (letter.DefineTypeOfSymbol(letter.Current))
                 {
                     case "vowel":
                         AddVowelToPhonemes(letter);
@@ -58,28 +63,39 @@ namespace Task_DEV_2_
                         AddConsonantToPhonemes(letter);
                         continue;
                     case "other":
-                        if (letter.current == 'ь')
+                        if (letter.Current == 'ь')
                         {
-                            phonemes.Append("'");
+                            Phonemes.Append("'");
                         }
                         continue;
                 }
             }
-            return phonemes;
+            return Phonemes;
         }
 
         /// <summary>
-        /// A method searches stress and remove symbol of stress from word.
+        /// Method sets parameter to this word and sets stress.
         /// </summary>
         /// <param name="word"></param>
-        /// <param name="stress"></param>
-        public void SearchStress(ref string word,  ref int stress)
+        public void SetWord(string word)
         {
-            if (word.Contains('+'))
+            word = word != null ? word.ToLower() : throw new NullReferenceException();
+            int indexStress = 0;
+
+            foreach (var i in word)
             {
-                stress = word.IndexOf('+') - 1;
-                word = word.Remove(word.IndexOf('+'), 1);
+                if (((i >= 1072 && i <= 1103) || i == 'ё' || i == '+') && indexStress <= 1)
+                {
+                    indexStress += i == '+' ? 1 : 0;
+                    continue;
+                }
+                else
+                {
+                    throw new ArgumentOutOfRangeException("letter", "Incorrected letter.");
+                }
             }
+            this.Stress = indexStress == 1 ? word.IndexOf('+') - 1 : -1;
+            this.Word = indexStress == 1 ? word.Remove(word.IndexOf('+'), 1) : word;
         }
 
         /// <summary>
@@ -87,22 +103,24 @@ namespace Task_DEV_2_
         /// </summary>
         public void DevideWordIntoLetters()
         {
-            for(var index = 0; index < word.Length; index++)
+            for(var index = 0; index < Word.Length; index++)
             {
                 Letter letter = new Letter
                 {
-                    current = word[index],
-                    index = index
+                    Current = Word[index],
+                    Index = index
                 };
+
                 if (index != 0)
                 {
-                    letter.previous = word[index - 1];
+                    letter.Previous = Word[index - 1];
                 }
-                if (index < word.Length -2)
+
+                if (index < Word.Length -2)
                 {
-                    letter.next = word[index + 1];
+                    letter.Next = Word[index + 1];
                 }
-                listOfLetters.Add(letter);
+                ListOfLetters.Add(letter);
             }
         }
 
@@ -112,24 +130,23 @@ namespace Task_DEV_2_
         /// <param name="letter"></param>
         public void AddVowelToPhonemes(Letter letter)
         {
-            // If the key is in compound vowel - true.
-            switch (keysIsCompoundVowel.ContainsKey(letter.current))
+            if (letter == null)
             {
-                case true:
-                    // If previous letter is consonant - true.
-                    if(letter.DefineTypeOfSymbol(letter.previous) == "consonant")
-                    {
-                        // Add letter to phonemes.
-                        phonemes.Append("'" + keysIsCompoundVowel[letter.current]);
-                    }
-                    else
-                    {
-                        phonemes.Append("й" + keysIsCompoundVowel[letter.current]);
-                    }
-                    return;
-                case false:
-                    AddOtherVowelToPhonemes(letter.index, letter.current, stress, ref phonemes);
-                    return;     
+                throw new NullReferenceException("letter is null.");
+            }
+
+            // If the key is in compound vowel - true.
+            if (keysIsCompoundVowel.ContainsKey(letter.Current))
+            {
+                // If previous letter is consonant - true(е->'е).
+                // Add letter to phonemes.
+                Phonemes.Append(letter.DefineTypeOfSymbol(letter.Previous) == "consonant"
+                        ? $"'{keysIsCompoundVowel[letter.Current]}"
+                        : $"й{keysIsCompoundVowel[letter.Current]}");
+            }
+            else
+            {
+                AddOtherLetterToPhonemes(letter);
             }
         }
 
@@ -139,40 +156,48 @@ namespace Task_DEV_2_
         /// <param name="letter"></param>
         public void AddConsonantToPhonemes(Letter letter)
         {
+            if (letter == null)
+            {
+                throw new NullReferenceException("letter is null.");
+            }
+
             // Check on deaf. If first symbol is ringing, next symbol is deaf or consonant last and ringing, 
             // change the ringing to the deaf.
-            if (keysIsRingingValueIsDeaf.ContainsKey(letter.current) && keysIsRingingValueIsDeaf.ContainsValue(letter.next) || letter.next == '\0' && keysIsRingingValueIsDeaf.ContainsKey(letter.current))
+            if (keysIsRingingValueIsDeaf.ContainsKey(letter.Current) && keysIsRingingValueIsDeaf.ContainsValue(letter.Next) || letter.Next == '\0' && keysIsRingingValueIsDeaf.ContainsKey(letter.Current))
             {
                 // Add deaf to phenemes. Get the value from the key.
-                phonemes.Append(keysIsRingingValueIsDeaf[letter.current]);
+                Phonemes.Append(keysIsRingingValueIsDeaf[letter.Current]);
+
                 return;
             }
             // Check on ringing. If first symbol is deaf, next symbol is ringing
             // change the deaf to the ringing.
-            else if (keysIsRingingValueIsDeaf.ContainsValue(letter.current) && keysIsRingingValueIsDeaf.ContainsKey(letter.next) && letter.next != 'в')
+            else if (keysIsRingingValueIsDeaf.ContainsValue(letter.Current) && keysIsRingingValueIsDeaf.ContainsKey(letter.Next) && letter.Next != 'в')
             {
                 // Add ringing to phenemes. Get the key from the value;
-                phonemes.Append(keysIsRingingValueIsDeaf.FirstOrDefault(x => x.Value == letter.current).Key);
+                Phonemes.Append(keysIsRingingValueIsDeaf.FirstOrDefault(x => x.Value == letter.Current).Key);
+
                 return;
             }
-            phonemes.Append(letter.current);
+            AddOtherLetterToPhonemes(letter);
         }
 
         /// <summary>
         /// A method defines the stress vawel or not and adds vawel in phonemes.
         /// </summary>
-        /// <param name="index">Index of symbol</param>
-        /// <param name="word">Symbol</param>
-        /// <param name="stress">Index of stress</param>
-        /// <param name="phonemes">Line of phonemes</param>
-        public void AddOtherVowelToPhonemes(int index, char word, int stress, ref StringBuilder phonemes)
+        /// <param name="letter">Symbol object</param>
+        public void AddOtherLetterToPhonemes(Letter letter)
         {
-            if (word == 'о' && index != stress)
+            if (letter == null)
             {
-                phonemes.Append("а");
-                return;
+                throw new NullReferenceException("Letter is null");
             }
-            phonemes.Append(word);
+            Phonemes.Append(
+                ((letter.Current >= 1072 && letter.Current <= 1103) || letter.Current == 'ё')
+                ? (((letter.Current == 'о' && letter.Index != Stress))
+                    ? 'а'
+                    : letter.Current)
+                : throw new IndexOutOfRangeException("The letter is not russian letter."));
         }
     }
 }
