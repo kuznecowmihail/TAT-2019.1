@@ -83,12 +83,14 @@ namespace Task_DEV_2_
             foreach (var i in word)
             {
                 // If strecc of word more than 1 -> exception.
-                indexStress += 
-                    ((i >= 1072 && i <= 1103) || i == 'ё' || i == '+') && indexStress <= 1 
-                    ? i == '+'
-                        ? 1
-                        : 0
-                    : throw new ArgumentOutOfRangeException("letter", "Incorrected letter.");
+                if (((i >= 1072 && i <= 1103) || i == 'ё' || i == '+') && indexStress <= 1)
+                {
+                    indexStress +=  i == '+' ? 1 : 0;
+                }
+                else
+                {
+                    throw new ArgumentOutOfRangeException("letter", "Incorrected letter.");
+                }
             }
             this.Stress = indexStress == 1 ? word.IndexOf('+') - 1 : -1;
             this.Word = indexStress == 1 ? word.Remove(word.IndexOf('+'), 1) : word;
@@ -180,12 +182,18 @@ namespace Task_DEV_2_
             {
                 throw new NullReferenceException("Letter is null");
             }
-            Phonemes.Append(
-                ((letter.Current >= 1072 && letter.Current <= 1103) || letter.Current == 'ё')
-                ? (((letter.Current == 'о' && letter.Index != Stress))
+
+            if((letter.Current >= 1072 && letter.Current <= 1103) || letter.Current == 'ё')
+            {
+                Phonemes.Append(
+                (((letter.Current == 'о' && letter.Index != Stress))
                     ? 'а'
-                    : letter.Current)
-                : throw new ArgumentOutOfRangeException("The letter is not russian letter."));
+                    : letter.Current));
+            }
+            else
+            {
+                throw new ArgumentOutOfRangeException("The letter is not russian letter.");
+            }
         }
     }
 }
