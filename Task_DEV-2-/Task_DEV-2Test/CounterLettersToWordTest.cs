@@ -11,6 +11,7 @@ namespace Task_DEV_2Test
     {
         [TestCase("молоко+", 6)]
         [TestCase("ё", 1)]
+        [TestCase("", 0)]
         public void CountLettersToWord_Test(string word, int resultCount)
         {
             ConverterWordToPhonemes convererWordToPhonemes = new ConverterWordToPhonemes();
