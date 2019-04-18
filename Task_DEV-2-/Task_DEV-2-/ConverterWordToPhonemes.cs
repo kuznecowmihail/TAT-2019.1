@@ -63,13 +63,11 @@ namespace Task_DEV_2_
                         AddConsonantToPhonemes(letter);
                         continue;
                     case "other":
-                        if (letter.Current == 'ь')
-                        {
-                            Phonemes.Append("'");
-                        }
+                        Phonemes.Append(letter.Current == 'ь' ? "'" : "");
                         continue;
                 }
             }
+
             return Phonemes;
         }
 
@@ -84,15 +82,13 @@ namespace Task_DEV_2_
 
             foreach (var i in word)
             {
-                if (((i >= 1072 && i <= 1103) || i == 'ё' || i == '+') && indexStress <= 1)
-                {
-                    indexStress += i == '+' ? 1 : 0;
-                    continue;
-                }
-                else
-                {
-                    throw new ArgumentOutOfRangeException("letter", "Incorrected letter.");
-                }
+                // If strecc of word more than 1 -> exception.
+                indexStress += 
+                    ((i >= 1072 && i <= 1103) || i == 'ё' || i == '+') && indexStress <= 1 
+                    ? i == '+'
+                        ? 1
+                        : 0
+                    : throw new ArgumentOutOfRangeException("letter", "Incorrected letter.");
             }
             this.Stress = indexStress == 1 ? word.IndexOf('+') - 1 : -1;
             this.Word = indexStress == 1 ? word.Remove(word.IndexOf('+'), 1) : word;
@@ -105,22 +101,13 @@ namespace Task_DEV_2_
         {
             for(var index = 0; index < Word.Length; index++)
             {
-                Letter letter = new Letter
+                ListOfLetters.Add(new Letter
                 {
                     Current = Word[index],
+                    Previous = index != 0 ? Word[index - 1] : '\0',
+                    Next = index < Word.Length - 2 ? Word[index + 1] : '\0',
                     Index = index
-                };
-
-                if (index != 0)
-                {
-                    letter.Previous = Word[index - 1];
-                }
-
-                if (index < Word.Length -2)
-                {
-                    letter.Next = Word[index + 1];
-                }
-                ListOfLetters.Add(letter);
+                });
             }
         }
 
@@ -140,9 +127,10 @@ namespace Task_DEV_2_
             {
                 // If previous letter is consonant - true(е->'е).
                 // Add letter to phonemes.
-                Phonemes.Append(letter.DefineTypeOfSymbol(letter.Previous) == "consonant"
-                        ? $"'{keysIsCompoundVowel[letter.Current]}"
-                        : $"й{keysIsCompoundVowel[letter.Current]}");
+                Phonemes.Append(
+                    letter.DefineTypeOfSymbol(letter.Previous) == "consonant"
+                    ? $"'{keysIsCompoundVowel[letter.Current]}"
+                    : $"й{keysIsCompoundVowel[letter.Current]}");
             }
             else
             {

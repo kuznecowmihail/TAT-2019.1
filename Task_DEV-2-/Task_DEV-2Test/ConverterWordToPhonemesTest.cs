@@ -18,6 +18,16 @@ namespace Task_DEV_2Test
         }
 
         [TestCase(null)]
+        public void ConvertNullWordToPhonemes_Test(string word)
+        {
+            ConverterWordToPhonemes converterWordToPhonemes = new ConverterWordToPhonemes();
+            Assert.Throws<NullReferenceException>
+            (
+                () => converterWordToPhonemes.ConvertWordToPhonemes(word)
+            );
+        }
+
+        [TestCase(null)]
         public void AddNullVowelToPhoneme_Test(Letter letter)
         {
             ConverterWordToPhonemes converterWordToPhonemes = new ConverterWordToPhonemes();
@@ -42,8 +52,10 @@ namespace Task_DEV_2Test
         [TestCase('+')]
         public void AddNotRussianLetter_Test(char letter)
         {
-            Letter myLetter = new Letter();
-            myLetter.Current = letter;
+            Letter myLetter = new Letter
+            {
+                Current = letter
+            };
             ConverterWordToPhonemes converterWordToPhonemes = new ConverterWordToPhonemes();
             Assert.Throws<IndexOutOfRangeException>
             (
