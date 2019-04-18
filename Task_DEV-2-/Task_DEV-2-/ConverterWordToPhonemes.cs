@@ -185,7 +185,7 @@ namespace Task_DEV_2_
                 ? (((letter.Current == 'о' && letter.Index != Stress))
                     ? 'а'
                     : letter.Current)
-                : throw new IndexOutOfRangeException("The letter is not russian letter."));
+                : throw new ArgumentOutOfRangeException("The letter is not russian letter."));
         }
     }
 }

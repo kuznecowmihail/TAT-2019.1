@@ -57,7 +57,7 @@ namespace Task_DEV_2Test
                 Current = letter
             };
             ConverterWordToPhonemes converterWordToPhonemes = new ConverterWordToPhonemes();
-            Assert.Throws<IndexOutOfRangeException>
+            Assert.Throws<ArgumentOutOfRangeException>
             (
                 () => converterWordToPhonemes.AddOtherLetterToPhonemes(myLetter)
             );
