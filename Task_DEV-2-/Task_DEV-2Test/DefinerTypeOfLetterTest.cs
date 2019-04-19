@@ -4,9 +4,6 @@ using NUnit.Framework;
 
 namespace Task_DEV_2Test
 {
-    /// <summary>
-    /// Summary description for DefineTypeOfLetterTest
-    /// </summary>
     [TestFixture]
     public class DefinerTypeOfLetterTest
     {

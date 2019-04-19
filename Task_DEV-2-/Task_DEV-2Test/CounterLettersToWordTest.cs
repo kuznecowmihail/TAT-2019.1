@@ -3,9 +3,6 @@ using NUnit.Framework;
 
 namespace Task_DEV_2Test
 {
-    /// <summary>
-    /// Summary description for CountLettersToWordTest
-    /// </summary>
     [TestFixture]
     public class CounterLettersToWordTest
     {
