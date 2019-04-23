@@ -1,4 +1,6 @@
-﻿namespace Task_DEV_6
+﻿using System.Collections.Generic;
+
+namespace Task_DEV_6
 {
     /// <summary>
     /// Child class for pattern command calls method to calculate average price of auto type.
@@ -20,17 +22,16 @@
         /// Implemented method. 
         /// </summary>
         /// <param name="type"></param>
-        public void DisplayInformation(string type) => AverageTypePrice.DisplayAveragePriceType(type);
+        public void DisplayInformation() => AverageTypePrice.DisplayAveragePriceType();
 
         /// <summary>
         /// Implemented method. 
         /// </summary>
-        public void DisplayAutoTypes() => AverageTypePrice.DisplayAutoTypes();
+        public List<string> GetAutoTypes() => AverageTypePrice.GetAutoTypes();
 
         /// <summary>
         /// Implemented method. 
         /// </summary>
-        /// <param name="type"></param>
-        public bool DoesTypeContain(string type) => AverageTypePrice.DoesTypeContain(type);
+        public void SetProperties(string autoType, string autoBrand) => AverageTypePrice.SetProperties(autoType, autoBrand);
     }
 }

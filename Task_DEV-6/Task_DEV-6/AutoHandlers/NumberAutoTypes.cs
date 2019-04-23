@@ -10,6 +10,9 @@ namespace Task_DEV_6
     public class NumberAutoTypes
     {
         string AutoType { get; set; }
+        string AutoBrand { get; set; }
+        int NumberTypes { get; set; }
+        // string - name of type and list of this type.
         Dictionary<string, IEnumerable<Auto>> Autos { get; }
 
         /// <summary>
@@ -42,30 +45,36 @@ namespace Task_DEV_6
         /// Method displays information about number of auto types.
         /// </summary>
         public void DisplayNumberCarTypes() => Console.WriteLine(
-            GetNumberAutoTypes() == 0
+            NumberTypes == 0
             ? $"->The XML file hasn't {AutoType}."
-            : $"->Number of {AutoType} types is {GetNumberAutoTypes()}");
+            : $"->Number of {AutoType} types is {NumberTypes}");
 
         /// <summary>
-        /// Metod displays auto types.
+        /// Method returns list of available auto types.
         /// </summary>
-        public void DisplayAutoTypes()
+        /// <returns>list of types</returns>
+        public List<string> GetAutoTypes()
         {
-            foreach(var auto in Autos)
+            List<string> autoTypes = new List<string>();
+
+            foreach (var autoType in Autos.Keys)
             {
-                Console.WriteLine($"-{auto.Key}");
+                autoTypes.Add(autoType);
             }
+
+            return autoTypes;
         }
 
         /// <summary>
-        /// Method returns true if the type of auto exists
+        /// Method sets properties of auto.
         /// </summary>
-        /// <param name="type"></param>
-        /// <returns></returns>
-        public bool DoesTypeContain(string type)
+        /// <param name="autoType"></param>
+        /// <param name="autoModel"></param>
+        public void SetProperties(string autoType, string autoModel)
         {
-            AutoType = Autos.Keys.Where(t => t == (type)).Count() > 0 ? type : string.Empty;
-            return Autos.Keys.Where(t => t == (type)).Count() > 0;
+            this.AutoType = autoType;
+            this.AutoBrand = autoModel;
+            this.NumberTypes = GetNumberAutoTypes();
         }
     }
 }

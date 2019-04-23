@@ -1,4 +1,6 @@
-﻿namespace Task_DEV_6
+﻿using System.Collections.Generic;
+
+namespace Task_DEV_6
 {
     /// <summary>
     /// Child class for pattern command calls method to count number of all autos.
@@ -20,17 +22,16 @@
         /// Implemented method. 
         /// </summary>
         /// <param name="type"></param>
-        public void DisplayInformation(string type) => NumberAllAutos.DisplayNumberAllCars();
+        public void DisplayInformation() => NumberAllAutos.DisplayNumberAllCars();
 
         /// <summary>
         /// Implemented method. 
         /// </summary>
-        public void DisplayAutoTypes() => NumberAllAutos.DisplayAutoTypes();
+        public List<string> GetAutoTypes() => NumberAllAutos.GetAutoTypes();
 
         /// <summary>
         /// Implemented method. 
         /// </summary>
-        /// <param name="type"></param>
-        public bool DoesTypeContain(string type) => NumberAllAutos.DoesTypeContain(type);
+        public void SetProperties(string autoType, string autoBrand) => NumberAllAutos.SetProperties(autoType, autoBrand);
     }
 }

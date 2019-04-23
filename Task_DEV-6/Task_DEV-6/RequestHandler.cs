@@ -10,8 +10,8 @@ namespace Task_DEV_6
     {
         // String - name of command.
         Dictionary<string, ICommand> DictionaryOfCommands { get; set; }
-        // String - param for object function.
-        Dictionary<ICommand, string> CommandsForExecute { get; set; }
+        // Commands for execute.
+        List<ICommand> CommandsForExecute { get; set; }
         const string executeCommand = "execute";
         const string exitCommand = "exit";
 
@@ -20,15 +20,15 @@ namespace Task_DEV_6
         /// </summary>
         public RequestHandler()
         {
-            this.CommandsForExecute = new Dictionary<ICommand, string>();
+            this.CommandsForExecute = new List<ICommand>();
         }
 
         /// <summary>
         /// Method handles request.
         /// </summary>
-        public void HandleRequest(Dictionary<string, ICommand> dictionaryOfCommand)
+        public void HandleRequest(Dictionary<string, ICommand> dictionaryOfCommands)
         {
-            DictionaryOfCommands = dictionaryOfCommand ?? throw new NullReferenceException("Don't set a dictionary of command.");
+            DictionaryOfCommands = dictionaryOfCommands ?? throw new NullReferenceException("Don't set a dictionary of command.");
             // The existence of such a request.
             bool existence = true;
             // Request of users.
@@ -45,7 +45,7 @@ namespace Task_DEV_6
                 {
                     foreach (var executeCommand in CommandsForExecute)
                     {
-                        executeCommand.Key.DisplayInformation(executeCommand.Value);
+                        executeCommand.DisplayInformation();
                     }
                     CommandsForExecute.Clear();
                     existence = true;
@@ -87,9 +87,10 @@ namespace Task_DEV_6
         public void DisplayAvailableCommands(string line)
         {
             Console.WriteLine($"{line} Available command:");
+
             foreach (var command in DictionaryOfCommands)
             {
-                if (!CommandsForExecute.ContainsKey(command.Value))
+                if (!CommandsForExecute.Contains(command.Value))
                 {
                     Console.WriteLine($"-{command.Key}");
                 }
@@ -97,28 +98,38 @@ namespace Task_DEV_6
             Console.WriteLine($"-{executeCommand}\n-{exitCommand}");
         }
 
+        public void DisplayAvailableType(List<string> autoTypes, string line)
+        {
+            Console.WriteLine(line);
+            foreach (var autoType in autoTypes)
+            {
+                Console.WriteLine($"-{autoType}");
+            }
+        }
+
         /// <summary>
         /// Method check on contains the command in execute command and add to execute command.
         /// </summary>
         /// <param name="command"></param>
-        /// <param name="param"></param>
-        public void AddToExecuteCommands(ICommand command, string param)
+        /// <param name="brand"></param>
+        public void AddToExecuteCommands(ICommand command, string brand)
         {
-            if (CommandsForExecute.ContainsKey(command))
+            if (CommandsForExecute.Contains(command))
             {
                 Console.WriteLine("This command using now. Can use 'execute' command.");
+
                 return;
             }
-            Console.WriteLine("Enter auto type. Available type:");
-            command.DisplayAutoTypes();
-            string requestType = Console.ReadLine();
+            DisplayAvailableType(command.GetAutoTypes(), "Enter auto type. Available type:");
+            string type = Console.ReadLine();
 
-            while (command.DoesTypeContain(requestType) == false)
+            while (!command.GetAutoTypes().Contains(type))
             {
-                Console.WriteLine("Try again enter auto type!");
-                requestType = Console.ReadLine();
+                DisplayAvailableType(command.GetAutoTypes(), "Try again! Available type:");
+                type = Console.ReadLine();
             }
-            CommandsForExecute.Add(command, param);
+            command.SetProperties(type, brand);
+            CommandsForExecute.Add(command);
         }
     }
 }

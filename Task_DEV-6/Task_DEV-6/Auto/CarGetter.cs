@@ -46,7 +46,7 @@ namespace Task_DEV_6
         {
             XDocument xDoc = new XDocument();
             xDoc = XDocument.Load($"../../{NameXML}.xml");
-            return xDoc.Element("autos").Elements("auto").Select(t => new Auto(
+            return xDoc.Element("cars").Elements("car").Select(t => new Auto(
                 t.Element("brand").Value != string.Empty ? t.Element("brand").Value.ToLower() : throw new Exception("Brand is Empty."),
                 t.Element("model").Value != string.Empty ? t.Element("model").Value.ToLower() : throw new Exception("Model is Empty."),
                 Int32.TryParse(t.Element("number").Value, out int number) ? number : throw new Exception("Incorrect number value of the auto."),
