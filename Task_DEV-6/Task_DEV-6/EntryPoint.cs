@@ -22,19 +22,19 @@ namespace Task_DEV_6
                 {
                     throw new Exception("Program hasn't name of XML.");
                 }
+                List<Car> cars = new CarsGetter(args[0]).GetCars();
                 // Commands for our task.
                 Dictionary<string, ICommand> DictionaryOfCarCommands = new Dictionary<string, ICommand>
                 {
-                    ["count types"] = new NumberCarTypesCommand(new NumberCarTypes(new CarsGetter(args[0]).GetCars())),
-                    ["count all"] = new NumberAllCarsCommand(new NumberAllCars(new CarsGetter(args[0]).GetCars())),
-                    ["average price"] = new AverageCarPriceCommand(new AverageCarPrice(new CarsGetter(args[0]).GetCars())),
-                    ["average price "] = new AverageTypePriceCommand(new AverageTypePrice(new CarsGetter(args[0]).GetCars())),
+                    ["count types"] = new NumberCarTypesCommand(new NumberCarTypes(cars)),
+                    ["count all"] = new NumberAllCarsCommand(new NumberAllCars(cars)),
+                    ["average price"] = new AverageCarPriceCommand(new AverageCarPrice(cars)),
+                    ["average price "] = new AverageTypePriceCommand(new AverageTypePrice(cars)),
                 };
                 RequestHandler requestHandler = new RequestHandler();
                 // Add the commands to handler.
                 // In programm can set different string and different command to requesthandler.
-                requestHandler.SetCommand(DictionaryOfCarCommands);
-                requestHandler.HandleRequest();
+                requestHandler.HandleRequest(DictionaryOfCarCommands);
 
                 return 0;
             }

@@ -10,6 +10,7 @@ namespace Task_DEV_6
     public class AverageCarPrice
     {
         List<Car> Cars { get; }
+        int AveragePrice { get; set; }
 
         /// <summary>
         /// Constructor of AverageCarPrice.
@@ -18,15 +19,24 @@ namespace Task_DEV_6
         public AverageCarPrice(List<Car> cars)
         {
             this.Cars = cars;
+            this.AveragePrice = 0;
         }
 
         /// <summary>
         /// Method returns average price.
         /// </summary>
         /// <returns>Average price</returns>
-        public int GetAveragePrice() => Cars.Sum(t => t.Number) > 0
-            ? Cars.Sum(t => t.Price * t.Number) / Cars.Sum(t => t.Number)
-            : 0;
+        public int GetAveragePrice()
+        {
+            if(Cars.Sum(t => t.Number) > 0 && AveragePrice == 0)
+            {
+                return AveragePrice = Cars.Sum(t => t.Price * t.Number) / Cars.Sum(t => t.Number);
+            }
+            else
+            {
+                return AveragePrice;
+            }
+        }
 
         /// <summary>
         /// Method displays information about average price.

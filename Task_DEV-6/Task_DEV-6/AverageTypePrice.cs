@@ -10,6 +10,7 @@ namespace Task_DEV_6
     public class AverageTypePrice
     {
         List<Car> Cars { get; }
+        int AveragePrice { get; set; }
 
         /// <summary>
         /// Constructor of AverageTypePrice.
@@ -18,6 +19,7 @@ namespace Task_DEV_6
         public AverageTypePrice(List<Car> cars)
         {
             this.Cars = cars;
+            this.AveragePrice = 0;
         }
 
         /// <summary>
@@ -25,9 +27,17 @@ namespace Task_DEV_6
         /// </summary>
         /// <param name="brand"></param>
         /// <returns>Average price type</returns>
-        public int GetAveragePriceType(string brand) => Cars.Where(t => t.Brand.Equals(brand)).Sum(t => t.Number) > 0
-            ? Cars.Where(t => t.Brand.Equals(brand)).Sum(t => t.Price * t.Number) / Cars.Where(t => t.Brand.Equals(brand)).Sum(t => t.Number)
-            : 0;
+        public int GetAveragePriceType(string brand)
+        {
+            if(Cars.Where(t => t.Brand.Equals(brand)).Sum(t => t.Number) > 0 && AveragePrice == 0)
+            {
+                return AveragePrice = Cars.Where(t => t.Brand.Equals(brand)).Sum(t => t.Price * t.Number) / Cars.Where(t => t.Brand.Equals(brand)).Sum(t => t.Number);
+            }
+            else
+            {
+                return AveragePrice;
+            }
+        }
 
         /// <summary>
         /// Method displays information about average car price.

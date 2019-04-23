@@ -12,25 +12,19 @@ namespace Task_DEV_6
         const string exitCommand = "exit";
 
         /// <summary>
-        /// Set command.
-        /// </summary>
-        /// <param name="dictionaryOfCommand"></param>
-        public void SetCommand(Dictionary<string, ICommand> dictionaryOfCommand) => DictionaryOfCommands = dictionaryOfCommand;
-
-        /// <summary>
         /// Method handle request.
         /// </summary>
-        public void HandleRequest()
+        public void HandleRequest(Dictionary<string, ICommand> dictionaryOfCommand)
         {
+            DictionaryOfCommands = dictionaryOfCommand ?? throw new NullReferenceException("Dictionary of command is empty.");
             bool existence = false;
-            string request = String.Empty;
-            
+
             // Infinity cicle.
-            while(true)
+            while (true)
             {
                 // if the request isn't command - false.
                 DisplayAllCommands(existence == true ? "Enter command!" : "Try again!");
-                request = Console.ReadLine().ToLower();
+                string request = Console.ReadLine().ToLower();
                 existence = false;
 
                 if (request == exitCommand)
