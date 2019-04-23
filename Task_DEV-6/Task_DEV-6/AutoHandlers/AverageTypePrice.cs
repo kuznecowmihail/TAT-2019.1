@@ -68,8 +68,8 @@ namespace Task_DEV_6
         /// <returns></returns>
         public bool DoesTypeContain(string type)
         {
-            AutoType = Autos.Keys.Where(t => t == (type)).Count() > 0 ? type : string.Empty;
-            return Autos.Keys.Where(t => t == (type)).Count() > 0;
+            AutoType = Autos.Keys.Where(t => t == type).Count() > 0 ? type : string.Empty;
+            return Autos.Keys.Where(t => t == type).Count() > 0;
         }
     }
 }

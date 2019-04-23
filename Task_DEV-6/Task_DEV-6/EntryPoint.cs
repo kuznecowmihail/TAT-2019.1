@@ -37,8 +37,7 @@ namespace Task_DEV_6
                     ["average price "] = new AverageTypePriceCommand(new AverageTypePrice(dictionaryOfAutoTypes))
                 };
                 RequestHandler requestHandler = new RequestHandler();
-                requestHandler.SetCommand(dictionaryOfAutoCommands);
-                requestHandler.HandleRequest();
+                requestHandler.HandleRequest(dictionaryOfAutoCommands);
 
                 return 0;
             }

@@ -24,31 +24,21 @@ namespace Task_DEV_6
         }
 
         /// <summary>
-        /// Set command.
-        /// </summary>
-        /// <param name="dictionaryOfCommand"></param>
-        public void SetCommand(Dictionary<string, ICommand> dictionaryOfCommand) => DictionaryOfCommands = dictionaryOfCommand;
-
-        /// <summary>
         /// Method handles request.
         /// </summary>
-        public void HandleRequest()
+        public void HandleRequest(Dictionary<string, ICommand> dictionaryOfCommand)
         {
-            if(DictionaryOfCommands == null)
-            {
-                throw new Exception("Don't set a dictionary of command.");
-            }
+            DictionaryOfCommands = dictionaryOfCommand ?? throw new NullReferenceException("Don't set a dictionary of command.");
             // The existence of such a request.
             bool existence = true;
             // Request of users.
-            string request = string.Empty;
 
             // Infinity cicle.
             while (true)
             {
                 // if the request isn't command - false.
                 DisplayAvailableCommands(existence == true ? "Enter command!" : "Try again!");
-                request = Console.ReadLine().ToLower();
+                string request = Console.ReadLine().ToLower();
                 existence = false;
 
                 if (request == executeCommand)
@@ -72,7 +62,7 @@ namespace Task_DEV_6
                 {
                     if (command.Key == request)
                     {
-                        AddToExecuteCommands(request, command.Value, string.Empty);
+                        AddToExecuteCommands(command.Value, string.Empty);
                         existence = true;
                         break;
                     }
@@ -82,7 +72,7 @@ namespace Task_DEV_6
                     // For example: "average price ford". Parameter is "ford".
                     else if (command.Key[command.Key.Length - 1] == ' ' && request.Contains(command.Key))
                     {
-                        AddToExecuteCommands(request, command.Value, request.Substring(command.Key.Length, request.Length - command.Key.Length));
+                        AddToExecuteCommands(command.Value, request.Substring(command.Key.Length, request.Length - command.Key.Length));
                         existence = true;
                         break;
                     }
@@ -110,10 +100,9 @@ namespace Task_DEV_6
         /// <summary>
         /// Method check on contains the command in execute command and add to execute command.
         /// </summary>
-        /// <param name="request"></param>
         /// <param name="command"></param>
         /// <param name="param"></param>
-        public void AddToExecuteCommands(string request, ICommand command, string param)
+        public void AddToExecuteCommands(ICommand command, string param)
         {
             if (CommandsForExecute.ContainsKey(command))
             {
