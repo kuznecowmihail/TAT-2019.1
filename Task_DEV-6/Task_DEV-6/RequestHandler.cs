@@ -11,7 +11,7 @@ namespace Task_DEV_6
         // String - name of command.
         Dictionary<string, ICommand> DictionaryOfCommands { get; set; }
         // Commands for execute.
-        List<ICommand> CommandsForExecute { get; set; }
+        List<ICommand> CommandsForExecution { get; set; }
         const string executeCommand = "execute";
         const string exitCommand = "exit";
 
@@ -20,7 +20,7 @@ namespace Task_DEV_6
         /// </summary>
         public RequestHandler()
         {
-            this.CommandsForExecute = new List<ICommand>();
+            this.CommandsForExecution = new List<ICommand>();
         }
 
         /// <summary>
@@ -43,11 +43,11 @@ namespace Task_DEV_6
 
                 if (request == executeCommand)
                 {
-                    foreach (var executeCommand in CommandsForExecute)
+                    foreach (var executeCommand in CommandsForExecution)
                     {
                         executeCommand.DisplayInformation();
                     }
-                    CommandsForExecute.Clear();
+                    CommandsForExecution.Clear();
                     existence = true;
                     continue;
                 }
@@ -90,7 +90,7 @@ namespace Task_DEV_6
 
             foreach (var command in DictionaryOfCommands)
             {
-                if (!CommandsForExecute.Contains(command.Value))
+                if (!CommandsForExecution.Contains(command.Value))
                 {
                     Console.WriteLine($"-{command.Key}");
                 }
@@ -100,7 +100,7 @@ namespace Task_DEV_6
 
         public void DisplayAvailableType(List<string> autoTypes, string line)
         {
-            Console.WriteLine(line);
+            Console.WriteLine($"{line} Available type:");
             foreach (var autoType in autoTypes)
             {
                 Console.WriteLine($"-{autoType}");
@@ -114,22 +114,26 @@ namespace Task_DEV_6
         /// <param name="brand"></param>
         public void AddToExecuteCommands(ICommand command, string brand)
         {
-            if (CommandsForExecute.Contains(command))
+            if (CommandsForExecution.Contains(command))
             {
                 Console.WriteLine("This command using now. Can use 'execute' command.");
 
                 return;
             }
-            DisplayAvailableType(command.GetAutoTypes(), "Enter auto type. Available type:");
-            string type = Console.ReadLine();
+            string type;
+            bool incorrecetType = false;
 
-            while (!command.GetAutoTypes().Contains(type))
+            do
             {
-                DisplayAvailableType(command.GetAutoTypes(), "Try again! Available type:");
+                DisplayAvailableType(command.GetAutoTypes(), 
+                    incorrecetType == false 
+                    ? "Enter auto type." 
+                    : "Try again!");
                 type = Console.ReadLine();
-            }
+                incorrecetType = true;
+            } while (!command.GetAutoTypes().Contains(type));
             command.SetProperties(type, brand);
-            CommandsForExecute.Add(command);
+            CommandsForExecution.Add(command);
         }
     }
 }
