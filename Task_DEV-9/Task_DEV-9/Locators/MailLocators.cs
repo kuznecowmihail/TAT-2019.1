@@ -46,9 +46,9 @@
                 get => "//span[text() = 'Написать письмо']";
             }
 
-            public string SelectUnseenLetterLocator
+            public string SelecterUnreadLetterLocator
             {
-                get => "//div[@class = 'b-datalist__item js-datalist-item b-datalist__item_unread']";
+                get => "//div//span[@class= 'b-datalist__item__status-unread']/following::div[3]/div[3]/div[@class = 'b-datalist__item__wrapper']";
             }
         }
 
@@ -62,10 +62,6 @@
                 get => "//textarea[@tabindex = '4']";
             }
 
-            public string SendButtonLocator
-            {
-                get => "//div[@class = 'b-toolbar__item b-toolbar__item_ b-toolbar__item_false']";
-            }
 
             public string SwitcherToFrameLocator
             {
@@ -75,6 +71,10 @@
             public string TextLocator
             {
                 get => "//body[@id = 'tinymce']";
+            }
+            public string SendButtonLocator
+            {
+                get => "//div[@class = 'b-toolbar__item b-toolbar__item_ b-toolbar__item_false']";
             }
 
             public string LetterSentLocator

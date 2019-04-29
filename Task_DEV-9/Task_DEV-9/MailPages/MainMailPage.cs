@@ -2,6 +2,7 @@
 using System.Linq;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
+using System.Threading;
 
 namespace Task_DEV_9
 {
@@ -39,12 +40,14 @@ namespace Task_DEV_9
         /// <summary>
         /// Method opens letter.
         /// </summary>
-        /// <param name="ramblerLogin"></param>
+        /// <param name="senderName"></param>
         /// <returns></returns>
-        public LetterMailPage SelectUnseenLetter()
+        public LetterMailPage SelectUnseenLetter(string senderName)
         {
-            Wait.Until(t => Driver.FindElements(By.XPath(Locator.SelectUnseenLetterLocator)).Any());
-            SelecterLetter = Driver.FindElement(By.XPath(Locator.SelectUnseenLetterLocator));
+            //Wait.Until(t => Driver.FindElements(By.XPath(Locator.SelectUnseenLetterLocator(senderName))).Any());
+            // Wait unread letter.
+            Wait.Until(t => Driver.FindElements(By.XPath(Locator.SelecterUnreadLetterLocator)).Any());
+            SelecterLetter = Driver.FindElement(By.XPath(Locator.SelecterUnreadLetterLocator));
             SelecterLetter.Click();
 
             return new LetterMailPage(Driver);

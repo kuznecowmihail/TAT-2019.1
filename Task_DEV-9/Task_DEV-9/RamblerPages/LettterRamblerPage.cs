@@ -40,7 +40,7 @@ namespace Task_DEV_9
             Wait.Until(t => Driver.FindElements(By.XPath(Locator.SendButtonLocator)).Any());
             SenderLetter = Driver.FindElement(By.XPath(Locator.SendButtonLocator));
             SenderLetter.Click();
-            Wait.Until(t => Driver.FindElements(By.XPath(Locator.LetterSentLocator)).Any());
+            Wait.Until(t => Driver.FindElements(By.XPath(Locator.LetterSentLocator)));
         }
     }
 }

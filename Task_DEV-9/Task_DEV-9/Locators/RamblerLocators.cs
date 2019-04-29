@@ -46,9 +46,9 @@
         /// </summary>
         public class MainRamblerLocator
         {
-            public string SelectLetterLocator
+            public string GetUnreadLetterLocator(string name)
             {
-                get => "//div[@class = 'AutoMaillistItem-root-1n AutoMaillistItem-unseen-ad']//a//span[@class = 'AutoMaillistItem-sender-1V']";
+                return $"//div[@class = 'AutoMaillistItem-root-1n AutoMaillistItem-unseen-ad']//a//span[@class = 'AutoMaillistItem-sender-1V' and contains(@title, '{name}')]";
             }
         }
 
@@ -69,7 +69,7 @@
 
             public string LetterSentLocator
             {
-                get => "//div[@class = 'notification notification-success notification-visible']";//a[@class = 'AutoMaillistItem-wrapper-18']";
+                get => "//div[@class = 'notifications-wrapper']//div[@class = 'notifications-tr']";
             }
         }
     }

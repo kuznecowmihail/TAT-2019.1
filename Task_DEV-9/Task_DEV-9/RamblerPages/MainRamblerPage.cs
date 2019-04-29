@@ -12,7 +12,7 @@ namespace Task_DEV_9
     {
         IWebDriver Driver { get; }
         WebDriverWait Wait { get; }
-        IWebElement SelecterLetter { get; set; }
+        IWebElement SelecterUnreadLetter { get; set; }
         RamblerLocators.MainRamblerLocator Locator { get; }
 
         /// <summary>
@@ -31,22 +31,26 @@ namespace Task_DEV_9
         /// </summary>
         /// <param name="sender"></param>
         /// <returns></returns>
-        public LettterRamblerPage SelectLetter(string sender)
+        public LettterRamblerPage SelectUnreadLetter(string sender)
         {
-            Wait.Until(t => Driver.FindElements(By.XPath(Locator.SelectLetterLocator)).Any());
-            var unseenLetters = Driver.FindElements(By.XPath(Locator.SelectLetterLocator)).ToList();
-
-            foreach(var letter in unseenLetters)
-            {
-                if(letter.GetAttribute("title").Contains(sender))
-                {
-                    SelecterLetter = letter;
-                    break;
-                }
-            }
-            SelecterLetter.Click();
+            Wait.Until(t => Driver.FindElements(By.XPath(Locator.GetUnreadLetterLocator(sender))).Any());
+            SelecterUnreadLetter = Driver.FindElement(By.XPath(Locator.GetUnreadLetterLocator(sender)));
+            SelecterUnreadLetter.Click();
 
             return new LettterRamblerPage(Driver);
+        }
+
+        /// <summary>
+        /// Method gets number of unread letters of sender.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <returns>Count of letters</returns>
+        public int GetCountUnreadSenderLetter(string sender)
+        {
+            Wait.Until(t => Driver.FindElements(By.XPath(Locator.GetUnreadLetterLocator(sender))).Any());
+            var unreadLetters = Driver.FindElements(By.XPath(Locator.GetUnreadLetterLocator(sender))).ToList();
+
+            return unreadLetters.Count;
         }
     }
 }

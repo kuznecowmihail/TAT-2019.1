@@ -14,8 +14,9 @@ namespace Task_DEV_9Test
         IWebDriver driver;
         WebDriverWait wait;
         const string sentLetterlocator = "//div[@class = 'message-sent__title']";
-        const string unseenLettersLocator = "//div[@class = 'AutoMaillistItem-root-1n AutoMaillistItem-unseen-ad']//a//span[@class = 'AutoMaillistItem-sender-1V']";
+        const string unreadLettersLocator = "//div[@class = 'AutoMaillistItem-root-1n AutoMaillistItem-unseen-ad']//a//span[@class = 'AutoMaillistItem-sender-1V']";
         const string textLocator = "//div[text() = '";
+        const string inputName = "//input[@name = 'FirstName']";
 
         [SetUp]
         public void SetUp()
@@ -40,7 +41,6 @@ namespace Task_DEV_9Test
         [TestCase("2209username1998@mail.ru", "2_password_2", "I ready to change name!!", "2909username1998@rambler.ru", "1_Password_1")]
         public void SendAndRecieveLetter(string mailLogin, string mailPassword, string content, string ramblerLogin, string ramblerPassword)
         {
-            int countLetter = 0;
             LoginMailPage loginMailPage = new LoginMailPage(driver);
             loginMailPage.GoToPage();
             var mainMailPage = loginMailPage.LoginToMail(mailLogin, mailPassword);
@@ -51,17 +51,7 @@ namespace Task_DEV_9Test
             LoginRamblerPage loginRamblerPage = new LoginRamblerPage(driver);
             loginRamblerPage.GoToLoginPage();
             var mainRamblerPage = loginRamblerPage.LoginIntoMail(ramblerLogin, ramblerPassword);
-            wait.Until(t => driver.FindElements(By.XPath(unseenLettersLocator)).Any());
-            var unseenLetters = driver.FindElements(By.XPath(unseenLettersLocator)).ToList();
-
-            foreach(var letter in unseenLetters)
-            {
-                if(letter.GetAttribute("title").Contains(mailLogin))
-                {
-                    countLetter++;
-                }
-            }
-            Assert.IsTrue(countLetter > 0);
+            Assert.IsTrue(mainRamblerPage.GetCountUnreadSenderLetter(mailLogin) > 0);
         }
 
         [TestCase("2209username1998@mail.ru", "2_password_2", "I ready to change name!!", "2909username1998@rambler.ru", "1_Password_1")]
@@ -77,7 +67,7 @@ namespace Task_DEV_9Test
             LoginRamblerPage loginRamblerPage = new LoginRamblerPage(driver);
             loginRamblerPage.GoToLoginPage();
             var mainRamblerPage = loginRamblerPage.LoginIntoMail(ramblerLogin, ramblerPassword);
-            var selectLetter = mainRamblerPage.SelectLetter(mailLogin);
+            var selectLetter = mainRamblerPage.SelectUnreadLetter(mailLogin);
             wait.Until(t => driver.FindElements(By.XPath($"{textLocator}{actualContent}']")).Any());
             var expectedContent = driver.FindElement(By.XPath($"{textLocator}{actualContent}']"));
             Assert.AreEqual(expectedContent.Text, actualContent);
@@ -89,17 +79,17 @@ namespace Task_DEV_9Test
         {
             LoginMailPage loginMailPage = new LoginMailPage(driver);
             loginMailPage.GoToPage();
-            var mainMailPage = loginMailPage.LoginToMail("2209username1998@mail.ru", "2_password_2");
+            var mainMailPage = loginMailPage.LoginToMail(mailLogin, mailPassword);
             var writerLetterMailPage = mainMailPage.ClickToWriteLetter();
-            writerLetterMailPage.SendLetter("2909username1998@rambler.ru", "I ready to change my name!!");
+            writerLetterMailPage.SendLetter(ramblerLogin, content);
             driver.Quit();
 
             driver = new ChromeDriver();
 
             LoginRamblerPage loginRamblerPage = new LoginRamblerPage(driver);
             loginRamblerPage.GoToLoginPage();
-            var mainRamblerPage = loginRamblerPage.LoginIntoMail("2909username1998@rambler.ru", "1_Password_1");
-            var ramblerLetterPage = mainRamblerPage.SelectLetter("2209username1998@mail.ru");
+            var mainRamblerPage = loginRamblerPage.LoginIntoMail(ramblerLogin, ramblerPassword);
+            var ramblerLetterPage = mainRamblerPage.SelectUnreadLetter(mailLogin);
             ramblerLetterPage.ReplyOnLetter(newUserName);
             driver.Quit();
 
@@ -107,14 +97,15 @@ namespace Task_DEV_9Test
 
             loginMailPage = new LoginMailPage(driver);
             loginMailPage.GoToPage();
-            mainMailPage = loginMailPage.LoginToMail("2209username1998@mail.ru", "2_password_2");
-            var mailLetterPage = mainMailPage.SelectUnseenLetter();
+            mainMailPage = loginMailPage.LoginToMail(mailLogin, mailPassword);
+            var mailLetterPage = mainMailPage.SelectUnseenLetter(ramblerLogin);
             string newName = mailLetterPage.GetNameFromLetter();
             var settingsPage = mailLetterPage.GoToSetting();
             settingsPage.ChangeUserName(newName);
+
             mailLetterPage.GoToSetting();
-            wait.Until(t => driver.FindElements(By.XPath("//input[@name = 'FirstName']")));
-            var text = driver.FindElement(By.XPath("//input[@name = 'FirstName']"));
+            wait.Until(t => driver.FindElements(By.XPath(inputName)));
+            var text = driver.FindElement(By.XPath(inputName));
 
             Assert.AreEqual(text.GetAttribute("value"), newUserName);
         }
