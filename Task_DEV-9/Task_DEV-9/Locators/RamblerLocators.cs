@@ -10,35 +10,12 @@
         /// </summary>
         public class LoginPageLocator
         {
-            public string PageLocator
-            {
-                get => "https://mail.rambler.ru";
-            }
-
-            public string SwitcherToFrameLocator
-            {
-                get => "//iframe";
-            }
-
-            public string LoginLocator
-            {
-                get => "//input[@name = 'login']";
-            }
-
-            public string PasswordLocator
-            {
-                get => "//input[@name = 'password']";
-            }
-
-            public string CheckBoxlocator
-            {
-                get => "//span[@class = 'rui-Checkbox-fake']";
-            }
-
-            public string LoginButtonLocator
-            {
-                get => "//span[@class='rui-Button-content']";
-            }
+            public string PageLocator { get; } = "https://mail.rambler.ru";
+            public string SwitcherToFrameLocator { get; } = "//iframe";
+            public string LoginLocator { get; } = "//input[@name = 'login']";
+            public string PasswordLocator { get; } = "//input[@name = 'password']";
+            public string CheckBoxlocator { get; } = "//span[@class = 'rui-Checkbox-fake']";
+            public string LoginButtonLocator { get; } = "//span[@class='rui-Button-content']";
         }
 
         /// <summary>
@@ -57,20 +34,9 @@
         /// </summary>
         public class LetterPageLocator
         {
-            public string TextLocator
-            {
-                get => "//textarea[@class = 'rui-Input-input QuickReply-textarea-3R']";
-            }
-
-            public string SendButtonLocator
-            {
-                get => "//button[@type = 'button']";
-            }
-
-            public string LetterSentLocator
-            {
-                get => "//div[@class = 'notifications-wrapper']//div[@class = 'notifications-tr']";
-            }
+            public string TextLocator { get; } = "//textarea[@class = 'rui-Input-input QuickReply-textarea-3R']";
+            public string SendButtonLocator { get; } = "//button[@type = 'button']";
+            public string LetterSentLocator { get; } = "//div[@class = 'notifications-wrapper']//div[@class = 'notifications-tr']";
         }
     }
 }

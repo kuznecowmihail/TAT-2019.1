@@ -10,30 +10,11 @@
         /// </summary>
         public class LoginPageLocator
         {
-            public string PageLocator
-            {
-                get => "https://mail.ru/";
-            }
-
-            public string LoginLocator
-            {
-                get => "//input[@name = 'login']";
-            }
-
-            public string PasswordLocator
-            {
-                get => "//input[@name = 'password']";
-            }
-
-            public string CheckBoxLocator
-            {
-                get => "//input[@class = 'mailbox__saveauth']";
-            }
-
-            public string LoginButtonLocator
-            {
-                get => "//input[@class= 'o-control']";
-            }
+            public string PageLocator { get; } = "https://mail.ru/";
+            public string LoginLocator { get; } = "//input[@name = 'login']";
+            public string PasswordLocator { get; } = "//input[@name = 'password']";
+            public string CheckBoxLocator { get; } = "//input[@class = 'mailbox__saveauth']";
+            public string LoginButtonLocator { get; } = "//input[@class= 'o-control']";
         }
 
         /// <summary>
@@ -41,15 +22,8 @@
         /// </summary>
         public class MainPageLocator
         {
-            public string WriteButtonLocator
-            {
-                get => "//span[text() = 'Написать письмо']";
-            }
-
-            public string SelecterUnreadLetterLocator
-            {
-                get => "//div//span[@class= 'b-datalist__item__status-unread']/following::div[3]/div[3]/div[@class = 'b-datalist__item__wrapper']";
-            }
+            public string WriteButtonLocator { get; } = "//span[text() = 'Написать письмо']";
+            public string SelecterUnreadLetterLocator { get; } = "//div//span[@class= 'b-datalist__item__status-unread']/following::div[3]/div[3]/div[@class = 'b-datalist__item__wrapper']";
         }
 
         /// <summary>
@@ -57,30 +31,11 @@
         /// </summary>
         public class WriterPageLocator
         {
-            public string RecepientLocator
-            {
-                get => "//textarea[@tabindex = '4']";
-            }
-
-
-            public string SwitcherToFrameLocator
-            {
-                get => "//tr[@class = 'mceFirst mceLast']//iframe";
-            }
-
-            public string TextLocator
-            {
-                get => "//body[@id = 'tinymce']";
-            }
-            public string SendButtonLocator
-            {
-                get => "//div[@class = 'b-toolbar__item b-toolbar__item_ b-toolbar__item_false']";
-            }
-
-            public string LetterSentLocator
-            {
-                get => "//div[@class = 'message-sent__title']";
-            }
+            public string RecepientLocator { get; } = "//textarea[@tabindex = '4']";
+            public string SwitcherToFrameLocator { get; } = "//tr[@class = 'mceFirst mceLast']//iframe";
+            public string TextLocator { get; } = "//body[@id = 'tinymce']";
+            public string SendButtonLocator { get; } = "//div[@class = 'b-toolbar__item b-toolbar__item_ b-toolbar__item_false']";
+            public string LetterSentLocator { get; } = "//div[@class = 'message-sent__title']";
         }
 
         /// <summary>
@@ -88,20 +43,9 @@
         /// </summary>
         public class LetterPageLocator
         {
-            public string TextLocator
-            {
-                get => "//div[@class = 'js-helper js-readmsg-msg']//div//div//div";
-            }
-
-            public string ProfileLocator
-            {
-                get => "//i[@id = 'PH_user-email']";
-            }
-
-            public string SettingsLocator
-            {
-                get => "//span[text() = 'Личные данные']";
-            }
+            public string TextLocator { get; } = "//div[@class = 'js-helper js-readmsg-msg']//div//div//div";
+            public string ProfileLocator { get; } = "//i[@id = 'PH_user-email']";
+            public string SettingsLocator { get; } = "//span[text() = 'Личные данные']";
         }
 
         /// <summary>
@@ -109,20 +53,8 @@
         /// </summary>
         public class SettingsPageLocator
         {
-            public string UserNameLocator
-            {
-                get => "//input[@name = 'FirstName']";
-            }
-
-            public string SaveButtonlocator
-            {
-                get => "//span[text() = 'Сохранить']";
-            }
-
-            public string ProfileLocator
-            {
-                get => "//i[@id = 'PH_user-email']";
-            }
+            public string UserNameLocator { get; } = "//input[@name = 'FirstName']";
+            public string SaveButtonlocator { get; } = "//span[text() = 'Сохранить']";
         }
     }
 }
