@@ -43,7 +43,7 @@ namespace Task_DEV_9
         /// <param name="login"></param>
         /// <param name="password"></param>
         /// <returns></returns>
-        public MainRamblerPage LoginIntoMail(string login, string password)
+        public MainRamblerPage LoginIntoRambler(string login, string password)
         {
             Wait.Until(t => Driver.FindElements(By.XPath(Locator.SwitcherToFrameLocator)).Any());
             Driver.SwitchTo().Frame(Driver.FindElement(By.XPath(Locator.SwitcherToFrameLocator)));

@@ -14,7 +14,7 @@ namespace Task_DEV_9Test
         protected WebDriverWait wait;
 
         [SetUp]
-        public void SetUp()
+        public void BeforeTest()
         {
             driver = new ChromeDriver();
             wait = new WebDriverWait(driver, TimeSpan.FromMinutes(1));
@@ -24,13 +24,20 @@ namespace Task_DEV_9Test
         {
             LoginMailPage loginMailPage = new LoginMailPage(driver);
             loginMailPage.GoToPage();
-            loginMailPage.LoginToMail(login, password);
+            
+            return loginMailPage.LoginToMail(login, password); ;
+        }
 
-            return new MainMailPage(driver);
+        public MainRamblerPage LoginToRambler(string login, string password)
+        {
+            LoginRamblerPage loginRamblerPage = new LoginRamblerPage(driver);
+            loginRamblerPage.GoToLoginPage();
+
+            return loginRamblerPage.LoginIntoRambler(login, password);
         }
 
         [TearDown]
-        public void TearDown()
+        public void AfterTest()
         {
             driver.Quit();
         }

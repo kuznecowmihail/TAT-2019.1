@@ -19,7 +19,7 @@ namespace Task_DEV_9
 
             LoginRamblerPage loginRamblerPage = new LoginRamblerPage(webDriver);
             loginRamblerPage.GoToLoginPage();
-            var mainRamblerPage = loginRamblerPage.LoginIntoMail("2909username1998@rambler.ru", "1_Password_1");
+            var mainRamblerPage = loginRamblerPage.LoginIntoRambler("2909username1998@rambler.ru", "1_Password_1");
             var ramblerLetterPage = mainRamblerPage.SelectUnreadLetter("2209username1998@mail.ru");
             ramblerLetterPage.ReplyOnLetter("Hallou");
             webDriver.Quit();
