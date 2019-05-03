@@ -16,6 +16,9 @@ namespace Task_DEV_9
         IWebElement Profile { get; set; }
         IWebElement Settings { get; set; }
         MailLocators.LetterPageLocator Locator { get; }
+        const string space = " ";
+        const string newLine = "\r\n";
+        const string endSymbol = "\n";
 
         /// <summary>
         /// Constructor of LetterMailPage.
@@ -29,15 +32,24 @@ namespace Task_DEV_9
         }
         
         /// <summary>
-        /// Method gets content of message.
+        /// Method gets co+ntent of message.
         /// </summary>
         /// <returns>New userName</returns>
         public string GetNameFromLetter()
         {
-            Wait.Until(t => Driver.FindElement(By.XPath(Locator.TextLocator)));
+            Wait.Until(t => Driver.FindElements(By.XPath(Locator.TextLocator)).Any());
             Name = Driver.FindElement(By.XPath(Locator.TextLocator));
 
-            return Name.Text.Remove(Name.Text.IndexOf("\r\n"), Name.Text.Length - Name.Text.IndexOf("\r\n")); ;
+            return CutWord(Name.Text);
+        }
+
+        public string CutWord(string word)
+        {
+            int[] positionOfSymbols = new int[] { word.IndexOf(space) < 0 ? word.Length + 1 : word.IndexOf(space), word.IndexOf(newLine) < 0 ? word.Length + 1 : word.IndexOf(newLine), word.Length };
+            int length = word.Length;
+            int pos = positionOfSymbols.Min();
+
+            return word.Remove(positionOfSymbols.Min(), word.Length - positionOfSymbols.Min());
         }
 
         /// <summary>

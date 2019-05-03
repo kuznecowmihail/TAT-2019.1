@@ -39,9 +39,11 @@ namespace Task_DEV_9Test
             // Mail.
             var writerLetterMailPage = LoginToMail(mailLogin, mailPassword).ClickToWriteLetter();
             writerLetterMailPage.SendLetter(ramblerLogin, actualContent);
+            AfterTest();
             // Rambler.
             // Open unread letter from mailsender.
-            var selectLetter = LoginToRambler(ramblerLogin, ramblerPassword).SelectUnreadLetter(mailLogin);
+            BeforeTest();
+            var selecterLetter = LoginToRambler(ramblerLogin, ramblerPassword).SelectUnreadLetter(mailLogin);
             // Wait letter content from sender.
             wait.Until(t => driver.FindElements(By.XPath($"{textLocator}{actualContent}']")).Any());
             var expectedContent = driver.FindElement(By.XPath($"{textLocator}{actualContent}']"));
@@ -69,9 +71,9 @@ namespace Task_DEV_9Test
             // Check setting.
             letterMailPage.GoToSetting();
             // Wait name element.
-            wait.Until(t => driver.FindElements(By.XPath(inputName)));
+            wait.Until(t => driver.FindElements(By.XPath(inputName)).Any());
             var text = driver.FindElement(By.XPath(inputName));
-            Assert.AreEqual(text.GetAttribute("value"), newUserName);
+            Assert.AreEqual(text.GetAttribute("value"), letterMailPage.CutWord(newUserName));
         }
     }
 }
