@@ -52,6 +52,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="EntryPoint.cs" />
     <Compile Include="Locators\MailLocators.cs" />
     <Compile Include="RamblerPages\MainRamblerPage.cs" />
     <Compile Include="Locators\RamblerLocators.cs" />
@@ -59,7 +60,6 @@
     <Compile Include="MailPages\LetterMailPage.cs" />
     <Compile Include="MailPages\LoginMailPage.cs" />
     <Compile Include="MailPages\MainMailPage.cs" />
-    <Compile Include="EntryPoint.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="MailPages\SenderLetterMailPage.cs" />
     <Compile Include="MailPages\SettingsMailPage.cs" />

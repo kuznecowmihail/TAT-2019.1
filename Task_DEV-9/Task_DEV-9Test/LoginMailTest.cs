@@ -34,7 +34,7 @@ namespace Task_DEV_9Test
 
         [Test, Timeout(10000)]
         [TestCase("", "2_password_2")]
-        [TestCase("2209username1997@mail.ru", "")]
+        [TestCase("2209username1998@mail.ru", "")]
         [TestCase("", "")]
         public void EmptyLoginToMail_Test(string login, string password)
         {

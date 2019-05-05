@@ -16,13 +16,13 @@ namespace Task_DEV_9Test
         [SetUp]
         public void BeforeTest()
         {
-            driver = new ChromeDriver();
-            wait = new WebDriverWait(driver, TimeSpan.FromMinutes(1));
+            this.driver = new ChromeDriver();
+            this.wait = new WebDriverWait(driver, TimeSpan.FromMinutes(1));
         }
 
         public MainMailPage LoginToMail(string login, string password)
         {
-            LoginMailPage loginMailPage = new LoginMailPage(driver);
+            LoginMailPage loginMailPage = new LoginMailPage(this.driver);
             loginMailPage.GoToPage();
             
             return loginMailPage.LoginToMail(login, password); ;
@@ -30,7 +30,7 @@ namespace Task_DEV_9Test
 
         public MainRamblerPage LoginToRambler(string login, string password)
         {
-            LoginRamblerPage loginRamblerPage = new LoginRamblerPage(driver);
+            LoginRamblerPage loginRamblerPage = new LoginRamblerPage(this.driver);
             loginRamblerPage.GoToLoginPage();
 
             return loginRamblerPage.LoginIntoRambler(login, password);
@@ -39,7 +39,7 @@ namespace Task_DEV_9Test
         [TearDown]
         public void AfterTest()
         {
-            driver.Quit();
+            this.driver.Quit();
         }
     }
 }

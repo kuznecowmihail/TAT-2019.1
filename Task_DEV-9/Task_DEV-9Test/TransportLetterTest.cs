@@ -29,7 +29,9 @@ namespace Task_DEV_9Test
             // Mail.
             var writerLetterMailPage = LoginToMail(mailLogin, mailPassword).ClickToWriteLetter();
             writerLetterMailPage.SendLetter(ramblerLogin, content);
+            AfterTest();
             // Rambler.
+            BeforeTest();
             Assert.IsTrue(LoginToRambler(ramblerLogin, ramblerPassword).GetCountUnreadSenderLetter(mailLogin) > 0);
         }
 
