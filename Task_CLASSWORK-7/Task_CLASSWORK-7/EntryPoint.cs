@@ -30,7 +30,7 @@ namespace Task7
                 Console.WriteLine("Start order download");
                 handler.DownloadInOrderAllFiles();
                 Console.WriteLine($"Download in order lasted {handler.InOrderDownloadTime.Hours:00}:{handler.InOrderDownloadTime.Minutes:00}:{handler.InOrderDownloadTime.Seconds:00}.{handler.InOrderDownloadTime.Milliseconds}");
-                handler.CompareMethod();
+                handler.CompareMethods();
 
                 return 0;
             }

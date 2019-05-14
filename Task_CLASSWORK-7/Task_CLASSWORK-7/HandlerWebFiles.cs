@@ -141,7 +141,7 @@ namespace Task7
         /// <summary>
         /// The method compares two methods for time optimization. 
         /// </summary>
-        public void CompareMethod()
+        public void CompareMethods()
         {
             if (InOrderDownloadTime < ParallelDownloadTime)
             {
