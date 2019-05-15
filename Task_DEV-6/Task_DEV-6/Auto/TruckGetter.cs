@@ -20,8 +20,8 @@ namespace Task_DEV_6
         /// <param name="name">Name XML</param>
         private TruckGetter(string name)
         {
-            NameXML = name;
-            Trucks = GetAuto();
+            this.NameXML = name;
+            this.Trucks = GetAuto();
         }
 
         /// <summary>
@@ -47,6 +47,7 @@ namespace Task_DEV_6
         {
             XDocument xDoc = new XDocument();
             xDoc = XDocument.Load($"../../{NameXML}.xml");
+
             return xDoc.Element("trucks").Elements("truck").Select(t => new Auto(
                 t.Element("brand").Value != string.Empty ? t.Element("brand").Value.ToLower() : throw new Exception("Brand is Empty."),
                 t.Element("model").Value != string.Empty ? t.Element("model").Value.ToLower() : throw new Exception("Model is Empty."),
