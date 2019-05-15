@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Task_DEV_6
+namespace Task_DEV_7
 {
     /// <summary>
     /// Class handle request of users.
@@ -125,9 +125,9 @@ namespace Task_DEV_6
 
             do
             {
-                DisplayAvailableType(command.GetAutoTypes(), 
-                    incorrecetType == false 
-                    ? "Enter auto type." 
+                DisplayAvailableType(command.GetAutoTypes(),
+                    incorrecetType == false
+                    ? "Enter auto type."
                     : "Try again!");
                 type = Console.ReadLine();
                 incorrecetType = true;

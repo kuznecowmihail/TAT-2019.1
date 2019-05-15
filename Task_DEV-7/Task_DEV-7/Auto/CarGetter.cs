@@ -3,7 +3,7 @@ using System.Linq;
 using System.Xml.Linq;
 using System.Collections.Generic;
 
-namespace Task_DEV_6
+namespace Task_DEV_7
 {
     /// <summary>
     /// Class singleton write cars into list from xml.

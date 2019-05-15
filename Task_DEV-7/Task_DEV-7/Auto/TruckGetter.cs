@@ -3,7 +3,7 @@ using System.Linq;
 using System.Xml.Linq;
 using System.Collections.Generic;
 
-namespace Task_DEV_6
+namespace Task_DEV_7
 {
     /// <summary>
     /// Class singleton write cars into list from xml.
@@ -31,7 +31,7 @@ namespace Task_DEV_6
         /// <param name="nameXML">Name XML</param>
         public static TruckGetter GetTruckGetter(string nameXML)
         {
-            if(truckGetter == null)
+            if (truckGetter == null)
             {
                 truckGetter = new TruckGetter(nameXML);
             }

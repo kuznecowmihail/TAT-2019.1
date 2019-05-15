@@ -1,4 +1,4 @@
-﻿namespace Task_DEV_6
+﻿namespace Task_DEV_7
 {
     /// <summary>
     /// Class have properties of auto.

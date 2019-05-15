@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Task_DEV_6
+namespace Task_DEV_7
 {
     /// <summary>
     /// The main class of program create object of RequestHandle and handle request.

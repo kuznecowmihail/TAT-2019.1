@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace Task_DEV_6
+namespace Task_DEV_7
 {
     /// <summary>
     /// Child class for pattern command calls method to count number of all autos.
