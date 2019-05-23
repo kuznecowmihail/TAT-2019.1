@@ -1,19 +1,18 @@
-﻿namespace Task_DEV_10
+﻿using System;
+
+namespace Task_DEV_10
 {
     /// <summary>
     /// Interface for pattern command.
     /// </summary>
     interface ICommand
     {
-        /// <summary>
-        /// The method reads file and fill objects.
-        /// </summary>
-        void ReadAndFillElements();
+        event EventHandler<ObjectEventArgs> UpdateData;
 
         /// <summary>
-        /// Method updates json file.
+        /// Method writes data to XML file.
         /// </summary>
-        void UpdateJsonFile();
+        void WriteToXML();
 
         /// <summary>
         /// Method adds new element.

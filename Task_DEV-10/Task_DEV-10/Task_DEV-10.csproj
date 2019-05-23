@@ -59,12 +59,15 @@
     <Compile Include="InformationClassCreaters\ProductCreater.cs" />
     <Compile Include="Commands\ManufacturerCommand.cs" />
     <Compile Include="Commands\ProductCommand.cs" />
+    <Compile Include="FileHandlers\JsonFileHandler.cs" />
+    <Compile Include="ObjectEventArgs.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RequestHandler.cs" />
     <Compile Include="Shop.cs" />
     <Compile Include="InformationClasses\WareHouse.cs" />
     <Compile Include="InformationClassCreaters\WareHouseCreater.cs" />
     <Compile Include="Commands\WareHouseCommand.cs" />
+    <Compile Include="FileHandlers\XMLFileHandler.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

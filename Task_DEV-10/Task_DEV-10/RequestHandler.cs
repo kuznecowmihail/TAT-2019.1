@@ -9,15 +9,22 @@ namespace Task_DEV_10
     public class RequestHandler
     {
         Dictionary<string, ICommand> CommandsDictionary { get; }
+        Shop Shop { get; }
         const string displayCommand = "display";
         const string addCommand = "add";
         const string deleteCommand = "delete";
+        const string writeToXMLCommand = "write to xml";
         const string backCommand = "back";
         const string exitCommand = "exit";
+        public event EventHandler<ObjectEventArgs> ReadData;
 
-        public RequestHandler()
+        /// <summary>
+        /// Constructor of RequestHandler.
+        /// </summary>
+        /// <param name="shop"></param>
+        public RequestHandler(Shop shop)
         {
-            Shop shop = new Shop();
+            this.Shop = shop;
             this.CommandsDictionary = new Dictionary<string, ICommand>
             {
                 ["product"] = new ProductCommand(shop),
@@ -26,6 +33,13 @@ namespace Task_DEV_10
                 ["manufacturer"] = new ManufacturerCommand(shop),
                 ["warehouse"] = new WareHouseCommand(shop),
             };
+            JsonFileHandler jsonFileHandler = new JsonFileHandler();
+
+            foreach(var command in CommandsDictionary.Values)
+            {
+                command.UpdateData += jsonFileHandler.UpdateJsonFile;
+            }
+            ReadData += jsonFileHandler.ReadAndWriteFromJson;
         }
 
         /// <summary>
@@ -34,11 +48,7 @@ namespace Task_DEV_10
         public void HandleRequests()
         {
             bool existence = true;
-
-            foreach (var command in CommandsDictionary.Values)
-            {
-                command.ReadAndFillElements();
-            }
+            ReadData?.Invoke(this, new ObjectEventArgs(Shop));
 
             while (true)
             {
@@ -64,7 +74,6 @@ namespace Task_DEV_10
                                 if (command.Key == request)
                                 {
                                     command.Value.AddNewElement();
-                                    command.Value.UpdateJsonFile();
                                     existence = true;
 
                                     break;
@@ -129,6 +138,31 @@ namespace Task_DEV_10
                         }
 
                         break;
+                    case writeToXMLCommand:
+                        while (existence == false)
+                        {
+                            DisplayAllCommands("Enter command!", CommandsDictionary.Keys);
+                            request = Console.ReadLine().ToLower();
+
+                            foreach (var command in CommandsDictionary)
+                            {
+                                if (command.Key == request)
+                                {
+                                    command.Value.WriteToXML();
+                                    existence = true;
+
+                                    break;
+                                }
+                                else if (request == backCommand)
+                                {
+                                    existence = true;
+
+                                    break;
+                                }
+                            }
+                        }
+
+                        break;
                 }
             }
         }
@@ -143,6 +177,7 @@ namespace Task_DEV_10
             Console.WriteLine($"-{addCommand}");
             Console.WriteLine($"-{deleteCommand}");
             Console.WriteLine($"-{displayCommand}");
+            Console.WriteLine($"-{writeToXMLCommand}");
             Console.WriteLine($"-{exitCommand}");
         }
 

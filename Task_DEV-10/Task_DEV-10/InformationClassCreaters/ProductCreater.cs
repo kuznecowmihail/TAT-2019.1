@@ -19,17 +19,18 @@ namespace Task_DEV_10
         /// <summary>
         /// Constructor of HandlerProduct.
         /// </summary>
-        public ProductCreater(Shop shop)
+        public ProductCreater()
         {
-            this.Shop = shop;
             this.Product = new Product();
         }
 
         /// <summary>
         /// Method creates object of product, fill his and return.
+        /// Check that new product has existing delivery, manufacturer, address, warehouse.
         /// </summary>
+        /// <param name="shop"></param>
         /// <returns>Object of address</returns>
-        public Product CreateProduct()
+        public Product CreateProduct(Shop shop)
         {
             Console.WriteLine("Enter ID:");
 
@@ -73,7 +74,7 @@ namespace Task_DEV_10
             {
                 if (Int32.TryParse(Console.ReadLine(), out int addressID))
                 {
-                    foreach (var address in Shop.Addresses)
+                    foreach (var address in shop.addresses)
                     {
                         if (address.ID == addressID)
                         {
@@ -83,7 +84,7 @@ namespace Task_DEV_10
                             break;
                         }
                     }
-                    Console.WriteLine("This address don't exists. Try again!");
+                    Console.WriteLine(existenceAddressID == true ? "ok" : "This address don't exists. Try again!");
                 }
                 else
                 {
@@ -98,7 +99,7 @@ namespace Task_DEV_10
             {
                 if (Int32.TryParse(Console.ReadLine(), out int deliveryID))
                 {
-                    foreach (var delivery in Shop.Deliveries)
+                    foreach (var delivery in shop.deliveries)
                     {
                         if (delivery.ID == deliveryID)
                         {
@@ -107,8 +108,8 @@ namespace Task_DEV_10
 
                             break;
                         }
-                        Console.WriteLine("This delivery don't exist. Try again!");
                     }
+                    Console.WriteLine(existenceDeliveryID == true ? "ok" : "This delivery don't exist. Try again!");
                 }
                 else
                 {
@@ -122,7 +123,7 @@ namespace Task_DEV_10
             {
                 if (Int32.TryParse(Console.ReadLine(), out int manufacturerID))
                 {
-                    foreach (var manufacturer in Shop.Manufacturers)
+                    foreach (var manufacturer in shop.manufacturers)
                     {
                         if (manufacturer.ID == manufacturerID)
                         {
@@ -131,8 +132,8 @@ namespace Task_DEV_10
 
                             break;
                         }
-                        Console.WriteLine("This manufacturer don't exists. Try again!");
                     }
+                    Console.WriteLine(existenceManufacturerID == true ? "ok" : "This manufacturer don't exists. Try again!");
                 }
                 else
                 {
@@ -146,7 +147,7 @@ namespace Task_DEV_10
             {
                 if (Int32.TryParse(Console.ReadLine(), out int wareHouseID))
                 {
-                    foreach (var wareHouse in Shop.WareHouses)
+                    foreach (var wareHouse in shop.wareHouses)
                     {
                         if (wareHouse.ID == wareHouseID)
                         {
@@ -154,7 +155,7 @@ namespace Task_DEV_10
                             existenceWareHouseID = true;
                         }
                     }
-                    Console.WriteLine("This warehouse don't exists. Try again!");
+                    Console.WriteLine(existenceWareHouseID == true ? "ok" : "This warehouse don't exists. Try again!");
                 }
                 else
                 {

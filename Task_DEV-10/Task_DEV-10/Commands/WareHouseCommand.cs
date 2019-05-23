@@ -1,4 +1,7 @@
-﻿namespace Task_DEV_10
+﻿using System;
+using System.Collections.Generic;
+
+namespace Task_DEV_10
 {
     /// <summary>
     /// The class for pattern command.
@@ -8,6 +11,9 @@
         Shop Shop { get; }
         WareHouseCreater HandlerWareHouse { get; }
         FinderID FinderID { get; }
+        XMLFileHandler XMLFileHandler { get; }
+        string PathXML { get; } = "../../InformationXML/warehouses.xml";
+        public event EventHandler<ObjectEventArgs> UpdateData;
 
         /// <summary>
         /// Constructor of WareHouseCommand.
@@ -18,22 +24,15 @@
             this.Shop = shop;
             this.HandlerWareHouse = new WareHouseCreater();
             this.FinderID = new FinderID(Shop);
+            this.XMLFileHandler = new XMLFileHandler();
         }
 
         /// <summary>
         /// Implemented method.
         /// </summary>
-        public void ReadAndFillElements()
+        public void WriteToXML()
         {
-            Shop.ReadAndWriteWareHouse();
-        }
-
-        /// <summary>
-        /// Implemented method.
-        /// </summary>
-        public void UpdateJsonFile()
-        {
-            Shop.UpdateWareHouseJsonFile();
+            XMLFileHandler.WriteToXML(PathXML, Shop.wareHouses);
         }
 
         /// <summary>
@@ -41,7 +40,8 @@
         /// </summary>
         public void AddNewElement()
         {
-            Shop.AddNewWareHouse(HandlerWareHouse.CreateWareHouse());
+            Shop.AddNewElement(Shop.wareHouses, HandlerWareHouse.CreateWareHouse());
+            UpdateData?.Invoke(this, new ObjectEventArgs(Shop));
         }
 
         /// <summary>
@@ -49,7 +49,14 @@
         /// </summary>
         public void DeleteElement()
         {
-            Shop.DeleteWareHouse(FinderID.FindWareHouseID());
+            List<int> listID = new List<int>();
+
+            foreach (var wareHouse in Shop.wareHouses)
+            {
+                listID.Add(wareHouse.ID);
+            }
+            Shop.DeleteElement(listID, Shop.wareHouses, FinderID.FindWareHouseID());
+            UpdateData?.Invoke(this, new ObjectEventArgs(Shop));
         }
 
         /// <summary>

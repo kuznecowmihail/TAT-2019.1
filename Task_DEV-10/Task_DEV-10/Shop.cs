@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Runtime.Serialization.Json;
+using System.Xml.Serialization;
 
 namespace Task_DEV_10
 {
@@ -10,184 +10,49 @@ namespace Task_DEV_10
     /// </summary>
     public class Shop
     {
-        public List<Product> Products { get; private set; }
-        public List<Delivery> Deliveries { get; private set; }
-        public List<Address> Addresses { get; private set; }
-        public List<Manufacturer> Manufacturers { get; private set; }
-        public List<WareHouse> WareHouses { get; private set; }
+        public List<Product> products;
+        public List<Delivery> deliveries;
+        public List<Address> addresses;
+        public List<Manufacturer> manufacturers;
+        public List<WareHouse> wareHouses;
 
         /// <summary>
         /// Constructor of Shop.
         /// </summary>
         public Shop()
         {
-            this.Products = new List<Product>();
-            this.Deliveries = new List<Delivery>();
-            this.Addresses = new List<Address>();
-            this.Manufacturers = new List<Manufacturer>();
-            this.WareHouses = new List<WareHouse>();
+            this.products = new List<Product>();
+            this.deliveries = new List<Delivery>();
+            this.addresses = new List<Address>();
+            this.manufacturers = new List<Manufacturer>();
+            this.wareHouses = new List<WareHouse>();
         }
 
         /// <summary>
-        /// Method read json file and write to product list.
+        /// Method adds new element of T type.
         /// </summary>
-        public void ReadAndWriteProduct()
+        /// <typeparam name="T"></typeparam>
+        /// <param name="list"></param>
+        /// <param name="t"></param>
+        public void AddNewElement<T>(List<T> list, T t)
         {
-            DataContractJsonSerializer jsonFormatter;
-
-            using (var fileStream = new FileStream("../../Information/products.json", FileMode.OpenOrCreate))
-            {
-                jsonFormatter = new DataContractJsonSerializer(typeof(List<Product>));
-                this.Products = (List<Product>)jsonFormatter.ReadObject(fileStream);
-            }
+            list.Add(t);
         }
 
         /// <summary>
-        /// Method read json file and write to delivery list.
+        /// Method deletes element of T type.
         /// </summary>
-        public void ReadAndWriteDelivery()
-        {
-            DataContractJsonSerializer jsonFormatter;
-
-            using (var fileStream = new FileStream("../../Information/deliveries.json", FileMode.OpenOrCreate))
-            {
-                jsonFormatter = new DataContractJsonSerializer(typeof(List<Delivery>));
-                this.Deliveries = (List<Delivery>)jsonFormatter.ReadObject(fileStream);
-            }
-        }
-
-        /// <summary>
-        /// Method read json file and write to address list.
-        /// </summary>
-        public void ReadAndWriteAddress()
-        {
-            DataContractJsonSerializer jsonFormatter;
-
-            using (var fileStream = new FileStream("../../Information/addresses.json", FileMode.OpenOrCreate))
-            {
-                jsonFormatter = new DataContractJsonSerializer(typeof(List<Address>));
-                this.Addresses = (List<Address>)jsonFormatter.ReadObject(fileStream);
-            }
-        }
-
-        /// <summary>
-        /// Method read json file and write to manufacturer list.
-        /// </summary>
-        public void ReadAndWriteManufacturer()
-        {
-            DataContractJsonSerializer jsonFormatter;
-
-            using (var fileStream = new FileStream("../../Information/manufacturers.json", FileMode.OpenOrCreate))
-            {
-                jsonFormatter = new DataContractJsonSerializer(typeof(List<Manufacturer>));
-                this.Manufacturers = (List<Manufacturer>)jsonFormatter.ReadObject(fileStream);
-            }
-        }
-
-        /// <summary>
-        /// Method read json file and write to ware house list.
-        /// </summary>
-        public void ReadAndWriteWareHouse()
-        {
-            DataContractJsonSerializer jsonFormatter;
-
-            using (var fileStream = new FileStream("../../Information/warehouses.json", FileMode.OpenOrCreate))
-            {
-                jsonFormatter = new DataContractJsonSerializer(typeof(List<WareHouse>));
-                this.WareHouses = (List<WareHouse>)jsonFormatter.ReadObject(fileStream);
-            }
-        }
-
-        /// <summary>
-        /// Method updates product json file.
-        /// </summary>
-        public void UpdateProductJsonFile()
-        {
-            DataContractJsonSerializer jsonFormatter;
-
-            using (var fileStream = new FileStream("../../Information/goods.json", FileMode.Truncate))
-            {
-                jsonFormatter = new DataContractJsonSerializer(typeof(List<Product>));
-                jsonFormatter.WriteObject(fileStream, Products);
-            }
-        }
-
-        /// <summary>
-        /// Method updates delivery json file.
-        /// </summary>
-        public void UpdateDeliveryJsonFile()
-        {
-            DataContractJsonSerializer jsonFormatter;
-
-            using (var fileStream = new FileStream("../../Information/deliveries.json", FileMode.Truncate))
-            {
-                jsonFormatter = new DataContractJsonSerializer(typeof(List<Delivery>));
-                jsonFormatter.WriteObject(fileStream, this.Deliveries);
-            }
-        }
-
-        /// <summary>
-        /// Method updates manufacturer json file.
-        /// </summary>
-        public void UpdateManufacturerJsonFile()
-        {
-            DataContractJsonSerializer jsonFormatter;
-
-            using (var fileStream = new FileStream("../../Information/manufacturers.json", FileMode.Truncate))
-            {
-                jsonFormatter = new DataContractJsonSerializer(typeof(List<Manufacturer>));
-                jsonFormatter.WriteObject(fileStream, this.Manufacturers);
-            }
-        }
-
-        /// <summary>
-        /// Method updates address json file.
-        /// </summary>
-        public void UpdateAddressJsonFile()
-        {
-            DataContractJsonSerializer jsonFormatter;
-
-            using (var fileStream = new FileStream("../../Information/addresses.json", FileMode.Truncate))
-            {
-                jsonFormatter = new DataContractJsonSerializer(typeof(List<Address>));
-                jsonFormatter.WriteObject(fileStream, this.Addresses);
-            }
-        }
-
-        /// <summary>
-        /// Method updates ware house json file.
-        /// </summary>
-        public void UpdateWareHouseJsonFile()
-        {
-            DataContractJsonSerializer jsonFormatter;
-
-            using (var fileStream = new FileStream("../../Information/warehouses.json", FileMode.Truncate))
-            {
-                jsonFormatter = new DataContractJsonSerializer(typeof(List<WareHouse>));
-                jsonFormatter.WriteObject(fileStream, this.WareHouses);
-            }
-        }
-
-        /// <summary>
-        /// Method adds new product.
-        /// </summary>
-        /// <param name="product"></param>
-        public void AddNewProduct(Product product)
-        {
-            Products.Add(product);
-        }
-
-        /// <summary>
-        /// Method deletes product with such id.
-        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="listID"></param>
+        /// <param name="list"></param>
         /// <param name="id"></param>
-        public void DeleteProduct(int id)
+        public void DeleteElement<T>(List<int> listID, List<T> list, int id)
         {
-            foreach (var product in Products)
+            for (int i = 0; i < list.Count; i++)
             {
-                if (product.ID == id)
+                if(listID[i] == id)
                 {
-                    Products.Remove(product);
+                    list.Remove(list[i]);
 
                     return;
                 }
@@ -199,7 +64,7 @@ namespace Task_DEV_10
         /// </summary>
         public void DisplayProducts()
         {
-            foreach (var product in Products)
+            foreach (var product in products)
             {
                 Console.WriteLine("________________________");
                 Console.WriteLine($"ID: {product.ID}");
@@ -215,40 +80,11 @@ namespace Task_DEV_10
         }
 
         /// <summary>
-        /// Method adds new address to list.
-        /// </summary>
-        /// <param name="address"></param>
-        public void AddNewAddress(Address address)
-        {
-            Addresses.Add(address);
-        }
-
-        /// <summary>
-        /// Method deletes address.
-        /// </summary>
-        /// <param name="id"></param>
-        public void DeleteAddress(int id)
-        {
-            if (CheckOnUsingtoProduct(id) == false)
-            {
-                foreach (var address in Addresses)
-                {
-                    if (address.ID == id)
-                    {
-                        Addresses.Remove(address);
-
-                        return;
-                    }
-                }
-            }
-        }
-
-        /// <summary>
         /// Method displays addresses to console.
         /// </summary>
         public void DisplaAddresses()
         {
-            foreach (var address in Addresses)
+            foreach (var address in addresses)
             {
                 Console.WriteLine("________________________");
                 Console.WriteLine($"ID: {address.ID}");
@@ -261,39 +97,11 @@ namespace Task_DEV_10
         }
 
         /// <summary>
-        /// Method adds new delivery to list.
-        /// </summary>
-        /// <param name="delivery"></param>
-        public void AddNewDelivery(Delivery delivery)
-        {
-            Deliveries.Add(delivery);
-        }
-
-        /// <summary>
-        /// Method deletes delivery.
-        /// </summary>
-        public void DeleteDelivery(int id)
-        {
-            if (CheckOnUsingtoProduct(id) == false)
-            {
-                foreach (var delivery in Deliveries)
-                {
-                    if (delivery.ID == id)
-                    {
-                        Deliveries.Remove(delivery);
-
-                        return;
-                    }
-                }
-            }
-        }
-
-        /// <summary>
         /// Method displays deliveries to console.
         /// </summary>
         public void DisplayDeliveries()
         {
-            foreach (var delivery in Deliveries)
+            foreach (var delivery in deliveries)
             {
                 Console.WriteLine("________________________");
                 Console.WriteLine($"ID: {delivery.ID}");
@@ -304,39 +112,11 @@ namespace Task_DEV_10
         }
 
         /// <summary>
-        /// Method adds new manufacturer.
-        /// </summary>
-        /// <param name="manufacturer"></param>
-        public void AddNewManufacturer(Manufacturer manufacturer)
-        {
-            Manufacturers.Add(manufacturer);
-        }
-
-        /// <summary>
-        /// Merthod deletes manufacturer.
-        /// </summary>
-        public void DeleteManufacturer(int id)
-        {
-            if (CheckOnUsingtoProduct(id) == false)
-            {
-                foreach (var manufacturer in Manufacturers)
-                {
-                    if (manufacturer.ID == id)
-                    {
-                        Manufacturers.Remove(manufacturer);
-
-                        return;
-                    }
-                }
-            }
-        }
-
-        /// <summary>
         /// Method displays manufacturers to console.
         /// </summary>
         public void DisplayManufacturers()
         {
-            foreach (var manufacturer in Manufacturers)
+            foreach (var manufacturer in manufacturers)
             {
                 Console.WriteLine("________________________");
                 Console.WriteLine($"ID: {manufacturer.ID}");
@@ -348,39 +128,11 @@ namespace Task_DEV_10
         }
 
         /// <summary>
-        /// Method ads new ware house.
-        /// </summary>
-        /// <param name="wareHouse"></param>
-        public void AddNewWareHouse(WareHouse wareHouse)
-        {
-            WareHouses.Add(wareHouse);
-        }
-
-        /// <summary>
-        /// Method deletes ware house.
-        /// </summary>
-        public void DeleteWareHouse(int id)
-        {
-            if (CheckOnUsingtoProduct(id) == false)
-            {
-                foreach (var wareHouse in WareHouses)
-                {
-                    if (wareHouse.ID == id)
-                    {
-                        WareHouses.Remove(wareHouse);
-
-                        return;
-                    }
-                }
-            }
-        }
-
-        /// <summary>
         /// Method displays ware houses to console.
         /// </summary>
         public void DisplayWareHouses()
         {
-            foreach (var wareHouse in WareHouses)
+            foreach (var wareHouse in wareHouses)
             {
                 Console.WriteLine("________________________");
                 Console.WriteLine($"ID: {wareHouse.ID}");
@@ -397,7 +149,7 @@ namespace Task_DEV_10
         /// <returns></returns>
         public bool CheckOnUsingtoProduct(int id)
         {
-            foreach (var product in Products)
+            foreach (var product in products)
             {
                 if (product.AddressID == id)
                 {

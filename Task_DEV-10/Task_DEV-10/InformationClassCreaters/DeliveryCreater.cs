@@ -27,7 +27,7 @@ namespace Task_DEV_10
 
             while (true)
             {
-                Console.WriteLine("Enter house ID:");
+                Console.WriteLine("Enter ID:");
 
                 if (Int32.TryParse(Console.ReadLine(), out int id) && existenceID == false)
                 {

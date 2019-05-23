@@ -1,4 +1,7 @@
-﻿namespace Task_DEV_10
+﻿using System;
+using System.Collections.Generic;
+
+namespace Task_DEV_10
 {
     /// <summary>
     /// The class for pattern command.
@@ -8,6 +11,9 @@
         Shop Shop { get; }
         ManufacturerCreater HandlerManufacturer { get; }
         FinderID FinderID { get; }
+        XMLFileHandler XMLFileHandler { get; }
+        string PathXML { get; } = "../../InformationXML/manufacturers.xml";
+        public event EventHandler<ObjectEventArgs> UpdateData;
 
         /// <summary>
         /// Constructor of ManufacturerCommand.
@@ -17,22 +23,15 @@
             this.Shop = shop;
             this.HandlerManufacturer = new ManufacturerCreater();
             this.FinderID = new FinderID(Shop);
+            this.XMLFileHandler = new XMLFileHandler();
         }
 
         /// <summary>
         /// Implemented method.
         /// </summary>
-        public void ReadAndFillElements()
+        public void WriteToXML()
         {
-            Shop.ReadAndWriteManufacturer();
-        }
-
-        /// <summary>
-        /// Implemented method.
-        /// </summary>
-        public void UpdateJsonFile()
-        {
-            Shop.UpdateManufacturerJsonFile();
+            XMLFileHandler.WriteToXML(PathXML, Shop.manufacturers);
         }
 
         /// <summary>
@@ -40,7 +39,8 @@
         /// </summary>
         public void AddNewElement()
         {
-            Shop.AddNewManufacturer(HandlerManufacturer.CreateManufacturer());
+            Shop.AddNewElement(Shop.manufacturers, HandlerManufacturer.CreateManufacturer());
+            UpdateData?.Invoke(this, new ObjectEventArgs(Shop));
         }
 
         /// <summary>
@@ -48,7 +48,14 @@
         /// </summary>
         public void DeleteElement()
         {
-            Shop.DeleteManufacturer(FinderID.FindManufacturerID());
+            List<int> listID = new List<int>();
+
+            foreach (var manufacturer in Shop.manufacturers)
+            {
+                listID.Add(manufacturer.ID);
+            }
+            Shop.DeleteElement(listID, Shop.manufacturers, FinderID.FindManufacturerID());
+            UpdateData?.Invoke(this, new ObjectEventArgs(Shop));
         }
 
         /// <summary>

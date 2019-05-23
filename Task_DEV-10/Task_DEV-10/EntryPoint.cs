@@ -15,7 +15,8 @@ namespace Task_DEV_10
         {
             try
             {
-                RequestHandler requester = new RequestHandler();
+                Shop shop = new Shop();
+                RequestHandler requester = new RequestHandler(shop);
                 requester.HandleRequests();
             }
             catch (Exception e)
