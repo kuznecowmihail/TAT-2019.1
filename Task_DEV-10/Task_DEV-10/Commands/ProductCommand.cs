@@ -13,7 +13,7 @@ namespace Task_DEV_10
         FinderID FinderID { get; }
         XMLFileHandler XMLFileHandler { get; }
         string PathXML { get; } = "../../InformationXML/products.xml";
-        public event EventHandler<ObjectEventArgs> UpdateData;
+        public event Action<ICommand> UpdateData;
 
         /// <summary>
         /// Constructor of ProductCommand.
@@ -40,7 +40,7 @@ namespace Task_DEV_10
         public void AddNewElement()
         {
             Shop.AddNewElement(Shop.products, ProductCreater.CreateProduct(Shop));
-            UpdateData?.Invoke(this, new ObjectEventArgs(Shop));
+            UpdateData?.Invoke(this);
         }
 
         /// <summary>
@@ -55,7 +55,7 @@ namespace Task_DEV_10
                 listID.Add(product.ID);
             }
             Shop.DeleteElement(listID, Shop.products, FinderID.FindProductID());
-            UpdateData?.Invoke(this, new ObjectEventArgs(Shop));
+            UpdateData?.Invoke(this);
         }
 
         /// <summary>

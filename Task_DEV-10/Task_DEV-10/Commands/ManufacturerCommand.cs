@@ -8,12 +8,12 @@ namespace Task_DEV_10
     /// </summary>
     public class ManufacturerCommand : ICommand
     {
+        public event Action<ICommand> UpdateData;
         Shop Shop { get; }
         ManufacturerCreater HandlerManufacturer { get; }
         FinderID FinderID { get; }
         XMLFileHandler XMLFileHandler { get; }
         string PathXML { get; } = "../../InformationXML/manufacturers.xml";
-        public event EventHandler<ObjectEventArgs> UpdateData;
 
         /// <summary>
         /// Constructor of ManufacturerCommand.
@@ -40,7 +40,7 @@ namespace Task_DEV_10
         public void AddNewElement()
         {
             Shop.AddNewElement(Shop.manufacturers, HandlerManufacturer.CreateManufacturer());
-            UpdateData?.Invoke(this, new ObjectEventArgs(Shop));
+            UpdateData?.Invoke(this);
         }
 
         /// <summary>
@@ -55,7 +55,7 @@ namespace Task_DEV_10
                 listID.Add(manufacturer.ID);
             }
             Shop.DeleteElement(listID, Shop.manufacturers, FinderID.FindManufacturerID());
-            UpdateData?.Invoke(this, new ObjectEventArgs(Shop));
+            UpdateData?.Invoke(this);
         }
 
         /// <summary>

@@ -8,47 +8,32 @@ namespace Task_DEV_10
     /// </summary>
     public class RequestHandler
     {
-        Dictionary<string, ICommand> CommandsDictionary { get; }
-        Shop Shop { get; }
+        public event Action<RequestHandler> ReadData;
+        private Dictionary<string, ICommand> _commandsDictionary;
+        public Dictionary<string, ICommand> CommandsDictionary {
+            get => this._commandsDictionary;
+            set
+            {
+                if(this._commandsDictionary != value)
+                {
+                    this._commandsDictionary = value;
+                    this.ReadData?.Invoke(this);
+                }
+            }
+        }
         const string displayCommand = "display";
         const string addCommand = "add";
         const string deleteCommand = "delete";
         const string writeToXMLCommand = "write to xml";
-        const string backCommand = "back";
         const string exitCommand = "exit";
-        public event EventHandler<ObjectEventArgs> ReadData;
-
-        /// <summary>
-        /// Constructor of RequestHandler.
-        /// </summary>
-        /// <param name="shop"></param>
-        public RequestHandler(Shop shop)
-        {
-            this.Shop = shop;
-            this.CommandsDictionary = new Dictionary<string, ICommand>
-            {
-                ["product"] = new ProductCommand(shop),
-                ["address"] = new AddressCommand(shop),
-                ["delivery"] = new DeliveryCommand(shop),
-                ["manufacturer"] = new ManufacturerCommand(shop),
-                ["warehouse"] = new WareHouseCommand(shop),
-            };
-            JsonFileHandler jsonFileHandler = new JsonFileHandler();
-
-            foreach(var command in CommandsDictionary.Values)
-            {
-                command.UpdateData += jsonFileHandler.UpdateJsonFile;
-            }
-            ReadData += jsonFileHandler.ReadAndWriteFromJson;
-        }
 
         /// <summary>
         /// Method handle requests.
         /// </summary>
-        public void HandleRequests()
+        public void HandleRequests(Dictionary<string, ICommand> commandsDictionary)
         {
+            this.CommandsDictionary = commandsDictionary ?? throw new ArgumentNullException(nameof(commandsDictionary));
             bool existence = true;
-            ReadData?.Invoke(this, new ObjectEventArgs(Shop));
 
             while (true)
             {
@@ -78,12 +63,6 @@ namespace Task_DEV_10
 
                                     break;
                                 }
-                                else if (request == backCommand)
-                                {
-                                    existence = true;
-
-                                    break;
-                                }
                             }
                         }
 
@@ -99,12 +78,6 @@ namespace Task_DEV_10
                                 if (command.Key == request)
                                 {
                                     command.Value.DeleteElement();
-                                    existence = true;
-
-                                    break;
-                                }
-                                else if (request == backCommand)
-                                {
                                     existence = true;
 
                                     break;
@@ -128,12 +101,6 @@ namespace Task_DEV_10
 
                                     break;
                                 }
-                                else if (request == backCommand)
-                                {
-                                    existence = true;
-
-                                    break;
-                                }
                             }
                         }
 
@@ -149,12 +116,6 @@ namespace Task_DEV_10
                                 if (command.Key == request)
                                 {
                                     command.Value.WriteToXML();
-                                    existence = true;
-
-                                    break;
-                                }
-                                else if (request == backCommand)
-                                {
                                     existence = true;
 
                                     break;
@@ -194,7 +155,6 @@ namespace Task_DEV_10
             {
                 Console.WriteLine($"-{command}");
             }
-            Console.WriteLine($"-{backCommand}");
         }
     }
 }

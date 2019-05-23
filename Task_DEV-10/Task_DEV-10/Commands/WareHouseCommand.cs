@@ -13,7 +13,7 @@ namespace Task_DEV_10
         FinderID FinderID { get; }
         XMLFileHandler XMLFileHandler { get; }
         string PathXML { get; } = "../../InformationXML/warehouses.xml";
-        public event EventHandler<ObjectEventArgs> UpdateData;
+        public event Action<ICommand> UpdateData;
 
         /// <summary>
         /// Constructor of WareHouseCommand.
@@ -41,7 +41,7 @@ namespace Task_DEV_10
         public void AddNewElement()
         {
             Shop.AddNewElement(Shop.wareHouses, HandlerWareHouse.CreateWareHouse());
-            UpdateData?.Invoke(this, new ObjectEventArgs(Shop));
+            UpdateData?.Invoke(this);
         }
 
         /// <summary>
@@ -56,7 +56,7 @@ namespace Task_DEV_10
                 listID.Add(wareHouse.ID);
             }
             Shop.DeleteElement(listID, Shop.wareHouses, FinderID.FindWareHouseID());
-            UpdateData?.Invoke(this, new ObjectEventArgs(Shop));
+            UpdateData?.Invoke(this);
         }
 
         /// <summary>

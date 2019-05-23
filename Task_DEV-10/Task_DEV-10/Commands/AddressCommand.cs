@@ -13,7 +13,7 @@ namespace Task_DEV_10
         FinderID FinderID { get; }
         XMLFileHandler XMLFileHandler { get; }
         string PathXML { get; } = "../../InformationXML/addresses.xml";
-        public event EventHandler<ObjectEventArgs> UpdateData;
+        public event Action<ICommand> UpdateData;
 
         /// <summary>
         /// Constructor of AddressCommand.
@@ -41,7 +41,7 @@ namespace Task_DEV_10
         public void AddNewElement()
         {
             Shop.AddNewElement(Shop.addresses, HandlerAddress.CreateAddress());
-            UpdateData?.Invoke(this, new ObjectEventArgs(Shop));
+            UpdateData?.Invoke(this);
         }
 
         /// <summary>
@@ -56,7 +56,7 @@ namespace Task_DEV_10
                 listID.Add(address.ID);
             }
             Shop.DeleteElement(listID, Shop.addresses, FinderID.FindAddressID());
-            UpdateData?.Invoke(this, new ObjectEventArgs(Shop));
+            UpdateData?.Invoke(this);
         }
 
         /// <summary>
