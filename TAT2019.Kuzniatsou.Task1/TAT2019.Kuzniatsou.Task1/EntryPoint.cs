@@ -24,16 +24,19 @@ namespace TAT2019.Kuzniatsou.Task1
                 }
                 var subsequences = new SearcherSubsequences(args[0]);
                 subsequences.PrintSubsequences(subsequences.SearchSubsequences());
+
                 return 0;
             }
             catch(FormatException)
             {
                 Console.WriteLine("String contains less than 2 elements");
+
                 return 1;
             }
             catch(Exception)
             {
                 Console.WriteLine("Something error");
+
                 return 2;
             }
         }
