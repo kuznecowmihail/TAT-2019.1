@@ -1,5 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
+using System.Linq;
 
 namespace Task_DEV_10
 {
@@ -23,7 +23,7 @@ namespace Task_DEV_10
         {
             this.Shop = shop;
             this.HandlerAddress = new AddressCreater();
-            this.FinderID = new FinderID(Shop);
+            this.FinderID = new FinderID();
             this.XMLFileHandler = new XMLFileHandler();
         }
 
@@ -40,7 +40,8 @@ namespace Task_DEV_10
         /// </summary>
         public void AddNewElement()
         {
-            Shop.AddNewElement(Shop.addresses, HandlerAddress.CreateAddress());
+            Address address = HandlerAddress.CreateAddress(Shop.addresses);
+            Shop.AddNewElement(Shop.addresses, address);
             UpdateData?.Invoke(this);
         }
 
@@ -49,14 +50,18 @@ namespace Task_DEV_10
         /// </summary>
         public void DeleteElement()
         {
-            List<int> listID = new List<int>();
+            int id = FinderID.FindID(Shop.addresses.Select(t => t.ID).ToList());
 
-            foreach(var address in Shop.addresses)
+            if (Shop.products.Where(t => t.AddressID == id).Count() == 0)
             {
-                listID.Add(address.ID);
+                Address address = Shop.addresses.Where(t => t.ID == id).First();
+                Shop.DeleteElement(Shop.addresses, address);
+                UpdateData?.Invoke(this);
             }
-            Shop.DeleteElement(listID, Shop.addresses, FinderID.FindAddressID());
-            UpdateData?.Invoke(this);
+            else
+            {
+                Console.WriteLine("Sorry, this id using in products, before delete product!");
+            }
         }
 
         /// <summary>

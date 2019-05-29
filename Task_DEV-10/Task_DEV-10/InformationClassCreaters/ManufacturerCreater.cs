@@ -1,67 +1,35 @@
 ﻿using System;
+using System.Linq;
+using System.Collections.Generic;
 
 namespace Task_DEV_10
 {
     /// <summary>
     /// The class creates new manufacturer
     /// </summary>
-    public class ManufacturerCreater
+    public class ManufacturerCreater : BaseInformationCreater
     {
-        Manufacturer Manufacturer { get; }
-        bool existenceID;
-        bool existenceRegistrasionAddressID;
-
-        /// <summary>
-        /// Constructor of HandlerManufacturer.
-        /// </summary>
-        public ManufacturerCreater()
-        {
-            this.Manufacturer = new Manufacturer();
-        }
-
         /// <summary>
         /// Method creates object of manufacturer, fill his and return.
         /// </summary>
         /// <returns>Object of address</returns>
-        public Manufacturer CreateManufacturer()
+        public Manufacturer CreateManufacturer(List<Manufacturer> manufacturers)
         {
-            Console.WriteLine("Enter ID:");
+            Manufacturer manufacturer = new Manufacturer();
 
-            while (existenceID == false)
-            {
-                if (Int32.TryParse(Console.ReadLine(), out int id))
-                {
-                    Manufacturer.ID = id;
-                    existenceID = true;
-                }
-                else
-                {
-                    Console.WriteLine("Try again! Incorrect value");
-                }
-            }
+            Console.WriteLine("Enter ID:");
+            manufacturer.ID = GetIntNewID(manufacturers.Select(t => t.ID).ToList());
 
             Console.WriteLine("Enter name:");
-            Manufacturer.Name = Console.ReadLine();
+            manufacturer.Name = GetStringValue();
 
             Console.WriteLine("Enter registrasion address ID:");
-
-            while (existenceRegistrasionAddressID == false)
-            {
-                if (Int32.TryParse(Console.ReadLine(), out int registrasionAddressID))
-                {
-                    Manufacturer.RegistrasionAddressID = registrasionAddressID;
-                    existenceRegistrasionAddressID = true;
-                }
-                else
-                {
-                    Console.WriteLine("Try again! Incorrect value");
-                }
-            }
+            manufacturer.RegistrasionAddressID = GetIntValue();
 
             Console.WriteLine("Enter country:");
-            Manufacturer.Country = Console.ReadLine();
+            manufacturer.Country = GetStringValue();
 
-            return Manufacturer;
+            return manufacturer;
         }
     }
 }

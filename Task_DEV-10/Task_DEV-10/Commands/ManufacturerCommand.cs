@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.Collections.Generic;
 
 namespace Task_DEV_10
@@ -22,7 +23,7 @@ namespace Task_DEV_10
         {
             this.Shop = shop;
             this.HandlerManufacturer = new ManufacturerCreater();
-            this.FinderID = new FinderID(Shop);
+            this.FinderID = new FinderID();
             this.XMLFileHandler = new XMLFileHandler();
         }
 
@@ -39,7 +40,8 @@ namespace Task_DEV_10
         /// </summary>
         public void AddNewElement()
         {
-            Shop.AddNewElement(Shop.manufacturers, HandlerManufacturer.CreateManufacturer());
+            Manufacturer manufacturer = HandlerManufacturer.CreateManufacturer(Shop.manufacturers);
+            Shop.AddNewElement(Shop.manufacturers, manufacturer);
             UpdateData?.Invoke(this);
         }
 
@@ -48,14 +50,18 @@ namespace Task_DEV_10
         /// </summary>
         public void DeleteElement()
         {
-            List<int> listID = new List<int>();
+            int id = FinderID.FindID(Shop.manufacturers.Select(t => t.ID).ToList());
 
-            foreach (var manufacturer in Shop.manufacturers)
+            if (Shop.products.Where(t => t.ManufacturerID == id).Count() == 0)
             {
-                listID.Add(manufacturer.ID);
+                Manufacturer manufacturer = Shop.manufacturers.Where(t => t.ID == id).First();
+                Shop.DeleteElement(Shop.manufacturers, manufacturer);
+                UpdateData?.Invoke(this);
             }
-            Shop.DeleteElement(listID, Shop.manufacturers, FinderID.FindManufacturerID());
-            UpdateData?.Invoke(this);
+            else
+            {
+                Console.WriteLine("Sorry, this id using in products, before delete product!");
+            }
         }
 
         /// <summary>

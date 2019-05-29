@@ -1,5 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
+using System.Linq;
 
 namespace Task_DEV_10
 {
@@ -22,7 +22,7 @@ namespace Task_DEV_10
         {
             this.Shop = shop;
             this.ProductCreater = new ProductCreater();
-            this.FinderID = new FinderID(Shop);
+            this.FinderID = new FinderID();
             this.XMLFileHandler = new XMLFileHandler();
         }
 
@@ -39,7 +39,8 @@ namespace Task_DEV_10
         /// </summary>
         public void AddNewElement()
         {
-            Shop.AddNewElement(Shop.products, ProductCreater.CreateProduct(Shop));
+            Product product = ProductCreater.CreateProduct(Shop);
+            Shop.AddNewElement(Shop.products, product);
             UpdateData?.Invoke(this);
         }
 
@@ -48,13 +49,9 @@ namespace Task_DEV_10
         /// </summary>
         public void DeleteElement()
         {
-            List<int> listID = new List<int>();
-
-            foreach (var product in Shop.products)
-            {
-                listID.Add(product.ID);
-            }
-            Shop.DeleteElement(listID, Shop.products, FinderID.FindProductID());
+            int id = FinderID.FindID(Shop.products.Select(t => t.ID).ToList());
+            Product product = Shop.products.Where(t => t.ID == id).First();
+            Shop.DeleteElement(Shop.products, product);
             UpdateData?.Invoke(this);
         }
 

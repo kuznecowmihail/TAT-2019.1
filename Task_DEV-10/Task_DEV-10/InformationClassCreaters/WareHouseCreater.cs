@@ -1,64 +1,32 @@
 ﻿using System;
+using System.Linq;
+using System.Collections.Generic;
 
 namespace Task_DEV_10
 {
     /// <summary>
     /// the class creates new ware house.
     /// </summary>
-    public class WareHouseCreater
+    public class WareHouseCreater : BaseInformationCreater
     {
-        WareHouse WareHouse { get; }
-        bool existenceID;
-        bool existenceAddressID;
-
-        /// <summary>
-        /// Constructor of HandlerWareHoyse.
-        /// </summary>
-        public WareHouseCreater()
-        {
-            this.WareHouse = new WareHouse();
-        }
-
         /// <summary>
         /// Method creates object of adware housedress, fill his and return.
         /// </summary>
         /// <returns>Object of address</returns>
-        public WareHouse CreateWareHouse()
+        public WareHouse CreateWareHouse(List<WareHouse> wareHouses)
         {
-            Console.WriteLine("Enter ID:");
+            WareHouse wareHouse = new WareHouse();
 
-            while (existenceID == false)
-            {
-                if (Int32.TryParse(Console.ReadLine(), out int id))
-                {
-                    WareHouse.ID = id;
-                    existenceID = true;
-                }
-                else
-                {
-                    Console.WriteLine("Try again! Incorrect value");
-                }
-            }
+            Console.WriteLine("Enter ID:");
+            wareHouse.ID = GetIntNewID(wareHouses.Select(t => t.ID).ToList());
 
             Console.WriteLine("Enter name:");
-            WareHouse.Name = Console.ReadLine();
+            wareHouse.Name = GetStringValue();
 
             Console.WriteLine("Enter address ID:");
+            wareHouse.AddressID = GetIntValue();
 
-            while (existenceAddressID == false)
-            {
-                if (Int32.TryParse(Console.ReadLine(), out int addressID))
-                {
-                    WareHouse.AddressID = addressID;
-                    existenceAddressID = true;
-                }
-                else
-                {
-                    Console.WriteLine("Try again! Incorrect value");
-                }
-            }
-
-            return WareHouse;
+            return wareHouse;
         }
     }
 }

@@ -1,70 +1,38 @@
 ﻿using System;
+using System.Linq;
+using System.Collections.Generic;
 
 namespace Task_DEV_10
 {
     /// <summary>
     /// Class handles address.
     /// </summary>
-    public class AddressCreater
+    public class AddressCreater : BaseInformationCreater
     {
-        Address Address { get; }
-        bool existenceID;
-        bool existenceHouseNumber;
-
-        /// <summary>
-        /// Constructor of HandleAddress.
-        /// </summary>
-        public AddressCreater()
-        {
-            this.Address = new Address();
-        }
-
         /// <summary>
         /// Method creates object of address, fill his and return.
         /// </summary>
         /// <returns>Object of address</returns>
-        public Address CreateAddress()
+        public Address CreateAddress(List<Address> addresses)
         {
-            Console.WriteLine("Enter ID:");
+            Address address = new Address();
 
-            while (existenceID == false)
-            {
-                if (Int32.TryParse(Console.ReadLine(), out int id))
-                {
-                    Address.ID = id;
-                    existenceID = true;
-                }
-                else
-                {
-                    Console.WriteLine("Try again! Incorrect value");
-                }
-            }
+            Console.WriteLine("Enter ID:");
+            address.ID = GetIntNewID(addresses.Select(t => t.ID).ToList());
 
             Console.WriteLine("Enter country:");
-            Address.Country = Console.ReadLine();
+            address.Country = GetStringValue();
 
             Console.WriteLine("Enter city:");
-            Address.City = Console.ReadLine();
+            address.City = GetStringValue();
 
             Console.WriteLine("Enter street:");
-            Address.Street = Console.ReadLine();
+            address.Street = GetStringValue();
 
             Console.WriteLine("Enter house number:");
+            address.HouseNumber = GetIntValue();
 
-            while (existenceHouseNumber == false)
-            {
-                if (Int32.TryParse(Console.ReadLine(), out int houseNumber))
-                {
-                    Address.HouseNumber = houseNumber;
-                    existenceHouseNumber = true;
-                }
-                else
-                {
-                    Console.WriteLine("Try again! Incorrect value");
-                }
-            }
-
-            return Address;
+            return address;
         }
     }
 }

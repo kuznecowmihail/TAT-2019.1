@@ -44,6 +44,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="InformationClassCreaters\BaseInformationCreater.cs" />
     <Compile Include="Commands\AddressCommand.cs" />
     <Compile Include="Commands\DeliveryCommand.cs" />
     <Compile Include="Commands\ICommand.cs" />
@@ -60,7 +61,6 @@
     <Compile Include="Commands\ManufacturerCommand.cs" />
     <Compile Include="Commands\ProductCommand.cs" />
     <Compile Include="FileHandlers\JsonFileHandler.cs" />
-    <Compile Include="ObjectEventArgs.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RequestHandler.cs" />
     <Compile Include="Shop.cs" />
