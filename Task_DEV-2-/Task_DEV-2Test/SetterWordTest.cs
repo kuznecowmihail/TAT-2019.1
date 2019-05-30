@@ -14,7 +14,7 @@ namespace Task_DEV_2Test
         [TestCase("ё+лка", "ёлка")]
         [TestCase("привет", "привет")]
         [TestCase("пра+вда", "правда")]
-        public void SetWord_Test(string word, string resultWord)
+        public void SetWordTest(string word, string resultWord)
         {
             ConverterWordToPhonemes convererWordToPhonemes = new ConverterWordToPhonemes();
             convererWordToPhonemes.SetWord(word);
@@ -25,7 +25,7 @@ namespace Task_DEV_2Test
         [TestCase("5+")]
         [TestCase("5vs")]
         [TestCase("мо+ло+ко")]
-        public void SetIncorrectedWord_Test(string word)
+        public void SetIncorrectedWordTest(string word)
         {
             Assert.Throws<ArgumentOutOfRangeException>
              (
@@ -34,7 +34,7 @@ namespace Task_DEV_2Test
         }
 
         [TestCase(null)]
-        public void SetNullWord_Test(string word)
+        public void SetNullWordTest(string word)
         {
             Assert.Throws<NullReferenceException>
              (

@@ -11,7 +11,7 @@ namespace Task_DEV_2Test
         [TestCase('б', "consonant")]
         [TestCase('ь', "other")]
         [TestCase('ъ', "other")]
-        public void DefineTypeOfLetter_Test(char letter, string resultType)
+        public void DefineTypeOfLetterTest(char letter, string resultType)
         {
             Letter letterObject = new Letter();
             Assert.AreEqual(resultType, letterObject.DefineTypeOfSymbol(letter));
@@ -20,7 +20,7 @@ namespace Task_DEV_2Test
         [TestCase('f')]
         [TestCase('5')]
         [TestCase('+')]
-        public void DifineIncorrectedLetter_Test(char letter)
+        public void DifineIncorrectedLetterTest(char letter)
         {
             Letter letterObject = new Letter();
             Assert.Throws<ArgumentOutOfRangeException>

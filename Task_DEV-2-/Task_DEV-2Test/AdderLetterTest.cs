@@ -8,7 +8,7 @@ namespace Task_DEV_2Test
     public class AdderLetterTest
     {
         [TestCase(null)]
-        public void AddNullVowelToPhoneme_Test(Letter letter)
+        public void AddNullVowelToPhonemeTest(Letter letter)
         {
             ConverterWordToPhonemes converterWordToPhonemes = new ConverterWordToPhonemes();
             Assert.Throws<NullReferenceException>
@@ -18,7 +18,7 @@ namespace Task_DEV_2Test
         }
 
         [TestCase(null)]
-        public void AddNullConsonantToPhoneme_Test(Letter letter)
+        public void AddNullConsonantToPhonemeTest(Letter letter)
         {
             ConverterWordToPhonemes converterWordToPhonemes = new ConverterWordToPhonemes();
             Assert.Throws<NullReferenceException>
@@ -30,7 +30,7 @@ namespace Task_DEV_2Test
         [TestCase('f')]
         [TestCase('5')]
         [TestCase('+')]
-        public void AddNotRussianLetter_Test(char letter)
+        public void AddNotRussianLetterTest(char letter)
         {
             Letter myLetter = new Letter
             {
@@ -44,7 +44,7 @@ namespace Task_DEV_2Test
         }
 
         [TestCase(null)]
-        public void AddNullLetter_Test(Letter letter)
+        public void AddNullLetterTest(Letter letter)
         {
             ConverterWordToPhonemes converterWordToPhonemes = new ConverterWordToPhonemes();
             Assert.Throws<NullReferenceException>

@@ -13,7 +13,7 @@ namespace Task_DEV_2Test
         [TestCase("сде+лать", "зд'элат'")]
         [TestCase("сто+лб", "столп")]
         [TestCase("гриб", "грип")]
-        public void ConvertWordToPhonemes_Test(string word, string resultPhoneme)
+        public void ConvertWordToPhonemesTest(string word, string resultPhoneme)
         {
             ConverterWordToPhonemes converterWordToPhonemes = new ConverterWordToPhonemes();
             var actualResult = converterWordToPhonemes.ConvertWordToPhonemes(word).ToString();
@@ -21,7 +21,7 @@ namespace Task_DEV_2Test
         }
 
         [TestCase(null)]
-        public void ConvertNullWordToPhonemes_Test(string word)
+        public void ConvertNullWordToPhonemesTest(string word)
         {
             ConverterWordToPhonemes converterWordToPhonemes = new ConverterWordToPhonemes();
             Assert.Throws<NullReferenceException>

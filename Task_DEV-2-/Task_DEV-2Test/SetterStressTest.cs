@@ -10,7 +10,7 @@ namespace Task_DEV_2Test
         [TestCase("ё+лка", 0)]
         [TestCase("привет", -1)]
         [TestCase("пра+вда", 2)]
-        public void SetStress_Test(string word, int resultStress)
+        public void SetStressTest(string word, int resultStress)
         {
             ConverterWordToPhonemes convererWordToPhonemes = new ConverterWordToPhonemes();
             convererWordToPhonemes.SetWord(word);
