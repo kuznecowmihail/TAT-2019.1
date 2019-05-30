@@ -16,7 +16,8 @@ namespace Task_DEV_2Test
         public void ConvertWordToPhonemes_Test(string word, string resultPhoneme)
         {
             ConverterWordToPhonemes converterWordToPhonemes = new ConverterWordToPhonemes();
-            Assert.AreEqual(resultPhoneme, converterWordToPhonemes.ConvertWordToPhonemes(word).ToString());
+            var actualResult = converterWordToPhonemes.ConvertWordToPhonemes(word).ToString();
+            Assert.AreEqual(resultPhoneme, actualResult);
         }
 
         [TestCase(null)]

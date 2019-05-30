@@ -5,7 +5,7 @@ using NUnit.Framework;
 namespace Task_DEV_2Test
 {
     [TestFixture]
-    public class AdderLetter
+    public class AdderLetterTest
     {
         [TestCase(null)]
         public void AddNullVowelToPhoneme_Test(Letter letter)

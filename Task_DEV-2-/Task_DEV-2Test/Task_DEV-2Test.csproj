@@ -50,9 +50,8 @@
     <Reference Include="System" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AdderLetter.cs" />
+    <Compile Include="AdderLetterTest.cs" />
     <Compile Include="ConverterWordToPhonemesTest.cs" />
-    <Compile Include="CounterLettersToWordTest.cs" />
     <Compile Include="DefinerTypeOfLetterTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SetterStressTest.cs" />
