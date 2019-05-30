@@ -44,6 +44,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="InformationClasses\IInformationClass.cs" />
     <Compile Include="InformationClassCreaters\BaseInformationCreater.cs" />
     <Compile Include="Commands\AddressCommand.cs" />
     <Compile Include="Commands\DeliveryCommand.cs" />

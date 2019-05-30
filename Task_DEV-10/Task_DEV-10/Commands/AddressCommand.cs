@@ -69,7 +69,7 @@ namespace Task_DEV_10
         /// </summary>
         public void DisplayElements()
         {
-            Shop.DisplaAddresses();
+            Shop.DisplayAllInformation(Shop.addresses);
         }
     }
 }

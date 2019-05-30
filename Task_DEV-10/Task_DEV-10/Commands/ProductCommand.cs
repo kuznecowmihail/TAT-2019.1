@@ -60,7 +60,7 @@ namespace Task_DEV_10
         /// </summary>
         public void DisplayElements()
         {
-            Shop.DisplayProducts();
+            Shop.DisplayAllInformation(Shop.products);
         }
     }
 }

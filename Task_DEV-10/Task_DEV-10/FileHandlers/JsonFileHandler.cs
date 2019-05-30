@@ -25,87 +25,88 @@ namespace Task_DEV_10
         /// <summary>
         /// Method reads json files and write to lists of shop.
         /// </summary>
-        /// <param name="obj"></param>
-        /// <param name="args"></param>
-        public void ReadAndWriteFromJson(Object obj)
+        /// <param name="requestHandler"></param>
+        public void ReadAndWriteFromJson(RequestHandler requestHandler)
         {
-            if (obj is RequestHandler)
+            if (requestHandler == null)
             {
-                DataContractJsonSerializer jsonFormatter;
+                throw new ArgumentNullException(nameof(requestHandler));
+            }
 
-                using (var fileStream = new FileStream(ProductsPath, FileMode.OpenOrCreate))
-                {
-                    jsonFormatter = new DataContractJsonSerializer(typeof(List<Product>));
-                    Shop.products = (List<Product>)jsonFormatter.ReadObject(fileStream);
-                }
+            DataContractJsonSerializer jsonFormatter;
 
-                using (var fileStream = new FileStream(AddressesPath, FileMode.OpenOrCreate))
-                {
-                    jsonFormatter = new DataContractJsonSerializer(typeof(List<Address>));
-                    Shop.addresses = (List<Address>)jsonFormatter.ReadObject(fileStream);
-                }
+            using (var fileStream = new FileStream(ProductsPath, FileMode.OpenOrCreate))
+            {
+                jsonFormatter = new DataContractJsonSerializer(typeof(List<Product>));
+                Shop.products = (List<Product>)jsonFormatter.ReadObject(fileStream);
+            }
 
-                using (var fileStream = new FileStream(DeliveriesPath, FileMode.OpenOrCreate))
-                {
-                    jsonFormatter = new DataContractJsonSerializer(typeof(List<Delivery>));
-                    Shop.deliveries = (List<Delivery>)jsonFormatter.ReadObject(fileStream);
-                }
+            using (var fileStream = new FileStream(AddressesPath, FileMode.OpenOrCreate))
+            {
+                jsonFormatter = new DataContractJsonSerializer(typeof(List<Address>));
+                Shop.addresses = (List<Address>)jsonFormatter.ReadObject(fileStream);
+            }
 
-                using (var fileStream = new FileStream(ManufacturersPath, FileMode.OpenOrCreate))
-                {
-                    jsonFormatter = new DataContractJsonSerializer(typeof(List<Manufacturer>));
-                    Shop.manufacturers = (List<Manufacturer>)jsonFormatter.ReadObject(fileStream);
-                }
+            using (var fileStream = new FileStream(DeliveriesPath, FileMode.OpenOrCreate))
+            {
+                jsonFormatter = new DataContractJsonSerializer(typeof(List<Delivery>));
+                Shop.deliveries = (List<Delivery>)jsonFormatter.ReadObject(fileStream);
+            }
 
-                using (var fileStream = new FileStream(WareHousePath, FileMode.OpenOrCreate))
-                {
-                    jsonFormatter = new DataContractJsonSerializer(typeof(List<WareHouse>));
-                    Shop.wareHouses = (List<WareHouse>)jsonFormatter.ReadObject(fileStream);
-                }
+            using (var fileStream = new FileStream(ManufacturersPath, FileMode.OpenOrCreate))
+            {
+                jsonFormatter = new DataContractJsonSerializer(typeof(List<Manufacturer>));
+                Shop.manufacturers = (List<Manufacturer>)jsonFormatter.ReadObject(fileStream);
+            }
+
+            using (var fileStream = new FileStream(WareHousePath, FileMode.OpenOrCreate))
+            {
+                jsonFormatter = new DataContractJsonSerializer(typeof(List<WareHouse>));
+                Shop.wareHouses = (List<WareHouse>)jsonFormatter.ReadObject(fileStream);
             }
         }
 
         /// <summary>
         /// Method writes to json file updating data.
         /// </summary>
-        /// <typeparam name="T"></typeparam>
-        /// <param name="path"></param>
-        /// <param name="t"></param>
-        public void UpdateJsonFile(Object obj)
+        /// <param name="command"></param>
+        public void UpdateJsonFile(ICommand command)
         {
-            if (obj is ICommand)
+            if (command == null)
             {
-                DataContractJsonSerializer jsonFormatter;
+                throw new ArgumentNullException(nameof(command));
+            }
 
-                using (var fileStream = new FileStream(ProductsPath, FileMode.Truncate))
-                {
-                    jsonFormatter = new DataContractJsonSerializer(typeof(List<Product>));
-                    jsonFormatter.WriteObject(fileStream, Shop.products);
-                }
+            DataContractJsonSerializer jsonFormatter;
 
-                using (var fileStream = new FileStream(AddressesPath, FileMode.Truncate))
-                {
-                    jsonFormatter = new DataContractJsonSerializer(typeof(List<Address>));
-                    jsonFormatter.WriteObject(fileStream, Shop.addresses);
-                }
+            using (var fileStream = new FileStream(ProductsPath, FileMode.Truncate))
+            {
+                jsonFormatter = new DataContractJsonSerializer(typeof(List<Product>));
+                jsonFormatter.WriteObject(fileStream, Shop.products);
+            }
 
-                using (var fileStream = new FileStream(DeliveriesPath, FileMode.Truncate))
-                {
-                    jsonFormatter = new DataContractJsonSerializer(typeof(List<Delivery>));
-                    jsonFormatter.WriteObject(fileStream, Shop.deliveries);
-                }
+            using (var fileStream = new FileStream(AddressesPath, FileMode.Truncate))
+            {
+                jsonFormatter = new DataContractJsonSerializer(typeof(List<Address>));
+                jsonFormatter.WriteObject(fileStream, Shop.addresses);
+            }
 
-                using (var fileStream = new FileStream(ManufacturersPath, FileMode.Truncate))
-                {
-                    jsonFormatter = new DataContractJsonSerializer(typeof(List<Manufacturer>));
-                    jsonFormatter.WriteObject(fileStream, Shop.manufacturers);
-                }
+            using (var fileStream = new FileStream(DeliveriesPath, FileMode.Truncate))
+            {
+                jsonFormatter = new DataContractJsonSerializer(typeof(List<Delivery>));
+                jsonFormatter.WriteObject(fileStream, Shop.deliveries);
+            }
 
-                using (var fileStream = new FileStream(WareHousePath, FileMode.Truncate))
-                {
-                    jsonFormatter = new DataContractJsonSerializer(typeof(List<WareHouse>));
-                    jsonFormatter.WriteObject(fileStream, Shop.wareHouses);
-                }
+            using (var fileStream = new FileStream(ManufacturersPath, FileMode.Truncate))
+            {
+                jsonFormatter = new DataContractJsonSerializer(typeof(List<Manufacturer>));
+                jsonFormatter.WriteObject(fileStream, Shop.manufacturers);
+            }
+
+            using (var fileStream = new FileStream(WareHousePath, FileMode.Truncate))
+            {
+                jsonFormatter = new DataContractJsonSerializer(typeof(List<WareHouse>));
+                jsonFormatter.WriteObject(fileStream, Shop.wareHouses);
             }
         }
     }
