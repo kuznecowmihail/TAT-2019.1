@@ -1,18 +1,20 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 
 namespace Task_DEV_2_
 {
     /// <summary>
     /// Class describes the letter and its neighbors.
     /// </summary>
-    class Letter
+    public class Letter
     {
-        public char previous;
-        public char current;
-        public char next;
-        public int index;
-        private readonly string vowels = "аоиеёэыуюя";
-        private readonly string consonants = "бвгджзйклмнпрстфхцчшщ";
+        public char Previous { get; set; }
+        public char Current { get; set; }
+        public char Next { get; set; }
+        public int Index { get; set; }
+        readonly string vowels = "аоиеёэыуюя";
+        readonly string consonants = "бвгджзйклмнпрстфхцчшщ";
+        readonly string other = "ьъ\0";
 
         /// <summary>
         /// A method defines type of letter and return.
@@ -31,7 +33,11 @@ namespace Task_DEV_2_
             {
                 return "consonant";
             }
-            return "other";
+            else if (other.Contains(letter))
+            {
+                return "other";
+            }
+            throw new ArgumentOutOfRangeException("letter", "Incorrected letter");
         }
     }
 }

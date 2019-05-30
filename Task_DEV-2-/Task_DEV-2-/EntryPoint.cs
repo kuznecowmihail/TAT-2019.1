@@ -13,32 +13,37 @@ namespace Task_DEV_2_
         /// <param name="args">Arguments from command line</param>
         /// <returns 0>Normal start of program</returns>
         /// <returns 1>Don't have words</returns> 
-        /// <returns 2>Something errors</returns>
+        /// <returns 2>Letter is null</returns>
+        /// <returns 3>Something errors</returns>
         static int Main(string[] args)
         {
             try
             {
-                if (args.Length == 0 || args[0].Length < 2)
+                if (args.Length == 0)
                 {
-                    throw new FormatException();
+                    throw new Exception("Don't have words.");
                 }
-                ConverterWordToPhonemes[] converterWordToPhonemes = new ConverterWordToPhonemes[args.Length];
+                ConverterWordToPhonemes converterWordToPhonemes = new ConverterWordToPhonemes();
                 for (int i = 0; i < args.Length; i++)
                 {
-                    converterWordToPhonemes[i] = new ConverterWordToPhonemes(args[i]);
-                    Console.WriteLine(args[i] + " -> " + converterWordToPhonemes[i].ConvertWordToPhonemes());
+                    Console.WriteLine(args[i] + " -> " + converterWordToPhonemes.ConvertWordToPhonemes(args[i]));
                 }
                 return 0;
             }
-            catch(FormatException)
+            catch (ArgumentOutOfRangeException e)
             {
-                Console.WriteLine("Don't have words.");
+                Console.WriteLine($"Error: {e.Message}.");
                 return 1;
             }
-            catch(Exception ex)
+            catch (NullReferenceException e)
             {
-                Console.WriteLine("Something error: " + ex);
+                Console.WriteLine($"Error: {e.Message}.");
                 return 2;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine($"Something error: {e.Message}");
+                return 3;
             }
         }
     }
