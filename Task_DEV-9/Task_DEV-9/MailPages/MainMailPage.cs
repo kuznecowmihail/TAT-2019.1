@@ -44,14 +44,6 @@ namespace Task_DEV_9
         /// <returns></returns>
         public LetterMailPage SelectUnseenLetter(string senderName)
         {
-            //public string SelectUnseenLetterLocator(string name)
-            //{
-            //    return $"//a[contains(@data-title, '{name}')]//div//span[@class= 'b-datalist__item__status-unread']/following::div[3]/div[3]/div";
-            //}
-            //Wait.Until(t => Driver.FindElements(By.XPath(Locator.SelectUnseenLetterLocator(senderName))).Any());
-            //SelecterLetter = Driver.FindElement(By.XPath(Locator.SelectUnseenLetterLocator(senderName)));
-
-            // Wait unread letter.
             Wait.Until(t => Driver.FindElements(By.XPath(Locator.SelecterUnreadLetterLocator)).Any());
             SelecterLetter = Driver.FindElement(By.XPath(Locator.SelecterUnreadLetterLocator));
             SelecterLetter.Click();

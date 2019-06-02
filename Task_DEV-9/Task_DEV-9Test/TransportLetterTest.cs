@@ -12,7 +12,7 @@ namespace Task_DEV_9Test
         const string inputName = "//input[@name = 'FirstName']";
 
         [TestCase("2209username1998@mail.ru", "2_password_2", "2909username1998@rambler.ru", "I ready to change my name!!")]
-        public void SendLetterFromMail_Test(string mailLogin, string mailPassword, string recipient, string content)
+        public void SendLetterFromMailTest(string mailLogin, string mailPassword, string recipient, string content)
         {
             // Mail.
             var writerLetterMailPage = LoginToMail(mailLogin, mailPassword).ClickToWriteLetter();
@@ -24,7 +24,7 @@ namespace Task_DEV_9Test
         }
 
         [TestCase("2209username1998@mail.ru", "2_password_2", "I ready to change name!!", "2909username1998@rambler.ru", "1_Password_1")]
-        public void SendAndRecieveLetter_Test(string mailLogin, string mailPassword, string content, string ramblerLogin, string ramblerPassword)
+        public void SendAndRecieveLetterTest(string mailLogin, string mailPassword, string content, string ramblerLogin, string ramblerPassword)
         {
             // Mail.
             var writerLetterMailPage = LoginToMail(mailLogin, mailPassword).ClickToWriteLetter();
@@ -36,7 +36,7 @@ namespace Task_DEV_9Test
         }
 
         [TestCase("2209username1998@mail.ru", "2_password_2", "I ready to change name!!", "2909username1998@rambler.ru", "1_Password_1")]
-        public void SendAndReadLetter_Test(string mailLogin, string mailPassword, string actualContent, string ramblerLogin, string ramblerPassword)
+        public void SendAndReadLetterTest(string mailLogin, string mailPassword, string actualContent, string ramblerLogin, string ramblerPassword)
         {
             // Mail.
             var writerLetterMailPage = LoginToMail(mailLogin, mailPassword).ClickToWriteLetter();
@@ -53,7 +53,7 @@ namespace Task_DEV_9Test
         }
 
         [TestCase("2209username1998@mail.ru", "2_password_2", "I ready to change name!!", "2909username1998@rambler.ru", "1_Password_1", "UaVseCdelal")]
-        public void SendAndSendLetterFromRambler_Test(string mailLogin, string mailPassword, string content, string ramblerLogin, string ramblerPassword, string newUserName)
+        public void SendAndSendLetterFromRamblerTest(string mailLogin, string mailPassword, string content, string ramblerLogin, string ramblerPassword, string newUserName)
         {
             // Mail.
             var writerLetterMailPage = LoginToMail(mailLogin, mailPassword).ClickToWriteLetter();

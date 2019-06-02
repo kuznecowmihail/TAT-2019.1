@@ -25,7 +25,7 @@ namespace Task_DEV_9Test
             LoginMailPage loginMailPage = new LoginMailPage(this.driver);
             loginMailPage.GoToPage();
             
-            return loginMailPage.LoginToMail(login, password); ;
+            return loginMailPage.LoginToMail(login, password);
         }
 
         public MainRamblerPage LoginToRambler(string login, string password)
